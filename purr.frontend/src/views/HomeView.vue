@@ -3,16 +3,14 @@ import NewButton from '@/components/NewButton.vue'
 import PostCard from '@/components/PostCard.vue';
 import MiniPost from '@/components/MiniPost.vue';
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
+import NavBar from '@/components/NavBar.vue';
 
 </script>
 
 <template>
   <div class="grid grid-cols-12 min-h-dvh fixed w-full">
-    <div class="col-span-2 p-8 text-white bg-gray-900 space-y-4">
-      <div class="font-thin text-6xl text-center font-raleway mb-10">purr.</div>
-      <div class="px-8 py-4 bg-gray-600 rounded-md space-x-4">
-        <font-awesome-icon icon="fa-solid fa-home" />
-        <span>Home</span>
+    <div class="col-span-2 p-8 text-white bg-gray-900">
+        <NavBar></NavBar>
       </div>
     <div class="col-span-6 p-8 relative bg-transparent">
       <NewButton />
