@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+import LikeButton from '@/components/post/LikeButton.vue';
+</script>
+
 <template>
     <div class="max-w-xl bg-white border border-gray-200 rounded-lg shadow m-auto">
         <div class="relative">
@@ -6,7 +10,7 @@
         </div>
         <div class="grid col-span-2">
             <div class="p-4 pb-2 text-3xl flex gap-4">
-                <font-awesome-icon icon="fa-regular fa-heart" />
+                <LikeButton />
                 <font-awesome-icon icon="fa-regular fa-comment" />
                 <font-awesome-icon icon="fa-regular fa-bookmark" />
             </div>
