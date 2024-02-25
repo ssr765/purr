@@ -3,7 +3,9 @@ import PostCard from '@/components/app/posts/PostCard.vue'
 </script>
 
 <template>
-  <PostCard />
-  <PostCard />
-  <PostCard />
+  <div class="py-8 space-y-5">
+    <PostCard />
+    <PostCard />
+    <PostCard />
+  </div>
 </template>
