@@ -6,12 +6,19 @@ const router = createRouter({
     {
       path: '/',
       name: 'landing',
-      component: () => import('../views/LandingView.vue')
+      component: () => import('../views/landing/HomeView.vue')
     },
     {
       path: '/app',
       name: 'app-home',
-      component: () => import('../views/HomeView.vue')
+      component: () => import('../layouts/GlobalInterface.vue'),
+      children: [
+        {
+          path: '',
+          name: 'home',
+          component: () => import('../views/app/HomeView.vue')
+        }
+      ]
     }
   ]
 })
