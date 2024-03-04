@@ -13,7 +13,15 @@
       <router-link to="/app/test">
         <div class="px-8 py-4 bg-gray-800 rounded-md space-x-4">
           <font-awesome-icon icon="fa-solid fa-home" />
-          <span>test</span>
+          <span>single post mock</span>
+        </div>
+      </router-link>
+    </div>
+    <div>
+      <router-link to="/app/explorar">
+        <div class="px-8 py-4 bg-gray-800 rounded-md space-x-4">
+          <font-awesome-icon icon="fa-solid fa-home" />
+          <span>Explorar</span>
         </div>
       </router-link>
     </div>

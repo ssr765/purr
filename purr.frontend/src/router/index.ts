@@ -22,6 +22,11 @@ const router = createRouter({
                     path: 'test',
                     name: 'fullPost',
                     component: () => import('../views/app/FullPostView.vue')
+                },
+                {
+                    path: 'explorar',
+                    name: 'explorar',
+                    component: () => import('../views/app/ExplorarView.vue')
                 }
             ]
         }
