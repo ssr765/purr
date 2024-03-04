@@ -1,9 +1,4 @@
-<script lang="ts" setup>
-import { useAsideStore } from '@/stores/aside'
-
-const asideStore = useAsideStore()
-asideStore.postDetails(22)
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <div class="min-h-dvh flex justify-center items-center">
