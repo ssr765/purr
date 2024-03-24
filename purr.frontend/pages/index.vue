@@ -2,9 +2,9 @@
   <NuxtLayout name="landing">
     <LandingHomeHero />
     <LandingHomeConcepto />
-    <LandingHomeRelleno />
-    <LandingHomeAI />
     <LandingHomeFeatures />
+    <LandingHomeAI />
+    <LandingHomeTestimonials />
     <LandingHomeCTA />
   </NuxtLayout>
 </template>
