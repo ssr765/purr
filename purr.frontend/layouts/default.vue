@@ -1,3 +1,13 @@
+<script setup>
+import { onMounted } from 'vue'
+import { initFlowbite } from 'flowbite'
+
+onMounted(() => {
+  // Flowbite init.
+  initFlowbite()
+})
+</script>
+
 <template>
   <div class="antialiased bg-ctp-base">
     <nav class="bg-ctp-crust border-b border-ctp-lavender px-4 py-2.5 fixed left-0 right-0 top-0 z-50">
@@ -12,10 +22,11 @@
             </svg>
             <span class="sr-only">Toggle sidebar</span>
           </button>
-          <a href="https://flowbite.com" class="flex items-center justify-between mr-4">
-            <img src="https://flowbite.s3.amazonaws.com/logo.svg" class="mr-3 h-8" alt="Flowbite Logo" />
+          <NuxtLink to="/app" class="flex items-center justify-between mr-4">
+            <img src="/public/img/logo/light.webp" class="hidden dark:block mr-3 h-8" alt="purr. Logo" />
+            <img src="/public/img/logo/dark.webp" class="block dark:hidden mr-3 h-8" alt="purr. Logo" />
             <span class="font-hero self-center text-2xl font-semibold whitespace-nowrap dark:text-white">purr.</span>
-          </a>
+          </NuxtLink>
           <form action="#" method="GET" class="hidden md:block md:pl-2">
             <label for="topbar-search" class="sr-only">Search</label>
             <div class="relative md:w-64 md:w-96">
