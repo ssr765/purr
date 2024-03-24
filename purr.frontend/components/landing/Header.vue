@@ -25,7 +25,7 @@ onMounted(() => {
 
 <template>
   <header>
-    <nav class="bg-ctp-crust landing-header transition-all border-ctp-lavender px-4 lg:px-6 py-2.5">
+    <nav class="shadow-lg bg-ctp-crust landing-header transition-all border-ctp-lavender px-4 lg:px-6 py-2.5">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
         <NuxtLink to="/" class="flex items-center">
           <img src="/public/img/logo/light.webp" class="hidden dark:block mr-3 h-6 sm:h-9" alt="purr. Logo" />
