@@ -13,9 +13,11 @@ onMounted(() => {
     if (window.scrollY == 0) {
       header.classList.add('bg-ctp-crust')
       header.classList.remove('backdrop-blur-md')
+      header.classList.remove('border-b')
     } else {
       header.classList.remove('bg-ctp-crust')
       header.classList.add('backdrop-blur-md')
+      header.classList.add('border-b')
     }
   })
 })
@@ -23,7 +25,7 @@ onMounted(() => {
 
 <template>
   <header>
-    <nav class="bg-ctp-crust landing-header transition-all border-gray-200 px-4 lg:px-6 py-2.5">
+    <nav class="bg-ctp-crust landing-header transition-all border-ctp-lavender px-4 lg:px-6 py-2.5">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
         <NuxtLink to="/" class="flex items-center">
           <img src="/public/img/logo/light.webp" class="hidden dark:block mr-3 h-6 sm:h-9" alt="purr. Logo" />
