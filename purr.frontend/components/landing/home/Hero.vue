@@ -1,5 +1,5 @@
 <template>
-  <section class="flex items-center justify-center h-[80dvh] min-h-[750px]">
+  <section class="flex items-center justify-center h-[50dvh] min-h-[300px] lg:h-[80dvh] lg:min-h-[750px]">
     <div class="container">
       <h1 class="text-6xl font-hero uppercase tracking-tighter font-extrabold text-center">Explora el universo gatuno</h1>
     </div>
