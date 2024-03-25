@@ -1,5 +1,21 @@
+<script setup>
+import gsap from 'gsap'
+
+onMounted(() => {
+  // GSAP animations.
+  const observer = new IntersectionObserver(callback)
+  function callback(entries, observer) {
+    if (entries[0].isIntersecting) {
+      gsap.from('.testimonials > div', { opacity: 0, duration: 1, y: 50 })
+      observer.disconnect()
+    }
+  }
+  observer.observe(document.querySelector('.testimonials'))
+})
+</script>
+
 <template>
-  <section class="bg-ctp-mantle">
+  <section class="testimonials bg-ctp-mantle">
     <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
       <div class="text-center mx-auto max-w-screen-sm">
         <h2 class="mb-4 text-4xl tracking-tight font-extrabold">Testimonios</h2>
