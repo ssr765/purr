@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 onMounted(() => {
   // Flowbite init.
   initFlowbite()
