@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { initFlowbite } from 'flowbite'
 onMounted(() => {
   // Flowbite init.
   initFlowbite()
