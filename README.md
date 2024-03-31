@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/purr.logo.webp" alt="purr. Logo" width="200"></p>
+
 # purr.
 
 purr. es una red social hecha por gatos
