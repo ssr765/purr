@@ -1,7 +1,21 @@
+<script setup lang="ts">
+import gsap from 'gsap'
+
+onMounted(() => {
+  var tl = gsap.timeline({ repeat: -1 })
+  tl.to('#landing-hero', 300, {
+    backgroundPosition: '-8000px 0px',
+    ease: 'linear'
+  })
+})
+</script>
+
 <template>
-  <section class="flex items-center justify-center h-[50dvh] min-h-[300px] lg:h-[80dvh] lg:min-h-[750px]">
-    <div class="container">
-      <h1 class="text-6xl font-hero uppercase tracking-tighter font-extrabold text-center">Explora el universo gatuno</h1>
+  <section id="landing-hero" class="bg-[url('/img/grid.webp')] h-[50dvh] min-h-[300px] lg:h-[90dvh] lg:min-h-[750px]">
+    <div class="w-full h-full bg-gradient-to-b from-ctp-base/50 via-ctp-base via-95% to-ctp-base flex items-center justify-center">
+      <div class="max-w-screen-xl m-auto">
+        <h1 class="text-black/80 dark:text-ctp-text text-6xl font-hero uppercase tracking-tighter font-extrabold text-center">Explora el universo gatuno</h1>
+      </div>
     </div>
   </section>
 </template>
