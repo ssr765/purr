@@ -1,13 +1,8 @@
+const { addDynamicIconSelectors } = require('@iconify/tailwind')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './components/**/*.{js,vue,ts}',
-    './layouts/**/*.vue',
-    './pages/**/*.vue',
-    './plugins/**/*.{js,ts}',
-    './app.vue',
-    './error.vue'
-  ],
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
@@ -66,6 +61,7 @@ module.exports = {
     }
   },
   plugins: [
+    addDynamicIconSelectors(),
     require('@catppuccin/tailwindcss')({
       prefix: 'ctp'
     })
