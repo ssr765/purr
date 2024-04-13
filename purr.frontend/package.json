@@ -13,8 +13,14 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
     "gsap": "^3.12.5",
+    "lucide-vue-next": "^0.368.0",
     "pinia": "^2.1.7",
+    "radix-vue": "^1.7.0",
+    "tailwind-merge": "^2.2.2",
+    "tailwindcss-animate": "^1.0.7",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
