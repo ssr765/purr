@@ -28,7 +28,7 @@ const addLike = () => {
           <span v-else class="icon-[solar--heart-linear]" role="img" aria-hidden="true" />
         </button>
         <span class="icon-[iconamoon--comment-light]" role="img" aria-hidden="true" />
-        <font-awesome-icon icon="fa-regular fa-bookmark" />
+        <span class="icon-[iconamoon--bookmark-light]" role="img" aria-hidden="true" />
       </div>
       <div class="text-sm p-4 pt-2 text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur, cupiditate asperiores dolor veritatis facilis nobis dolore velit ut nihil deserunt.</div>
     </div>
