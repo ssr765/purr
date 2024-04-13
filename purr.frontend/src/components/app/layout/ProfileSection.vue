@@ -1,5 +1,42 @@
+<script setup lang="ts">
+import { useAuthStore } from '@/stores/auth'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { LogOut, User } from 'lucide-vue-next'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+
+const authStore = useAuthStore()
+</script>
 <template>
-  <div class="inline-flex rounded-md">
+  <div v-if="authStore.isAuthenticated">
+    <DropdownMenu>
+      <DropdownMenuTrigger as-child>
+        <button>
+          <Avatar>
+            <AvatarImage :src="authStore.user!.avatar ?? ''" alt="Mi avatar" />
+            <AvatarFallback class="text-lg text-ctp-text">{{ authStore.user!.username[0].toUpperCase() }}</AvatarFallback>
+          </Avatar>
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent class="w-56">
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel class="font-normal pt-0">{{ authStore.user!.username }}</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <User class="mr-2 h-4 w-4" />
+            <span>Perfil</span>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+
+        <DropdownMenuSeparator />
+        <DropdownMenuItem @click="authStore.logout()">
+          <LogOut class="mr-2 h-4 w-4" />
+          <span>Log out</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  </div>
+  <div v-else class="inline-flex rounded-md">
     <RouterLink :to="{ name: 'login' }" class="px-4 py-2 text-sm font-medium text-ctp-lavender bg-ctp-base border rounded-s-lg hover:bg-ctp-lavender/25 focus:z-10 focus:ring-2 focus:ring-ctp-lavender focus:text-ctp-lavender"> Login </RouterLink>
     <RouterLink :to="{ name: 'register' }" class="px-4 py-2 text-sm font-medium text-ctp-base bg-ctp-lavender border rounded-e-lg hover:bg-ctp-lavender/75 focus:z-10 focus:ring-2 focus:ring-ctp-lavender"> Registro </RouterLink>
   </div>

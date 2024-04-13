@@ -3,10 +3,15 @@ import { defineStore } from 'pinia'
 import axios from '@/lib/axios'
 import type { AxiosError } from 'axios'
 import { User } from '@/models/User'
+import { useRouter } from 'vue-router'
 
 export const useAuthStore = defineStore('auth', () => {
+  const router = useRouter()
+
   const user = ref<User | null>(null)
-  const isAuthenticated = computed(() => !!user.value)
+  const isAuthenticated = computed(() => user.value !== null)
+
+  const firstLoad = ref(true)
 
   async function csrf() {
     await axios.get('/sanctum/csrf-cookie')
@@ -18,7 +23,7 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       const response = await axios.post<User>('/login', { email, password })
       user.value = response.data
-      console.log(user.value)
+      router.push({ name: 'app-home' })
     } catch (error) {
       console.log(error)
       const axiosError = error as AxiosError
@@ -31,17 +36,32 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function logout() {
     await csrf()
-
     await axios.post('/logout')
     user.value = null
+    router.push({ name: 'app-home' })
+  }
+
+  async function fetchUser() {
+    try {
+      const response = await axios.get<User>('/api/user')
+      user.value = response.data
+    } catch (error) {
+      const axiosError = error as AxiosError
+      if (axiosError.response?.status === 401) {
+        user.value = null
+      }
+    }
   }
 
   return {
     user,
     isAuthenticated,
 
+    firstLoad,
+
     csrf,
     login,
-    logout
+    logout,
+    fetchUser
   }
 })

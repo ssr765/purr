@@ -1,3 +1,4 @@
+import { authCheckGuard } from '@/guards/authCheck'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -43,21 +44,10 @@ const router = createRouter({
       name: 'register',
       component: () => import('@/views/auth/AuthenticationView.vue'),
       props: { mode: 'register' }
-    },
-    {
-      path: '/logout',
-      name: 'logout',
-      component: () => import('@/views/auth/AuthenticationView.vue'),
-      props: { mode: 'register' },
-      // --- ! DEV ! ---
-      beforeEnter: (to, from, next) => {
-        import('@/stores/auth').then(({ useAuthStore }) => {
-          useAuthStore().logout()
-          next({ name: 'login' })
-        })
-      }
     }
   ]
 })
+
+router.beforeEach(authCheckGuard)
 
 export default router
