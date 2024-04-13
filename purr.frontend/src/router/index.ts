@@ -31,6 +31,31 @@ const router = createRouter({
           component: () => import('@/views/app/maps/VeterinariesView.vue')
         }
       ]
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/views/auth/AuthenticationView.vue'),
+      props: { mode: 'login' }
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('@/views/auth/AuthenticationView.vue'),
+      props: { mode: 'register' }
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: () => import('@/views/auth/AuthenticationView.vue'),
+      props: { mode: 'register' },
+      // --- ! DEV ! ---
+      beforeEnter: (to, from, next) => {
+        import('@/stores/auth').then(({ useAuthStore }) => {
+          useAuthStore().logout()
+          next({ name: 'login' })
+        })
+      }
     }
   ]
 })
