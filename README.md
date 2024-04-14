@@ -2,9 +2,9 @@
 
 # purr.
 
-purr. es una red social hecha por gatos
+purr. is the social networks made by cats
 
-## Instalación
+## Installation
 
 ### Frontend
 
@@ -13,11 +13,23 @@ cd purr.frontend
 npm install
 ```
 
+### Backend & Database
+
+```bash
+cd purr.backend
+composer install
+cp .env.example .env
+# Config the environment variables
+php artisan key:generate
+php artisan migrate
+#php artisan db:seed
+```
+
 ### Image Engine
 
 ```bash
 cd purr.imageEngine
 python -m venv .venv
-. .venv\bin\activate    # .\.venv\Scripts\activate en Windows
+. .venv\bin\activate    # .\.venv\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
