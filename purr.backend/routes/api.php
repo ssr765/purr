@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\CatController;
+use App\Http\Controllers\Api\V1\PostController;
 use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Resources\V1\UserResource;
 use Illuminate\Http\Request;
@@ -23,3 +24,8 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 Route::apiResource('users', UserController::class)->only(['show']);
 Route::apiResource('cats', CatController::class)->only(['show', 'store']);
+Route::apiResource('posts', PostController::class)->only(['store', 'show']);
+
+Route::prefix('posts')->name('posts.')->group(function () {
+    Route::get('/{post}/image', [PostController::class, 'showContent'])->name('content');
+});
