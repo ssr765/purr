@@ -2,6 +2,7 @@
 import { RouterView } from 'vue-router'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import { useAuthStore } from '@/stores/auth'
+import Toaster from '@/components/ui/toast/Toaster.vue'
 
 const authStore = useAuthStore()
 </script>
@@ -11,4 +12,5 @@ const authStore = useAuthStore()
     <LoadingSpinner />
   </main>
   <RouterView v-else />
+  <Toaster />
 </template>
