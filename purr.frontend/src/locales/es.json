@@ -24,6 +24,14 @@
           "especie": "Gato"
         }
       },
+      "ai": {
+        "title": "Contenido exclusivamente felino en purr.",
+        "content": [
+          "Empleamos tecnología de inteligencia artificial avanzada para asegurar que todas las imágenes y videos subidos realmente celebren el mundo de los gatos. Utilizamos un modelo de IA, basado en TensorFlow, que ha sido especialmente entrenado con más de 30,000 imágenes de gatos para reconocer con precisión solo contenido felino.",
+          "Esto garantiza que cada pieza de contenido que ves ha sido validada por nuestra tecnología de vanguardia, manteniendo purr. auténtico y fiel a su espíritu gatuno."
+        ],
+        "button": "Descubre más"
+      },
       "cta": {
         "title": "¿Quieres probar purr.?",
         "content": "Regístrate ahora y comienza a disfrutar de la experiencia gatuna.",
