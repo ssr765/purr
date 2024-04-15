@@ -3,6 +3,7 @@ import ES from '@/locales/es.json'
 import EN from '@/locales/en.json'
 
 export const i18n = createI18n({
+  legacy: false,
   locale: 'es',
   fallbackLocale: 'es',
   messages: {
