@@ -6,6 +6,7 @@ export class User {
     public username: string,
     public following: number,
     public createdAt: string,
+    public updatedAt: string,
     public avatar?: string,
     public biography?: string
   ) {}

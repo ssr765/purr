@@ -10,6 +10,7 @@ export class Cat {
     public birthday: string,
     public deathdate: string,
     public followers: number,
-    public created_at: string
+    public updatedAt: string,
+    public createdAt: string
   ) {}
 }
