@@ -6,6 +6,8 @@ const toggleHeaderBackground = () => {
   const header = document.querySelector('.landing-header')
   const mobileMenu = document.querySelector('#mobile-menu-2')
 
+  if (!header) return
+
   if (window.scrollY < 30) {
     header.classList.add('bg-ctp-crust')
     header.classList.remove('backdrop-blur-md')
