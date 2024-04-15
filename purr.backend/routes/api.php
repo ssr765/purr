@@ -26,7 +26,8 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('users', V1UserController::class)->only(['show']);
     Route::apiResource('cats', V1CatController::class)->only(['show']);
     Route::middleware(['auth:sanctum'])->apiResource('cats', V1CatController::class)->only(['store', 'destroy']);
-    Route::apiResource('posts', V1PostController::class)->only(['store', 'show']);
+    Route::apiResource('posts', V1PostController::class)->only(['show']);
+    Route::middleware(['auth:sanctum'])->apiResource('posts', V1PostController::class)->only(['store']);
 
     Route::prefix('posts')->name('posts.')->group(function () {
         Route::get('/{post}/media', [V1PostController::class, 'showContent'])->name('content');

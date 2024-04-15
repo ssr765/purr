@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\V1\ImageResource;
+use App\Models\Cat;
 
 class PostController extends Controller
 {
@@ -23,9 +24,16 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
+        $cat = Cat::find($request->cat_id);
+
+        // Check if the user owns the cat before uploading a post with the cat.
+        if ($cat->users()->where('user_id', auth()->id())->doesntExist()) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
         $post = Post::create([
             'cat_id' => $request->cat_id,
-            'filename' => $request->file('file')->store('posts'),
+            'filename' => $request->file('file')->store('', 'posts'),
             'caption' => $request->caption,
             'type' => $request->type,
         ]);

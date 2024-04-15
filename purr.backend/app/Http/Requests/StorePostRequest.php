@@ -11,7 +11,6 @@ class StorePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // TODO: Verify if the user owns the cat.
         return true;
     }
 
