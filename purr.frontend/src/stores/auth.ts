@@ -4,8 +4,10 @@ import axios from '@/lib/axios'
 import type { AxiosError } from 'axios'
 import { User } from '@/models/User'
 import { useRouter } from 'vue-router'
+import { useResponseToaster } from '@/composables/responseToaster'
 
 export const useAuthStore = defineStore('auth', () => {
+  const { toastResponse } = useResponseToaster()
   const router = useRouter()
 
   const user = ref<User | null>(null)
@@ -25,12 +27,7 @@ export const useAuthStore = defineStore('auth', () => {
       user.value = response.data
       router.push({ name: 'app-home' })
     } catch (error) {
-      console.log(error)
-      const axiosError = error as AxiosError
-      if (axiosError.response?.status === 422) {
-        console.log('Invalid credentials')
-        // TODO: Toast error message
-      }
+      toastResponse(error as AxiosError)
     }
   }
 

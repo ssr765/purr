@@ -72,5 +72,8 @@
         "link": "Inicia sesión!"
       }
     }
+  },
+  "response": {
+    "These credentials do not match our records": "Credenciales incorrectas"
   }
 }
