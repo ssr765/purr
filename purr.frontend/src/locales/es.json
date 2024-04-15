@@ -9,8 +9,68 @@
       "cta": "Acceder a purr.",
       "sr": "Abrir el menu"
     },
+    "footer": {
+      "content": "La red social hecha por gatos, para humanos.",
+      "rights": "Todos los derechos reservados."
+    },
     "home": {
-      "hero": "Explora el universo gatuno"
+      "hero": "Explora el universo gatuno",
+      "testimonials": {
+        "title": "Lo que dicen los usuarios",
+        "content": "Los gatos de la plataforma estan muy satisfechos usando nuestra aplicación.",
+        "quote": "\"Miau, miau miau miau miau. Miau miau, miau miau miau miau miau miau. Miau miau miau, miau miau miau. *ronronea* Miau miau miau, miau miau MIAU MIAU.\"",
+        "author": {
+          "name": "Bicho",
+          "especie": "Gato"
+        }
+      },
+      "cta": {
+        "title": "¿Quieres probar purr.?",
+        "content": "Regístrate ahora y comienza a disfrutar de la experiencia gatuna.",
+        "cta": "Comienza ahora"
+      }
+    }
+  },
+  "app": {
+    "layout": {
+      "search": "Buscar",
+      "header": {
+        "login": "Iniciar sesión",
+        "register": "Registrarse",
+        "user": {
+          "avatarAlt": "Mi avatar",
+          "myAccount": "Mi cuenta",
+          "profile": "Perfil",
+          "logout": "Cerrar sesión"
+        }
+      },
+      "sidebar": {
+        "feed": "Inicio",
+        "maps": "Mapas"
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "button": "Iniciar sesión",
+      "noAccount": {
+        "content": "¿No tienes una cuenta?",
+        "link": "Regístrate!"
+      }
+    },
+    "register": {
+      "name": "Nombre",
+      "username": "Nombre de usuario",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "passwordConfirmation": "Confirmar contraseña",
+      "button": "Registrarse",
+      "haveAccount": {
+        "content": "¿Ya tienes una cuenta?",
+        "link": "Inicia sesión!"
+      }
     }
   }
 }

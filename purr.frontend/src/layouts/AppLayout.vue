@@ -22,7 +22,7 @@ const collapsedSidebar = ref(false)
             <span class="font-hero self-center text-2xl font-semibold whitespace-nowrap dark:text-white">purr.</span>
           </RouterLink>
           <form class="hidden md:block md:pl-2">
-            <label for="topbar-search" class="sr-only">Search</label>
+            <label for="topbar-search" class="sr-only">{{ $t('app.layout.search') }}</label>
             <div class="relative md:w-64 lg:w-96">
               <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                 <span class="icon-[iconamoon--search] text-xl" role="img" aria-hidden="true" />
@@ -41,7 +41,7 @@ const collapsedSidebar = ref(false)
     <aside class="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform bg-ctp-crust border-r border-ctp-lavender md:translate-x-0" :class="collapsedSidebar ? '' : '-translate-x-full'" aria-label="Sidenav" id="drawer-navigation">
       <div class="overflow-y-auto py-5 px-3 h-full">
         <form class="md:hidden mb-4">
-          <label for="sidebar-search" class="sr-only">Search</label>
+          <label for="sidebar-search" class="sr-only">{{ $t('app.layout.search') }}</label>
           <div class="relative">
             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
               <span class="icon-[iconamoon--search] text-xl" role="img" aria-hidden="true" />
@@ -53,13 +53,13 @@ const collapsedSidebar = ref(false)
           <li>
             <RouterLink to="/app" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
               <span class="icon-[ion--paw-outline] text-xl w-6" role="img" aria-hidden="true" />
-              <span class="ml-3">Feed</span>
+              <span class="ml-3">{{ $t('app.layout.sidebar.feed') }}</span>
             </RouterLink>
           </li>
           <li>
             <button type="button" class="flex items-center p-2 w-full text-base font-medium text-ctp-text rounded-lg transition duration-75 group hover:bg-ctp-overlay2/50" aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
               <span class="icon-[solar--map-linear] text-xl w-6" role="img" aria-hidden="true" />
-              <span class="flex-1 ml-3 text-left whitespace-nowrap">Maps</span>
+              <span class="flex-1 ml-3 text-left whitespace-nowrap">{{ $t('app.layout.sidebar.maps') }}</span>
               <span class="icon-[iconamoon--arrow-down-2] text-xl" role="img" aria-hidden="true" />
             </button>
             <ul id="dropdown-pages" class="hidden py-2 space-y-2">

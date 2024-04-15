@@ -6,8 +6,8 @@
         <img src="/public/img/logo/dark.webp" class="block dark:hidden h-20" alt="purr. Logo" />
         <span class="self-center whitespace-nowrap">purr.</span>
       </a>
-      <p class="my-4">La red social hecha por gatos, para humanos.</p>
-      <span class="text-sm text-ctp-subtext0 sm:text-center">© 2024 <a href="#" class="hover:underline">ssr765</a>. All Rights Reserved.</span>
+      <p class="my-4">{{ $t('landing.footer.content') }}</p>
+      <span class="text-sm text-ctp-subtext0 sm:text-center">© 2024 <a href="#" class="hover:underline">ssr765</a>. {{ $t('landing.footer.rights') }}</span>
     </div>
   </footer>
 </template>
