@@ -39,11 +39,7 @@ export const useAuthStore = defineStore('auth', () => {
       user.value = response.data
       router.push({ name: 'app-home' })
     } catch (error) {
-      console.log(error)
-      const axiosError = error as AxiosError
-      if (axiosError.response?.status === 422) {
-        console.log('Invalid credentials')
-      }
+      toastResponse(error as AxiosError)
     }
   }
 
