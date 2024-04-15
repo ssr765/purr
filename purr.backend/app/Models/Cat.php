@@ -20,4 +20,14 @@ class Cat extends Model
         'deathdate',
         'password',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

@@ -15,4 +15,9 @@ class Post extends Model
         'caption',
         'type',
     ];
+
+    public function cat()
+    {
+        return $this->belongsTo(Cat::class);
+    }
 }
