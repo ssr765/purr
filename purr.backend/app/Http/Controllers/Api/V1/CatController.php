@@ -24,6 +24,7 @@ class CatController extends Controller
     public function store(StoreCatRequest $request)
     {
         $cat = Cat::create($request->validated());
+        $request->user()->cats()->attach($cat);
         return new CatResource($cat);
     }
 
