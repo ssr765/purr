@@ -13,7 +13,7 @@ class CatPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +21,8 @@ class CatPolicy
      */
     public function view(User $user, Cat $cat): bool
     {
-        //
+        // Maybe implement private cat profiles in the future.
+        return true;
     }
 
     /**
@@ -29,7 +30,7 @@ class CatPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -37,7 +38,7 @@ class CatPolicy
      */
     public function update(User $user, Cat $cat): bool
     {
-        //
+        return $cat->users()->where('user_id', $user->id)->exists();
     }
 
     /**
@@ -45,7 +46,7 @@ class CatPolicy
      */
     public function delete(User $user, Cat $cat): bool
     {
-        //
+        return $cat->users()->where('user_id', $user->id)->exists();
     }
 
     /**
@@ -53,7 +54,7 @@ class CatPolicy
      */
     public function restore(User $user, Cat $cat): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -61,6 +62,6 @@ class CatPolicy
      */
     public function forceDelete(User $user, Cat $cat): bool
     {
-        //
+        return false;
     }
 }

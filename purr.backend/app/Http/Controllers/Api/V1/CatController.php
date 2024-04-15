@@ -49,6 +49,12 @@ class CatController extends Controller
      */
     public function destroy(Cat $cat)
     {
-        //
+        // Check if the user owns the cat to delete it.
+        if (request()->user()->cannot('delete', $cat)) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $cat->delete();
+        return response()->json($cat, 200);
     }
 }
