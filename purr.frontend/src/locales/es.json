@@ -1,0 +1,16 @@
+{
+  "landing": {
+    "header": {
+      "home": "Inicio",
+      "features": "Características",
+      "ai": "AI",
+      "faqs": "FAQs",
+      "techs": "Tecnologías",
+      "cta": "Acceder a purr.",
+      "sr": "Abrir el menu"
+    },
+    "home": {
+      "hero": "Explora el universo gatuno"
+    }
+  }
+}

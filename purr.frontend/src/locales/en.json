@@ -1,0 +1,16 @@
+{
+  "landing": {
+    "header": {
+      "home": "Home",
+      "features": "Features",
+      "ai": "AI",
+      "faqs": "FAQs",
+      "techs": "Technologies",
+      "cta": "Access to purr.",
+      "sr": "Open main menu"
+    },
+    "home": {
+      "hero": "Explore the cat universe"
+    }
+  }
+}
