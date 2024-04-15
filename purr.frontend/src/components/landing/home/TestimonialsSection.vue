@@ -19,7 +19,7 @@ onMounted(() => {
   <section class="testimonials bg-ctp-mantle">
     <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
       <div class="text-center mx-auto max-w-screen-sm">
-        <h2 class="mb-4 text-4xl tracking-tight font-extrabold">{{ $t('landing.home.testimonials.title') }}</h2>
+        <h2 class="mb-4 text-4xl tracking-tight font-bold">{{ $t('landing.home.testimonials.title') }}</h2>
         <p class="mb-8 font-light text-ctp-subtext1 sm:text-xl">{{ $t('landing.home.testimonials.content') }}</p>
       </div>
       <figure class="max-w-screen-md mx-auto">
