@@ -17,7 +17,6 @@ class PostResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'catId' => $this->cat_id,
             'url' => URL::to("/api/v1/posts/{$this->id}/media"),
             'caption' => $this->caption,
             'type' => $this->type,

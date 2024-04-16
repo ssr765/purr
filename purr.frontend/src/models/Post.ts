@@ -3,7 +3,6 @@ import type { Cat } from '@/models/Cat'
 export class Post {
   constructor(
     public id: number,
-    public catId: number,
     public url: string,
     public type: string,
     public likeCount: number,
