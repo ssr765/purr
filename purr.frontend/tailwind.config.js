@@ -12,7 +12,7 @@ module.exports = {
     './pages/**/*.{ts,tsx,vue}',
     './components/**/*.{ts,tsx,vue}',
     './app/**/*.{ts,tsx,vue}',
-    './src/**/*.{ts,tsx,vue}'
+    './src/**/*.{ts,tsx,vue}',
   ],
 
   theme: {
@@ -20,8 +20,8 @@ module.exports = {
       center: true,
       padding: '2rem',
       screens: {
-        '2xl': '1400px'
-      }
+        '2xl': '1400px',
+      },
     },
     extend: {
       colors: {
@@ -32,62 +32,62 @@ module.exports = {
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))'
+          foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))'
+          foreground: 'hsl(var(--secondary-foreground))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))'
+          foreground: 'hsl(var(--destructive-foreground))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))'
+          foreground: 'hsl(var(--muted-foreground))',
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))'
+          foreground: 'hsl(var(--accent-foreground))',
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))'
+          foreground: 'hsl(var(--popover-foreground))',
         },
         card: {
           DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))'
-        }
+          foreground: 'hsl(var(--card-foreground))',
+        },
       },
       borderRadius: {
         xl: 'calc(var(--radius) + 4px)',
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)'
+        sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
         'accordion-down': {
           from: { height: 0 },
-          to: { height: 'var(--radix-accordion-content-height)' }
+          to: { height: 'var(--radix-accordion-content-height)' },
         },
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: 0 }
+          to: { height: 0 },
         },
         'collapsible-down': {
           from: { height: 0 },
-          to: { height: 'var(--radix-collapsible-content-height)' }
+          to: { height: 'var(--radix-collapsible-content-height)' },
         },
         'collapsible-up': {
           from: { height: 'var(--radix-collapsible-content-height)' },
-          to: { height: 0 }
-        }
+          to: { height: 0 },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'collapsible-down': 'collapsible-down 0.2s ease-in-out',
-        'collapsible-up': 'collapsible-up 0.2s ease-in-out'
+        'collapsible-up': 'collapsible-up 0.2s ease-in-out',
       },
       fontFamily: {
         hero: [
@@ -105,7 +105,7 @@ module.exports = {
           'Apple Color Emoji',
           'Segoe UI Emoji',
           'Segoe UI Symbol',
-          'Noto Color Emoji'
+          'Noto Color Emoji',
         ],
         body: [
           'Inter',
@@ -122,7 +122,7 @@ module.exports = {
           'Apple Color Emoji',
           'Segoe UI Emoji',
           'Segoe UI Symbol',
-          'Noto Color Emoji'
+          'Noto Color Emoji',
         ],
         sans: [
           'Poppins',
@@ -139,16 +139,22 @@ module.exports = {
           'Apple Color Emoji',
           'Segoe UI Emoji',
           'Segoe UI Symbol',
-          'Noto Color Emoji'
-        ]
-      }
-    }
+          'Noto Color Emoji',
+        ],
+      },
+      height: {
+        app: 'calc(100vh - 61px - 32px - 3px)',
+      },
+      maxHeight: {
+        app: 'calc(100vh - 61px - 32px - 3px)',
+      },
+    },
   },
   plugins: [
     animate,
     addDynamicIconSelectors(),
     require('@catppuccin/tailwindcss')({
-      prefix: 'ctp'
-    })
-  ]
+      prefix: 'ctp',
+    }),
+  ],
 }
