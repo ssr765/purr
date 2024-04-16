@@ -1,14 +1,7 @@
 <script setup lang="ts">
-import PostCard from '@/components/app/PostCard.vue'
+import PostsFeed from '@/components/app/PostsFeed.vue'
 </script>
 
 <template>
-  <div class="space-y-4">
-    <PostCard />
-    <PostCard />
-    <PostCard />
-    <PostCard />
-    <PostCard />
-    <PostCard />
-  </div>
+  <PostsFeed />
 </template>
