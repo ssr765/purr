@@ -3,7 +3,7 @@ import LoginSide from '@/components/auth/LoginSide.vue'
 import RegisterSide from '@/components/auth/RegisterSide.vue'
 
 defineProps({
-  mode: String
+  mode: String,
 })
 </script>
 

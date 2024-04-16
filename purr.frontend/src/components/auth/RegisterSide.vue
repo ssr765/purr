@@ -10,7 +10,7 @@ const register = () => {
     username: username.value,
     email: email.value,
     password: password.value,
-    password_confirmation: password_confirmation.value
+    password_confirmation: password_confirmation.value,
   }
   authStore.register(data)
 }

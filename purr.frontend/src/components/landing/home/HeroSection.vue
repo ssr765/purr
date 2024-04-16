@@ -6,7 +6,7 @@ onMounted(() => {
   var tl = gsap.timeline({ repeat: -1 })
   tl.to('#landing-hero', 300, {
     backgroundPosition: '-8000px 0px',
-    ease: 'linear'
+    ease: 'linear',
   })
 })
 </script>

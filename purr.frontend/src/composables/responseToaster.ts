@@ -11,7 +11,7 @@ export function useResponseToaster() {
     if (error.response) {
       const data = error.response?.data as errorData
       toast({
-        title: t(`response.${removeDots(data.message)}`)
+        title: t(`response.${removeDots(data.message)}`),
       })
     }
   }

@@ -8,6 +8,6 @@ export class User {
     public createdAt: string,
     public updatedAt: string,
     public avatar?: string,
-    public biography?: string
+    public biography?: string,
   ) {}
 }
