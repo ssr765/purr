@@ -57,6 +57,16 @@
         "maps": "Mapas",
         "create": "Crear"
       }
+    },
+    "create": {
+      "noKittens": {
+        "title": "Aún no has creado un perfil para tu gato",
+        "content": [
+          "¡Hola! Parece que aún no has registrado a ningún gato en purr. Aquí, cada gato tiene su propio perfil para que puedas compartir sus aventuras y fotos.",
+          "¿Qué te parece si creamos un perfil para tu gato ahora? ¡Es rápido y fácil!"
+        ],
+        "button": "Crear el perfil ahora"
+      }
     }
   },
   "auth": {
