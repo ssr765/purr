@@ -10,7 +10,7 @@ const authStore = useAuthStore()
 </script>
 
 <template>
-  <div v-if="!!authStore.user!.cats">
+  <div v-if="authStore.user!.cats === undefined || authStore.user!.cats.length == 0">
     <NoKittens />
   </div>
   <div v-else>
