@@ -1,3 +1,5 @@
+import type { Cat } from '@/models/Cat'
+
 export class User {
   constructor(
     public id: number,
@@ -9,5 +11,6 @@ export class User {
     public updatedAt: string,
     public avatar?: string,
     public biography?: string,
+    public cats?: Cat[],
   ) {}
 }
