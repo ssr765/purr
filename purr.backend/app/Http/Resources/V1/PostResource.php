@@ -4,6 +4,7 @@ namespace App\Http\Resources\V1;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\URL;
 
 class PostResource extends JsonResource
 {
@@ -17,13 +18,15 @@ class PostResource extends JsonResource
         return [
             'id' => $this->id,
             'catId' => $this->cat_id,
-            'filename' => $this->filename,
+            'url' => URL::to("/api/v1/posts/{$this->id}/media"),
             'caption' => $this->caption,
             'type' => $this->type,
             'likeCount' => $this->like_count,
             'commentCount' => $this->comment_count,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
+            // Only shown if accesing to the post detail or the post list.
+            'cat' => new CatResource($this->whenLoaded('cat')),
         ];
     }
 }

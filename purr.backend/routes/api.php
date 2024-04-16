@@ -18,15 +18,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// V1 API
 Route::prefix('v1')->group(function () {
     Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+
         return response()->json(new V1UserResource($request->user()));
     });
 
     Route::apiResource('users', V1UserController::class)->only(['show']);
     Route::apiResource('cats', V1CatController::class)->only(['show']);
     Route::middleware(['auth:sanctum'])->apiResource('cats', V1CatController::class)->only(['store', 'destroy']);
-    Route::apiResource('posts', V1PostController::class)->only(['show']);
+
+    // Posts
+    Route::apiResource('posts', V1PostController::class)->only(['index', 'show']);
     Route::middleware(['auth:sanctum'])->apiResource('posts', V1PostController::class)->only(['store']);
 
     Route::prefix('posts')->name('posts.')->group(function () {

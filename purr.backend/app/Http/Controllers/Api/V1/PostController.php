@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
-use App\Http\Resources\V1\ImageResource;
+use App\Http\Resources\V1\PostResource;
 use App\Models\Cat;
 
 class PostController extends Controller
@@ -16,7 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        // Get all posts with their cats.
+        $posts = Post::with('cat')->get();
+        return response()->json(PostResource::collection($posts));
     }
 
     /**
@@ -38,7 +40,7 @@ class PostController extends Controller
             'type' => $request->type,
         ]);
 
-        return response()->json(new ImageResource($post), 201);
+        return response()->json(new PostResource($post), 201);
     }
 
     /**
@@ -46,7 +48,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return response()->json(new ImageResource($post));
+        // Get the post with its cat.
+        $post = $post->load('cat');
+        return response()->json(new PostResource($post));
     }
 
     /**

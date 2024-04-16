@@ -28,6 +28,8 @@ class CatResource extends JsonResource
             'followers' => $this->followers,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
+            // Posts only shown if accesing to the cat detail.
+            'posts' => new PostCollection($this->whenLoaded('posts')),
         ];
     }
 }
