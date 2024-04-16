@@ -24,6 +24,7 @@ class UserResource extends JsonResource
             'following' => $this->following,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
+            'cats' => CatResource::collection($this->whenLoaded('cats')),
         ];
     }
 }

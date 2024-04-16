@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function () {
     Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
-        return response()->json(new V1UserResource($request->user()));
+        return response()->json(new V1UserResource($request->user()->load('cats')));
     });
 
     Route::apiResource('users', V1UserController::class)->only(['show']);
