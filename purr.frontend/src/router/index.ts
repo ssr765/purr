@@ -31,6 +31,16 @@ const router = createRouter({
           name: 'app-maps-vets',
           component: () => import('@/views/app/maps/VeterinariesView.vue'),
         },
+        {
+          path: 'create',
+          name: 'app-create',
+          component: () => import('@/views/app/CreateView.vue'),
+        },
+        {
+          path: 'post/:id(\\d+)',
+          name: 'app-post',
+          component: () => import('@/views/app/PostView.vue'),
+        },
       ],
     },
     {

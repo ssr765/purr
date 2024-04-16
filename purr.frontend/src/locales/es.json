@@ -54,7 +54,8 @@
       },
       "sidebar": {
         "feed": "Inicio",
-        "maps": "Mapas"
+        "maps": "Mapas",
+        "create": "Crear"
       }
     }
   },

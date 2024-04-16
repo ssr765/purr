@@ -13,3 +13,11 @@ export class Post {
     public caption?: string,
   ) {}
 }
+
+export class PostInput {
+  constructor(
+    public file: File,
+    public cat_id?: number,
+    public caption?: string,
+  ) {}
+}
