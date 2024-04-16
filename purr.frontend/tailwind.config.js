@@ -142,6 +142,9 @@ module.exports = {
           'Noto Color Emoji',
         ],
       },
+      minHeight: {
+        app: 'calc(100vh - 61px - 32px - 3px)',
+      },
       height: {
         app: 'calc(100vh - 61px - 32px - 3px)',
       },
