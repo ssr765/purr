@@ -66,6 +66,10 @@
           "¿Qué te parece si creamos un perfil para tu gato ahora? ¡Es rápido y fácil!"
         ],
         "button": "Crear el perfil ahora"
+      },
+      "mediaInput": {
+        "title": "Comparte un momento felino",
+        "content": "Arrastra o haz clic para compartir contenido de tu amigo gatuno en purr."
       }
     }
   },
