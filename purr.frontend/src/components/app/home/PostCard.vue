@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import gsap from 'gsap'
 import { Post } from '@/models/Post'
-import CatPlaceholderAvatar from '../CatPlaceholderAvatar.vue'
+import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
 
 defineProps({
   post: {

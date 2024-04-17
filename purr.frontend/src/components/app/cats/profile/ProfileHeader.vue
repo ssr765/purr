@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Cat } from '@/models/Cat'
-import CatPlaceholderAvatar from '@/components/CatPlaceholderAvatar.vue'
+import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
 
 defineProps({
   cat: {

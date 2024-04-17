@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PostCard from '@/components/app/PostCard.vue'
+import PostCard from '@/components/app/home/PostCard.vue'
 import { usePostStore } from '@/stores/post'
 import { onMounted } from 'vue'
 

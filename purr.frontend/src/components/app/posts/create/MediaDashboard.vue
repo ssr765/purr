@@ -2,7 +2,7 @@
 import { useCreatePostStore } from '@/stores/createPost'
 import { useAuthStore } from '@/stores/auth'
 import { onUnmounted } from 'vue'
-import LoadingSpinner from '@/components/LoadingSpinner.vue'
+import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
 
 const createPostStore = useCreatePostStore()
 const authStore = useAuthStore()

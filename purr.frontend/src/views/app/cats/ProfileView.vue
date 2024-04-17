@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LoadingSpinner from '@/components/LoadingSpinner.vue'
+import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
 import { useCatStore } from '@/stores/cat'
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'

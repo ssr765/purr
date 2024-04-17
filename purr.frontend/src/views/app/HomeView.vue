@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PostsFeed from '@/components/app/PostsFeed.vue'
+import PostsFeed from '@/components/app/home/PostsFeed.vue'
 </script>
 
 <template>
