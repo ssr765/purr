@@ -19,7 +19,7 @@ const collapsedSidebar = ref(false)
           <RouterLink to="/app" class="flex items-center justify-between mr-4">
             <img src="/public/img/logo/light.webp" class="hidden dark:block mr-3 h-8" alt="purr. Logo" />
             <img src="/public/img/logo/dark.webp" class="block dark:hidden mr-3 h-8" alt="purr. Logo" />
-            <span class="font-hero self-center text-2xl font-semibold whitespace-nowrap dark:text-white">purr.</span>
+            <span class="text-black font-hero self-center text-2xl font-semibold whitespace-nowrap dark:text-white">purr.</span>
           </RouterLink>
           <form class="hidden md:block md:pl-2">
             <label for="topbar-search" class="sr-only">{{ $t('app.layout.search') }}</label>
