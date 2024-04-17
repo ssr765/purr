@@ -28,7 +28,7 @@ const password = ref('')
       <button type="submit" class="block mx-auto text-ctp-base bg-ctp-lavender hover:bg-ctp-lavender/80 focus:ring-4 focus:outline-none focus:ring-ctp-lavender font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">{{ $t('auth.login.button') }}</button>
     </form>
     <p class="text-center">
-      {{ $t('auth.login.noAccount.content') }} <RouterLink class="text-ctp-lavender" :to="{ name: 'register' }"> {{ $t('auth.login.noAccount.link') }} </RouterLink>
+      {{ $t('auth.login.noAccount.content') }} <RouterLink class="text-ctp-lavender" :to="{ name: 'auth-register' }"> {{ $t('auth.login.noAccount.link') }} </RouterLink>
     </p>
   </aside>
 </template>

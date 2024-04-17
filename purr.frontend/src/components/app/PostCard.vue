@@ -35,7 +35,7 @@ const addLike = (id: number) => {
     <div>
       <div class="p-4 pt-2">
         <div class="flex items-center justify-between">
-          <RouterLink :to="{ name: 'app-cat', params: { id: post.cat!.id } }">
+          <RouterLink :to="{ name: 'app-cats-profile', params: { id: post.cat!.id } }">
             <div class="flex items-center gap-2">
               <CatPlaceholderAvatar class="w-12 h-12" />
               <div>

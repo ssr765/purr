@@ -44,7 +44,10 @@ export const useCreatePostStore = defineStore('createPost', () => {
 
     try {
       const response = await axios.post('/api/v1/posts', fd)
-      router.push({ name: 'app-post', params: { id: response.data.id } })
+      router.push({
+        name: 'app-posts-detail',
+        params: { id: response.data.id },
+      })
     } catch (error) {
       console.error(error)
     } finally {

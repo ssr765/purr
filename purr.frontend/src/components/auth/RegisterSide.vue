@@ -53,7 +53,7 @@ const password_confirmation = ref('')
     </form>
 
     <p class="text-center">
-      {{ $t('auth.register.haveAccount.content') }} <RouterLink class="text-ctp-lavender" :to="{ name: 'login' }"> {{ $t('auth.register.haveAccount.link') }} </RouterLink>
+      {{ $t('auth.register.haveAccount.content') }} <RouterLink class="text-ctp-lavender" :to="{ name: 'auth-login' }"> {{ $t('auth.register.haveAccount.link') }} </RouterLink>
     </p>
   </aside>
 </template>
