@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import PostCard from '@/components/app/PostCard.vue'
-import { usePostStore } from '@/stores/posts'
+import { usePostStore } from '@/stores/post'
 import { onMounted } from 'vue'
 
 const postStore = usePostStore()
