@@ -32,7 +32,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 space-y-4">
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2">
     <div v-for="post in cat.posts" :key="post.id">
       <img :src="post.url" class="profile-post" alt="" />
     </div>
