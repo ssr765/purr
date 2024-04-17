@@ -27,6 +27,19 @@ php artisan migrate
 
 ### Image Engine
 
+The image engine is implemented as a Flask API and uses Gunicorn as the WSGI HTTP server for production environments.
+
+**Required Python Version:**
+The application requires Python version 3.7 or higher.
+
+**Tested Python Versions:**
+The following Python versions have been tested and are confirmed to be compatible:
+
+- 3.11.9
+
+> [!WARNING]
+> Python version 3.12 is currently not supported by this configuration of Gunicorn.
+
 ```bash
 cd purr.imageEngine
 python -m venv .venv
