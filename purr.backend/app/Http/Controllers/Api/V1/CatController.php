@@ -34,7 +34,7 @@ class CatController extends Controller
     public function show(Cat $cat)
     {
         // Get the cat with its posts.
-        return new CatResource($cat->load('posts'));
+        return response()->json(new CatResource($cat->load('posts')));
     }
 
     /**

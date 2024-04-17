@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import gsap from 'gsap'
 import { Post } from '@/models/Post'
+import CatPlaceholderAvatar from '../CatPlaceholderAvatar.vue'
 
 defineProps({
   post: {
@@ -31,17 +32,28 @@ const addLike = (id: number) => {
       <img v-on:dblclick="addLike(post.id)" class="w-full rounded-lg" :src="post.url" alt="" />
       <span :id="`post-${post.id}`" class="icon-[solar--heart-bold] text-red-500 absolute-center scale-0 text-[100px]" role="img" aria-hidden="true" />
     </div>
-    <div class="grid col-span-2">
-      <div class="p-4 pb-2 text-3xl flex gap-4">
-        <button @click="addLike(post.id)">
-          <span v-if="like" class="icon-[solar--heart-bold] text-red-500" role="img" aria-hidden="true" />
-          <span v-else class="icon-[solar--heart-linear]" role="img" aria-hidden="true" />
-        </button>
-        <span class="icon-[iconamoon--comment-light]" role="img" aria-hidden="true" />
-        <span class="icon-[iconamoon--bookmark-light]" role="img" aria-hidden="true" />
-      </div>
+    <div>
       <div class="p-4 pt-2">
-        <div class="text-lg">@{{ post.cat!.catname }}</div>
+        <div class="flex items-center justify-between">
+          <RouterLink :to="{ name: 'app-cat', params: { id: post.cat!.id } }">
+            <div class="flex items-center gap-2">
+              <CatPlaceholderAvatar class="w-12 h-12" />
+              <div>
+                <div class="text-lg font-bold leading-4">{{ post.cat!.name }}</div>
+                <div class="text-sm">@{{ post.cat!.catname }}</div>
+              </div>
+            </div>
+          </RouterLink>
+
+          <div class="p-4 pb-2 text-3xl flex gap-4">
+            <button @click="addLike(post.id)">
+              <span v-if="like" class="icon-[solar--heart-bold] text-red-500" role="img" aria-hidden="true" />
+              <span v-else class="icon-[solar--heart-linear]" role="img" aria-hidden="true" />
+            </button>
+            <span class="icon-[iconamoon--comment-light]" role="img" aria-hidden="true" />
+            <span class="icon-[iconamoon--bookmark-light]" role="img" aria-hidden="true" />
+          </div>
+        </div>
         <div class="text-sm p-4 pt-2 text-center">{{ post.caption }}</div>
       </div>
     </div>
