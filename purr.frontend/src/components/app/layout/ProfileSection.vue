@@ -37,7 +37,7 @@ const authStore = useAuthStore()
     </DropdownMenu>
   </div>
   <div v-else class="inline-flex rounded-md">
-    <RouterLink :to="{ name: 'login' }" class="px-4 py-2 text-sm font-medium text-ctp-lavender bg-ctp-base border rounded-s-lg hover:bg-ctp-lavender/25 focus:z-10 focus:ring-2 focus:ring-ctp-lavender focus:text-ctp-lavender"> {{ $t('app.layout.header.login') }} </RouterLink>
-    <RouterLink :to="{ name: 'register' }" class="px-4 py-2 text-sm font-medium text-ctp-base bg-ctp-lavender border rounded-e-lg hover:bg-ctp-lavender/75 focus:z-10 focus:ring-2 focus:ring-ctp-lavender"> {{ $t('app.layout.header.register') }} </RouterLink>
+    <RouterLink :to="{ name: 'auth-login' }" class="px-4 py-2 text-sm font-medium text-ctp-lavender bg-ctp-base border rounded-s-lg hover:bg-ctp-lavender/25 focus:z-10 focus:ring-2 focus:ring-ctp-lavender focus:text-ctp-lavender"> {{ $t('app.layout.header.login') }} </RouterLink>
+    <RouterLink :to="{ name: 'auth-register' }" class="px-4 py-2 text-sm font-medium text-ctp-base bg-ctp-lavender border rounded-e-lg hover:bg-ctp-lavender/75 focus:z-10 focus:ring-2 focus:ring-ctp-lavender"> {{ $t('app.layout.header.register') }} </RouterLink>
   </div>
 </template>
