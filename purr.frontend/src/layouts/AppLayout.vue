@@ -38,7 +38,7 @@ const collapsedSidebar = ref(false)
     </nav>
 
     <!-- Sidebar -->
-    <aside class="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform bg-ctp-crust border-r border-ctp-lavender md:translate-x-0" :class="collapsedSidebar ? '' : '-translate-x-full'" aria-label="Sidenav" id="drawer-navigation">
+    <aside class="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform bg-ctp-mantle border-r border-ctp-lavender md:translate-x-0" :class="collapsedSidebar ? '' : '-translate-x-full'" aria-label="Sidenav" id="drawer-navigation">
       <div class="overflow-y-auto py-5 px-3 h-full">
         <form class="md:hidden mb-4">
           <label for="sidebar-search" class="sr-only">{{ $t('app.layout.search') }}</label>
