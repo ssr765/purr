@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useCreatePostStore } from '@/stores/createPost'
 import { useAuthStore } from '@/stores/auth'
-import MediaInput from '@/components/app/create/MediaInput.vue'
-import MediaDashboard from '@/components/app/create/MediaDashboard.vue'
-import NoKittens from '@/components/app/create/NoKittens.vue'
+import MediaInput from '@/components/app/posts/create/MediaInput.vue'
+import MediaDashboard from '@/components/app/posts/create/MediaDashboard.vue'
+import NoKittens from '@/components/app/posts/create/NoKittens.vue'
 
 const createPostStore = useCreatePostStore()
 const authStore = useAuthStore()

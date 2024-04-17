@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import LandingHeader from '@/components/landing/LandingHeader.vue'
-import LandingFooter from '@/components/landing/LandingFooter.vue'
+import LandingHeader from '@/components/landing/layout/LandingHeader.vue'
+import LandingFooter from '@/components/landing/layout/LandingFooter.vue'
 import { RouterView } from 'vue-router'
 </script>
 
