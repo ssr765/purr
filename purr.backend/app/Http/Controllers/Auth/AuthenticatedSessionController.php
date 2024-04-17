@@ -21,7 +21,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return response()->json(new UserResource(Auth::user()));
+        return response()->json(new UserResource($request->user()->load('cats')));
     }
 
     /**
