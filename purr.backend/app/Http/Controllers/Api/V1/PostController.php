@@ -8,6 +8,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\V1\PostResource;
 use App\Models\Cat;
+use App\Services\ImageEngineService;
 
 class PostController extends Controller
 {
@@ -24,7 +25,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePostRequest $request)
+    public function store(StorePostRequest $request, ImageEngineService $imageEngineService)
     {
         $cat = Cat::find($request->cat_id);
 
@@ -33,9 +34,13 @@ class PostController extends Controller
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
+        $file = $request->file('file')->store('', 'posts');
+
+        $file = $imageEngineService->optimizeImage(storage_path('app/posts/' . $file));
+
         $post = Post::create([
             'cat_id' => $request->cat_id,
-            'filename' => $request->file('file')->store('', 'posts'),
+            'filename' => $file,
             'caption' => $request->caption,
             'type' => $request->type,
         ]);

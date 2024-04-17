@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'imageEngineApi' => [
+        'uri' => env('IMAGE_ENGINE_API_URL', 'http://localhost:5000'),
+    ],
+
 ];

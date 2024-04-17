@@ -3,7 +3,7 @@ from pathlib import Path
 from PIL import Image
 
 
-def convert_to_webp(input_path: Path, output_path: Path, quality: int = 100) -> bool:
+def convert_to_webp(input_path: Path, output_path: Path, quality: int = 80) -> bool:
     """
     Convierte una imagen a formato WebP.
 
@@ -16,21 +16,18 @@ def convert_to_webp(input_path: Path, output_path: Path, quality: int = 100) -> 
     - bool: Si la imagen fue convertida exitosamente.
 
     Example:
-    >>> input_path = Path("input.jpg")
-    >>> output_path = Path("output")
+    >>> input_path = Path("image.jpg")
+    >>> output_path = Path("image.webp")
     >>> convert_to_webp(input_path, output_path)
     True
     """
     image = Image.open(input_path)
-
-    output_dir = output_path.parent
-    filename = output_path.stem
-    image.save(output_dir / (filename + ".webp"), "WEBP", quality=quality)
+    image.save(output_path, "WEBP", quality=quality)
 
     return True
 
 
 if __name__ == "__main__":
     input_path = input("Entry image: ")
-    output_path = input("Output image: ")
-    convert_to_webp(input_path, output_path)
+    input_path = Path(input_path)
+    convert_to_webp(input_path, input_path.with_suffix(".webp"))
