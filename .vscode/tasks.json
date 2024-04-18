@@ -1,0 +1,81 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "purr.frontend execution",
+            "type": "shell",
+            "isBackground": true,
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": [],
+            "windows": {
+                "command": "cd purr.frontend && npm run dev"
+            },
+            "linux": {
+                "command": "cd purr.frontend && npm run dev"
+            }
+        },
+        {
+            "label": "purr.backend execution",
+            "type": "shell",
+            "isBackground": true,
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": [],
+            "windows": {
+                "command": "cd purr.backend && php artisan serve"
+            },
+            "linux": {
+                "command": "cd purr.backend && php artisan serve"
+            }
+        },
+        {
+            "label": "purr.backend cache clear",
+            "type": "shell",
+            "isBackground": true,
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": [],
+            "windows": {
+                "command": "cd purr.backend && php artisan cache:clear && php artisan route:cache && php artisan config:cache"
+            },
+            "linux": {
+                "command": "cd purr.backend && php artisan cache:clear && php artisan route:cache && php artisan config:cache"
+            }
+        },
+        {
+            "label": "purr.imageEngine execution",
+            "type": "shell",
+            "isBackground": true,
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": [],
+            "windows": {
+                "command": "cd purr.imageEngine && .venv\\Scripts\\activate && python main.py"
+            },
+            "linux": {
+                "command": "cd purr.imageEngine && source .venv/bin/activate && python main.py"
+            }
+        }
+    ],
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+    }
+}
