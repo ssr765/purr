@@ -2,6 +2,7 @@
 import gsap from 'gsap'
 import { ref } from 'vue'
 import imgNoKittens from '@/assets/img/easter-egg-no-kittens.png'
+import PurrButton from '@/components/utils/PurrButton.vue'
 
 const easterEggClicks = ref(0)
 
@@ -44,6 +45,6 @@ const triggerEasterEgg = () => {
     <div @click="triggerEasterEgg" class="easter-egg-no-kittens select-none text-center text-5xl mb-4 tracking-tight font-bold">{{ $t('app.create.noKittens.title') }}</div>
     <div class="text-center mb-2">{{ $t('app.create.noKittens.content.0') }}</div>
     <div class="text-center mb-2">{{ $t('app.create.noKittens.content.1') }}</div>
-    <button type="button" class="mt-4 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">{{ $t('app.create.noKittens.button') }}</button>
+    <PurrButton class="mt-4">{{ $t('app.create.noKittens.button') }}</PurrButton>
   </section>
 </template>

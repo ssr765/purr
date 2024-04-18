@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/auth'
 import { ref } from 'vue'
+import PurrButton from '@/components/utils/PurrButton.vue'
 
 const authStore = useAuthStore()
 
@@ -25,7 +26,7 @@ const password = ref('')
         <input v-model="password" type="password" id="login_password" class="block py-2.5 px-0 w-full text-sm text-ctp-text bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-ctp-lavender peer" placeholder=" " required />
         <label for="login_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-ctp-lavender peer-focus:dark:text-ctp-lavender peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{{ $t('auth.login.password') }}</label>
       </div>
-      <button type="submit" class="block mx-auto text-ctp-base bg-ctp-lavender hover:bg-ctp-lavender/80 focus:ring-4 focus:outline-none focus:ring-ctp-lavender font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">{{ $t('auth.login.button') }}</button>
+      <PurrButton type="submit" class="mx-auto"> {{ $t('auth.login.button') }}</PurrButton>
     </form>
     <p class="text-center">
       {{ $t('auth.login.noAccount.content') }} <RouterLink class="text-ctp-lavender" :to="{ name: 'auth-register' }"> {{ $t('auth.login.noAccount.link') }} </RouterLink>
