@@ -20,10 +20,29 @@ export const useCatStore = defineStore('cat', () => {
     }
   }
 
+  const fetchCatByCatname = async (catname: string) => {
+    try {
+      loading.value = true
+      const response = await axios.get<Cat>(`/api/v1/cats/catname/${catname}`)
+      console.log(response.data)
+      cat.value = response.data
+    } catch (error) {
+      console.log(error)
+    } finally {
+      loading.value = false
+    }
+  }
+
+  const clear = () => {
+    cat.value = null
+  }
+
   return {
     loading,
     cat,
 
     fetchCat,
+    fetchCatByCatname,
+    clear,
   }
 })

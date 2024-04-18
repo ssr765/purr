@@ -42,7 +42,7 @@ const router = createRouter({
           component: () => import('@/views/app/posts/DetailView.vue'),
         },
         {
-          path: 'cats/:id(\\d+)',
+          path: 'cats/:catname([\\w\\d\\.-]+)',
           name: 'app-cats-profile',
           component: () => import('@/views/app/cats/ProfileView.vue'),
         },

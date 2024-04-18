@@ -58,4 +58,18 @@ class CatController extends Controller
         $cat->delete();
         return response()->json($cat, 200);
     }
+
+    /**
+     * Display the specified resource by catname.
+     */
+    public function showByCatname(string $catname)
+    {
+        $cat = Cat::where('catname', $catname)->first();
+
+        if (!$cat) {
+            return response()->json(['message' => 'Cat not found'], 404);
+        }
+
+        return response()->json(new CatResource($cat->load('posts')));
+    }
 }
