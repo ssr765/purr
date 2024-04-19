@@ -94,7 +94,8 @@
         "content": "¿Ya tienes una cuenta?",
         "link": "Inicia sesión!"
       }
-    }
+    },
+    "google": "Continuar con Google"
   },
   "response": {
     "These credentials do not match our records": "Credenciales incorrectas"
