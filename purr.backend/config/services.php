@@ -31,8 +31,16 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    // Image Engine API
     'imageEngineApi' => [
         'uri' => env('IMAGE_ENGINE_API_URL', 'http://localhost:5000'),
+    ],
+
+    // Google Authentification
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT_URI'),
     ],
 
 ];

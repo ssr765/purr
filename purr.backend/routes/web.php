@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\GoogleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,7 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
 
-require __DIR__.'/auth.php';
+Route::get('/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+require __DIR__ . '/auth.php';
