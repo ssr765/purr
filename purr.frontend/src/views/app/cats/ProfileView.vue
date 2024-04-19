@@ -20,7 +20,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <LoadingSpinner v-if="catStore.loading" class="h-app flex items-center justify-center w-full" />
+  <LoadingSpinner v-if="catStore.loading" class="text-6xl h-app flex items-center justify-center w-full" />
   <CatNotFound v-else-if="!catStore.cat" />
   <section v-else>
     <ProfileHeader :cat="catStore.cat" />

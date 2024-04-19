@@ -36,7 +36,7 @@ onUnmounted(() => {
           <textarea v-model="createPostStore.post!.caption" id="caption" rows="4" class="block p-2.5 w-full text-sm text-ctp-text bg-ctp-mantle rounded-lg border border-ctp-lavender focus:ring-ctp-lavender focus:border-ctp-lavender" placeholder="Write your thoughts here..."></textarea>
         </div>
         <PurrButton v-if="!createPostStore.loading" type="submit" class="mx-auto">Publicar</PurrButton>
-        <LoadingSpinner v-else class="mx-auto" />
+        <LoadingSpinner v-else class="mx-auto text-6xl" />
       </form>
     </div>
   </section>

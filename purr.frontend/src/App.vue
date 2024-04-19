@@ -9,7 +9,7 @@ const authStore = useAuthStore()
 
 <template>
   <main v-if="authStore.firstLoad" class="min-h-dvh flex items-center justify-center">
-    <LoadingSpinner />
+    <LoadingSpinner class="text-6xl" />
   </main>
   <RouterView v-else />
   <Toaster />
