@@ -70,13 +70,13 @@ p {
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240, 23%, 9%;
+    --popover-foreground: 226, 64%, 88%;
 
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
+    --border: 232, 97%, 85%;
     --input: 217.2 32.6% 17.5%;
 
     --primary: 210 40% 98%;
@@ -85,7 +85,7 @@ p {
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 232, 97%, 85%, 0.75;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
