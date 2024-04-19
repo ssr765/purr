@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import gsap from 'gsap'
-import { Post } from '@/models/Post'
+import type { Post } from '@/models/Post'
 import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
 
 defineProps({

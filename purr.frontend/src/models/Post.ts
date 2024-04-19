@@ -1,23 +1,19 @@
 import type { Cat } from '@/models/Cat'
 
-export class Post {
-  constructor(
-    public id: number,
-    public url: string,
-    public type: string,
-    public likeCount: number,
-    public commentCount: number,
-    public updatedAt: string,
-    public createdAt: string,
-    public cat?: Cat,
-    public caption?: string,
-  ) {}
+export interface Post {
+  id: number
+  url: string
+  type: string
+  likeCount: number
+  commentCount: number
+  updatedAt: string
+  createdAt: string
+  cat?: Cat
+  caption?: string
 }
 
-export class PostInput {
-  constructor(
-    public file: File,
-    public cat_id?: number,
-    public caption?: string,
-  ) {}
+export interface PostInput {
+  file: File
+  cat_id?: number
+  caption?: string
 }

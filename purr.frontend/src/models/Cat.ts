@@ -1,20 +1,18 @@
 import type { Post } from '@/models/Post'
 
-export class Cat {
-  constructor(
-    public id: number,
-    public name: string,
-    public catname: string,
-    public sex: string,
-    public followers: number,
-    public updatedAt: string,
-    public createdAt: string,
-    public breed?: string,
-    public color?: string,
-    public avatar?: string,
-    public biography?: string,
-    public birthday?: string,
-    public deathdate?: string,
-    public posts?: Post[],
-  ) {}
+export interface Cat {
+  id: number
+  name: string
+  catname: string
+  sex: string
+  followers: number
+  updatedAt: string
+  createdAt: string
+  breed?: string
+  color?: string
+  avatar?: string
+  biography?: string
+  birthday?: string
+  deathdate?: string
+  posts?: Post[]
 }

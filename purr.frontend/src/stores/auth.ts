@@ -2,7 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import axios from '@/lib/axios'
 import type { AxiosError } from 'axios'
-import { User } from '@/models/User'
+import type { User } from '@/models/User'
 import { useRouter } from 'vue-router'
 import { useResponseToaster } from '@/composables/responseToaster'
 

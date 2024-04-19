@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { Post } from '@/models/Post'
+import type { Post } from '@/models/Post'
 import axios from '@/lib/axios'
 
 export const usePostStore = defineStore('post', () => {
