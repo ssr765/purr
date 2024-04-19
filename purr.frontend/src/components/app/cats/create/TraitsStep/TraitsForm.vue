@@ -10,14 +10,10 @@ const createCatStore = useCreateCatStore()
 const df = new DateFormatter('es-ES', {
   dateStyle: 'long',
 })
-
-const onSubmit = () => {
-  console.log(createCatStore.birthday)
-}
 </script>
 
 <template>
-  <form @submit.prevent="onSubmit" class="space-y-6 max-w-screen-md mx-auto">
+  <div class="space-y-6 max-w-screen-md mx-auto">
     <div>
       <label for="first_name" class="block mb-2 text-sm font-medium text-ctp-text">Sexo del gato *</label>
       <select v-model="createCatStore.sex" id="cat" class="bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender block w-full p-2.5">
@@ -33,7 +29,6 @@ const onSubmit = () => {
       <label for="first_name" class="block mb-2 text-sm font-medium text-ctp-text">Color del gato</label>
       <input v-model="createCatStore.color" type="text" id="first_name" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" />
     </div>
-    <button type="submit">ddd</button>
     <Popover>
       <PopoverTrigger class="w-full">
         <div>
@@ -48,5 +43,5 @@ const onSubmit = () => {
         <Calendar initial-focus :min-value="new CalendarDate(1990, 1, 1)" :max-value="today(getLocalTimeZone())" @update:model-value="(v) => (createCatStore.birthdateInput = v)" v-model="createCatStore.birthdateInput" />
       </PopoverContent>
     </Popover>
-  </form>
+  </div>
 </template>
