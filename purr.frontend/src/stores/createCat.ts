@@ -3,8 +3,13 @@ import axios from '@/lib/axios'
 import { ref, computed } from 'vue'
 import { format } from 'date-fns'
 import { toDate } from 'radix-vue/date'
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
 
 export const useCreateCatStore = defineStore('createCat', () => {
+  const router = useRouter()
+  const authStore = useAuthStore()
+
   const avatar = ref<File | null>(null)
   const name = ref<string>('')
   const catname = ref<string>('')
@@ -45,7 +50,11 @@ export const useCreateCatStore = defineStore('createCat', () => {
   const createCat = async () => {
     try {
       const formData = new FormData()
-      formData.append('avatar', avatar.value as File)
+
+      if (avatar.value) {
+        formData.append('avatar', avatar.value)
+      }
+
       formData.append('name', name.value)
       formData.append('catname', catname.value)
       formData.append('biography', biography.value)
@@ -60,7 +69,16 @@ export const useCreateCatStore = defineStore('createCat', () => {
       formData.append('password', password.value)
       formData.append('password_confirmation', confirmPassword.value)
 
-      await axios.post(`/api/v1/cats`, formData)
+      const response = await axios.post(`/api/v1/cats`, formData)
+
+      if (!authStore.user!.cats) {
+        authStore.user!.cats = [response.data]
+      }
+
+      router.push({
+        name: 'app-cats-profile',
+        params: { catname: response.data.catname },
+      })
     } catch (error) {
       console.log(error)
     }

@@ -28,13 +28,15 @@ class CatController extends Controller
         $cat = Cat::create($request->validated());
         $request->user()->cats()->attach($cat);
 
-        $avatar = $request->file('avatar')->store('', 'avatars');
-        $avatar = $imageEngineService->optimizeImage(storage_path('app/avatars/' . $avatar));
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar')->store('', 'avatars');
+            $avatar = $imageEngineService->optimizeImage(storage_path('app/avatars/' . $avatar));
 
-        $cat->update(['avatar' => $avatar]);
-        $cat->avatar = $avatar;
+            $cat->update(['avatar' => $avatar]);
+            $cat->avatar = $avatar;
+        }
 
-        return new CatResource($cat);
+        return response()->json(new CatResource($cat), 201);
     }
 
     /**
