@@ -3,6 +3,7 @@ import { useCreatePostStore } from '@/stores/createPost'
 import { useAuthStore } from '@/stores/auth'
 import { onUnmounted } from 'vue'
 import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
+import PurrButton from '@/components/utils/PurrButton.vue'
 
 const createPostStore = useCreatePostStore()
 const authStore = useAuthStore()
@@ -34,7 +35,7 @@ onUnmounted(() => {
           <label for="caption" class="block mb-2 text-sm font-medium text-ctp-text">Descripcion</label>
           <textarea v-model="createPostStore.post!.caption" id="caption" rows="4" class="block p-2.5 w-full text-sm text-ctp-text bg-ctp-mantle rounded-lg border border-ctp-lavender focus:ring-ctp-lavender focus:border-ctp-lavender" placeholder="Write your thoughts here..."></textarea>
         </div>
-        <button v-if="!createPostStore.loading" type="submit" class="text-ctp-base bg-ctp-lavender hover:bg-ctp-lavender/60 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Publicar</button>
+        <PurrButton v-if="!createPostStore.loading" type="submit" class="mx-auto">Publicar</PurrButton>
         <LoadingSpinner v-else class="mx-auto" />
       </form>
     </div>
