@@ -77,7 +77,7 @@ class CatController extends Controller
     public function checkCatname(Request $request)
     {
         $request->validate([
-            'catname' => 'required|string|min:3|max:30'
+            'catname' => 'required|string|min:3|max:30|not_in:create'
         ]);
 
         $exists = Cat::where('catname', $request->catname)->exists();
