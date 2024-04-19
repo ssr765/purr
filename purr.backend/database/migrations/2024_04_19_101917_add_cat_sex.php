@@ -13,13 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('cats', function (Blueprint $table) {
-            $table->enum('sex', ['M', 'F'])->nullable();
-        });
-
-        Cat::whereNull('sex')->update(['sex' => 'M']);
-
-        Schema::table('cats', function (Blueprint $table) {
-            $table->enum('sex', ['M', 'F'])->nullable(false)->change();
+            $table->enum('sex', ['M', 'F']);
         });
     }
 

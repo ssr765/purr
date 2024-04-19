@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('cat_id')->constrained();
             $table->string('filename');
             $table->string('caption')->nullable();
-            $table->enum('type', ['normal'])->default('normal');
+            $table->string('type')->default('normal');
             $table->integer('like_count')->default(0);
             $table->integer('comment_count')->default(0);
             $table->timestamps();
