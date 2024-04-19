@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCatRequest;
 use App\Http\Requests\UpdateCatRequest;
 use App\Http\Resources\V1\CatResource;
 use App\Models\Cat;
+use Illuminate\Http\Request;
 
 class CatController extends Controller
 {
@@ -71,5 +72,15 @@ class CatController extends Controller
         }
 
         return response()->json(new CatResource($cat->load('posts')));
+    }
+
+    public function checkCatname(Request $request)
+    {
+        $request->validate([
+            'catname' => 'required|string|min:3|max:30'
+        ]);
+
+        $exists = Cat::where('catname', $request->catname)->exists();
+        return response()->json(['exists' => $exists]);
     }
 }
