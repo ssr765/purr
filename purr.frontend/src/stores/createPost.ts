@@ -1,6 +1,6 @@
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
-import { PostInput } from '@/models/Post'
+import type { PostInput } from '@/models/Post'
 import axios from '@/lib/axios'
 import { useRouter } from 'vue-router'
 

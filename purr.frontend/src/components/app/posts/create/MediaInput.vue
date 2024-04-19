@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PostInput } from '@/models/Post'
+import type { PostInput } from '@/models/Post'
 import { useCreatePostStore } from '@/stores/createPost'
 
 const createPostStore = useCreatePostStore()
@@ -10,7 +10,7 @@ const onChange = (e: Event) => {
   if (!file) return
 
   // Start creating the post.
-  createPostStore.post = new PostInput(file, undefined, '')
+  createPostStore.post = { file: file, cat_id: undefined, caption: '' } as PostInput
 }
 </script>
 
