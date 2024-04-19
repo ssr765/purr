@@ -51,7 +51,6 @@ const password_confirmation = ref('')
       </div>
 
       <PurrButton type="submit" class="mx-auto"> {{ $t('auth.register.button') }}</PurrButton>
-      <button type="submit" class="block mx-auto text-ctp-base bg-ctp-lavender hover:bg-ctp-lavender/80 focus:ring-4 focus:outline-none focus:ring-ctp-lavender font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">{{ $t('auth.register.button') }}</button>
     </form>
 
     <p class="text-center">
