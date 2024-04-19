@@ -5,6 +5,7 @@ export class Cat {
     public id: number,
     public name: string,
     public catname: string,
+    public sex: string,
     public followers: number,
     public updatedAt: string,
     public createdAt: string,

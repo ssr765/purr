@@ -24,6 +24,7 @@ class StoreCatRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'catname' => ['required', 'string', 'unique:cats', 'not_in:create'],
+            'sex' => ['required', 'string', 'in:M,F'],
             'breed' => ['nullable', 'string'],
             'color' => ['nullable', 'string'],
             'avatar' => ['nullable', 'string'],

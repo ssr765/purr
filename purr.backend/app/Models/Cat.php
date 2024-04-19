@@ -12,6 +12,7 @@ class Cat extends Model
     protected $fillable = [
         'name',
         'catname',
+        'sex',
         'breed',
         'color',
         'avatar',
