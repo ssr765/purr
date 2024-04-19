@@ -45,6 +45,8 @@ const triggerEasterEgg = () => {
     <div @click="triggerEasterEgg" class="easter-egg-no-kittens select-none text-center text-5xl mb-4 tracking-tight font-bold">{{ $t('app.create.noKittens.title') }}</div>
     <div class="text-center mb-2">{{ $t('app.create.noKittens.content.0') }}</div>
     <div class="text-center mb-2">{{ $t('app.create.noKittens.content.1') }}</div>
-    <PurrButton class="mt-4">{{ $t('app.create.noKittens.button') }}</PurrButton>
+    <RouterLink :to="{ name: 'app-cats-create' }">
+      <PurrButton class="mt-4">{{ $t('app.create.noKittens.button') }}</PurrButton>
+    </RouterLink>
   </section>
 </template>

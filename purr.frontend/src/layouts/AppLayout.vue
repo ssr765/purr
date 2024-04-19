@@ -83,6 +83,12 @@ const collapsedSidebar = ref(false)
               <span class="ml-3">{{ $t('app.layout.sidebar.create') }}</span>
             </RouterLink>
           </li>
+          <li>
+            <RouterLink :to="{ name: 'app-cats-create' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
+              <span class="icon-[ion--plus-round] text-xl w-6" role="img" aria-hidden="true" />
+              <span class="ml-3">Crear gato</span>
+            </RouterLink>
+          </li>
         </ul>
       </div>
     </aside>
