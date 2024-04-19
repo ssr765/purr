@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCatRequest;
 use App\Http\Requests\UpdateCatRequest;
 use App\Http\Resources\V1\CatResource;
 use App\Models\Cat;
+use App\Services\ImageEngineService;
 use Illuminate\Http\Request;
 
 class CatController extends Controller
@@ -22,10 +23,17 @@ class CatController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCatRequest $request)
+    public function store(StoreCatRequest $request, ImageEngineService $imageEngineService)
     {
         $cat = Cat::create($request->validated());
         $request->user()->cats()->attach($cat);
+
+        $avatar = $request->file('avatar')->store('', 'avatars');
+        $avatar = $imageEngineService->optimizeImage(storage_path('app/avatars/' . $avatar));
+
+        $cat->update(['avatar' => $avatar]);
+        $cat->avatar = $avatar;
+
         return new CatResource($cat);
     }
 
@@ -82,5 +90,11 @@ class CatController extends Controller
 
         $exists = Cat::where('catname', $request->catname)->exists();
         return response()->json(['exists' => $exists]);
+    }
+
+    public function avatar(Cat $cat)
+    {
+        $path = storage_path('app/avatars/' . $cat->avatar);
+        return response()->file($path);
     }
 }

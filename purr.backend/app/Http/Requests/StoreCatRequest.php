@@ -27,7 +27,7 @@ class StoreCatRequest extends FormRequest
             'sex' => ['required', 'string', 'in:M,F'],
             'breed' => ['nullable', 'string'],
             'color' => ['nullable', 'string'],
-            'avatar' => ['nullable', 'string'],
+            'avatar' => ['nullable', 'image', 'max:8192', 'mimes:jpg,jpeg,png,webp'],
             'biography' => ['nullable', 'string'],
             'birthday' => ['nullable', 'date'],
             'deathdate' => ['nullable', 'date'],

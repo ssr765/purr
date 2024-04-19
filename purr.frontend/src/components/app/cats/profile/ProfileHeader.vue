@@ -13,7 +13,10 @@ defineProps({
 <template>
   <section class="mb-4">
     <div class="flex bg-[url('/img/mockcat.webp')] bg-cover h-60 mb-4">
-      <CatPlaceholderAvatar class="h-48 lg:h-60 lg:pl-20 translate-y-36 lg:translate-y-28 mx-auto lg:m-0" />
+      <div class="h-48 lg:h-60 w-60 lg:pl-20 translate-y-36 lg:translate-y-28 mx-auto lg:m-0">
+        <img v-if="cat.avatar" class="w-full" :src="cat.avatar" alt="" />
+        <CatPlaceholderAvatar v-else class="w-full" />
+      </div>
     </div>
     <div class="mb-4 lg:mb-2 pt-24 lg:p-0 lg:ml-96 min-h-40 flex flex-col justify-center gap-2 lg:mr-10">
       <div>

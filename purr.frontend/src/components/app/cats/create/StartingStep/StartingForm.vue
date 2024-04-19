@@ -5,15 +5,11 @@ import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
 
 const createCatStore = useCreateCatStore()
 
-const avatar = ref<File | null>(null)
-const avatarUrl = ref<string | null>(null)
-
 const onChange = (e: Event) => {
   const target = e.target as HTMLInputElement
   const file = target.files?.[0]
   if (!file) return
-  avatar.value = file
-  avatarUrl.value = URL.createObjectURL(file)
+  createCatStore.avatar = file
 }
 
 const timeout = ref<any>(null)
@@ -46,7 +42,7 @@ const checkUsername = () => {
 <template>
   <div class="grid gap-6 lg:grid-cols-[auto,1fr] max-w-screen-lg mx-auto">
     <div>
-      <img v-if="avatarUrl" :src="avatarUrl" class="rounded-full w-[164px] h-[164px] mx-auto mt-4" />
+      <img v-if="createCatStore.avatarUrl" :src="createCatStore.avatarUrl" class="object-cover rounded-full w-[164px] h-[164px] mx-auto mt-4" />
       <label v-else for="cat-avatar-input" class="rounded-full w-[164px] aspect-square mx-auto border-8 border-ctp-lavender border-dashed flex items-center justify-center group/avatar cursor-pointer hover:bg-ctp-lavender/25">
         <div class="text-center font-bold text-ctp-text leading-5 w-3/4 group-hover/avatar:scale-105 transition-all">Sube el avatar de tu gato</div>
         <input @change="onChange" id="cat-avatar-input" type="file" class="hidden" />

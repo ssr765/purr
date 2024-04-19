@@ -62,6 +62,12 @@ return [
             'root' => storage_path('app/posts'),
         ],
 
+        // Avatars filesystem.
+        'avatars' => [
+            'driver' => 'local',
+            'root' => storage_path('app/avatars'),
+        ],
+
     ],
 
     /*

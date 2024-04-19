@@ -29,6 +29,9 @@ Route::prefix('v1')->group(function () {
     Route::middleware(['auth:sanctum'])->apiResource('cats', V1CatController::class)->only(['store', 'destroy']);
     Route::post('cats/catname', [V1CatController::class, 'checkCatname'])->name('cats.checkCatname');
     Route::get('cats/catname/{catname}', [V1CatController::class, 'showByCatname'])->name('cats.showByCatname');
+    Route::prefix('cats')->name('cats.')->group(function () {
+        Route::get('/{cat}/avatar', [V1CatController::class, 'avatar'])->name('avatar');
+    });
 
     // Posts
     Route::apiResource('posts', V1PostController::class)->only(['index', 'show']);

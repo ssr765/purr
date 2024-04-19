@@ -19,11 +19,13 @@ export const useCreateCatStore = defineStore('createCat', () => {
       ? format(toDate(birthdateInput.value), 'yyyy-MM-dd')
       : null,
   )
-
   const password = ref<string>('')
   const confirmPassword = ref<string>('')
 
   const checking = ref(false)
+  const avatarUrl = computed(() =>
+    avatar.value ? URL.createObjectURL(avatar.value) : null,
+  )
 
   const checkCatname = async () => {
     try {
@@ -50,7 +52,11 @@ export const useCreateCatStore = defineStore('createCat', () => {
       formData.append('sex', sex.value)
       formData.append('breed', breed.value)
       formData.append('color', color.value)
-      formData.append('birthday', birthday.value!)
+
+      if (birthday.value) {
+        formData.append('birthday', birthday.value)
+      }
+
       formData.append('password', password.value)
       formData.append('password_confirmation', confirmPassword.value)
 
@@ -75,6 +81,7 @@ export const useCreateCatStore = defineStore('createCat', () => {
     confirmPassword,
 
     checking,
+    avatarUrl,
 
     checkCatname,
     createCat,
