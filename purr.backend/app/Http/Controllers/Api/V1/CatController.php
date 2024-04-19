@@ -94,6 +94,10 @@ class CatController extends Controller
 
     public function avatar(Cat $cat)
     {
+        if (!$cat->avatar) {
+            abort(404);
+        }
+
         $path = storage_path('app/avatars/' . $cat->avatar);
         return response()->file($path);
     }
