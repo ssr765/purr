@@ -17,7 +17,7 @@ class Cat extends Model
         'color',
         'avatar',
         'biography',
-        'birthday',
+        'birthdate',
         'deathdate',
         'password',
     ];

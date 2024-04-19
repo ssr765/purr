@@ -37,7 +37,7 @@ defineProps({
       </div>
       <div class="flex items-center gap-2">
         <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />
-        <p>{{ cat.birthday ?? 'Nacimiento desconocido' }}</p>
+        <p>{{ cat.birthdate ?? 'Nacimiento desconocido' }}</p>
       </div>
       <div class="flex items-center gap-2">
         <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />

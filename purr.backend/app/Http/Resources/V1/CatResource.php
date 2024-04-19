@@ -25,7 +25,7 @@ class CatResource extends JsonResource
             'color' => $this->color,
             'avatar' => $this->avatar ? URL::to("/api/v1/cats/{$this->id}/avatar") : null,
             'biography' => $this->biography,
-            'birthday' => $this->birthday,
+            'birthdate' => $this->birthdate,
             'deathdate' => $this->deathdate,
             'followers' => $this->followers,
             'createdAt' => $this->created_at,

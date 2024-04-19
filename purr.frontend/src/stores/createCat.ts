@@ -14,7 +14,7 @@ export const useCreateCatStore = defineStore('createCat', () => {
   const breed = ref<string>('')
   const color = ref<string>('')
   const birthdateInput = ref<any>(undefined)
-  const birthday = computed(() =>
+  const birthdate = computed(() =>
     birthdateInput.value
       ? format(toDate(birthdateInput.value), 'yyyy-MM-dd')
       : null,
@@ -53,8 +53,8 @@ export const useCreateCatStore = defineStore('createCat', () => {
       formData.append('breed', breed.value)
       formData.append('color', color.value)
 
-      if (birthday.value) {
-        formData.append('birthday', birthday.value)
+      if (birthdate.value) {
+        formData.append('birthdate', birthdate.value)
       }
 
       formData.append('password', password.value)
@@ -75,7 +75,7 @@ export const useCreateCatStore = defineStore('createCat', () => {
     sex,
     breed,
     color,
-    birthday,
+    birthdate,
     birthdateInput,
     password,
     confirmPassword,

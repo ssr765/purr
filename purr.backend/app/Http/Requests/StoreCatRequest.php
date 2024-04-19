@@ -29,7 +29,7 @@ class StoreCatRequest extends FormRequest
             'color' => ['nullable', 'string'],
             'avatar' => ['nullable', 'image', 'max:8192', 'mimes:jpg,jpeg,png,webp'],
             'biography' => ['nullable', 'string'],
-            'birthday' => ['nullable', 'date'],
+            'birthdate' => ['nullable', 'date'],
             'deathdate' => ['nullable', 'date'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];

@@ -12,7 +12,7 @@ export interface Cat {
   color?: string
   avatar?: string
   biography?: string
-  birthday?: string
+  birthdate?: string
   deathdate?: string
   posts?: Post[]
 }
