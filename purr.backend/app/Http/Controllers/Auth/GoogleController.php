@@ -59,6 +59,7 @@ class GoogleController extends Controller
             $newUser->username = $username;
             $newUser->email = $user->email;
             $newUser->google_id = $user->id;
+            $newUser->email_verified_at = now();
             $newUser->save();
 
             auth()->login($newUser, true);
