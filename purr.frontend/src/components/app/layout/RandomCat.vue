@@ -23,6 +23,6 @@ onMounted(() => {
 <template>
   <button :disabled="catStore.loading" @click="randomCat()" class="w-full transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group cursor-pointer">
     <span :class="diceIcon" class="text-xl w-6" role="img" aria-hidden="true" />
-    <span class="ml-3">Gato aleatorio</span>
+    <span class="ml-3">{{ $t('app.layout.sidebar.randomCat') }}</span>
   </button>
 </template>

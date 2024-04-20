@@ -55,7 +55,8 @@
       "sidebar": {
         "feed": "Inicio",
         "maps": "Mapas",
-        "create": "Crear"
+        "create": "Crear",
+        "randomCat": "Gato aleatorio"
       }
     },
     "create": {
