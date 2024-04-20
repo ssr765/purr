@@ -26,7 +26,7 @@ class UpdateCatRequest extends FormRequest
             'catname' => ['required', 'string', 'unique' . Cat::class],
             'breed' => ['nullable', 'string'],
             'color' => ['nullable', 'string'],
-            'avatar' => ['nullable', 'string'],
+            'avatar' => ['nullable', 'image', 'max:8192', 'mimes:jpg,jpeg,png,webp'],
             'biography' => ['nullable', 'string'],
             'birthdate' => ['nullable', 'date'],
             'deathdate' => ['nullable', 'date'],
