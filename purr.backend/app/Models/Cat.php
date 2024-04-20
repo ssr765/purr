@@ -22,6 +22,11 @@ class Cat extends Model
         'password',
     ];
 
+    public function setCatnameAttribute($value)
+    {
+        $this->attributes['catname'] = strtolower($value);
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class);

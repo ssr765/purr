@@ -23,7 +23,7 @@ class UpdateCatRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'catname' => ['required', 'string', 'unique' . Cat::class],
+            'catname' => ['required', 'string', 'unique' . Cat::class, 'not_in:create', 'regex:/^[\w\d\.]{3,30}$/', 'min:3', 'max:30'],
             'breed' => ['nullable', 'string'],
             'color' => ['nullable', 'string'],
             'avatar' => ['nullable', 'image', 'max:8192', 'mimes:jpg,jpeg,png,webp'],

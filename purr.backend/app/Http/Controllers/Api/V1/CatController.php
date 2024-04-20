@@ -90,7 +90,7 @@ class CatController extends Controller
             'catname' => 'required|string|min:3|max:30|not_in:create'
         ]);
 
-        $exists = Cat::where('catname', $request->catname)->exists();
+        $exists = Cat::where('catname', strtolower($request->catname))->exists();
         return response()->json(['exists' => $exists]);
     }
 

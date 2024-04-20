@@ -23,7 +23,7 @@ class StoreCatRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'catname' => ['required', 'string', 'unique:cats', 'not_in:create'],
+            'catname' => ['required', 'string', 'unique:cats', 'not_in:create', 'regex:/^[\w\d\.]{3,30}$/', 'min:3', 'max:30'],
             'sex' => ['required', 'string', 'in:M,F'],
             'breed' => ['nullable', 'string'],
             'color' => ['nullable', 'string'],

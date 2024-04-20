@@ -47,6 +47,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function setUsernameAttribute($value)
+    {
+        $this->attributes['username'] = strtolower($value);
+    }
+
     public function cats()
     {
         return $this->belongsToMany(Cat::class);

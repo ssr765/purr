@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Str;
 
 class GoogleController extends Controller
 {
@@ -41,9 +42,21 @@ class GoogleController extends Controller
             auth()->login($existingUser, true);
         } else {
             // If the user does not exist, create a new user and log them in.
+            // Generate a username based on the email address.
+            //   Replace special characters with underscores.
+            //   Append a random 4-digit number to the end of the username.
+            //   Limit the username to 30 characters, including the random number.
+            $username = substr(preg_replace('/[+-\?%!]/', '_', explode('@', $user->email)[0]), 0, 25) . '_' . rand(1000, 9999);
+
+            // Check if the username already exists and generate a new one if it does.
+            $usernameExists = User::where('username', $username)->exists();
+            if ($usernameExists) {
+                $username = Str::random(30);
+            }
+
             $newUser = new User();
             $newUser->name = $user->name;
-            $newUser->username = 'cat_lover' . rand(100000000, 999999999);
+            $newUser->username = $username;
             $newUser->email = $user->email;
             $newUser->google_id = $user->id;
             $newUser->save();
