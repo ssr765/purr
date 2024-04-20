@@ -18,7 +18,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="grid grid-rows-[min-content,1fr] xl:grid-rows-1 xl:grid-cols-2 gap-4 h-app">
+  <section class="grid grid-rows-[min-content,1fr] xl:grid-rows-1 xl:grid-cols-2 gap-4 min-h-app">
     <div class="max-w-screen-sm mx-auto w-full flex items-center justify-center">
       <img class="w-full max-h-app" :src="createPostStore.postMediaPreview!" :alt="createPostStore.post!.file.name" />
     </div>
