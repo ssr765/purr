@@ -25,13 +25,14 @@ Route::prefix('v1')->group(function () {
     });
 
     Route::apiResource('users', V1UserController::class)->only(['show']);
+    Route::prefix('cats')->name('cats.')->group(function () {
+        Route::get('/random', [V1CatController::class, 'random'])->name('random');
+        Route::get('/{cat}/avatar', [V1CatController::class, 'avatar'])->name('avatar');
+    });
     Route::apiResource('cats', V1CatController::class)->only(['show']);
     Route::middleware(['auth:sanctum'])->apiResource('cats', V1CatController::class)->only(['store', 'destroy']);
     Route::post('cats/catname', [V1CatController::class, 'checkCatname'])->name('cats.checkCatname');
     Route::get('cats/catname/{catname}', [V1CatController::class, 'showByCatname'])->name('cats.showByCatname');
-    Route::prefix('cats')->name('cats.')->group(function () {
-        Route::get('/{cat}/avatar', [V1CatController::class, 'avatar'])->name('avatar');
-    });
 
     // Posts
     Route::apiResource('posts', V1PostController::class)->only(['index', 'show']);

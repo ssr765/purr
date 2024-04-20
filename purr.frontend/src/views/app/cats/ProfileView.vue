@@ -11,7 +11,9 @@ const catStore = useCatStore()
 const route = useRoute()
 
 onMounted(async () => {
-  await catStore.fetchCatByCatname(route.params.catname as string)
+  if (!catStore.cat) {
+    await catStore.fetchCatByCatname(route.params.catname as string)
+  }
 })
 
 onUnmounted(() => {

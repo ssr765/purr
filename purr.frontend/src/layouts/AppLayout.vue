@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { RouterView } from 'vue-router'
 import ProfileSection from '@/components/app/layout/ProfileSection.vue'
 import { useRoute } from 'vue-router'
+import RandomCat from '@/components/app/layout/RandomCat.vue'
 
 const route = useRoute()
 
@@ -96,6 +97,9 @@ const applyPadding = computed(() => {
               <span class="icon-[ion--plus-round] text-xl w-6" role="img" aria-hidden="true" />
               <span class="ml-3">Crear gato</span>
             </RouterLink>
+          </li>
+          <li>
+            <RandomCat />
           </li>
         </ul>
       </div>

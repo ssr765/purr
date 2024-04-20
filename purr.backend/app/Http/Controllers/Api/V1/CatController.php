@@ -103,4 +103,10 @@ class CatController extends Controller
         $path = storage_path('app/avatars/' . $cat->avatar);
         return response()->file($path);
     }
+
+    public function random()
+    {
+        $cat = Cat::inRandomOrder()->first();
+        return response()->json(new CatResource($cat->load('posts')));
+    }
 }
