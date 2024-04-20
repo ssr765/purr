@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import type { Cat } from '@/models/Cat'
 import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
+import { useFormattedDate } from '@/composables/formattedDate'
+
+const formattedDate = useFormattedDate()
 
 defineProps({
   cat: {
@@ -12,21 +15,26 @@ defineProps({
 
 <template>
   <section class="mb-4">
-    <div class="flex bg-[url('/img/mockcat.webp')] bg-cover h-60 mb-4">
-      <div class="h-48 lg:h-60 w-60 lg:pl-20 translate-y-36 lg:translate-y-28 mx-auto lg:m-0">
-        <img v-if="cat.avatar" class="w-full" :src="cat.avatar" alt="" />
-        <CatPlaceholderAvatar v-else class="w-full" />
+    <div class="bg-[url('/img/mockcat.webp')] h-48 col-span-2 bg-center bg-cover">
+      <div class="h-full bg-gradient-to-b from-transparent via-transparent to-ctp-base"></div>
+    </div>
+    <div class="bg-cover p-4 -mt-28 lg:-mt-[88px]">
+      <div class="w-full max-w-screen-lg mx-auto grid lg:grid-cols-[auto,1fr] items-center gap-2 lg:gap-8">
+        <div class="w-48 mx-auto">
+          <img v-if="cat.avatar" class="w-full rounded-full" :src="cat.avatar" alt="" />
+          <CatPlaceholderAvatar v-else class="w-full" />
+        </div>
+        <div class="flex flex-col gap-2">
+          <div>
+            <p class="text-center lg:text-left text-5xl font-medium tracking-tight font-['Rubik'] leading-10">{{ cat.name }}</p>
+            <p class="text-center lg:text-left text-xl">@{{ cat.catname }}</p>
+          </div>
+          <p v-if="cat.biography" class="text-center lg:text-left break-words-plus">{{ cat.biography }}</p>
+          <p v-else class="text-center lg:text-left text-ctp-text/75 italic">Sin biografía</p>
+        </div>
       </div>
     </div>
-    <div class="mb-4 lg:mb-2 pt-24 lg:p-0 lg:ml-96 min-h-40 flex flex-col justify-center gap-2 lg:mr-10">
-      <div>
-        <p class="text-center lg:text-left text-5xl">{{ cat.name }}</p>
-        <p class="text-center lg:text-left text-xl">@{{ cat.catname }}</p>
-      </div>
-      <p class="text-center lg:text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor i</p>
-    </div>
-    <hr class="h-px border-ctp-lavender" />
-    <div class="flex flex-col lg:flex-row items-center lg:flex-wrap justify-center lg:space-x-8 p-4">
+    <div class="flex flex-col lg:flex-row items-center lg:flex-wrap justify-center lg:space-x-8 p-4 border-y">
       <div class="flex items-center gap-2">
         <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />
         <p>{{ cat.breed ?? 'Raza desconocida' }}</p>
@@ -37,31 +45,12 @@ defineProps({
       </div>
       <div class="flex items-center gap-2">
         <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />
-        <p>{{ cat.birthdate ?? 'Nacimiento desconocido' }}</p>
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />
-        <p>{{ cat.deathdate ?? 'El gato todavía no ha muerto' }}</p>
+        <p>{{ cat.birthdate ? formattedDate.formatDate(cat.birthdate) : 'Nacimiento desconocido' }}</p>
       </div>
       <div class="flex items-center gap-2">
         <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />
         <p>{{ cat.followers }} seguidores</p>
       </div>
     </div>
-    <hr class="h-px border-ctp-lavender" />
   </section>
-  <!-- <div class="flex px-20 bg-[url('/img/mockcat.webp')] bg-cover h-60">
-    <CatPlaceholderAvatar class="h-60 translate-y-28" />
-  </div>
-
-  <div class="flex justify-center p-10 ml-80 mb-10">
-    <div class="flex-1">
-      <p class="text-5xl">{{ cat.name }}</p>
-      <p class="text-xl">@{{ cat.catname }}</p>
-    </div>
-
-    <div>
-
-    </div>
-  </div> -->
 </template>

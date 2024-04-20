@@ -30,6 +30,11 @@ p {
   @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
 }
 
+.break-words-plus {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

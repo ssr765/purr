@@ -1,9 +1,17 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { RouterView } from 'vue-router'
 import ProfileSection from '@/components/app/layout/ProfileSection.vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const collapsedSidebar = ref(false)
+
+const applyPadding = computed(() => {
+  const pathRegex = /^\/app\/cats\/(.+)$/
+  return pathRegex.test(route.path) && route.path !== '/app/cats/create'
+})
 </script>
 
 <template>
@@ -92,8 +100,7 @@ const collapsedSidebar = ref(false)
         </ul>
       </div>
     </aside>
-
-    <main class="p-4 md:ml-64 min-h-dvh pt-20">
+    <main :class="applyPadding ? 'md:ml-64 min-h-dvh pt-[61px]' : 'p-4 md:ml-64 min-h-dvh pt-20'">
       <RouterView />
     </main>
   </div>
