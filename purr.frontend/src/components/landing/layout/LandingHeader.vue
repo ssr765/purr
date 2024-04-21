@@ -67,19 +67,19 @@ onMounted(() => {
               <div class="bg-ctp-crust lg:bg-transparent justify-between items-center w-full lg:flex lg:w-auto lg:order-1 top-[60px] left-0 lg:static mt-4" id="mobile-menu-2">
                 <ul class="flex flex-col lg:p-0 font-medium lg:flex-row lg:space-x-8 lg:mt-0 divide-y-2 divide-ctp-lavender lg:divide-y-0">
                   <li>
-                    <RouterLink to="/" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 hover:bg-ctp-lavender/35 lg:bg-transparent lg:p-0" aria-current="page">{{ $t('landing.header.home') }}</RouterLink>
+                    <RouterLink to="/" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 lg:bg-transparent lg:p-0" aria-current="page">{{ $t('landing.header.home') }}</RouterLink>
                   </li>
                   <li>
-                    <RouterLink to="/features" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 hover:bg-ctp-lavender/35 lg:hover:bg-transparent lg:border-0 lg:p-0">{{ $t('landing.header.features') }}</RouterLink>
+                    <RouterLink to="/features" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 lg:hover:bg-transparent lg:border-0 lg:p-0">{{ $t('landing.header.features') }}</RouterLink>
                   </li>
                   <li>
-                    <RouterLink to="/ai" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 hover:bg-ctp-lavender/35 lg:hover:bg-transparent lg:border-0 lg:p-0">{{ $t('landing.header.ai') }}</RouterLink>
+                    <RouterLink to="/ai" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 lg:hover:bg-transparent lg:border-0 lg:p-0">{{ $t('landing.header.ai') }}</RouterLink>
                   </li>
                   <li>
-                    <RouterLink to="/faqs" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 hover:bg-ctp-lavender/35 lg:hover:bg-transparent lg:border-0 lg:p-0">{{ $t('landing.header.faqs') }}</RouterLink>
+                    <RouterLink to="/faqs" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 lg:hover:bg-transparent lg:border-0 lg:p-0">{{ $t('landing.header.faqs') }}</RouterLink>
                   </li>
                   <li>
-                    <RouterLink to="/tecnologies" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 hover:bg-ctp-lavender/35 lg:hover:bg-transparent lg:border-0 lg:p-0">{{ $t('landing.header.techs') }}</RouterLink>
+                    <RouterLink to="/tecnologies" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 lg:hover:bg-transparent lg:border-0 lg:p-0">{{ $t('landing.header.techs') }}</RouterLink>
                   </li>
                 </ul>
               </div>
@@ -89,19 +89,38 @@ onMounted(() => {
         <div class="bg-ctp-crust lg:bg-transparent hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1 absolute top-[60px] left-0 lg:static" id="mobile-menu-2">
           <ul class="flex flex-col pt-3.5 pb-3 px-5 lg:p-0 font-medium lg:flex-row lg:space-x-8 lg:mt-0 divide-y-2 divide-ctp-lavender/50 lg:divide-y-0">
             <li>
-              <RouterLink to="/" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 hover:bg-ctp-lavender/35 lg:bg-transparent lg:p-0" aria-current="page">{{ $t('landing.header.home') }}</RouterLink>
+              <RouterLink to="/" exactActiveClass="text-black dark:text-white" class="flex items-center justify-center py-2 pr-4 pl-3 lg:bg-transparent lg:p-0" aria-current="page">
+                <span class="hidden xl:block">{{ $t('landing.header.home') }}</span>
+                <span class="icon-[heroicons--home-20-solid] text-xl xl:hidden hover:scale-125 transition-all" role="img" aria-hidden="true" />
+              </RouterLink>
             </li>
             <li>
-              <RouterLink to="/features" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 hover:bg-ctp-lavender/35 lg:hover:bg-transparent lg:border-0 lg:p-0">{{ $t('landing.header.features') }}</RouterLink>
+              <RouterLink to="/features" exactActiveClass="text-black dark:text-white" class="flex items-center justify-center py-2 pr-4 pl-3 lg:hover:bg-transparent lg:border-0 lg:p-0">
+                <span class="hidden xl:block">{{ $t('landing.header.features') }}</span>
+                <span class="icon-[ph--star-fill] text-xl xl:hidden hover:scale-125 transition-all" role="img" aria-hidden="true" />
+              </RouterLink>
             </li>
             <li>
-              <RouterLink to="/ai" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 hover:bg-ctp-lavender/35 lg:hover:bg-transparent lg:border-0 lg:p-0">{{ $t('landing.header.ai') }}</RouterLink>
+              <RouterLink to="/ai" exactActiveClass="text-black dark:text-white" class="flex items-center justify-center py-2 pr-4 pl-3 lg:hover:bg-transparent lg:border-0 lg:p-0">
+                <span class="hidden xl:block">{{ $t('landing.header.ai') }}</span>
+                <div class="relative h-5 xl:hidden hover:scale-125 transition-all">
+                  <span class="icon-[mdi--robot] text-xl opacity-0" role="img" aria-hidden="true" />
+                  <span class="icon-[mdi--robot] absolute top-0 left-0 text-xl hover:opacity-0" role="img" aria-hidden="true" />
+                  <span class="icon-[mdi--robot-happy] absolute top-0 left-0 text-xl opacity-0 hover:opacity-100" role="img" aria-hidden="true" />
+                </div>
+              </RouterLink>
             </li>
             <li>
-              <RouterLink to="/faqs" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 hover:bg-ctp-lavender/35 lg:hover:bg-transparent lg:border-0 lg:p-0">{{ $t('landing.header.faqs') }}</RouterLink>
+              <RouterLink to="/faqs" exactActiveClass="text-black dark:text-white" class="flex items-center justify-center py-2 pr-4 pl-3 lg:hover:bg-transparent lg:border-0 lg:p-0">
+                <span class="hidden xl:block">{{ $t('landing.header.faqs') }}</span>
+                <span class="icon-[mingcute--question-fill] text-xl xl:hidden hover:scale-125 transition-all" role="img" aria-hidden="true" />
+              </RouterLink>
             </li>
             <li>
-              <RouterLink to="/tecnologies" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 hover:bg-ctp-lavender/35 lg:hover:bg-transparent lg:border-0 lg:p-0">{{ $t('landing.header.techs') }}</RouterLink>
+              <RouterLink to="/tecnologies" exactActiveClass="text-black dark:text-white" class="flex items-center justify-center py-2 pr-4 pl-3 lg:hover:bg-transparent lg:border-0 lg:p-0">
+                <span class="hidden xl:block">{{ $t('landing.header.techs') }}</span>
+                <span class="icon-[ph--wrench-fill] text-xl xl:hidden hover:scale-125 transition-all" role="img" aria-hidden="true" />
+              </RouterLink>
             </li>
           </ul>
         </div>
