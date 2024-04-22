@@ -55,7 +55,7 @@ const password_confirmation = ref('')
 
       <div class="flex flex-col gap-2">
         <PurrButton type="submit" class="mx-auto w-full"> {{ $t('auth.register.button') }}</PurrButton>
-        <GoogleButton />
+        <!-- <GoogleButton /> -->
       </div>
     </form>
 

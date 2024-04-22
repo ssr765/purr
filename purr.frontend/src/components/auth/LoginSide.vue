@@ -31,7 +31,7 @@ const password = ref('')
       </div>
       <div class="flex flex-col gap-2">
         <PurrButton type="submit" class="mx-auto w-full"> {{ $t('auth.login.button') }}</PurrButton>
-        <GoogleButton />
+        <!-- <GoogleButton /> -->
       </div>
     </form>
     <p class="text-center">
