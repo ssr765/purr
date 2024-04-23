@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('filename');
             $table->string('caption')->nullable();
             $table->string('type')->default('normal');
-            $table->integer('like_count')->default(0);
-            $table->integer('comment_count')->default(0);
+            $table->integer('likes_count')->default(0);
+            $table->integer('comments_count')->default(0);
             $table->timestamps();
         });
     }
