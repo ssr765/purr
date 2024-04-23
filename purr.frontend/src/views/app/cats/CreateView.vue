@@ -48,6 +48,19 @@ const createCat = () => {
 
   createCatStore.createCat()
 }
+
+//
+
+const formStates = ref({
+  1: false,
+})
+
+const handleValid = (page: number, isValid: any) => {
+  formStates[page] = isValid
+  console.log(formStates)
+}
+
+//
 </script>
 
 <template>
@@ -55,7 +68,7 @@ const createCat = () => {
     <StartingStep v-if="step == 0" />
     <TraitsStep v-if="step == 1" />
     <PasswordStep v-if="step == 2" />
-    <FinalStep v-if="step == 3" />
+    <FinalStep @valid="handleValid(1, $event)" v-if="step == 3" />
     <div class="flex justify-between items-center">
       <div class="w-1/3">
         <PurrButton v-if="step != 0" @click="gotoStep(step - 1)">Volver</PurrButton>

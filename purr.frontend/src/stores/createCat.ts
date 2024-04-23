@@ -32,6 +32,8 @@ export const useCreateCatStore = defineStore('createCat', () => {
     avatar.value ? URL.createObjectURL(avatar.value) : null,
   )
 
+  const steps = ref([false, false, false])
+
   const checkCatname = async () => {
     try {
       const response = await axios.post<{ exists: boolean }>(
@@ -97,6 +99,8 @@ export const useCreateCatStore = defineStore('createCat', () => {
     birthdateInput,
     password,
     confirmPassword,
+
+    steps,
 
     checking,
     avatarUrl,
