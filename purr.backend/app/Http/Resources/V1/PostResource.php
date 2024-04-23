@@ -20,8 +20,8 @@ class PostResource extends JsonResource
             'url' => URL::to("/api/v1/posts/{$this->id}/media"),
             'caption' => $this->caption,
             'type' => $this->type,
-            'likeCount' => $this->like_count,
-            'commentCount' => $this->comment_count,
+            'likesCount' => $this->likes_count,
+            'commentsCount' => $this->comments_count,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
             // Only shown if accesing to the post detail or the post list.
