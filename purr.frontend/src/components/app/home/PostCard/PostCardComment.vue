@@ -19,8 +19,8 @@ defineProps({
       <AvatarFallback class="text-lg text-ctp-text">{{ comment.user.username[0].toUpperCase() }}</AvatarFallback>
     </Avatar>
     <div>
-      <div class="font-bold leading-5">{{ comment.user.name }}</div>
-      {{ comment.content }}
+      <div class="font-bold leading-3">{{ comment.user.name }}</div>
+      <span>{{ comment.content }}</span>
     </div>
   </div>
 </template>
