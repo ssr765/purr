@@ -62,8 +62,10 @@ class CommentLikeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CommentLike $commentLike)
+    public function destroy(CommentLike $like, Comment $comment)
     {
-        //
+        $like->delete();
+        $comment->decrement('likes_count');
+        return response()->json(null, 204);
     }
 }
