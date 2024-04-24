@@ -18,8 +18,10 @@ class PostController extends Controller
     public function index()
     {
         // Get all posts with their cats.
-        $posts = Post::with('cat')->get();
-        return response()->json(PostResource::collection($posts));
+        $posts = Post::with(['comments' => function ($query) {
+            $query->latest()->take(3);
+        }])->get();
+        return response()->json(PostResource::collection($posts->load('cat')));
     }
 
     /**
@@ -54,7 +56,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         // Get the post with its cat.
-        $post = $post->load('cat');
+        $post = $post->load('cat')->load('comments');
         return response()->json(new PostResource($post));
     }
 

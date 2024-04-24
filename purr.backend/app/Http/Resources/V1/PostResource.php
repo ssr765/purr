@@ -28,7 +28,8 @@ class PostResource extends JsonResource
             'updatedAt' => $this->updated_at,
             // Only shown if accesing to the post detail or the post list.
             'cat' => new CatResource($this->whenLoaded('cat')),
-            'comments' => $this->when($this->comments_count > 0, CommentResource::collection($this->comments)),
+            // 'comments' => $this->when($this->comments_count > 0, CommentResource::collection($this->comments)),
+            'comments' => $this->whenLoaded('comments', CommentResource::collection($this->comments)),
         ];
     }
 }
