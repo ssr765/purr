@@ -25,6 +25,7 @@ class CommentController extends Controller
     public function store(StoreCommentRequest $request)
     {
         $post = Post::findOrFail($request->post_id);
+        $post->increment('comments_count');
         $user = $request->user();
 
         $comment = $post->comments()->create([
@@ -37,6 +38,7 @@ class CommentController extends Controller
     public function storeReply(StoreCommentRequest $request, Comment $comment)
     {
         $post = Post::findOrFail($request->post_id);
+        $post->increment('comments_count');
         $user = $request->user();
 
         $reply = $post->comments()->create([
