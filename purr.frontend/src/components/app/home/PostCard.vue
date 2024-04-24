@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import gsap from 'gsap'
 import type { Post } from '@/models/Post'
 import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
+import PostCardComment from './PostCard/PostCardComment.vue'
 
 defineProps({
   post: {
@@ -33,7 +34,7 @@ const addLike = (id: number) => {
       <span :id="`post-${post.id}`" class="icon-[solar--heart-bold] text-red-500 absolute-center scale-0 text-[100px]" role="img" aria-hidden="true" />
     </div>
     <div>
-      <div class="p-4 pt-2">
+      <div class="flex flex-col gap-2 p-4 pt-2">
         <div class="flex items-center justify-between">
           <RouterLink :to="{ name: 'app-cats-profile', params: { catname: post.cat!.catname } }">
             <div class="flex items-center gap-2">
@@ -54,7 +55,10 @@ const addLike = (id: number) => {
             <span class="icon-[iconamoon--bookmark-light]" role="img" aria-hidden="true" />
           </div>
         </div>
-        <div class="text-sm p-4 pt-2 text-center">{{ post.caption }}</div>
+        <div v-if="post.caption" class="text-sm text-center">{{ post.caption }}</div>
+        <div v-if="post.comments" class="space-y-2 px-4">
+          <PostCardComment :comment="comment" v-for="comment in post.comments" :key="comment.id" />
+        </div>
       </div>
     </div>
   </article>

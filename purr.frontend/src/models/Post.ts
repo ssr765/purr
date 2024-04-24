@@ -1,4 +1,5 @@
 import type { Cat } from '@/models/Cat'
+import type { Comment } from '@/models/Comment'
 
 export interface Post {
   id: number
@@ -10,6 +11,7 @@ export interface Post {
   createdAt: string
   cat?: Cat
   caption?: string
+  comments?: Comment[]
 }
 
 export interface PostInput {
