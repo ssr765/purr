@@ -5,8 +5,8 @@ export interface Post {
   id: number
   url: string
   type: string
-  likeCount: number
-  commentCount: number
+  likesCount: number
+  commentsCount: number
   updatedAt: string
   createdAt: string
   comments: Comment[]

@@ -62,7 +62,7 @@ const addLike = (id: number) => {
         <div v-if="post.comments" class="space-y-2">
           <PostComment :comment="comment" v-for="comment in post.comments" :key="comment.id" :postId="post.id" />
         </div>
-        <RouterLink :to="{ name: 'app-posts-detail', params: { id: post.id } }" class="text-sm text-ctp-lavender pt-1" v-if="post.commentCount > 3">Ver todos los comentarios</RouterLink>
+        <RouterLink :to="{ name: 'app-posts-detail', params: { id: post.id } }" class="text-sm text-ctp-lavender pt-1" v-if="post.commentsCount > 3">Ver todos los comentarios</RouterLink>
       </div>
     </div>
   </article>

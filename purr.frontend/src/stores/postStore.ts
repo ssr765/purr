@@ -43,7 +43,7 @@ export const usePostStore = defineStore('post', () => {
 
       if (postDetail.value) {
         postDetail.value.comments.push(comment)
-        postDetail.value.commentCount++
+        postDetail.value.commentsCount++
       }
     } catch (error) {
       console.log(error)
