@@ -19,7 +19,7 @@ const authStore = useAuthStore()
       </DropdownMenuTrigger>
       <DropdownMenuContent class="w-56">
         <DropdownMenuLabel>{{ $t('app.layout.header.user.myAccount') }}</DropdownMenuLabel>
-        <DropdownMenuLabel class="font-normal pt-0">{{ authStore.user!.username }}</DropdownMenuLabel>
+        <DropdownMenuLabel class="font-normal pt-0 leading-[0.75] pb-2">{{ authStore.user!.username }}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
