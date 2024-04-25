@@ -87,6 +87,9 @@ const comment = ref('')
             <span class="block icon-[iconamoon--send] text-3xl" role="img" aria-hidden="true" />
           </button>
         </div>
+        <div v-else class="p-2">
+          <span class="text-ctp-text/60">Debes iniciar sesión para poder comentar</span>
+        </div>
       </div>
     </div>
   </section>
