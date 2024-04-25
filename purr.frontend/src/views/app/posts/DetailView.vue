@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { usePostStore } from '@/stores/post'
+import { usePostStore } from '@/stores/postStore'
 import { useAuthStore } from '@/stores/auth'
 import { storeToRefs } from 'pinia'
 import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'

@@ -5,7 +5,7 @@ import AvatarImage from '@/components/ui/avatar/AvatarImage.vue'
 import type { Comment } from '@/models/Comment'
 import { ref } from 'vue'
 import { useCommentService } from '@/services/commentService'
-import { usePostStore } from '@/stores/post'
+import { usePostStore } from '@/stores/postStore'
 
 const props = defineProps({
   postId: {
