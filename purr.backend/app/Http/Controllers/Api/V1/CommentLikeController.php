@@ -62,8 +62,17 @@ class CommentLikeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CommentLike $like, Comment $comment)
+    public function destroy(Comment $comment)
     {
+        $user = request()->user();
+        $like = CommentLike::where('user_id', $user->id)
+            ->where('comment_id', $comment->id)
+            ->first();
+
+        if (!$like) {
+            return response()->json(['message' => 'Comment wasn\'t liked'], 409);
+        }
+
         $like->delete();
         $comment->decrement('likes_count');
         return response()->json(null, 204);
