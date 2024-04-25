@@ -1,4 +1,5 @@
 import type { Cat } from '@/models/Cat'
+import type { Comment } from '@/models/Comment'
 
 export interface Post {
   id: number
@@ -8,6 +9,7 @@ export interface Post {
   commentCount: number
   updatedAt: string
   createdAt: string
+  comments: Comment[]
   cat?: Cat
   caption?: string
 }
