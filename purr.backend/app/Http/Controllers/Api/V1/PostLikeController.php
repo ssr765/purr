@@ -23,7 +23,7 @@ class PostLikeController extends Controller
      */
     public function store(StorePostLikeRequest $request, Post $post)
     {
-        $user = request()->user();
+        $user = $request->user();
 
         $like = PostLike::where('user_id', $user->id)
             ->where('post_id', $post->id)
@@ -40,7 +40,10 @@ class PostLikeController extends Controller
         ]);
         $post->increment('likes_count');
 
-        return response()->json(null, 201);
+        return response()->json([
+            "isLiked" => true,
+            "count" => $post->likes_count,
+        ], 201);
     }
 
     /**
@@ -62,10 +65,24 @@ class PostLikeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PostLike $like, Post $post)
+    public function destroy(Post $post)
     {
+        $user = request()->user();
+
+        $like = PostLike::where('user_id', $user->id)
+            ->where('post_id', $post->id)
+            ->first();
+
+        if (!$like) {
+            return response()->json(['message' => 'Post wasn\'t liked'], 409);
+        }
+
         $like->delete();
         $post->decrement('likes_count');
-        return response()->json(null, 204);
+
+        return response()->json([
+            "isLiked" => false,
+            "count" => $post->likes_count,
+        ]);
     }
 }

@@ -5,7 +5,10 @@ export interface Post {
   id: number
   url: string
   type: string
-  likesCount: number
+  likesData: {
+    count: number
+    isLiked: boolean
+  }
   commentsCount: number
   updatedAt: string
   createdAt: string

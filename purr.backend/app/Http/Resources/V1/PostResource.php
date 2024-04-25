@@ -20,9 +20,11 @@ class PostResource extends JsonResource
             'url' => URL::to("/api/v1/posts/{$this->id}/media"),
             'caption' => $this->caption,
             'type' => $this->type,
-            // Only shown if user is logged in.
-            'liked' => $this->when($request->user(), fn () => $this->likedByUser($request->user())),
-            'likesCount' => $this->likes_count,
+            'likesData' => [
+                // Only shown if user is logged in.
+                'isLiked' => $this->when($request->user(), fn () => $this->likedByUser($request->user())),
+                'count' => $this->likes_count,
+            ],
             'commentsCount' => $this->comments_count,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
