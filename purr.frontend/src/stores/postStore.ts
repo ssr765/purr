@@ -87,60 +87,35 @@ export const usePostStore = defineStore('post', () => {
 
   const liking = ref(false)
   const toggleLike = async (id: number) => {
-    let oldLikeData
-    if (postDetail.value) {
-      oldLikeData = postDetail.value.likesData
-    } else {
-      oldLikeData = posts.value.find((post) => post.id === id)?.likesData
+    const updateLikeData = (
+      post: Post,
+      newLikeData: { count: number; isLiked: boolean },
+    ) => {
+      post.likesData.count = newLikeData.count
+      post.likesData.isLiked = newLikeData.isLiked
     }
 
-    oldLikeData = { ...oldLikeData } as { count: number; isLiked: boolean }
+    const postToLike =
+      postDetail.value || posts.value.find((post) => post.id === id)
 
-    if (!oldLikeData) {
-      throw new Error('Post not found')
-    }
+    if (!postToLike) throw new Error('Publicación no encontrada')
 
-    if (!oldLikeData.isLiked) {
-      if (postDetail.value) {
-        postDetail.value.likesData.count++
-        postDetail.value.likesData.isLiked = true
-      } else {
-        posts.value.find((post) => post.id === id)!.likesData.count++
-        posts.value.find((post) => post.id === id)!.likesData.isLiked = true
-      }
-    } else {
-      if (postDetail.value) {
-        postDetail.value.likesData.count--
-        postDetail.value.likesData.isLiked = false
-      } else {
-        posts.value.find((post) => post.id === id)!.likesData.count--
-        posts.value.find((post) => post.id === id)!.likesData.isLiked = false
-      }
-    }
+    const oldLikeData = { ...postToLike.likesData }
+
+    // Actualizar UI de forma optimista
+    postToLike.likesData.isLiked = !oldLikeData.isLiked
+    postToLike.likesData.count += postToLike.likesData.isLiked ? 1 : -1
 
     try {
       liking.value = true
-      let likeData
-
-      if (!oldLikeData.isLiked) {
-        likeData = await postService.like(id)
-      } else {
-        likeData = await postService.unlike(id)
-      }
-
-      if (postDetail.value) {
-        postDetail.value.likesData = likeData
-      } else {
-        posts.value.find((post) => post.id === id)!.likesData = likeData
-      }
+      const likeData = postToLike.likesData.isLiked
+        ? await postService.like(id)
+        : await postService.unlike(id)
+      updateLikeData(postToLike, likeData)
     } catch (error) {
       toast.error('No se ha podido dar me gusta a la publicación')
-
-      if (postDetail.value) {
-        postDetail.value.likesData = oldLikeData
-      } else {
-        posts.value.find((post) => post.id === id)!.likesData = oldLikeData
-      }
+      // Revertir si hay error
+      updateLikeData(postToLike, oldLikeData)
     } finally {
       liking.value = false
     }
