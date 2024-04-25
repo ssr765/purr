@@ -6,6 +6,7 @@ export interface Comment {
   content: string
   user: User
   post?: Post
+  liked?: boolean
   likesCount: number
   repliesCount: number
   createdAt: string
