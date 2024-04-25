@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
 import gsap from 'gsap'
 import type { Post } from '@/models/Post'
 import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
 import PostComment from './PostComment.vue'
 import LikeButton from './LikeButton.vue'
 import { usePostStore } from '@/stores/postStore'
+import { useNumberFormatter } from '@/composables/numberFormatter'
 
 const props = defineProps({
   post: {
@@ -15,6 +15,7 @@ const props = defineProps({
 })
 
 const postStore = usePostStore()
+const { formatNumber } = useNumberFormatter()
 
 const addLike = () => {
   if (postStore.liking) return
@@ -35,7 +36,7 @@ const addLike = () => {
 <template>
   <article class="max-w-xl bg-ctp-mantle border border-ctp-lavender rounded-lg shadow m-auto text-ctp-text">
     <div class="relative">
-      <img v-on:dblclick="addLike(post.id)" class="w-full rounded-lg" :src="post.url" alt="" />
+      <img v-on:dblclick="addLike()" class="w-full rounded-lg" :src="post.url" alt="" />
       <span :id="`post-${post.id}`" class="icon-[solar--heart-bold] text-red-500 absolute-center scale-0 text-[100px]" role="img" aria-hidden="true" />
     </div>
     <div>
@@ -52,12 +53,22 @@ const addLike = () => {
           </RouterLink>
 
           <div class="text-3xl flex gap-4">
-            <LikeButton :like="post.likesData.isLiked" @addLike="addLike()" />
+            <div class="flex flex-col items-center">
+              <LikeButton :like="post.likesData.isLiked" @addLike="addLike()" />
+              <span class="text-sm leading-5 font-semibold">{{ formatNumber(post.likesData.count) }}</span>
+            </div>
 
-            <RouterLink :to="{ name: 'app-posts-detail', params: { id: post.id } }">
-              <span class="block icon-[iconamoon--comment-light]" role="img" aria-hidden="true" />
-            </RouterLink>
-            <span class="block icon-[iconamoon--bookmark-light]" role="img" aria-hidden="true" />
+            <div class="flex flex-col items-center">
+              <RouterLink :to="{ name: 'app-posts-detail', params: { id: post.id } }">
+                <span class="block icon-[iconamoon--comment-light]" role="img" aria-hidden="true" />
+              </RouterLink>
+              <span class="text-sm leading-5 font-semibold">{{ formatNumber(post.commentsCount) }}</span>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <span class="block icon-[iconamoon--bookmark-light]" role="img" aria-hidden="true" />
+              <span class="text-sm leading-5 font-semibold">{{ formatNumber(0) }}</span>
+            </div>
           </div>
         </div>
         <div v-if="post.caption" class="text-sm text-center py-4">{{ post.caption }}</div>

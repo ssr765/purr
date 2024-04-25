@@ -9,10 +9,12 @@ import PostComment from '@/components/utils/posts/PostComment.vue'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { toast } from 'vue-sonner'
 import LikeButton from '@/components/utils/posts/LikeButton.vue'
+import { useNumberFormatter } from '@/composables/numberFormatter'
 
 const route = useRoute()
 const postStore = usePostStore()
 const authStore = useAuthStore()
+const { formatNumber } = useNumberFormatter()
 
 const postId = Number(route.params.id)
 const { postDetail } = storeToRefs(postStore)
@@ -65,7 +67,7 @@ const comment = ref('')
       <div v-if="postDetail.comments" class="space-y-2 p-4 overflow-auto">
         <PostComment :comment="comment" v-for="comment in postDetail.comments" :key="comment.id" :postId="postDetail.id" />
       </div>
-      <div class="flex flex-col gap-4 p-4 border-t border-ctp-lavender">
+      <div class="flex flex-col gap-2 p-4 border-t border-ctp-lavender">
         <div class="flex items-center gap-4 text-3xl">
           <LikeButton :like="like" @addLike="addLike" />
           <button>
@@ -79,9 +81,13 @@ const comment = ref('')
             <span class="block icon-[mdi--dots-vertical]" role="img" aria-hidden="true" />
           </button>
         </div>
-        <p>{{ postDetail.likesData.count ?? 0 }} likes</p>
+        <p class="flex items-center gap-1.5">
+          <span v-if="postDetail.likesData.count > 0" class="icon-[solar--heart-bold]" role="img" aria-hidden="true" />
+          <span v-else class="icon-[solar--heart-broken-linear]" role="img" aria-hidden="true" />
+          <span class="font-semibold">{{ formatNumber(postDetail.likesData.count) }} likes</span>
+        </p>
         <div v-if="postDetail.caption">{{ postDetail.caption }}</div>
-        <div class="flex items-center gap-2" v-if="user">
+        <div class="flex items-center gap-2 mt-2" v-if="user">
           <Avatar>
             <AvatarImage :src="user!.avatar ?? ''" :alt="$t('app.layout.header.user.avatarAlt')" />
             <AvatarFallback class="text-lg text-ctp-text">{{ user.username[0].toUpperCase() }}</AvatarFallback>
@@ -91,7 +97,7 @@ const comment = ref('')
             <span class="block icon-[iconamoon--send] text-3xl" role="img" aria-hidden="true" />
           </button>
         </div>
-        <div v-else class="p-2">
+        <div v-else class="p-2 mt-2">
           <span class="text-ctp-text/60">Debes iniciar sesión para poder comentar</span>
         </div>
       </div>
