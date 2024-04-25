@@ -9,9 +9,9 @@ export interface Post {
   commentCount: number
   updatedAt: string
   createdAt: string
+  comments: Comment[]
   cat?: Cat
   caption?: string
-  comments?: Comment[]
 }
 
 export interface PostInput {

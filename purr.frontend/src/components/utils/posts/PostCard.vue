@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import gsap from 'gsap'
 import type { Post } from '@/models/Post'
 import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
-import PostCardComment from './PostCard/PostCardComment.vue'
+import PostComment from './PostComment.vue'
 
 defineProps({
   post: {
@@ -34,7 +34,7 @@ const addLike = (id: number) => {
       <span :id="`post-${post.id}`" class="icon-[solar--heart-bold] text-red-500 absolute-center scale-0 text-[100px]" role="img" aria-hidden="true" />
     </div>
     <div>
-      <div class="flex flex-col gap-2 p-4 pt-2">
+      <div class="flex flex-col gap-2 p-4 pt-4">
         <div class="flex items-center justify-between">
           <RouterLink :to="{ name: 'app-cats-profile', params: { catname: post.cat!.catname } }">
             <div class="flex items-center gap-2">
@@ -46,19 +46,23 @@ const addLike = (id: number) => {
             </div>
           </RouterLink>
 
-          <div class="p-4 pb-2 text-3xl flex gap-4">
+          <div class="text-3xl flex gap-4">
             <button @click="addLike(post.id)">
-              <span v-if="like" class="icon-[solar--heart-bold] text-red-500" role="img" aria-hidden="true" />
-              <span v-else class="icon-[solar--heart-linear]" role="img" aria-hidden="true" />
+              <span v-if="like" class="block icon-[solar--heart-bold] text-red-500" role="img" aria-hidden="true" />
+              <span v-else class="block icon-[solar--heart-linear]" role="img" aria-hidden="true" />
             </button>
-            <span class="icon-[iconamoon--comment-light]" role="img" aria-hidden="true" />
-            <span class="icon-[iconamoon--bookmark-light]" role="img" aria-hidden="true" />
+
+            <RouterLink :to="{ name: 'app-posts-detail', params: { id: post.id } }">
+              <span class="block icon-[iconamoon--comment-light]" role="img" aria-hidden="true" />
+            </RouterLink>
+            <span class="block icon-[iconamoon--bookmark-light]" role="img" aria-hidden="true" />
           </div>
         </div>
-        <div v-if="post.caption" class="text-sm text-center">{{ post.caption }}</div>
-        <div v-if="post.comments" class="space-y-2 px-4">
-          <PostCardComment :comment="comment" v-for="comment in post.comments" :key="comment.id" />
+        <div v-if="post.caption" class="text-sm text-center py-4">{{ post.caption }}</div>
+        <div v-if="post.comments" class="space-y-2">
+          <PostComment :comment="comment" v-for="comment in post.comments" :key="comment.id" :postId="post.id" />
         </div>
+        <RouterLink :to="{ name: 'app-posts-detail', params: { id: post.id } }" class="text-sm text-ctp-lavender pt-1" v-if="post.commentCount > 3">Ver todos los comentarios</RouterLink>
       </div>
     </div>
   </article>
