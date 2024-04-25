@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePostStore } from '@/stores/postStore'
 import { useAuthStore } from '@/stores/auth'
@@ -8,6 +8,7 @@ import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
 import PostComment from '@/components/utils/posts/PostComment.vue'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { toast } from 'vue-sonner'
+import LikeButton from '@/components/utils/posts/LikeButton.vue'
 
 const route = useRoute()
 const postStore = usePostStore()
@@ -17,12 +18,17 @@ const postId = Number(route.params.id)
 const { postDetail } = storeToRefs(postStore)
 const { user } = storeToRefs(authStore)
 
-onBeforeMount(async () => {
+onMounted(async () => {
   await postStore.fetchPostDetail(postId)
 })
 
+onUnmounted(() => {
+  postStore.postDetail = null
+})
+
 const addLike = () => {
-  like.value = !like.value
+  if (postStore.liking) return
+  postStore.toggleLike(postId)
 }
 
 const addComment = () => {
@@ -35,7 +41,7 @@ const addComment = () => {
   comment.value = ''
 }
 
-const like = ref(false)
+const like = computed(() => postDetail.value?.likesData.isLiked ?? false)
 const comment = ref('')
 </script>
 
@@ -61,10 +67,7 @@ const comment = ref('')
       </div>
       <div class="flex flex-col gap-4 p-4 border-t border-ctp-lavender">
         <div class="flex items-center gap-4 text-3xl">
-          <button @click="addLike()">
-            <span v-if="like" class="block icon-[solar--heart-bold] text-red-500" role="img" aria-hidden="true" />
-            <span v-else class="block icon-[solar--heart-linear]" role="img" aria-hidden="true" />
-          </button>
+          <LikeButton :like="like" @addLike="addLike" />
           <button>
             <span class="block icon-[iconamoon--comment-light]" role="img" aria-hidden="true" />
           </button>
@@ -76,11 +79,12 @@ const comment = ref('')
             <span class="block icon-[mdi--dots-vertical]" role="img" aria-hidden="true" />
           </button>
         </div>
+        <p>{{ postDetail.likesData.count ?? 0 }} likes</p>
         <div v-if="postDetail.caption">{{ postDetail.caption }}</div>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2" v-if="user">
           <Avatar>
             <AvatarImage :src="user!.avatar ?? ''" :alt="$t('app.layout.header.user.avatarAlt')" />
-            <AvatarFallback class="text-lg text-ctp-text">{{ user!.username[0].toUpperCase() }}</AvatarFallback>
+            <AvatarFallback class="text-lg text-ctp-text">{{ user.username[0].toUpperCase() }}</AvatarFallback>
           </Avatar>
           <input v-model="comment" @keydown.enter="addComment()" type="text" class="border-none outline-none w-full p-2 rounded-md bg-transparent placeholder:text-ctp-text" placeholder="Añade un comentario..." />
           <button @click="addComment()">

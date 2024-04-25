@@ -4,19 +4,24 @@ import gsap from 'gsap'
 import type { Post } from '@/models/Post'
 import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
 import PostComment from './PostComment.vue'
+import LikeButton from './LikeButton.vue'
+import { usePostStore } from '@/stores/postStore'
 
-defineProps({
+const props = defineProps({
   post: {
     type: Object as () => Post,
     required: true,
   },
 })
 
-const like = ref(false)
+const postStore = usePostStore()
 
-const addLike = (id: number) => {
+const addLike = () => {
+  if (postStore.liking) return
+  const id = props.post.id
   const elementId = `#post-${id}`
-  like.value = !like.value
+
+  postStore.toggleLike(id)
 
   // Animation
   let tl = gsap.timeline()
@@ -47,10 +52,7 @@ const addLike = (id: number) => {
           </RouterLink>
 
           <div class="text-3xl flex gap-4">
-            <button @click="addLike(post.id)">
-              <span v-if="like" class="block icon-[solar--heart-bold] text-red-500" role="img" aria-hidden="true" />
-              <span v-else class="block icon-[solar--heart-linear]" role="img" aria-hidden="true" />
-            </button>
+            <LikeButton :like="post.likesData.isLiked" @addLike="addLike()" />
 
             <RouterLink :to="{ name: 'app-posts-detail', params: { id: post.id } }">
               <span class="block icon-[iconamoon--comment-light]" role="img" aria-hidden="true" />
