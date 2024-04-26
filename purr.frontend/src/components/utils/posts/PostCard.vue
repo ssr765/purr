@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import gsap from 'gsap'
 import type { Post } from '@/models/Post'
 import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
 import PostComment from './PostComment.vue'
 import LikeButton from './LikeButton.vue'
 import { usePostStore } from '@/stores/postStore'
 import { useNumberFormatter } from '@/composables/numberFormatter'
+import useLikeAnimation from '@/composables/likeAnimation'
 
-const props = defineProps({
+defineProps({
   post: {
     type: Object as () => Post,
     required: true,
@@ -16,27 +16,21 @@ const props = defineProps({
 
 const postStore = usePostStore()
 const { formatNumber } = useNumberFormatter()
+const { likeAnimation } = useLikeAnimation()
 
-const addLike = () => {
+const addLike = (id: number) => {
   if (postStore.liking) return
-  const id = props.post.id
-  const elementId = `#post-${id}`
-
   postStore.toggleLike(id)
 
   // Animation
-  let tl = gsap.timeline()
-  tl.to(elementId, { scale: 1.5, duration: 0.15 })
-  tl.to(elementId, { scale: 0.9, duration: 0.15 })
-  tl.to(elementId, { scale: 1.2, duration: 0.35 })
-  tl.to(elementId, { scale: 0, duration: 0.35 })
+  likeAnimation(id)
 }
 </script>
 
 <template>
   <article class="max-w-xl bg-ctp-mantle border border-ctp-lavender rounded-lg shadow m-auto text-ctp-text">
     <div class="relative">
-      <img v-on:dblclick="addLike()" class="w-full rounded-lg" :src="post.url" alt="" />
+      <img v-on:dblclick="addLike(post.id)" class="w-full rounded-lg" :src="post.url" alt="" />
       <span :id="`post-${post.id}`" class="icon-[solar--heart-bold] text-red-500 absolute-center scale-0 text-[100px]" role="img" aria-hidden="true" />
     </div>
     <div>
@@ -54,7 +48,7 @@ const addLike = () => {
 
           <div class="text-3xl flex gap-4">
             <div class="flex flex-col items-center">
-              <LikeButton :like="post.likesData.isLiked" @addLike="addLike()" />
+              <LikeButton :like="post.likesData.isLiked" @addLike="addLike(post.id)" />
               <span class="text-sm leading-5 font-semibold">{{ formatNumber(post.likesData.count) }}</span>
             </div>
 

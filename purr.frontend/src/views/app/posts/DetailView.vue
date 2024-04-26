@@ -10,11 +10,13 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { toast } from 'vue-sonner'
 import LikeButton from '@/components/utils/posts/LikeButton.vue'
 import { useNumberFormatter } from '@/composables/numberFormatter'
+import { useLikeAnimation } from '@/composables/likeAnimation'
 
 const route = useRoute()
 const postStore = usePostStore()
 const authStore = useAuthStore()
 const { formatNumber } = useNumberFormatter()
+const { likeAnimation } = useLikeAnimation()
 
 const postId = Number(route.params.id)
 const { postDetail } = storeToRefs(postStore)
@@ -31,6 +33,7 @@ onUnmounted(() => {
 const addLike = () => {
   if (postStore.liking) return
   postStore.toggleLike(postId)
+  likeAnimation(postId)
 }
 
 const addComment = () => {
@@ -49,8 +52,9 @@ const comment = ref('')
 
 <template>
   <section v-if="postDetail" class="grid xl:grid-cols-2 gap-4 xl:h-app">
-    <div class="flex items-center justify-center">
+    <div class="relative flex items-center justify-center">
       <img :src="postDetail.url" alt="" class="max-h-app" @dblclick="addLike()" />
+      <span :id="`post-${postId}`" class="icon-[solar--heart-bold] text-red-500 absolute-center scale-0 text-[100px]" role="img" aria-hidden="true" />
     </div>
     <div class="grid grid-rows-[auto,1fr,auto] border border-ctp-lavender bg-ctp-mantle rounded-xl max-h-app">
       <div class="p-4 border-b border-ctp-lavender">
