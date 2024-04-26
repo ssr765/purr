@@ -5,7 +5,7 @@ import PostComment from './PostComment.vue'
 import LikeButton from './LikeButton.vue'
 import { usePostStore } from '@/stores/postStore'
 import { useNumberFormatter } from '@/composables/numberFormatter'
-import useLikeAnimation from '@/composables/likeAnimation'
+import { useLikeAnimation } from '@/composables/likeAnimation'
 
 defineProps({
   post: {
