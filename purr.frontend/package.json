@@ -19,6 +19,8 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "date-fns": "^3.6.0",
+    "embla-carousel": "^8.0.2",
+    "embla-carousel-vue": "^8.0.2",
     "gsap": "^3.12.5",
     "lucide-vue-next": "^0.368.0",
     "pinia": "^2.1.7",
