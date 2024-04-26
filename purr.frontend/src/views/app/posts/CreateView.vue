@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCreatePostStore } from '@/stores/createPost'
-import { useAuthStore } from '@/stores/auth'
+import { useAuthStore } from '@/stores/authStore'
 import MediaInput from '@/components/app/posts/create/MediaInput.vue'
 import MediaDashboard from '@/components/app/posts/create/MediaDashboard.vue'
 import NoKittens from '@/components/app/posts/create/NoKittens.vue'

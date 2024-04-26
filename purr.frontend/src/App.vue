@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
-import { useAuthStore } from '@/stores/auth'
+import { useAuthStore } from '@/stores/authStore'
 import { Toaster } from '@/components/ui/sonner'
 
 const authStore = useAuthStore()

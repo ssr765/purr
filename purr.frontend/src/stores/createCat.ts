@@ -4,7 +4,7 @@ import { ref, computed } from 'vue'
 import { format } from 'date-fns'
 import { toDate } from 'radix-vue/date'
 import { useRouter } from 'vue-router'
-import { useAuthStore } from '@/stores/auth'
+import { useAuthStore } from '@/stores/authStore'
 
 export const useCreateCatStore = defineStore('createCat', () => {
   const router = useRouter()

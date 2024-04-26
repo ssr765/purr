@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAuthStore } from '@/stores/auth'
+import { useAuthStore } from '@/stores/authStore'
 import { ref } from 'vue'
 import PurrButton from '@/components/utils/PurrButton.vue'
 import GoogleButton from '@/components/utils/auth/GoogleButton.vue'

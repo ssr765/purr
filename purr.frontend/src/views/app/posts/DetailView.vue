@@ -2,7 +2,7 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePostStore } from '@/stores/postStore'
-import { useAuthStore } from '@/stores/auth'
+import { useAuthStore } from '@/stores/authStore'
 import { storeToRefs } from 'pinia'
 import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
 import PostComment from '@/components/utils/posts/PostComment.vue'
