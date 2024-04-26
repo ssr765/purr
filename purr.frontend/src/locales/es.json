@@ -24,6 +24,22 @@
           "especie": "Gato"
         }
       },
+      "concept": {
+        "title": "La red social de los gatos",
+        "content": [
+          "purr. es una red social única diseñada especialmente para los amantes de los gatos. Aquí, son los gatos quienes se convierten en los verdaderos protagonistas teniendo su propio perfil.",
+          "Es un lugar divertido y seguro donde la comunidad gatuna puede reunirse, explorar y conectarse."
+        ],
+        "button": "¡Regístrate ahora!"
+      },
+      "unique": {
+        "title": "¿Qué hace a purr. tan especial?",
+        "content": [
+          "Además de ser un espacio para el entretenimiento y la expresión gatuna, purr. facilita la adopción de gatos proporcionando perfiles detallados de gatos que necesitan un hogar. Esta función no solo permite a los posibles adoptantes conocer mejor a sus futuros compañeros, sino que también simplifica el proceso de encontrar un hogar amoroso para cada gato. Hacer de la adopción una experiencia accesible y personal es una de nuestras prioridades.",
+          "Otro servicio distintivo de purr. son nuestros mapas interactivos, que permiten a los usuarios localizar fácilmente veterinarios, cafeterías para gatos, tiendas de productos para mascotas y refugios de animales en su área. Esta herramienta es invaluable para los dueños de gatos, ya que proporciona acceso rápido a recursos esenciales, fomentando un estilo de vida más integrado y consciente para el bienestar de sus mascotas."
+        ],
+        "button": "Descubre más"
+      },
       "ai": {
         "title": "Contenido exclusivamente felino en purr.",
         "content": [
@@ -33,7 +49,7 @@
         "button": "Descubre más"
       },
       "cta": {
-        "title": "¿Quieres probar purr.?",
+        "title": "¿Quieres unirte a la comunidad de purr.?",
         "content": "Regístrate ahora y comienza a disfrutar de la experiencia gatuna.",
         "cta": "Comienza ahora"
       }
