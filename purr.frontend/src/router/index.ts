@@ -14,6 +14,11 @@ const router = createRouter({
           name: 'landing-home',
           component: () => import('@/views/landing/HomeView.vue'),
         },
+        {
+          path: 'techs',
+          name: 'landing-techs',
+          component: () => import('@/views/landing/TechsView.vue'),
+        },
       ],
     },
     {
