@@ -25,7 +25,7 @@ const applyPadding = computed(() => {
             <span v-else class="icon-[ph--x-bold] text-xl" role="img" aria-hidden="true" />
             <span class="sr-only">Toggle sidebar</span>
           </button>
-          <RouterLink to="/app" class="flex items-center justify-between mr-4">
+          <RouterLink :to="{ name: 'app-home' }" class="flex items-center justify-between mr-4">
             <img src="/public/img/logo/light.webp" class="hidden dark:block mr-3 h-8" alt="purr. Logo" />
             <img src="/public/img/logo/dark.webp" class="block dark:hidden mr-3 h-8" alt="purr. Logo" />
             <span class="text-black font-hero self-center text-2xl font-semibold whitespace-nowrap dark:text-white">purr.</span>
@@ -60,7 +60,7 @@ const applyPadding = computed(() => {
         </form>
         <ul class="space-y-2">
           <li>
-            <RouterLink to="/app" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
+            <RouterLink :to="{ name: 'app-home' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
               <span class="icon-[ion--paw-outline] text-xl w-6" role="img" aria-hidden="true" />
               <span class="ml-3">{{ $t('app.layout.sidebar.feed') }}</span>
             </RouterLink>
