@@ -43,6 +43,7 @@ Route::prefix('v1')->group(function () {
 
     Route::prefix('posts')->name('posts.')->group(function () {
         Route::get('/{post}/media', [V1PostController::class, 'showContent'])->name('content');
+        Route::get('/{post}/media/download', [V1PostController::class, 'download'])->name('download');
         Route::middleware(['auth:sanctum'])->post('/{post}/likes', [V1PostLikeController::class, 'store'])->name('likes.store');
         Route::middleware(['auth:sanctum'])->delete('/{post}/likes', [V1PostLikeController::class, 'destroy'])->name('likes.destroy');
     });

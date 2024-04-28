@@ -84,4 +84,10 @@ class PostController extends Controller
         $path = storage_path('app/posts/' . $post->filename);
         return response()->file($path);
     }
+
+    public function download(Post $post)
+    {
+        $path = storage_path('app/posts/' . $post->filename);
+        return response()->download($path);
+    }
 }

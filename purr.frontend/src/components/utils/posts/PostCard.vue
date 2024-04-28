@@ -6,6 +6,7 @@ import LikeButton from './LikeButton.vue'
 import { usePostStore } from '@/stores/postStore'
 import { useNumberFormatter } from '@/composables/numberFormatter'
 import { useLikeAnimation } from '@/composables/likeAnimation'
+import PostContextMenu from './PostContextMenu.vue'
 
 defineProps({
   post: {
@@ -29,10 +30,12 @@ const addLike = (id: number) => {
 
 <template>
   <article class="max-w-xl bg-ctp-mantle border border-ctp-lavender rounded-lg shadow m-auto text-ctp-text">
-    <div class="relative">
-      <img v-on:dblclick="addLike(post.id)" class="w-full rounded-lg" :src="post.url" alt="" />
-      <span :id="`post-${post.id}`" class="icon-[solar--heart-bold] text-red-500 absolute-center scale-0 text-[100px]" role="img" aria-hidden="true" />
-    </div>
+    <PostContextMenu :post="post">
+      <div class="relative">
+        <img v-on:dblclick="addLike(post.id)" class="w-full rounded-lg" :src="post.url" alt="" />
+        <span :id="`post-${post.id}`" class="icon-[solar--heart-bold] text-red-500 absolute-center scale-0 text-[100px]" role="img" aria-hidden="true" />
+      </div>
+    </PostContextMenu>
     <div>
       <div class="flex flex-col gap-2 p-4 pt-4">
         <div class="flex items-center justify-between">
