@@ -26,6 +26,8 @@ class CatController extends Controller
     public function store(StoreCatRequest $request, ImageEngineService $imageEngineService)
     {
         $cat = Cat::create($request->validated());
+        $cat->adoption = boolval($request->adoption);
+        $cat->save();
         $request->user()->cats()->attach($cat);
 
         if ($request->hasFile('avatar')) {

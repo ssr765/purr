@@ -4,6 +4,7 @@ import { toDate } from 'radix-vue/date'
 import { CalendarDate, DateFormatter, getLocalTimeZone, today } from '@internationalized/date'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { useCreateCatStore } from '@/stores/createCat'
+import { Checkbox } from '@/components/ui/checkbox'
 
 const createCatStore = useCreateCatStore()
 
@@ -43,5 +44,13 @@ const df = new DateFormatter('es-ES', {
         <Calendar initial-focus :min-value="new CalendarDate(1990, 1, 1)" :max-value="today(getLocalTimeZone())" @update:model-value="(v) => (createCatStore.birthdateInput = v)" v-model="createCatStore.birthdateInput" />
       </PopoverContent>
     </Popover>
+
+    <div class="flex gap-2">
+      <Checkbox class="mt-[4px]" id="adoption" :checked="createCatStore.adoption" @update:checked="(v) => (createCatStore.adoption = v)" />
+      <div class>
+        <label for="adoption" class="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"> El gato está en adopción </label>
+        <p class="text-ctp-text/75 text-sm">Activando esta casilla, los usuarios podrán ver que el dato está buscando un nuevo dueño y se podrán poner en contacto contigo.</p>
+      </div>
+    </div>
   </div>
 </template>

@@ -15,4 +15,5 @@ export interface Cat {
   birthdate?: string
   deathdate?: string
   posts?: Post[]
+  adoption?: boolean
 }

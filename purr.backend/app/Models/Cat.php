@@ -20,6 +20,7 @@ class Cat extends Model
         'birthdate',
         'deathdate',
         'password',
+        'adoption',
     ];
 
     public function setCatnameAttribute($value)

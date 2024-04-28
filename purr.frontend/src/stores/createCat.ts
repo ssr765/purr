@@ -18,6 +18,7 @@ export const useCreateCatStore = defineStore('createCat', () => {
   const sex = ref<string>('')
   const breed = ref<string>('')
   const color = ref<string>('')
+  const adoption = ref<boolean>(false)
   const birthdateInput = ref<any>(undefined)
   const birthdate = computed(() =>
     birthdateInput.value
@@ -61,6 +62,7 @@ export const useCreateCatStore = defineStore('createCat', () => {
       formData.append('sex', sex.value)
       formData.append('breed', breed.value)
       formData.append('color', color.value)
+      formData.append('adoption', adoption.value.toString())
 
       if (birthdate.value) {
         formData.append('birthdate', birthdate.value)
@@ -93,6 +95,7 @@ export const useCreateCatStore = defineStore('createCat', () => {
     sex,
     breed,
     color,
+    adoption,
     birthdate,
     birthdateInput,
     password,

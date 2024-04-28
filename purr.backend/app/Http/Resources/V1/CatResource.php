@@ -27,6 +27,7 @@ class CatResource extends JsonResource
             'biography' => $this->biography,
             'birthdate' => $this->birthdate,
             'deathdate' => $this->deathdate,
+            'adoption' => $this->adoption,
             'followers' => $this->followers,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,

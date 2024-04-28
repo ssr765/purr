@@ -2,14 +2,20 @@
 import type { Cat } from '@/models/Cat'
 import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
 import { useFormattedDate } from '@/composables/formattedDate'
+import { Badge } from '@/components/ui/badge'
+import { computed } from 'vue'
 
 const formattedDate = useFormattedDate()
 
-defineProps({
+const props = defineProps({
   cat: {
     type: Object as () => Cat,
     required: true,
   },
+})
+
+const hasBadges = computed(() => {
+  return props.cat.adoption
 })
 </script>
 
@@ -20,14 +26,17 @@ defineProps({
     </div>
     <div class="bg-cover p-4 -mt-28 lg:-mt-[88px]">
       <div class="w-full max-w-screen-lg mx-auto grid lg:grid-cols-[auto,1fr] items-center gap-2 lg:gap-8">
-        <div class="w-48 mx-auto">
+        <div class="w-44 mx-auto">
           <img v-if="cat.avatar" class="w-full rounded-full" :src="cat.avatar" alt="" />
           <CatPlaceholderAvatar v-else class="w-full" />
         </div>
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-1.5">
           <div>
-            <p class="text-center lg:text-left text-5xl font-medium tracking-tight font-['Rubik'] leading-10">{{ cat.name }}</p>
+            <h5 class="text-center lg:text-left text-5xl leading-10">{{ cat.name }}</h5>
             <p class="text-center lg:text-left text-xl">@{{ cat.catname }}</p>
+          </div>
+          <div v-if="hasBadges">
+            <Badge v-if="cat.adoption" type="success">Adóptame!</Badge>
           </div>
           <p v-if="cat.biography" class="text-center lg:text-left break-words-plus">{{ cat.biography }}</p>
           <p v-else class="text-center lg:text-left text-ctp-text/75 italic">Sin biografía</p>
@@ -35,17 +44,17 @@ defineProps({
       </div>
     </div>
     <div class="flex flex-col lg:flex-row items-center lg:flex-wrap justify-center lg:space-x-8 p-4 border-y">
-      <div class="flex items-center gap-2">
+      <div v-if="cat.breed" class="flex items-center gap-2">
         <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />
-        <p>{{ cat.breed ?? 'Raza desconocida' }}</p>
+        <p>Raza: {{ cat.breed }}</p>
       </div>
-      <div class="flex items-center gap-2">
+      <div v-if="cat.color" class="flex items-center gap-2">
         <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />
-        <p>{{ cat.color ?? 'Color desconocido' }}</p>
+        <p>Color: {{ cat.color }}</p>
       </div>
-      <div class="flex items-center gap-2">
+      <div v-if="cat.birthdate" class="flex items-center gap-2">
         <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />
-        <p>{{ cat.birthdate ? formattedDate.formatDate(cat.birthdate) : 'Nacimiento desconocido' }}</p>
+        <p>Nacimiento: {{ formattedDate.formatDate(cat.birthdate) }}</p>
       </div>
       <div class="flex items-center gap-2">
         <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />
