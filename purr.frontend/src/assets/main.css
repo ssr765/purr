@@ -108,3 +108,65 @@ p {
     @apply bg-ctp-crust text-ctp-text;
   }
 }
+
+html.dark * {
+  scrollbar-color: #b4befe #11111b;
+}
+
+html.light * {
+  scrollbar-color: #7287fd #dce0e8;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+html.dark *::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #11111b;
+}
+
+html.light *::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #dce0e8;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #b8c0c2;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #b8c0c2;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #b8c0c2;
+}
+
+html.dark *::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: #b4befe;
+}
+
+html.light *::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: #7287fd;
+}
+
+html.dark *::-webkit-scrollbar-thumb:hover {
+  background-color: #b4befe;
+}
+
+html.light *::-webkit-scrollbar-thumb:hover {
+  background-color: #7287fd;
+}
+
+html.dark *::-webkit-scrollbar-thumb:active {
+  background-color: #9ea6de;
+}
+
+html.light *::-webkit-scrollbar-thumb:active {
+  background-color: #6477de;
+}
