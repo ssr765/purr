@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import pfpLatte from '@/assets/img/pfp-latte.webp'
-import pfpMocha from '@/assets/img/pfp-mocha.webp'
+import pfpLatte from '@/assets/img/pfp/latte.webp'
+import pfpMocha from '@/assets/img/pfp/mocha.webp'
 </script>
 <template>
   <div>
