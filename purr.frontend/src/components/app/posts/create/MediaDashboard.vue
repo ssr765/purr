@@ -4,6 +4,8 @@ import { useAuthStore } from '@/stores/authStore'
 import { onUnmounted } from 'vue'
 import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
 import PurrButton from '@/components/utils/PurrButton.vue'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
+import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
 
 const createPostStore = useCreatePostStore()
 const authStore = useAuthStore()
@@ -26,10 +28,25 @@ onUnmounted(() => {
       <form @submit.prevent="onSubmit" class="flex flex-col max-w-screen-sm mx-auto gap-4 h-full xl:justify-center">
         <div>
           <label for="cat" class="block mb-2 text-sm font-medium text-ctp-text">Qué gato realizará la publicación?</label>
-          <select v-model="createPostStore.post!.cat_id" id="cat" class="bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender block w-full p-2.5">
-            <option selected>Elige un gato</option>
-            <option v-for="cat in authStore.user!.cats" :key="cat.id" :value="cat.id">{{ cat.name }} (@{{ cat.catname }})</option>
-          </select>
+          <Select v-model="createPostStore.post!.cat_id">
+            <SelectTrigger class="bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-4 py-8">
+              <SelectValue placeholder="Selecciona un gato" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem v-for="cat in authStore.user!.cats" :key="cat.id" :value="String(cat.id)" class="p-1.5">
+                  <div class="flex items-center gap-2">
+                    <img v-if="cat.avatar" :src="cat.avatar" alt="" class="size-8 rounded-full" />
+                    <CatPlaceholderAvatar v-else class="size-8" />
+                    <div>
+                      <p class="text-lg leading-4">{{ cat.name }}</p>
+                      <p class="text-ctp-text">@{{ cat.catname }}</p>
+                    </div>
+                  </div>
+                </SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
         <div>
           <label for="caption" class="block mb-2 text-sm font-medium text-ctp-text">Descripcion</label>
