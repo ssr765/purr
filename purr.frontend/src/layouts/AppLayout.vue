@@ -6,6 +6,7 @@ import { useRoute } from 'vue-router'
 import RandomCat from '@/components/app/layout/RandomCat.vue'
 import { useAuthStore } from '@/stores/authStore'
 import { storeToRefs } from 'pinia'
+import PurrLogo from '@/components/utils/PurrLogo.vue'
 
 const route = useRoute()
 const { user } = storeToRefs(useAuthStore())
@@ -29,8 +30,7 @@ const applyPadding = computed(() => {
             <span class="sr-only">Toggle sidebar</span>
           </button>
           <RouterLink :to="{ name: 'app-home' }" class="flex items-center justify-between mr-4">
-            <img src="/public/img/logo/light.webp" class="hidden dark:block mr-3 h-8" alt="purr. Logo" />
-            <img src="/public/img/logo/dark.webp" class="block dark:hidden mr-3 h-8" alt="purr. Logo" />
+            <PurrLogo class="size-8 mr-3" />
             <span class="text-black font-hero self-center text-2xl font-semibold whitespace-nowrap dark:text-white">purr.</span>
           </RouterLink>
           <form class="hidden md:block md:pl-2">

@@ -3,6 +3,7 @@ import { useAuthStore } from '@/stores/authStore'
 import { ref } from 'vue'
 import PurrButton from '@/components/utils/PurrButton.vue'
 import GoogleButton from '../utils/auth/GoogleButton.vue'
+import PurrLogo from '../utils/PurrLogo.vue'
 
 const authStore = useAuthStore()
 
@@ -26,8 +27,7 @@ const password_confirmation = ref('')
 
 <template>
   <aside class="h-dvh flex flex-col items-center justify-center w-full gap-16 p-16">
-    <img class="dark:hidden w-36" src="/img/logo/dark.webp" alt="" />
-    <img class="hidden dark:block w-36" src="/img/logo/light.webp" alt="" />
+    <PurrLogo class="size-36" />
 
     <form @submit.prevent="register()" class="max-w-sm w-full mx-auto space-y-8">
       <div class="space-y-4">

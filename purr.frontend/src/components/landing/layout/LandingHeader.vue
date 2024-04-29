@@ -7,6 +7,7 @@ import SheetHeader from '@/components/ui/sheet/SheetHeader.vue'
 import SheetTitle from '@/components/ui/sheet/SheetTitle.vue'
 import SheetTrigger from '@/components/ui/sheet/SheetTrigger.vue'
 import PurrButton from '@/components/utils/PurrButton.vue'
+import PurrLogo from '@/components/utils/PurrLogo.vue'
 import { onMounted } from 'vue'
 
 const toggleHeaderBackground = () => {
@@ -36,8 +37,7 @@ onMounted(() => {
     <nav class="*:text-ctp-text shadow-lg landing-header transition-all border-ctp-lavender px-4 lg:px-8 py-2.5">
       <div class="flex flex-wrap justify-between items-center mx-auto">
         <RouterLink to="/" class="flex items-center lg:order-2 lg:fixed lg:left-1/2 lg:-translate-x-1/2">
-          <img src="/public/img/logo/light.webp" class="hidden dark:block mr-3 h-9 lg:origin-top rounded-full transition-all" alt="purr. Logo" />
-          <img src="/public/img/logo/dark.webp" class="dark:hidden mr-3 h-9 lg:origin-top rounded-full transition-all" alt="purr. Logo" />
+          <PurrLogo class="size-9 lg:origin-top rounded-full transition-all mr-3" />
           <span class="purr-text self-center text-2xl font-semibold whitespace-nowrap text-black dark:text-white">purr.</span>
         </RouterLink>
         <div class="flex items-center lg:order-3">
@@ -60,8 +60,7 @@ onMounted(() => {
             <SheetContent side="left" class="lg:hidden w-[350px] sm:w-[540px] bg-ctp-crust py-10">
               <SheetHeader>
                 <SheetTitle>
-                  <img src="/public/img/logo/light.webp" class="hidden dark:block mx-auto h-20 lg:origin-top rounded-full transition-all" alt="purr. Logo" />
-                  <img src="/public/img/logo/dark.webp" class="dark:hidden mx-auto h-20 lg:origin-top rounded-full transition-all" alt="purr. Logo" />
+                  <PurrLogo class="size-20 mx-auto" />
                 </SheetTitle>
               </SheetHeader>
               <div class="bg-ctp-crust lg:bg-transparent justify-between items-center w-full lg:flex lg:w-auto lg:order-1 top-[60px] left-0 lg:static mt-4" id="mobile-menu-2">
