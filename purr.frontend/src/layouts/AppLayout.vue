@@ -112,7 +112,8 @@ const applyPadding = computed(() => {
         </div>
       </div>
     </aside>
-    <main :class="applyPadding ? 'md:ml-64 min-h-dvh pt-[61px]' : 'p-4 md:ml-64 min-h-dvh pt-20'" class="max-h-app overflow-auto" style="scrollbar-gutter: stable">
+    <main :class="applyPadding ? 'md:ml-64 min-h-dvh pt-[61px]' : 'p-4 md:ml-64 min-h-dvh pt-20'" class="max-h-app overflow-auto">
+      <!--  style="scrollbar-gutter: stable" -->
       <RouterView />
     </main>
   </div>
