@@ -5,6 +5,7 @@ import axios from '@/lib/axios'
 import { useCommentService } from '@/services/commentService'
 import { usePostService } from '@/services/postService'
 import { toast } from 'vue-sonner'
+import type { AxiosError } from 'axios'
 
 export const usePostStore = defineStore('post', () => {
   const postService = usePostService()
@@ -113,9 +114,18 @@ export const usePostStore = defineStore('post', () => {
         : await postService.unlike(id)
       updateLikeData(postToLike, likeData)
     } catch (error) {
-      toast.error('No se ha podido dar me gusta a la publicación')
+      const axiosError = error as AxiosError
+      toast.error(
+        !oldLikeData.isLiked
+          ? 'No se ha podido dar me gusta a la publicación'
+          : 'No se ha podido quitar el me gusta de la publicación',
+      )
       // Revertir si hay error
-      updateLikeData(postToLike, oldLikeData)
+      const likeData = axiosError.response!.data as {
+        count: number
+        isLiked: boolean
+      }
+      updateLikeData(postToLike, likeData)
     } finally {
       liking.value = false
     }

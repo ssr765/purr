@@ -31,7 +31,10 @@ class PostLikeController extends Controller
 
         // Check if the user has already liked the post.
         if ($like) {
-            return response()->json(['message' => 'Post already liked'], 409);
+            return response()->json([
+                "isLiked" => $post->likedByUser($user),
+                "count" => $post->likes_count,
+            ], 409);
         }
 
         // Create a new like.
@@ -74,7 +77,10 @@ class PostLikeController extends Controller
             ->first();
 
         if (!$like) {
-            return response()->json(['message' => 'Post wasn\'t liked'], 409);
+            return response()->json([
+                "isLiked" => $post->likedByUser($user),
+                "count" => $post->likes_count,
+            ], 409);
         }
 
         $like->delete();
