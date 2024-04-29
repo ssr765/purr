@@ -73,8 +73,11 @@ export const useCreateCatStore = defineStore('createCat', () => {
 
       const response = await axios.post(`/api/v1/cats`, formData)
 
+      // Update the user's cats
       if (!authStore.user!.cats) {
         authStore.user!.cats = [response.data]
+      } else {
+        authStore.user!.cats.push(response.data)
       }
 
       router.push({
