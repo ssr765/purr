@@ -46,7 +46,7 @@ class GoogleController extends Controller
             //   Replace special characters with underscores.
             //   Append a random 4-digit number to the end of the username.
             //   Limit the username to 30 characters, including the random number.
-            $username = substr(preg_replace('/[+-\?%!]/', '_', explode('@', $user->email)[0]), 0, 25) . '_' . rand(1000, 9999);
+            $username = substr(preg_replace('/[+\-\?%!]/', '_', explode('@', $user->email)[0]), 0, 25) . '_' . rand(1000, 9999);
 
             // Check if the username already exists and generate a new one if it does.
             $usernameExists = User::where('username', $username)->exists();
