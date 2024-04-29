@@ -11,4 +11,5 @@ export interface User {
   avatar?: string
   biography?: string
   cats?: Cat[]
+  settings?: Object
 }

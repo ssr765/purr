@@ -88,6 +88,30 @@
         "title": "Comparte un momento felino",
         "content": "Arrastra o haz clic para compartir contenido de tu amigo gatuno en purr."
       }
+    },
+    "settings": {
+      "title": "Configuración",
+      "settings": {
+        "language": {
+          "name": "Idioma",
+          "description": "Selecciona tu idioma preferido."
+        },
+        "deleteAccount": {
+          "name": "Eliminar cuenta",
+          "dialog": {
+            "title": "¡ATENCIÓN! ¡Estás intentando borrar tu cuenta!",
+            "content": [
+              "Esta acción resultará en la pérdida permanente e irreversible del acceso a tu cuenta.",
+              "Los gatos registrados con más de un propietario no se verán afectados. Sin embargo, los gatos cuyo único propietario seas tú",
+              "serán eliminados permanentemente de purr.",
+              "Si estás seguro(a) de querer proceder y deseas abandonar la comunidad de purr., introduce tu contraseña a continuación. Al presionar el botón, tu cuenta será eliminada definitivamente."
+            ],
+            "passwordInput": "Introduce tu contraseña",
+            "cancel": "Cancelar",
+            "delete": "Eliminar cuenta"
+          }
+        }
+      }
     }
   },
   "auth": {

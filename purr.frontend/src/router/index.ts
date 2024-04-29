@@ -55,6 +55,12 @@ const router = createRouter({
           name: 'app-cats-profile',
           component: () => import('@/views/app/cats/ProfileView.vue'),
         },
+        {
+          path: 'settings',
+          name: 'app-settings',
+          component: () => import('@/views/app/settings/IndexView.vue'),
+          meta: { requiresAuth: true },
+        },
       ],
     },
     {
