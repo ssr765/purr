@@ -27,7 +27,18 @@ Route::prefix('v1')->group(function () {
         return response()->json(new V1UserResource($request->user()->load('cats')));
     });
 
+    Route::middleware(['auth:sanctum'])->prefix('user')->name('user.')->group(function () {
+        Route::get('/', function (Request $request) {
+            return response()->json(new V1UserResource($request->user()->load('cats')));
+        })->name('show');
+        Route::post('/username', [V1UserController::class, 'checkUsername'])->name('checkUsername');
+        Route::post('/email', [V1UserController::class, 'checkEmail'])->name('checkEmail');
+        Route::get('/cats', [V1UserController::class, 'showCats'])->name('cats');
+    });
+
     Route::apiResource('users', V1UserController::class)->only(['show']);
+    Route::middleware(['auth:sanctum'])->apiResource('users', V1UserController::class)->only(['destroy']);
+
     Route::prefix('cats')->name('cats.')->group(function () {
         Route::get('/random', [V1CatController::class, 'random'])->name('random');
         Route::get('/{cat}/avatar', [V1CatController::class, 'avatar'])->name('avatar');
