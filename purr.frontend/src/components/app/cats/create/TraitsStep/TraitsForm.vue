@@ -3,7 +3,7 @@ import { Calendar } from '@/components/ui/calendar'
 import { toDate } from 'radix-vue/date'
 import { CalendarDate, DateFormatter, getLocalTimeZone, today } from '@internationalized/date'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { useCreateCatStore } from '@/stores/createCat'
+import { useCreateCatStore } from '@/stores/createCatStore'
 import { Checkbox } from '@/components/ui/checkbox'
 
 const createCatStore = useCreateCatStore()

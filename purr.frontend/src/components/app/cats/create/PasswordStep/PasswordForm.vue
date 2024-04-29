@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCreateCatStore } from '@/stores/createCat'
+import { useCreateCatStore } from '@/stores/createCatStore'
 
 const createCatStore = useCreateCatStore()
 </script>

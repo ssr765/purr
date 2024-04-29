@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { useCatStore } from '@/stores/cat'
+import { useCatStore } from '@/stores/catStore'
 
 const catStore = useCatStore()
 

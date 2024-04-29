@@ -5,7 +5,7 @@ import TraitsStep from '@/components/app/cats/create/TraitsStep.vue'
 import PasswordStep from '@/components/app/cats/create/PasswordStep.vue'
 import FinalStep from '@/components/app/cats/create/FinalStep.vue'
 import PurrButton from '@/components/utils/PurrButton.vue'
-import { useCreateCatStore } from '@/stores/createCat'
+import { useCreateCatStore } from '@/stores/createCatStore'
 import { toast } from 'vue-sonner'
 
 const createCatStore = useCreateCatStore()

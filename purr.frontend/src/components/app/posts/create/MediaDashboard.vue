@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCreatePostStore } from '@/stores/createPost'
+import { useCreatePostStore } from '@/stores/createPostStore'
 import { useAuthStore } from '@/stores/authStore'
 import { onUnmounted } from 'vue'
 import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useCreateCatStore } from '@/stores/createCat'
+import { useCreateCatStore } from '@/stores/createCatStore'
 import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
 
 const createCatStore = useCreateCatStore()

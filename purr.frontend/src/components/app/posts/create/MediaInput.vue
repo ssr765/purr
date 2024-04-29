@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PostInput } from '@/models/Post'
-import { useCreatePostStore } from '@/stores/createPost'
+import { useCreatePostStore } from '@/stores/createPostStore'
 
 const createPostStore = useCreatePostStore()
 
