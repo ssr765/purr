@@ -44,7 +44,7 @@ const checkUsername = () => {
     <div>
       <img v-if="createCatStore.avatarUrl" :src="createCatStore.avatarUrl" class="object-cover rounded-full w-[164px] h-[164px] mx-auto mt-4" />
       <label v-else for="cat-avatar-input" class="rounded-full w-[164px] aspect-square mx-auto border-8 border-ctp-lavender border-dashed flex items-center justify-center group/avatar cursor-pointer hover:bg-ctp-lavender/25">
-        <div class="text-center font-bold text-ctp-text leading-5 w-3/4 group-hover/avatar:scale-105 transition-all">Sube el avatar de tu gato</div>
+        <div class="text-center font-heading font-semibold text-ctp-text leading-5 w-3/4 group-hover/avatar:scale-105 transition-all">Sube el avatar de tu gato</div>
         <input @change="onChange" id="cat-avatar-input" type="file" class="hidden" />
       </label>
     </div>
