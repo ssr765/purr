@@ -27,6 +27,7 @@
     "radix-vue": "^1.7.0",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
+    "unhead": "^1.9.7",
     "vee-validate": "^4.12.6",
     "vue": "^3.4.21",
     "vue-i18n": "^9.12.1",
