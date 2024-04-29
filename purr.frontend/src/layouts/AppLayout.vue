@@ -4,8 +4,11 @@ import { RouterView } from 'vue-router'
 import ProfileSection from '@/components/app/layout/ProfileSection.vue'
 import { useRoute } from 'vue-router'
 import RandomCat from '@/components/app/layout/RandomCat.vue'
+import { useAuthStore } from '@/stores/authStore'
+import { storeToRefs } from 'pinia'
 
 const route = useRoute()
+const { user } = storeToRefs(useAuthStore())
 
 const collapsedSidebar = ref(false)
 
@@ -87,21 +90,26 @@ const applyPadding = computed(() => {
             </ul>
           </li>
           <li>
-            <RouterLink :to="{ name: 'app-posts-create' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
-              <span class="icon-[ion--plus-round] text-xl w-6" role="img" aria-hidden="true" />
-              <span class="ml-3">{{ $t('app.layout.sidebar.create') }}</span>
-            </RouterLink>
-          </li>
-          <li>
-            <RouterLink :to="{ name: 'app-cats-create' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
-              <span class="icon-[ion--plus-round] text-xl w-6" role="img" aria-hidden="true" />
-              <span class="ml-3">Crear gato</span>
-            </RouterLink>
-          </li>
-          <li>
             <RandomCat />
           </li>
         </ul>
+        <div v-if="user">
+          <hr class="h-px bg-ctp-lavender my-2" />
+          <ul class="space-y-2">
+            <li>
+              <RouterLink :to="{ name: 'app-posts-create' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
+                <span class="icon-[ion--plus-round] text-xl w-6" role="img" aria-hidden="true" />
+                <span class="ml-3">{{ $t('app.layout.sidebar.create') }}</span>
+              </RouterLink>
+            </li>
+            <li>
+              <RouterLink :to="{ name: 'app-cats-create' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
+                <span class="icon-[ion--plus-round] text-xl w-6" role="img" aria-hidden="true" />
+                <span class="ml-3">Crear gato</span>
+              </RouterLink>
+            </li>
+          </ul>
+        </div>
       </div>
     </aside>
     <main :class="applyPadding ? 'md:ml-64 min-h-dvh pt-[61px]' : 'p-4 md:ml-64 min-h-dvh pt-20'">

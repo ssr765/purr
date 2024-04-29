@@ -1,4 +1,6 @@
 import { authCheckGuard } from '@/guards/authCheck'
+import { redirectIfAuthenticatedGuard } from '@/guards/redirectIfAuthenticated'
+import { redirectIfUnauthenticatedGuard } from '@/guards/redirectIfUnauthenticated'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -35,6 +37,7 @@ const router = createRouter({
           path: 'create',
           name: 'app-posts-create',
           component: () => import('@/views/app/posts/CreateView.vue'),
+          meta: { requiresAuth: true },
         },
         {
           path: 'posts/:id(\\d+)',
@@ -45,6 +48,7 @@ const router = createRouter({
           path: 'cats/create',
           name: 'app-cats-create',
           component: () => import('@/views/app/cats/CreateView.vue'),
+          meta: { requiresAuth: true },
         },
         {
           path: 'cats/:catname([\\w\\d\\.-]+)',
@@ -57,17 +61,21 @@ const router = createRouter({
       path: '/login',
       name: 'auth-login',
       component: () => import('@/views/auth/AuthenticationView.vue'),
+      meta: { noAuth: true },
       props: { mode: 'login' },
     },
     {
       path: '/register',
       name: 'auth-register',
       component: () => import('@/views/auth/AuthenticationView.vue'),
+      meta: { noAuth: true },
       props: { mode: 'register' },
     },
   ],
 })
 
 router.beforeEach(authCheckGuard)
+router.beforeEach(redirectIfAuthenticatedGuard)
+router.beforeEach(redirectIfUnauthenticatedGuard)
 
 export default router
