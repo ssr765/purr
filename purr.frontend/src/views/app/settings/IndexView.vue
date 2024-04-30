@@ -2,7 +2,30 @@
 import DeleteAccount from '@/components/app/settings/DeleteAccount.vue'
 import { Switch } from '@/components/ui/switch'
 import { useSettingsStore } from '@/stores/settingsStore'
+
+import Logo from '@/assets/img/logo/black.webp'
+import { useHead, useSeoMeta } from 'unhead'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 const settingsStore = useSettingsStore()
+
+useHead({
+  meta: [
+    {
+      name: 'robots',
+      content: 'noindex, nofollow',
+    },
+  ],
+})
+
+useSeoMeta({
+  title: `${t('app.settings.metadata.title')} | purr.`,
+  ogTitle: 'Manage Your Account Settings on purr.',
+  description: 'Adjust your settings to tailor your purr. account to your preferences. Manage privacy, notifications, and account details securely.',
+  ogDescription: 'Personalize your interaction on purr. with customizable settings. Control your privacy, manage notifications, and update your profile.',
+  ogImage: Logo,
+})
 </script>
 
 <template>

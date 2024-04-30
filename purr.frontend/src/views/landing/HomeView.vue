@@ -11,7 +11,7 @@ import { useSeoMeta } from 'unhead'
 
 useSeoMeta({
   title: 'purr. - The Social Network for Your Cats',
-  ogTitle: 'Join purr. - Your Cat’s Own Social Network',
+  ogTitle: "Join purr. - Your Cat's Own Social Network",
   description: 'Discover purr., the exclusive social network where cats take the spotlight. Create profiles, share cat moments, and connect with cat lovers worldwide.',
   ogDescription: 'Join purr. and explore a cat-centric social platform. Create cat profiles, share unique moments, and connect globally.',
   ogImage: Logo,

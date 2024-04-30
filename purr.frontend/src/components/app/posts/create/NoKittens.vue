@@ -42,11 +42,11 @@ const triggerEasterEgg = () => {
     </div>
   </div>
   <section class="flex flex-col items-center justify-center h-app">
-    <h2 @click="triggerEasterEgg" class="easter-egg-no-kittens select-none text-center text-5xl mb-4">{{ $t('app.create.noKittens.title') }}</h2>
-    <div class="text-center mb-2">{{ $t('app.create.noKittens.content.0') }}</div>
-    <div class="text-center mb-2">{{ $t('app.create.noKittens.content.1') }}</div>
+    <h2 @click="triggerEasterEgg" class="easter-egg-no-kittens select-none text-center text-5xl mb-4">{{ $t('app.posts.create.noKittens.title') }}</h2>
+    <div class="text-center mb-2">{{ $t('app.posts.create.noKittens.content.0') }}</div>
+    <div class="text-center mb-2">{{ $t('app.posts.create.noKittens.content.1') }}</div>
     <RouterLink :to="{ name: 'app-cats-create' }">
-      <PurrButton class="mt-4">{{ $t('app.create.noKittens.button') }}</PurrButton>
+      <PurrButton class="mt-4">{{ $t('app.posts.create.noKittens.button') }}</PurrButton>
     </RouterLink>
   </section>
 </template>

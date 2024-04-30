@@ -12,18 +12,50 @@ import LikeButton from '@/components/utils/posts/LikeButton.vue'
 import { useNumberFormatter } from '@/composables/numberFormatter'
 import { useLikeAnimation } from '@/composables/likeAnimation'
 
+import Logo from '@/assets/img/logo/black.webp'
+import { useHead, useSeoMeta } from 'unhead'
+import { useI18n } from 'vue-i18n'
+
 const route = useRoute()
 const postStore = usePostStore()
 const authStore = useAuthStore()
 const { formatNumber } = useNumberFormatter()
 const { likeAnimation } = useLikeAnimation()
+const { t } = useI18n()
 
 const postId = Number(route.params.id)
 const { postDetail } = storeToRefs(postStore)
 const { user } = storeToRefs(authStore)
 
+useHead({
+  meta: [
+    {
+      name: 'robots',
+      content: 'noarchive, noimageindex',
+    },
+  ],
+})
+
 onMounted(async () => {
   await postStore.fetchPostDetail(postId)
+
+  if (postDetail.value) {
+    const title = `${t('app.posts.detail.metadata.postBy')} ${postDetail.value.cat!.name} (@${postDetail.value.cat!.catname})`
+    const description = `${postDetail.value.caption} - ${postDetail.value.likesData.count} likes, ${postDetail.value.commentsCount} comments`
+    useSeoMeta({
+      title: `${title} | purr.`,
+      ogTitle: title,
+      description: description,
+      ogDescription: description,
+      ogImage: postDetail.value.cat!.avatar ?? Logo,
+    })
+  } else {
+    useSeoMeta({
+      title: `${t('app.posts.detail.metadata.notFound')} | purr.`,
+      ogTitle: 'purr.',
+      ogImage: Logo,
+    })
+  }
 })
 
 onUnmounted(() => {

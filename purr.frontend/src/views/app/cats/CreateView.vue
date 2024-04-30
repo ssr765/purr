@@ -8,6 +8,29 @@ import PurrButton from '@/components/utils/PurrButton.vue'
 import { useCreateCatStore } from '@/stores/createCatStore'
 import { toast } from 'vue-sonner'
 
+import Logo from '@/assets/img/logo/black.webp'
+import { useHead, useSeoMeta } from 'unhead'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+useHead({
+  meta: [
+    {
+      name: 'robots',
+      content: 'noindex',
+    },
+  ],
+})
+
+useSeoMeta({
+  title: `${t('app.cats.create.metadata.title')} | purr.`,
+  ogTitle: "Create Your Cat's Profile Today!",
+  description: 'Create a profile for your cat and join a community that celebrates all things feline. Share stories, photos, and connect with cat lovers.',
+  ogDescription: "Start your cat's journey on purr. by creating a unique profile. Engage with a global community eager to celebrate your cat's life.",
+  ogImage: Logo,
+})
+
 const createCatStore = useCreateCatStore()
 
 const step = ref(0)
