@@ -21,8 +21,7 @@ class PostResource extends JsonResource
             'caption' => $this->caption,
             'type' => $this->type,
             'likesData' => [
-                // Only shown if user is logged in.
-                'isLiked' => $this->when($request->user(), fn () => $this->likedByUser($request->user())),
+                'isLiked' => $request->user() ? $this->likedByUser($request->user()) : false,
                 'count' => $this->likes_count,
             ],
             'commentsCount' => $this->comments_count,
