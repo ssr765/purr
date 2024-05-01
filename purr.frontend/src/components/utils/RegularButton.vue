@@ -1,6 +1,5 @@
 <template>
-  <button type="button" class="flex items-center bg-ctp-mantle text-red-500 hover:bg-ctp-lavender/20 font-medium rounded-lg py-2.5 px-7 transition-all">
-    <span class="mr-2 h-4 w-4 icon-[solar--trash-bin-trash-linear]" role="img" aria-hidden="true" />
-    <span>Eliminar cuenta</span>
+  <button class="border border-ctp-lavender text-white mb-2 text-sm bg-ctp-lavender/20 hover:bg-ctp-lavender hover:text-black py-2.5 px-7 rounded-lg transition-all">
+    <slot />
   </button>
 </template>
