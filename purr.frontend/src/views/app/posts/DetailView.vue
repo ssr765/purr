@@ -63,6 +63,11 @@ onUnmounted(() => {
 })
 
 const addLike = () => {
+  if (!user.value) {
+    toast.warning('Debes iniciar sesión para poder dar like')
+    return
+  }
+
   if (postStore.liking) return
   postStore.toggleLike(postId)
   likeAnimation(postId)

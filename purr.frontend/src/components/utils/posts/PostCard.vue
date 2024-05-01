@@ -7,6 +7,9 @@ import { usePostStore } from '@/stores/postStore'
 import { useNumberFormatter } from '@/composables/numberFormatter'
 import { useLikeAnimation } from '@/composables/likeAnimation'
 import PostContextMenu from './PostContextMenu.vue'
+import { useAuthStore } from '@/stores/authStore'
+import { storeToRefs } from 'pinia'
+import { toast } from 'vue-sonner'
 
 defineProps({
   post: {
@@ -16,10 +19,16 @@ defineProps({
 })
 
 const postStore = usePostStore()
+const { user } = storeToRefs(useAuthStore())
 const { formatNumber } = useNumberFormatter()
 const { likeAnimation } = useLikeAnimation()
 
 const addLike = (id: number) => {
+  if (!user.value) {
+    toast.warning('Debes iniciar sesión para poder dar like')
+    return
+  }
+
   if (postStore.liking) return
   postStore.toggleLike(id)
 
