@@ -38,18 +38,16 @@ Route::prefix('v1')->group(function () {
         });
 
         // CRUD resources
-        Route::apiResource('users', V1UserController::class)->only(['destroy']);
-        Route::apiResource('cats', V1CatController::class)->only(['store', 'destroy']);
-        Route::apiResource('posts', V1PostController::class)->only(['store']);
-        Route::apiResource('comments', V1CommentController::class)->only(['store', 'destroy']);
+        Route::apiResource('users', V1UserController::class)->only(['destroy'])->where(['user' => '\d+']);
+        Route::apiResource('cats', V1CatController::class)->only(['store', 'destroy'])->where(['cat' => '\d+']);
+        Route::apiResource('posts', V1PostController::class)->only(['store'])->where(['post' => '\d+']);
+        Route::apiResource('comments', V1CommentController::class)->only(['store', 'destroy'])->where(['comment' => '\d+']);
 
         // Cat routes
         Route::post('cats/catname', [V1CatController::class, 'checkCatname'])->name('cats.checkCatname');
-        Route::get('cats/catname/{catname}', [V1CatController::class, 'showByCatname'])->name('cats.showByCatname');
 
         // Post routes
         Route::prefix('posts')->name('posts.')->group(function () {
-            Route::get('/{post}/media', [V1PostController::class, 'showContent'])->name('content');
             Route::get('/{post}/media/download', [V1PostController::class, 'download'])->name('download');
             Route::post('/{post}/likes', [V1PostLikeController::class, 'store'])->name('likes.store');
             Route::delete('/{post}/likes', [V1PostLikeController::class, 'destroy'])->name('likes.destroy');
@@ -65,14 +63,19 @@ Route::prefix('v1')->group(function () {
 
     // --- No authentication required
     // Show resources
-    Route::apiResource('users', V1UserController::class)->only(['show']);
-    Route::apiResource('cats', V1CatController::class)->only(['show']);
-    Route::apiResource('posts', V1PostController::class)->only(['index', 'show']);
-    Route::apiResource('comments', V1CommentController::class)->only(['show']);
+    Route::apiResource('users', V1UserController::class)->only(['show'])->where(['user' => '\d+']);
+    Route::apiResource('cats', V1CatController::class)->only(['show'])->where(['cat' => '\d+']);
+    Route::apiResource('posts', V1PostController::class)->only(['index', 'show'])->where(['post' => '\d+']);
+    Route::apiResource('comments', V1CommentController::class)->only(['show'])->where(['comment' => '\d+']);
 
     // Cat routes
     Route::prefix('cats')->name('cats.')->group(function () {
+        Route::get('/catname/{catname}', [V1CatController::class, 'showByCatname'])->name('cats.showByCatname')->where(['catname' => '[\w\d\.]{3,30}']);
         Route::get('/random', [V1CatController::class, 'random'])->name('random');
         Route::get('/{cat}/avatar', [V1CatController::class, 'avatar'])->name('avatar');
+    });
+
+    Route::prefix('posts')->name('posts.')->group(function () {
+        Route::get('/{post}/media', [V1PostController::class, 'showContent'])->name('content');
     });
 });
