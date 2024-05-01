@@ -25,6 +25,7 @@ class User extends Authenticatable
         'username',
         'avatar',
         'biography',
+        'entity_id'
     ];
 
     /**
@@ -55,5 +56,10 @@ class User extends Authenticatable
     public function cats()
     {
         return $this->belongsToMany(Cat::class);
+    }
+
+    public function entity()
+    {
+        return $this->belongsTo(Entity::class);
     }
 }

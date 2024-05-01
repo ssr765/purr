@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\UserController as V1UserController;
 use App\Http\Controllers\Api\V1\PostLikeController as V1PostLikeController;
 use App\Http\Controllers\Api\V1\CommentController as V1CommentController;
 use App\Http\Controllers\Api\V1\CommentLikeController as V1CommentLikeController;
+use App\Http\Controllers\Api\V1\EntityController as V1EntityController;
 use App\Http\Resources\V1\UserResource as V1UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,7 @@ Route::prefix('v1')->group(function () {
         Route::apiResource('users', V1UserController::class)->only(['destroy'])->where(['user' => '\d+']);
         Route::apiResource('cats', V1CatController::class)->only(['store', 'destroy'])->where(['cat' => '\d+']);
         Route::apiResource('posts', V1PostController::class)->only(['store'])->where(['post' => '\d+']);
+        Route::apiResource('entities', V1EntityController::class)->only(['store'])->where(['entity' => '\d+']);
         Route::apiResource('comments', V1CommentController::class)->only(['store', 'destroy'])->where(['comment' => '\d+']);
 
         // Cat routes
