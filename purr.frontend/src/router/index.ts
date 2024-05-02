@@ -61,6 +61,12 @@ const router = createRouter({
           component: () => import('@/views/app/settings/IndexView.vue'),
           meta: { requiresAuth: true },
         },
+        {
+          path: 'entity/create',
+          name: 'app-entity-create',
+          component: () => import('@/views/app/entity/CreateView.vue'),
+          meta: { requiresAuth: true },
+        },
       ],
     },
     {

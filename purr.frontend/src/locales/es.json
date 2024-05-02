@@ -138,6 +138,13 @@
           "notFound": "Gato no encontrado"
         }
       }
+    },
+    "entity": {
+      "create": {
+        "metadata": {
+          "title": "Registrar una entidad"
+        }
+      }
     }
   },
   "auth": {
