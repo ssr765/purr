@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\DniValidator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreEntityRequest extends FormRequest
@@ -22,14 +23,14 @@ class StoreEntityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'dni' => 'required|string|unique:entities',
-            'slug' => 'required|string|unique:entities',
-            'description' => 'nullable|string',
-            'type' => 'required|string',
-            'webpage' => 'nullable|string',
-            'location' => 'required|string',
-            'phone' => 'required|string',
+            'name' => ['required', 'string'],
+            'dni' => ['required', 'string', 'unique:entities', new DniValidator()],
+            'slug' => ['required', 'string', 'unique:entities'],
+            'description' => ['nullable', 'string'],
+            'type' => ['required', 'string'],
+            'webpage' => ['nullable', 'string'],
+            'location' => ['required', 'string'],
+            'phone' => ['required', 'string'],
         ];
     }
 }
