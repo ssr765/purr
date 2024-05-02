@@ -11,19 +11,20 @@ import { Input } from '@/components/ui/input'
     <DialogContent>
       <DialogHeader>
         <DialogTitle class="text-2xl">{{ $t('app.settings.settings.deleteAccount.dialog.title') }}</DialogTitle>
-        <DialogDescription>
-          <p class="mb-2">{{ $t('app.settings.settings.deleteAccount.dialog.content.0') }}</p>
-          <p class="mb-2">
-            {{ $t('app.settings.settings.deleteAccount.dialog.content.1') }}
-            <strong class="text-red-500">{{ $t('app.settings.settings.deleteAccount.dialog.content.2') }}</strong>
-          </p>
-          <p class="mb-2">{{ $t('app.settings.settings.deleteAccount.dialog.content.3') }}</p>
-          <div class="my-4">
-            <label for="delete_account_password" class="block mb-2 text-sm font-medium text-ctp-text">{{ $t('app.settings.settings.deleteAccount.dialog.passwordInput') }}</label>
-            <Input type="password" id="delete_account_password" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" required />
-          </div>
-        </DialogDescription>
       </DialogHeader>
+
+      <div>
+        <p class="mb-2">{{ $t('app.settings.settings.deleteAccount.dialog.content.0') }}</p>
+        <p class="mb-2">
+          {{ $t('app.settings.settings.deleteAccount.dialog.content.1') }}
+          <strong class="text-red-500">{{ $t('app.settings.settings.deleteAccount.dialog.content.2') }}</strong>
+        </p>
+        <p class="mb-2">{{ $t('app.settings.settings.deleteAccount.dialog.content.3') }}</p>
+        <div class="my-4">
+          <label for="delete_account_password" class="block mb-2 text-sm font-medium text-ctp-text">{{ $t('app.settings.settings.deleteAccount.dialog.passwordInput') }}</label>
+          <Input type="password" id="delete_account_password" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" required />
+        </div>
+      </div>
 
       <DialogFooter>
         <div class="flex justify-center gap-4">
