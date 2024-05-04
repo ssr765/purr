@@ -1,0 +1,11 @@
+# Environment
+.env
+
+# Jupyter Notebook stuff
+.ipynb_checkpoints
+.Trash-0
+
+# YOLO
+runs
+yolov8*.pt
+result.jpg

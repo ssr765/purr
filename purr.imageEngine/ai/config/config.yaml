@@ -1,0 +1,8 @@
+path: ../datasets/cats_big-1
+test: test/images
+train: train/images
+val: valid/images
+
+names:
+  - cat
+  - cattrack_idkeyframe
