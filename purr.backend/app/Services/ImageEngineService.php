@@ -16,7 +16,7 @@ class ImageEngineService
     public function optimizeImage($image)
     {
         // Send the image path to the image engine API.
-        $response = Http::post($this->uri . '/webp', [
+        $response = Http::post($this->uri . '/optimize', [
             'input' => $image
         ]);
 

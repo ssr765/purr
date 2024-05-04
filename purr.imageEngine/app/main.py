@@ -14,8 +14,8 @@ def root_endpoint():
     return jsonify({"API": "purr. Image Engine", "version": "1.0"})
 
 
-@app.route("/webp", methods=["POST"])
-def webp_endpoint():
+@app.route("/optimize", methods=["POST"])
+def optimize_endpoint():
     input_path = request.json.get("input")
 
     # Check if input path is missing.
@@ -59,8 +59,8 @@ def webp_endpoint():
     return jsonify({"status": "Optimized!", "filename": output_path.name})
 
 
-@app.route("/analize", methods=["POST"])
-def analize_endpoint():
+@app.route("/analyze", methods=["POST"])
+def analyze_endpoint():
     input_path = request.json.get("input")
 
     # Check if input path is missing.
