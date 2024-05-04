@@ -3,7 +3,7 @@ from pathlib import Path
 
 from flask import Flask, request, jsonify
 
-from tools import webp
+from tools import webp, cat_detection
 
 
 app = Flask(__name__)
@@ -61,7 +61,22 @@ def webp_endpoint():
 
 @app.route("/analize", methods=["POST"])
 def analize_endpoint():
-    return jsonify({"status": "Not implemented"}), 501
+    input_path = request.json.get("input")
+
+    # Check if input path is missing.
+    if input_path is None:
+        return jsonify({"error": "Input path missing"}), 400
+
+    input_path = Path(input_path)
+
+    # Check if the input path exists.
+    if not input_path.exists():
+        return jsonify({"error": "Input path does not exist"}), 404
+
+    # Detect cats in the image.
+    detections = cat_detection.detect_cats(input_path)
+
+    return jsonify(detections)
 
 
 if __name__ == "__main__":
