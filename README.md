@@ -46,3 +46,42 @@ python -m venv .venv
 . .venv\bin\activate    # .\.venv\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
+
+## Application of artificial intelligence
+
+### Overview
+
+purr. uses a custom model which is pretrained on the YOLOv8 architecture. This model is designed to provide high accuracy for object detection tasks.
+
+### Environment Setup
+
+#### Building the Docker Image
+
+Build the Docker image using the provided Dockerfile located at purr.imageEngine/ai/Dockerfile. This image includes all necessary dependencies, including GPU support for training models.
+
+```sh
+docker build -t pytorch_jupyter ./purr.imageEngine/ai
+```
+
+#### Running the Docker Container
+
+To run the Docker container with GPU support and access to Jupyter, use the following command:
+
+```sh
+docker run --gpus all -p 8888:8888 -v purr.imageEngine/ai:/workspace -it pytorch_jupyter
+```
+
+> You may use an absolute path for mapping the directory on Windows.
+
+### Accessing Jupyter
+
+After running the container, Jupyter server should be accessible via http://localhost:8888.
+
+### Training the Model
+
+To begin training the model, navigate to the Jupyter Notebook provided:
+
+1. Open your browser and go to http://localhost:8888 to access Jupyter.
+2. Navigate to the notebooks directory.
+3. Open the train.ipynb notebook.
+4. Follow the instructions within the notebook to start the training process.
