@@ -28,4 +28,18 @@ class ImageEngineService
         // Return the optimized image filename (the webp one).
         return $response->json()['filename'];
     }
+
+    public function analyzeImage($image)
+    {
+        // Send the image path to the image engine API.
+        $response = Http::attach('file', file_get_contents($image), basename($image))->post($this->uri . '/analyze');
+
+        // Throw an exception if the request failed.
+        if ($response->failed()) {
+            throw new \Exception($response->json());
+        }
+
+        // Return the image analysis.
+        return $response->json();
+    }
 }

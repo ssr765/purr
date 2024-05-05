@@ -53,6 +53,7 @@ Route::prefix('v1')->group(function () {
             Route::get('/{post}/media/download', [V1PostController::class, 'download'])->name('download');
             Route::post('/{post}/likes', [V1PostLikeController::class, 'store'])->name('likes.store');
             Route::delete('/{post}/likes', [V1PostLikeController::class, 'destroy'])->name('likes.destroy');
+            Route::post('/analyze', [V1PostController::class, 'analyze'])->name('analyze');
         });
 
         // Comment replies & likes routes

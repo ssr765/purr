@@ -9,6 +9,8 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\V1\PostResource;
 use App\Models\Cat;
 use App\Services\ImageEngineService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class PostController extends Controller
 {
@@ -36,7 +38,24 @@ class PostController extends Controller
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
-        $file = $request->file('file')->store('', 'posts');
+        // Get the file and hash it.
+        $file = $request->file('file');
+        $hash = hash_file('sha256', $file);
+
+        // Check if the image has been analyzed and got detections.
+        if (!Redis::sismember('detections', $hash)) {
+            // Re-analyze the image.
+            $analysis = $imageEngineService->analyzeImage($file);
+
+            if (!$analysis['detected']) {
+                return response()->json(['message' => 'The image don\'t contains cats.'], 403);
+            }
+        }
+
+        // Remove hash from the detections set.
+        Redis::srem('detections', $hash);
+
+        $file = $file->store('', 'posts');
 
         // Temporally disabled.
         // $file = $imageEngineService->optimizeImage(storage_path('app/posts/' . $file));
@@ -90,5 +109,26 @@ class PostController extends Controller
     {
         $path = storage_path('app/posts/' . $post->filename);
         return response()->download($path);
+    }
+
+    public function analyze(Request $request, ImageEngineService $imageEngineService)
+    {
+        $request->validate([
+            'file' => 'required|file'
+        ]);
+
+        // Get the file and hash it.
+        $file = $request->file('file');
+        $hash = hash_file('sha256', $file);
+
+        // Analyze the image.
+        $analysis = $imageEngineService->analyzeImage($file);
+
+        // Save the hash if the image has detections, so we don't have to analyze it again at upload time.
+        if ($analysis['detected']) {
+            Redis::sadd('detections', $hash);
+        }
+
+        return response()->json($analysis);
     }
 }
