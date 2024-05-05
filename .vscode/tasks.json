@@ -63,10 +63,10 @@
             },
             "problemMatcher": [],
             "windows": {
-                "command": "cd purr.imageEngine && .venv\\Scripts\\activate && python main.py"
+                "command": "cd purr.imageEngine && .venv\\Scripts\\activate && cd app && python main.py"
             },
             "linux": {
-                "command": "cd purr.imageEngine && source .venv/bin/activate && python main.py"
+                "command": "cd purr.imageEngine && source .venv/bin/activate && cd app && python main.py"
             }
         }
     ],
