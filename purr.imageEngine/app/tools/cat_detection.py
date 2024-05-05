@@ -3,8 +3,10 @@ import os
 
 from ultralytics import YOLO
 from ultralytics.engine.results import Results
+from PIL import Image
 
-yolo = YOLO("../../ai/models/purr.model.pt")
+
+yolo = YOLO("../ai/models/purr.model.pt")
 
 
 class CatDetection:
@@ -60,21 +62,21 @@ class CatDetection:
         return {"detected": len(data) > 0, "data": data}
 
 
-def detect_cats(image_path: str) -> dict[str, list[dict[str, float]]]:
+def detect_cats(image: Image) -> dict[str, list[dict[str, float]]]:
     """Detects cats in an image.
 
     Args:
-    - image_path (str): The path to the image.
+    - image (Image): The image to detect cats in.
 
     Returns:
     - dict[str, list[dict[str, float]]]: The data of the detections.
     """
-    result: Results = yolo.predict(image_path, conf=0.6)[0]
+    result: Results = yolo.predict(image, conf=0.25)[0]
     detections = CatDetection.from_result(result)
 
     return detections.detection_data()
 
 
-if __name__ == "__main__":
-    image_path = input("Enter image path: ")
-    print(detect_cats(image_path))
+# if __name__ == "__main__":
+#     image_path = input("Enter image path: ")
+#     print(detect_cats(image_path))

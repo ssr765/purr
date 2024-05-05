@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 from flask import Flask, request, jsonify
+from PIL import Image
 
 from tools import webp, cat_detection
 
@@ -61,20 +62,18 @@ def optimize_endpoint():
 
 @app.route("/analyze", methods=["POST"])
 def analyze_endpoint():
-    input_path = request.json.get("input")
+    if "file" not in request.files:
+        return jsonify({"message": "No file part"}), 400
 
-    # Check if input path is missing.
-    if input_path is None:
-        return jsonify({"error": "Input path missing"}), 400
+    file = request.files["file"]
 
-    input_path = Path(input_path)
+    if not file:
+        return jsonify({"message": "No file selected"}), 400
 
-    # Check if the input path exists.
-    if not input_path.exists():
-        return jsonify({"error": "Input path does not exist"}), 404
+    image = Image.open(file.stream)
 
     # Detect cats in the image.
-    detections = cat_detection.detect_cats(input_path)
+    detections = cat_detection.detect_cats(image)
 
     return jsonify(detections)
 
