@@ -1,7 +1,23 @@
 import axios from '@/lib/axios'
 import type { Post } from '@/models/Post'
+import type { Analysis } from '@/models/Analysis'
 
 export const usePostService = () => {
+  const analyze = async (file: File) => {
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+      const response = await axios.post<Analysis>(
+        '/api/v1/posts/analyze',
+        formData,
+      )
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
   const like = async (id: number) => {
     try {
       console.log('like', id)
@@ -33,5 +49,6 @@ export const usePostService = () => {
   return {
     like,
     unlike,
+    analyze,
   }
 }

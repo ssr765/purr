@@ -3,12 +3,21 @@ import { defineStore } from 'pinia'
 import type { PostInput } from '@/models/Post'
 import axios from '@/lib/axios'
 import { useRouter } from 'vue-router'
+import { usePostService } from '@/services/postService'
+import type { Analysis } from '@/models/Analysis'
+import { toast } from 'vue-sonner'
+import { useI18n } from 'vue-i18n'
 
 export const useCreatePostStore = defineStore('createPost', () => {
+  const { t } = useI18n()
+  const postService = usePostService()
   const router = useRouter()
 
   const loading = ref(false)
   const post = ref<PostInput | null>(null)
+
+  const analyzing = ref(false)
+  const analysisData = ref<Analysis | null>(null)
 
   const postMediaPreview = computed(() => {
     return post.value?.file ? URL.createObjectURL(post.value.file) : null
@@ -16,10 +25,29 @@ export const useCreatePostStore = defineStore('createPost', () => {
 
   const reset = () => {
     post.value = null
+    analysisData.value = null
+  }
+
+  const onImageUpload = async (file: File) => {
+    post.value = { file: file, cat_id: undefined, caption: '' } as PostInput
+
+    try {
+      analyzing.value = true
+      analysisData.value = await postService.analyze(file)
+    } catch (error) {
+      console.error(error)
+    } finally {
+      analyzing.value = false
+    }
   }
 
   const createPost = async () => {
     if (!post.value) return
+
+    if (!post.value.cat_id) {
+      toast.error(t('app.posts.create.errors.noCatSelected'))
+      return
+    }
 
     loading.value = true
 
@@ -59,8 +87,11 @@ export const useCreatePostStore = defineStore('createPost', () => {
     loading,
     post,
     postMediaPreview,
+    analyzing,
+    analysisData,
 
     reset,
     createPost,
+    onImageUpload,
   }
 })

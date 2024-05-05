@@ -124,6 +124,48 @@
         "mediaInput": {
           "title": "Comparte un momento felino",
           "content": "Arrastra o haz clic para compartir contenido de tu amigo gatuno en purr."
+        },
+        "mediaDashboard": {
+          "back": "Volver",
+          "noCatsDetected": "No se han detectado gatos en la imagen",
+          "catSelectionLabel": "¿Qué gato realizará la publicación?",
+          "captionLabel": "Añade una descripción",
+          "captionPlaceholder": "Escribe una descripción para la publicación",
+          "button": "Publicar",
+          "catlessButton": "Publicar",
+          "quotes": {
+            "none": [
+              "Pspspsps... ¿Dónde están los gatos?",
+              "¡No hay gatos por aquí!",
+              "Radar felino: ¡sin gatos a la vista!",
+              "Revisé dos veces, pero no encontré ningún gato."
+            ],
+            "single": [
+              "Parece que hay un gato por aquí",
+              "¡Un gato perrrrfecto!",
+              "Ahí se asoma un solitario minino",
+              "Tenemos un visitante felino aquí"
+            ],
+            "multiple": [
+              "¡Mira todos estos gatos!",
+              "¡Gatos por todas partes!",
+              "¡Es un mar de orejas puntiagudas y colas esponjosas!",
+              "¡Gatos, gatos y más gatos!"
+            ]
+          },
+          "noCatDialog": {
+            "title": "No se han detectado gatos en la imagen",
+            "content": [
+              "La IA no ha podido identificar ningún gato en la publicación, si realmente hay un gato en la foto, ¡no te preoupes!, puedes subir igualmente la imagen de tu gato.",
+              "La publicación sera revisada manualmente, y será aprovada una vez se identifique un gato.",
+              "Ten en cuenta que subir contenido no gatuno a purr. va en contra de los terminos y condiciones de purr. y puede conllevar el baneo permanente de la plataforma."
+            ],
+            "publish": "Publicar",
+            "noPublish": "No publicar"
+          }
+        },
+        "errors": {
+          "noCatSelected": "Debes seleccionar un gato para crear una publicación."
         }
       }
     },
