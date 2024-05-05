@@ -15,6 +15,7 @@ import { useLikeAnimation } from '@/composables/likeAnimation'
 import Logo from '@/assets/img/logo/black.webp'
 import { useHead, useSeoMeta } from 'unhead'
 import { useI18n } from 'vue-i18n'
+import NoCatWarning from '@/components/app/posts/detail/NoCatWarning.vue'
 
 const route = useRoute()
 const postStore = usePostStore()
@@ -117,6 +118,7 @@ const comment = ref('')
           <button>
             <span class="block icon-[iconamoon--bookmark-light]" role="img" aria-hidden="true" />
           </button>
+          <NoCatWarning v-if="!postDetail.detected" />
           <div class="flex-1"></div>
           <button>
             <span class="block icon-[mdi--dots-vertical]" role="img" aria-hidden="true" />
