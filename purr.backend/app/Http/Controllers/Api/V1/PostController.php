@@ -22,7 +22,7 @@ class PostController extends Controller
         // Get all posts with their cats.
         $posts = Post::with(['comments' => function ($query) {
             $query->latest()->take(3);
-        }])->get();
+        }])->where('detected', true)->latest()->get();
         return response()->json(PostResource::collection($posts->load('cat')));
     }
 
@@ -42,14 +42,19 @@ class PostController extends Controller
         $file = $request->file('file');
         $hash = hash_file('sha256', $file);
 
+        $detected = false;
+
         // Check if the image has been analyzed and got detections.
         if (!Redis::sismember('detections', $hash)) {
             // Re-analyze the image.
             $analysis = $imageEngineService->analyzeImage($file);
 
-            if (!$analysis['detected']) {
-                return response()->json(['message' => 'The image don\'t contains cats.'], 403);
-            }
+            $detected = $analysis['detected'];
+            // if (!$analysis['detected']) {
+            //     return response()->json(['message' => 'The image don\'t contains cats.'], 403);
+            // }
+        } else {
+            $detected = true;
         }
 
         // Remove hash from the detections set.
@@ -65,6 +70,7 @@ class PostController extends Controller
             'filename' => $file,
             'caption' => $request->caption,
             'type' => $request->type,
+            'detected' => $detected,
         ]);
 
         return response()->json(new PostResource($post), 201);

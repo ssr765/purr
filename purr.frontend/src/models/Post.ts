@@ -15,6 +15,7 @@ export interface Post {
   comments: Comment[]
   cat?: Cat
   caption?: string
+  detected: boolean
 }
 
 export interface PostInput {

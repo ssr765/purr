@@ -14,6 +14,7 @@ class Post extends Model
         'filename',
         'caption',
         'type',
+        'detected',
     ];
 
     public function cat()

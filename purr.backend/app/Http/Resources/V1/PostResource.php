@@ -31,6 +31,7 @@ class PostResource extends JsonResource
             'cat' => new CatResource($this->whenLoaded('cat')),
             // 'comments' => $this->when($this->comments_count > 0, CommentResource::collection($this->comments)),
             'comments' => $this->whenLoaded('comments', CommentResource::collection($this->comments)),
+            'detected' => $this->detected ? true : false,
         ];
     }
 }
