@@ -63,6 +63,12 @@ services:
                 - ping
             retries: 3
             timeout: 5s
+    imageengine:
+        build:
+            context: ../purr.imageEngine
+        
+        networks:
+            - sail
 networks:
     sail:
         driver: bridge
