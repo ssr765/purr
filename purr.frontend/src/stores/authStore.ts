@@ -5,8 +5,11 @@ import type { AxiosError } from 'axios'
 import type { User } from '@/models/User'
 import { useRouter } from 'vue-router'
 import { useResponseToaster } from '@/composables/responseToaster'
+import { toast } from 'vue-sonner'
+import { useI18n } from 'vue-i18n'
 
 export const useAuthStore = defineStore('auth', () => {
+  const { t } = useI18n()
   const { toastResponse } = useResponseToaster()
   const router = useRouter()
 
@@ -16,7 +19,11 @@ export const useAuthStore = defineStore('auth', () => {
   const firstLoad = ref(true)
 
   async function csrf() {
-    await axios.get('/sanctum/csrf-cookie')
+    try {
+      await axios.get('/sanctum/csrf-cookie')
+    } catch (error) {
+      toast.error(t('errors.serverError'))
+    }
   }
 
   async function login(email: string, password: string) {

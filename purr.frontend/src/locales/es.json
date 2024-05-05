@@ -173,5 +173,8 @@
   },
   "response": {
     "These credentials do not match our records": "Credenciales incorrectas"
+  },
+  "errors": {
+    "serverError": "Ha ocurrido un error en el servidor. Por favor, inténtalo de nuevo más tarde."
   }
 }
