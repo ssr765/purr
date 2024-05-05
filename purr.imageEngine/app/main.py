@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 from flask import Flask, request, jsonify
-from PIL import Image
+from PIL import Image, ImageOps
 
 from tools import webp, cat_detection
 
@@ -71,6 +71,9 @@ def analyze_endpoint():
         return jsonify({"message": "No file selected"}), 400
 
     image = Image.open(file.stream)
+
+    # Avoid EXIF orientation issues.
+    image = ImageOps.exif_transpose(image)
 
     # Detect cats in the image.
     detections = cat_detection.detect_cats(image)
