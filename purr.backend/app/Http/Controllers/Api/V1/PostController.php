@@ -38,7 +38,8 @@ class PostController extends Controller
 
         $file = $request->file('file')->store('', 'posts');
 
-        $file = $imageEngineService->optimizeImage(storage_path('app/posts/' . $file));
+        // Temporally disabled.
+        // $file = $imageEngineService->optimizeImage(storage_path('app/posts/' . $file));
 
         $post = Post::create([
             'cat_id' => $request->cat_id,
