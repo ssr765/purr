@@ -12,5 +12,33 @@
     "home": {
       "hero": "Explore the cat universe"
     }
+  },
+  "app": {
+    "posts": {
+      "create": {
+        "mediaDashboard": {
+          "quotes": {
+            "none": [
+              "Pspspsps... Where are the cats?",
+              "No cats around here!",
+              "Feline radar: no cats in sight!",
+              "Checked twice, but no cats found."
+            ],
+            "single": [
+              "Seems there's a cat around here",
+              "A perrrrfect cat!",
+              "There peeks a solitary kitty",
+              "We have a feline visitor here"
+            ],
+            "multiple": [
+              "Look at all these cats!",
+              "Cats everywhere!",
+              "It's a sea of pointy ears and fluffy tails!",
+              "Cats, cats, and more cats!"
+            ]
+          }
+        }
+      }
+    }
   }
 }

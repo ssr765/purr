@@ -1,0 +1,64 @@
+{
+  "app": {
+    "posts": {
+      "create": {
+        "metadata": {
+          "title": "Crea una publicació"
+        },
+        "noKittens": {
+          "title": "Encara no has creat un perfil per al teu gat",
+          "content": [
+            "Hola! Sembla que encara no has registrat cap gat en purr. Aquí, cada gat té el seu propi perfil perquè puguis compartir les seves aventures i fotos.",
+            "Què et sembla si creem un perfil per al teu gat ara? És ràpid i fàcil!"
+          ],
+          "button": "Crea el perfil ara"
+        },
+        "mediaInput": {
+          "title": "Comparteix un moment felí",
+          "content": "Arrossega o fes clic per compartir contingut del teu amic felí en purr."
+        },
+        "mediaDashboard": {
+          "noCatsDetected": "No s'han detectat gats a la imatge",
+          "catSelectionLabel": "Quin gat farà la publicació?",
+          "captionLabel": "Afegeix una descripció",
+          "captionPlaceholder": "Escriu una descripció per a la publicació",
+          "button": "Publica",
+          "catlessButton": "Publica",
+          "quotes": {
+            "none": [
+              "Pspspsps... On son els gats?",
+              "No hi ha gats per aquí!",
+              "Radar felí: sense gats a la vista!",
+              "He revisat dues vegades, però no he trobat cap gat."
+            ],
+            "single": [
+              "Sembla que hi ha un gat per aquí",
+              "Un gat perfecte!",
+              "Aquí s'asoma un minino solitari",
+              "Tenim un visitant felí aquí"
+            ],
+            "multiple": [
+              "Mira tots aquests gats!",
+              "Gats per tot arreu!",
+              "És un mar d'orelles punxegudes i cues esponjoses!",
+              "Gats, gats i més gats!"
+            ]
+          },
+          "noCatDialog": {
+            "title": "No s'han detectat gats a la imatge",
+            "content": [
+              "La IA no ha pogut identificar cap gat a la publicació, si realment hi ha un gat a la foto, no et preocupis!, pots pujar igualment la imatge del teu gat.",
+              "La publicació serà revisada manualment, i serà aprovada un cop s'identifiqui un gat.",
+              "Tingues en compte que pujar contingut no gatú a purr. va en contra dels termes i condicions de purr. i pot comportar el baneig permanent de la plataforma."
+            ],
+            "publish": "Publica",
+            "noPublish": "No publicar"
+          }
+        },
+        "errors": {
+          "noCatSelected": "Has de seleccionar un gat per crear una publicació."
+        }
+      }
+    }
+  }
+}
