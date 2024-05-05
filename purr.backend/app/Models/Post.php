@@ -36,4 +36,14 @@ class Post extends Model
     {
         return $this->likes->contains('user_id', $user->id);
     }
+
+    public function saves()
+    {
+        return $this->hasMany(Save::class);
+    }
+
+    public function savedByUser(User $user)
+    {
+        return $this->saves->contains('user_id', $user->id);
+    }
 }

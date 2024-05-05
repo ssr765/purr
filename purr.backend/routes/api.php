@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\UserController as V1UserController;
 use App\Http\Controllers\Api\V1\PostLikeController as V1PostLikeController;
 use App\Http\Controllers\Api\V1\CommentController as V1CommentController;
 use App\Http\Controllers\Api\V1\CommentLikeController as V1CommentLikeController;
+use App\Http\Controllers\Api\V1\SaveController as V1SaveController;
 use App\Http\Controllers\Api\V1\EntityController as V1EntityController;
 use App\Http\Resources\V1\UserResource as V1UserResource;
 use Illuminate\Http\Request;
@@ -54,6 +55,12 @@ Route::prefix('v1')->group(function () {
             Route::post('/{post}/likes', [V1PostLikeController::class, 'store'])->name('likes.store');
             Route::delete('/{post}/likes', [V1PostLikeController::class, 'destroy'])->name('likes.destroy');
             Route::post('/analyze', [V1PostController::class, 'analyze'])->name('analyze');
+            Route::post('/{post}/saves', [V1SaveController::class, 'store'])->name('saves.store');
+            Route::delete('/{post}/saves', [V1SaveController::class, 'destroy'])->name('saves.destroy');
+
+            // User's saves & likes
+            Route::get('/likes', [V1PostLikeController::class, 'index'])->name('likes.index');
+            Route::get('/saves', [V1SaveController::class, 'index'])->name('saves.index');
         });
 
         // Comment replies & likes routes

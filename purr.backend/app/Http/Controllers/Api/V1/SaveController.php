@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePostLikeRequest;
-use App\Http\Requests\UpdatePostLikeRequest;
+use App\Models\Save;
+use App\Http\Requests\StoreSaveRequest;
+use App\Http\Requests\UpdateSaveRequest;
 use App\Models\Post;
-use App\Models\PostLike;
 
-class PostLikeController extends Controller
+class SaveController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class PostLikeController extends Controller
         $user = request()->user();
 
         // Get the posts liked by the user.
-        $posts = Post::whereHas('post_likes', function ($query) use ($user) {
+        $posts = Post::whereHas('saves', function ($query) use ($user) {
             $query->where('user_id', $user->id);
         })->get();
 
@@ -28,19 +28,19 @@ class PostLikeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePostLikeRequest $request, Post $post)
+    public function store(StoreSaveRequest $request, Post $post)
     {
         $user = $request->user();
 
-        $like = PostLike::where('user_id', $user->id)
+        $like = Save::where('user_id', $user->id)
             ->where('post_id', $post->id)
             ->first();
 
         // Check if the user has already liked the post.
         if ($like) {
             return response()->json([
-                "isLiked" => $post->likedByUser($user),
-                "count" => $post->likes_count,
+                "isSaved" => $post->savedByUser($user),
+                "count" => $post->saves_count,
             ], 409);
         }
 
@@ -48,18 +48,18 @@ class PostLikeController extends Controller
         $post->likes()->create([
             'user_id' => $user->id,
         ]);
-        $post->increment('likes_count');
+        $post->increment('saves_count');
 
         return response()->json([
             "isLiked" => true,
-            "count" => $post->likes_count,
+            "count" => $post->saves_count,
         ], 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(PostLike $postLike)
+    public function show(Save $save)
     {
         //
     }
@@ -67,7 +67,7 @@ class PostLikeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePostLikeRequest $request, PostLike $postLike)
+    public function update(UpdateSaveRequest $request, Save $save)
     {
         //
     }
@@ -79,23 +79,23 @@ class PostLikeController extends Controller
     {
         $user = request()->user();
 
-        $like = PostLike::where('user_id', $user->id)
+        $like = Save::where('user_id', $user->id)
             ->where('post_id', $post->id)
             ->first();
 
         if (!$like) {
             return response()->json([
-                "isLiked" => $post->likedByUser($user),
-                "count" => $post->likes_count,
+                "isSaved" => $post->savedByUser($user),
+                "count" => $post->saves_count,
             ], 409);
         }
 
         $like->delete();
-        $post->decrement('likes_count');
+        $post->decrement('saves_count');
 
         return response()->json([
-            "isLiked" => false,
-            "count" => $post->likes_count,
+            "isSaved" => false,
+            "count" => $post->saves_count,
         ]);
     }
 }
