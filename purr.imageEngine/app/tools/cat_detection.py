@@ -1,5 +1,4 @@
 from __future__ import annotations
-import os
 
 from ultralytics import YOLO
 from ultralytics.engine.results import Results
@@ -21,7 +20,12 @@ class CatDetection:
             if class_ == 15:
                 self.confidences.append(confidences[i])
                 self.coordinates.append(
-                    [(coordinates[i][0], coordinates[i][1]), (coordinates[i][2], coordinates[i][3])]
+                    {
+                        "x1": coordinates[i][0],
+                        "y1": coordinates[i][1],
+                        "x2": coordinates[i][2],
+                        "y2": coordinates[i][3],
+                    }
                 )
 
     @staticmethod
@@ -43,11 +47,11 @@ class CatDetection:
     def __len__(self) -> int:
         return len(self.confidences)
 
-    def detection_data(self) -> list[dict[str, float]]:
+    def detection_data(self) -> dict[str, bool | list[dict[str, any]]]:
         """Returns the data of the detections.
 
         Returns:
-        - list[dict[str, float]]: The data of the detections.
+        - dict[str, bool | list[dict[str, any]]]: The data of the detections.
         """
         data = []
 
@@ -62,16 +66,16 @@ class CatDetection:
         return {"detected": len(data) > 0, "data": data}
 
 
-def detect_cats(image: Image) -> dict[str, list[dict[str, float]]]:
+def detect_cats(image: Image) -> dict[str, bool | list[dict[str, any]]]:
     """Detects cats in an image.
 
     Args:
     - image (Image): The image to detect cats in.
 
     Returns:
-    - dict[str, list[dict[str, float]]]: The data of the detections.
+    - dict[str, bool | list[dict[str, any]]]: The data of the detections.
     """
-    result: Results = yolo.predict(image, conf=0.25)[0]
+    result: Results = yolo.predict(image, conf=0.35)[0]
     detections = CatDetection.from_result(result)
 
     return detections.detection_data()
