@@ -33,7 +33,7 @@ class CatController extends Controller
 
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar')->store('', 'avatars');
-            $avatar = $imageEngineService->optimizeImage(storage_path('app/avatars/' . $avatar));
+            // $avatar = $imageEngineService->optimizeImage(storage_path('app/avatars/' . $avatar));
 
             $cat->update(['avatar' => $avatar]);
             $cat->avatar = $avatar;
