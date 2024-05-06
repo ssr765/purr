@@ -69,6 +69,12 @@ const applyPadding = computed(() => {
             </RouterLink>
           </li>
           <li>
+            <RouterLink :to="{ name: 'app-explore' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
+              <span class="icon-[carbon--explore] text-xl w-6" role="img" aria-hidden="true" />
+              <span class="ml-3">Explorar</span>
+            </RouterLink>
+          </li>
+          <li>
             <button type="button" class="flex items-center p-2 w-full text-base font-medium text-ctp-text rounded-lg transition duration-75 group hover:bg-ctp-overlay2/50" aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
               <span class="icon-[solar--map-linear] text-xl w-6" role="img" aria-hidden="true" />
               <span class="flex-1 ml-3 text-left whitespace-nowrap">{{ $t('app.layout.sidebar.maps') }}</span>

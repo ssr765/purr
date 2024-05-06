@@ -29,6 +29,11 @@ const router = createRouter({
           component: () => import('@/views/app/HomeView.vue'),
         },
         {
+          path: 'explore',
+          name: 'app-explore',
+          component: () => import('@/views/app/explore/IndexView.vue'),
+        },
+        {
           path: 'maps/vets',
           name: 'app-maps-vets',
           component: () => import('@/views/app/maps/VeterinariesView.vue'),
