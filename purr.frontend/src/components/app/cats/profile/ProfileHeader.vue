@@ -27,7 +27,7 @@ const hasBadges = computed(() => {
     <div class="bg-cover p-4 -mt-28 lg:-mt-[88px]">
       <div class="w-full max-w-screen-lg mx-auto grid lg:grid-cols-[auto,1fr] items-center gap-2 lg:gap-8">
         <div class="w-44 mx-auto">
-          <img v-if="cat.avatar" class="w-full rounded-full" :src="cat.avatar" alt="" />
+          <img v-if="cat.avatar" class="size-44 object-cover rounded-full" :src="cat.avatar" alt="" />
           <CatPlaceholderAvatar v-else class="w-full" />
         </div>
         <div class="flex flex-col gap-1.5">
