@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostLikeRequest;
 use App\Http\Requests\UpdatePostLikeRequest;
+use App\Http\Resources\V1\PostResource;
 use App\Models\Post;
 use App\Models\PostLike;
 
@@ -18,11 +19,13 @@ class PostLikeController extends Controller
         $user = request()->user();
 
         // Get the posts liked by the user.
-        $posts = Post::whereHas('post_likes', function ($query) use ($user) {
+        $posts = Post::whereHas('likes', function ($query) use ($user) {
             $query->where('user_id', $user->id);
-        })->get();
+        })->with(['comments' => function ($query) {
+            $query->latest()->take(3);
+        }])->get();
 
-        return response()->json($posts);
+        return response()->json(PostResource::collection($posts->load('cat')));
     }
 
     /**

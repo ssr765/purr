@@ -3,6 +3,7 @@ import type { Post } from '@/models/Post'
 import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
 import PostComment from './PostComment.vue'
 import LikeButton from './LikeButton.vue'
+import SaveButton from './SaveButton.vue'
 import { usePostStore } from '@/stores/postStore'
 import { useNumberFormatter } from '@/composables/numberFormatter'
 import { useLikeAnimation } from '@/composables/likeAnimation'
@@ -34,6 +35,16 @@ const addLike = (id: number) => {
 
   // Animation
   likeAnimation(id)
+}
+
+const save = (id: number) => {
+  if (!user.value) {
+    toast.warning('Debes iniciar sesión para guardar publicaciones')
+    return
+  }
+
+  if (postStore.saving) return
+  postStore.toggleSave(id)
 }
 </script>
 
@@ -72,8 +83,8 @@ const addLike = (id: number) => {
             </div>
 
             <div class="flex flex-col items-center">
-              <span class="block icon-[iconamoon--bookmark-light]" role="img" aria-hidden="true" />
-              <span class="text-sm leading-5 font-semibold">{{ formatNumber(0) }}</span>
+              <SaveButton :save="post.savesData.isSaved" @save="save(post.id)" />
+              <span class="text-sm leading-5 font-semibold">{{ formatNumber(post.savesData.count) }}</span>
             </div>
           </div>
         </div>

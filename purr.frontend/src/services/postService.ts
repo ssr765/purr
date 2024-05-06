@@ -46,9 +46,61 @@ export const usePostService = () => {
     }
   }
 
+  const save = async (id: number) => {
+    try {
+      console.log('save', id)
+      const response = await axios.post<{ count: number; isSaved: boolean }>(
+        `/api/v1/posts/${id}/saves`,
+      )
+      console.log(response.data)
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
+  const unsave = async (id: number) => {
+    try {
+      console.log('unsave', id)
+      const response = await axios.delete<{ count: number; isSaved: boolean }>(
+        `/api/v1/posts/${id}/saves`,
+      )
+      console.log(response.data)
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
+  const getLikedPosts = async () => {
+    try {
+      const response = await axios.get<Post[]>('/api/v1/posts/likes')
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
+  const getSavedPosts = async () => {
+    try {
+      const response = await axios.get<Post[]>('/api/v1/posts/saves')
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
   return {
     like,
     unlike,
+    save,
+    unsave,
+    getLikedPosts,
+    getSavedPosts,
     analyze,
   }
 }

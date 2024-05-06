@@ -97,6 +97,21 @@ const applyPadding = computed(() => {
           <hr class="h-px bg-ctp-lavender my-2" />
           <ul class="space-y-2">
             <li>
+              <RouterLink :to="{ name: 'app-posts-likes' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
+                <span class="icon-[solar--heart-linear] text-xl w-6" role="img" aria-hidden="true" />
+                <span class="ml-3">Mis likes</span>
+              </RouterLink>
+            </li>
+            <li>
+              <RouterLink :to="{ name: 'app-posts-saved' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
+                <span class="icon-[iconamoon--bookmark-light] text-xl w-6" role="img" aria-hidden="true" />
+                <span class="ml-3">Mis guardados</span>
+              </RouterLink>
+            </li>
+          </ul>
+          <hr class="h-px bg-ctp-lavender my-2" />
+          <ul class="space-y-2">
+            <li>
               <RouterLink :to="{ name: 'app-posts-create' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
                 <span class="icon-[ion--plus-round] text-xl w-6" role="img" aria-hidden="true" />
                 <span class="ml-3">{{ $t('app.layout.sidebar.create') }}</span>

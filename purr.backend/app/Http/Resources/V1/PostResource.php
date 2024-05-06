@@ -24,6 +24,10 @@ class PostResource extends JsonResource
                 'isLiked' => $request->user() ? $this->likedByUser($request->user()) : false,
                 'count' => $this->likes_count,
             ],
+            'savesData' => [
+                'isSaved' => $request->user() ? $this->savedByUser($request->user()) : false,
+                'count' => $this->saves_count,
+            ],
             'commentsCount' => $this->comments_count,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,

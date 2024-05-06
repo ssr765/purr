@@ -131,15 +131,72 @@ export const usePostStore = defineStore('post', () => {
     }
   }
 
+  const saving = ref(false)
+  const toggleSave = async (id: number) => {
+    const postToSave =
+      postDetail.value || posts.value.find((post) => post.id === id)
+
+    if (!postToSave) throw new Error('Publicación no encontrada')
+
+    const oldSaveData = { ...postToSave.savesData }
+
+    // Actualizar UI de forma optimista
+    postToSave.savesData.isSaved = !oldSaveData.isSaved
+    postToSave.savesData.count += postToSave.savesData.isSaved ? 1 : -1
+
+    try {
+      saving.value = true
+      const saveData = postToSave.savesData.isSaved
+        ? await postService.save(id)
+        : await postService.unsave(id)
+      postToSave.savesData.count = saveData.count
+      postToSave.savesData.isSaved = saveData.isSaved
+    } catch (error) {
+      const axiosError = error as AxiosError
+      toast.error(
+        !oldSaveData.isSaved
+          ? 'No se ha podido guardar la publicación'
+          : 'No se ha podido quitar la publicación guardada',
+      )
+      // Revertir si hay error
+      postToSave.savesData.count = oldSaveData.count
+      postToSave.savesData.isSaved = oldSaveData.isSaved
+    } finally {
+      saving.value = false
+    }
+  }
+
+  const fetchSavedPosts = async () => {
+    try {
+      const response = await postService.getSavedPosts()
+      posts.value = response
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const fetchLikedPosts = async () => {
+    try {
+      const response = await postService.getLikedPosts()
+      posts.value = response
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return {
     posts,
     postDetail,
     liking,
+    saving,
 
     fetchPosts,
     fetchPostDetail,
     addComment,
     refreshCommentLike,
     toggleLike,
+    toggleSave,
+    fetchSavedPosts,
+    fetchLikedPosts,
   }
 })

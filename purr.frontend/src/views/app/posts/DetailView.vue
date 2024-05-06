@@ -16,6 +16,7 @@ import Logo from '@/assets/img/logo/black.webp'
 import { useHead, useSeoMeta } from 'unhead'
 import { useI18n } from 'vue-i18n'
 import NoCatWarning from '@/components/app/posts/detail/NoCatWarning.vue'
+import SaveButton from '@/components/utils/posts/SaveButton.vue'
 
 const route = useRoute()
 const postStore = usePostStore()
@@ -84,7 +85,16 @@ const addComment = () => {
   comment.value = ''
 }
 
-const like = computed(() => postDetail.value?.likesData.isLiked ?? false)
+const save = () => {
+  if (!user.value) {
+    toast.warning('Debes iniciar sesión para guardar publicaciones')
+    return
+  }
+
+  if (postStore.saving) return
+  postStore.toggleSave(postId)
+}
+
 const comment = ref('')
 </script>
 
@@ -111,13 +121,11 @@ const comment = ref('')
       </div>
       <div class="flex flex-col gap-2 p-4 border-t border-ctp-lavender">
         <div class="flex items-center gap-4 text-3xl">
-          <LikeButton :like="like" @addLike="addLike" />
+          <LikeButton :like="postDetail.likesData.isLiked" @addLike="addLike" />
           <button>
             <span class="block icon-[iconamoon--comment-light]" role="img" aria-hidden="true" />
           </button>
-          <button>
-            <span class="block icon-[iconamoon--bookmark-light]" role="img" aria-hidden="true" />
-          </button>
+          <SaveButton :save="postDetail.savesData.isSaved" @save="save" />
           <NoCatWarning v-if="!postDetail.detected" />
           <div class="flex-1"></div>
           <button>
@@ -128,6 +136,9 @@ const comment = ref('')
           <span v-if="postDetail.likesData.count > 0" class="icon-[solar--heart-bold]" role="img" aria-hidden="true" />
           <span v-else class="icon-[solar--heart-broken-linear]" role="img" aria-hidden="true" />
           <span class="font-semibold">{{ formatNumber(postDetail.likesData.count) }} likes</span>
+          <span>·</span>
+          <span class="block icon-[iconamoon--bookmark-light]" role="img" aria-hidden="true" />
+          <span class="font-semibold">{{ formatNumber(postDetail.savesData.count) }} guardados</span>
         </p>
         <div v-if="postDetail.caption">{{ postDetail.caption }}</div>
         <div class="flex items-center gap-2 mt-2" v-if="user">

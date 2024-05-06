@@ -9,6 +9,10 @@ export interface Post {
     count: number
     isLiked: boolean
   }
+  savesData: {
+    count: number
+    isSaved: boolean
+  }
   commentsCount: number
   updatedAt: string
   createdAt: string

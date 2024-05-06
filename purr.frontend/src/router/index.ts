@@ -67,6 +67,18 @@ const router = createRouter({
           component: () => import('@/views/app/entity/CreateView.vue'),
           meta: { requiresAuth: true },
         },
+        {
+          path: 'posts/likes',
+          name: 'app-posts-likes',
+          component: () => import('@/views/app/posts/LikesView.vue'),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: 'posts/saved',
+          name: 'app-posts-saved',
+          component: () => import('@/views/app/posts/SavedView.vue'),
+          meta: { requiresAuth: true },
+        },
       ],
     },
     {

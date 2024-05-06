@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Save;
 use App\Http\Requests\StoreSaveRequest;
 use App\Http\Requests\UpdateSaveRequest;
+use App\Http\Resources\V1\PostResource;
 use App\Models\Post;
 
 class SaveController extends Controller
@@ -20,9 +21,11 @@ class SaveController extends Controller
         // Get the posts liked by the user.
         $posts = Post::whereHas('saves', function ($query) use ($user) {
             $query->where('user_id', $user->id);
-        })->get();
+        })->with(['comments' => function ($query) {
+            $query->latest()->take(3);
+        }])->get();
 
-        return response()->json($posts);
+        return response()->json(PostResource::collection($posts->load('cat')));
     }
 
     /**
@@ -45,13 +48,13 @@ class SaveController extends Controller
         }
 
         // Create a new like.
-        $post->likes()->create([
+        $post->saves()->create([
             'user_id' => $user->id,
         ]);
         $post->increment('saves_count');
 
         return response()->json([
-            "isLiked" => true,
+            "isSaved" => true,
             "count" => $post->saves_count,
         ], 201);
     }
@@ -79,18 +82,18 @@ class SaveController extends Controller
     {
         $user = request()->user();
 
-        $like = Save::where('user_id', $user->id)
+        $save = Save::where('user_id', $user->id)
             ->where('post_id', $post->id)
             ->first();
 
-        if (!$like) {
+        if (!$save) {
             return response()->json([
                 "isSaved" => $post->savedByUser($user),
                 "count" => $post->saves_count,
             ], 409);
         }
 
-        $like->delete();
+        $save->delete();
         $post->decrement('saves_count');
 
         return response()->json([
