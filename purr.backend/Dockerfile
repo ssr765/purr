@@ -19,6 +19,9 @@ RUN a2enmod rewrite
 # Install PHP extensions required for Laravel
 RUN docker-php-ext-install pdo pdo_mysql mbstring zip
 
+# Install Redis extension
+RUN pecl install redis && docker-php-ext-enable redis
+
 # Set working directory
 WORKDIR /var/www/html
 
