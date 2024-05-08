@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useCreateCatStore } from '@/stores/createCatStore'
 import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
+import CatnameTooltip from '@/components/app/cats/create/StartingStep/CatnameTooltip.vue'
 
 const createCatStore = useCreateCatStore()
 
@@ -54,7 +55,10 @@ const checkUsername = () => {
         <input v-model="createCatStore.name" type="text" id="first_name" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" required />
       </div>
       <div>
-        <label for="first_name" class="block mb-2 text-sm font-medium text-ctp-text">Catname *</label>
+        <label for="first_name" class="flex items-center gap-2 mb-2 text-sm font-medium text-ctp-text">
+          <span>Catname *</span>
+          <CatnameTooltip />
+        </label>
         <div class="flex relative">
           <span class="inline-flex items-center px-3 text-sm text-ctp-lavender bg-ctp-crust border rounded-e-0 border-ctp-lavender border-e-0 rounded-s-md">
             <span class="icon-[solar--cat-linear] text-xl transition-colors" :class="createCatStore.validCatname ? 'animate-bounce text-ctp-green' : ''" role="img" aria-hidden="true" />
