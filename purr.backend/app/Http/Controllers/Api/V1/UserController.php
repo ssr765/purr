@@ -72,8 +72,6 @@ class UserController extends Controller
             if ($cat->users()->count() === 0) {
                 $cat->delete();
             }
-
-            dd($cat);
         }
 
         // Delete the user.
