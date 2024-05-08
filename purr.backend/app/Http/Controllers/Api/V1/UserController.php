@@ -39,9 +39,72 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        // Validate the request.
+        // 'username' => ['required', 'string', 'max:255', 'unique:' . User::class, 'regex:/^[\w\d\.]{3,30}$/', 'min:3', 'max:30', 'not_in:email,username'],
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'min:3', 'max:30', 'regex:/^[\w\d\.]{3,30}$/'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string', 'min:8'],
+            'new_password' => ['nullable', 'string', 'min:8'],
+        ]);
+
+        // Check if the user is authorized to update the account.
+        if ($request->user()->id !== $user->id) {
+            abort(403, 'Unauthorized');
+        }
+
+        // Check if the password is correct.
+        if (!Hash::check($request->password, $user->password)) {
+            abort(403, 'Unauthorized');
+        }
+
+        // Check if the email is already taken.
+        if (User::where('email', $request->email)->where('id', '!=', $user->id)->exists()) {
+            return response()->json([
+                'errors' => [
+                    'email' => ['The email has already been taken.']
+                ]
+            ], 422);
+        }
+
+        // Check if the username is already taken.
+        if (User::where('username', $request->username)->where('id', '!=', $user->id)->exists()) {
+            return response()->json([
+                'errors' => [
+                    'username' => ['The username has already been taken.']
+                ]
+            ], 422);
+        }
+
+        // Update the user.
+        $user = User::find($user->id);
+        if ($request->name !== $user->name) {
+            $user->name = $request->name;
+        }
+
+        if ($request->username !== $user->username) {
+            $user->username = $request->username;
+        }
+
+        if ($request->email !== $user->email) {
+            $user->email = $request->email;
+        }
+
+        if ($request->new_password) {
+            $user->password = Hash::make($request->new_password);
+        }
+
+        // Update the avatar if it was provided.
+        if ($request->hasFile('avatar')) {
+            $user->avatar = $request->file('avatar')->store('avatars');
+        }
+
+        $user->save();
+
+        return response()->json(new UserResource($user));
     }
 
     /**
@@ -113,5 +176,28 @@ class UserController extends Controller
         return response()->json([
             'available' => !User::where('username', $request->username)->exists()
         ]);
+    }
+
+    public function updateAvatar(Request $request)
+    {
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        $user = $request->user();
+        $user->avatar = $request->file('avatar')->store('avatars');
+        $user->save();
+
+        return response()->json(new UserResource($user));
+    }
+
+    public function avatar(User $user)
+    {
+        if (!$user->avatar) {
+            abort(404);
+        }
+
+        $path = storage_path('app/avatars/' . $user->avatar);
+        return response()->file($path);
     }
 }

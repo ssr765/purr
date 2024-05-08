@@ -40,11 +40,17 @@ Route::prefix('v1')->group(function () {
         });
 
         // CRUD resources
-        Route::apiResource('users', V1UserController::class)->only(['destroy'])->where(['user' => '\d+']);
+        Route::apiResource('users', V1UserController::class)->only(['update', 'destroy'])->where(['user' => '\d+']);
         Route::apiResource('cats', V1CatController::class)->only(['store', 'destroy'])->where(['cat' => '\d+']);
         Route::apiResource('posts', V1PostController::class)->only(['store'])->where(['post' => '\d+']);
         Route::apiResource('entities', V1EntityController::class)->only(['store'])->where(['entity' => '\d+']);
         Route::apiResource('comments', V1CommentController::class)->only(['store', 'destroy'])->where(['comment' => '\d+']);
+
+        // Users routes
+        Route::prefix('users')->name('users.')->group(function () {
+            Route::get('/{user}/avatar', [V1UserController::class, 'avatar'])->name('avatar');
+            Route::put('/{user}/avatar', [V1UserController::class, 'updateAvatar'])->name('avatar.update');
+        });
 
         // Cat routes
         Route::post('cats/catname', [V1CatController::class, 'checkCatname'])->name('cats.checkCatname');
