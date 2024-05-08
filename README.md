@@ -60,7 +60,7 @@ purr. uses a custom model which is pretrained on the YOLOv8 architecture. This m
 Build the Docker image using the provided Dockerfile located at purr.imageEngine/ai/Dockerfile. This image includes all necessary dependencies, including GPU support for training models.
 
 ```sh
-docker build -t pytorch_jupyter ./purr.imageEngine/ai
+docker build -t pytorch_jupyter -f ./purr.imageEngine/ai/Dockerfile.jupyter .
 ```
 
 #### Running the Docker Container
