@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import PurrButton from '@/components/utils/PurrButton.vue'
 import GoogleButton from '@/components/utils/auth/GoogleButton.vue'
 import PurrLogo from '../utils/PurrLogo.vue'
+import LoadingSpinner from '../utils/LoadingSpinner.vue'
 
 const authStore = useAuthStore()
 
@@ -30,9 +31,12 @@ const password = ref('')
           <label for="login_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-ctp-lavender peer-focus:dark:text-ctp-lavender peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{{ $t('auth.login.password') }}</label>
         </div>
       </div>
-      <div class="flex flex-col gap-2">
+      <div v-if="!authStore.loading" class="flex flex-col gap-2">
         <PurrButton type="submit" class="mx-auto w-full"> {{ $t('auth.login.button') }}</PurrButton>
         <!-- <GoogleButton /> -->
+      </div>
+      <div v-else>
+        <LoadingSpinner class="text-5xl" />
       </div>
     </form>
     <p class="text-center">

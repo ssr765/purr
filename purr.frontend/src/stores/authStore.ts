@@ -12,6 +12,7 @@ export const useAuthStore = defineStore('auth', () => {
   const { t } = useI18n()
   const { toastResponse } = useResponseToaster()
   const router = useRouter()
+  const loading = ref(false)
 
   const user = ref<User | null>(null)
   const isAuthenticated = computed(() => user.value !== null)
@@ -20,9 +21,12 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function csrf() {
     try {
+      loading.value = true
       await axios.get('/sanctum/csrf-cookie')
     } catch (error) {
       toast.error(t('errors.serverError'))
+    } finally {
+      loading.value = false
     }
   }
 
@@ -30,11 +34,14 @@ export const useAuthStore = defineStore('auth', () => {
     await csrf()
 
     try {
+      loading.value = true
       const response = await axios.post<User>('/login', { email, password })
       user.value = response.data
       router.push({ name: 'app-home' })
     } catch (error) {
       toastResponse(error as AxiosError)
+    } finally {
+      loading.value = false
     }
   }
 
@@ -42,11 +49,14 @@ export const useAuthStore = defineStore('auth', () => {
     await csrf()
 
     try {
+      loading.value = true
       const response = await axios.post<User>('/register', data)
       user.value = response.data
       router.push({ name: 'app-home' })
     } catch (error) {
       toastResponse(error as AxiosError)
+    } finally {
+      loading.value = false
     }
   }
 
@@ -72,6 +82,7 @@ export const useAuthStore = defineStore('auth', () => {
   return {
     user,
     isAuthenticated,
+    loading,
 
     firstLoad,
 

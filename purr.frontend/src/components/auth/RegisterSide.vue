@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import PurrButton from '@/components/utils/PurrButton.vue'
 import GoogleButton from '../utils/auth/GoogleButton.vue'
 import PurrLogo from '../utils/PurrLogo.vue'
+import LoadingSpinner from '../utils/LoadingSpinner.vue'
 
 const authStore = useAuthStore()
 
@@ -53,9 +54,12 @@ const password_confirmation = ref('')
         </div>
       </div>
 
-      <div class="flex flex-col gap-2">
+      <div v-if="!authStore.loading" class="flex flex-col gap-2">
         <PurrButton type="submit" class="mx-auto w-full"> {{ $t('auth.register.button') }}</PurrButton>
         <!-- <GoogleButton /> -->
+      </div>
+      <div v-else>
+        <LoadingSpinner class="text-5xl" />
       </div>
     </form>
 
