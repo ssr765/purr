@@ -22,7 +22,7 @@ class UserResource extends JsonResource
             'username' => $this->username,
             'avatar' => $this->avatar ? URL::to("/api/v1/users/{$this->id}/avatar") : null,
             'biography' => $this->biography,
-            'following' => $this->following,
+            'following_count' => $this->following_count,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
             'cats' => CatResource::collection($this->whenLoaded('cats')),

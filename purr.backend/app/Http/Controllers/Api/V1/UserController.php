@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\CatCollection;
+use App\Http\Resources\V1\UserCollection;
 use App\Http\Resources\V1\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -224,5 +225,10 @@ class UserController extends Controller
 
         $path = storage_path('app/avatars/' . $user->avatar);
         return response()->file($path);
+    }
+
+    public function following(User $user)
+    {
+        return response()->json(new UserCollection($user->following()->paginate(10)));
     }
 }

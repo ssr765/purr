@@ -28,7 +28,7 @@ class CatResource extends JsonResource
             'birthdate' => $this->birthdate,
             'deathdate' => $this->deathdate,
             'adoption' => $this->adoption,
-            'followers' => $this->followers,
+            'followers_count' => $this->followers_count,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
             // Posts only shown if accesing to the cat detail.

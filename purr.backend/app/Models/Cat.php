@@ -37,4 +37,9 @@ class Cat extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'followers');
+    }
 }

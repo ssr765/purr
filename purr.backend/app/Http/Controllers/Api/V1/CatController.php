@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCatRequest;
 use App\Http\Requests\UpdateCatRequest;
+use App\Http\Resources\V1\CatCollection;
 use App\Http\Resources\V1\CatResource;
 use App\Models\Cat;
 use App\Services\ImageEngineService;
@@ -111,5 +112,40 @@ class CatController extends Controller
     {
         $cat = Cat::inRandomOrder()->first();
         return response()->json(new CatResource($cat->load('posts')));
+    }
+
+    public function follow(Cat $cat)
+    {
+        $user = request()->user();
+
+        if ($user->following()->where('cat_id', $cat->id)->exists()) {
+            return response()->json(['message' => 'Already following'], 409);
+        }
+
+        $user->increment('following_count');
+        $cat->increment('followers_count');
+        $user->following()->attach($cat);
+
+        return response()->json(['message' => 'Followed'], 201);
+    }
+
+    public function unfollow(Cat $cat)
+    {
+        $user = request()->user();
+
+        if (!$user->following()->where('cat_id', $cat->id)->exists()) {
+            return response()->json(['message' => 'Not following'], 409);
+        }
+
+        $user->decrement('following_count');
+        $cat->decrement('followers_count');
+        $user->following()->detach($cat);
+
+        return response()->json(['message' => 'Unfollowed'], 200);
+    }
+
+    public function followers(Cat $cat)
+    {
+        return response()->json(new CatCollection($cat->followers()->paginate(10)));
     }
 }

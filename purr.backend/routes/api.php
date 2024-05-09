@@ -54,7 +54,15 @@ Route::prefix('v1')->group(function () {
         });
 
         // Cat routes
-        Route::post('cats/catname', [V1CatController::class, 'checkCatname'])->name('cats.checkCatname');
+        Route::prefix('cats')->name('cats.')->group(function () {
+            Route::post('/catname', [V1CatController::class, 'checkCatname'])->name('cats.checkCatname');
+            Route::get('/catname/{catname}', [V1CatController::class, 'showByCatname'])->name('cats.showByCatname')->where(['catname' => '[\w\d\.]{3,30}']);
+            Route::get('/random', [V1CatController::class, 'random'])->name('random');
+            Route::get('/{cat}/avatar', [V1CatController::class, 'avatar'])->name('avatar');
+
+            Route::post('/{cat}/follow', [V1CatController::class, 'follow'])->name('follow');
+            Route::delete('/{cat}/follow', [V1CatController::class, 'unfollow'])->name('unfollow');
+        });
 
         // Post routes
         Route::prefix('posts')->name('posts.')->group(function () {
@@ -88,6 +96,9 @@ Route::prefix('v1')->group(function () {
     // Users routes
     Route::prefix('users')->name('users.')->group(function () {
         Route::get('/{user}/avatar', [V1UserController::class, 'avatar'])->name('avatar');
+        Route::get('/{user}/cats', [V1UserController::class, 'showCats'])->name('cats');
+
+        Route::get('/{user}/following', [V1UserController::class, 'following'])->name('following');
     });
 
     // Cat routes
@@ -95,8 +106,10 @@ Route::prefix('v1')->group(function () {
         Route::get('/catname/{catname}', [V1CatController::class, 'showByCatname'])->name('cats.showByCatname')->where(['catname' => '[\w\d\.]{3,30}']);
         Route::get('/random', [V1CatController::class, 'random'])->name('random');
         Route::get('/{cat}/avatar', [V1CatController::class, 'avatar'])->name('avatar');
+        Route::get('/{cat}/followers', [V1CatController::class, 'followers'])->name('followers');
     });
 
+    // Post routes
     Route::prefix('posts')->name('posts.')->group(function () {
         Route::get('/{post}/media', [V1PostController::class, 'showContent'])->name('content');
     });

@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Entity::class);
     }
+
+    public function following()
+    {
+        return $this->belongsToMany(Cat::class, 'followers');
+    }
 }

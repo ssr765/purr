@@ -6,7 +6,7 @@ export interface User {
   name: string
   email: string
   username: string
-  following: number
+  following_count: number
   createdAt: string
   updatedAt: string
   avatar?: string

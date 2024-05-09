@@ -5,7 +5,7 @@ export interface Cat {
   name: string
   catname: string
   sex: string
-  followers: number
+  followers_count: number
   updatedAt: string
   createdAt: string
   breed?: string
