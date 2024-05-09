@@ -7,6 +7,8 @@ import Logo from '@/assets/img/logo/black.webp'
 import { useHead, useSeoMeta } from 'unhead'
 import { useI18n } from 'vue-i18n'
 import CreateEntityDialog from '@/components/app/settings/CreateEntityDialog.vue'
+import ProfileEdit from '@/components/app/settings/ProfileEdit.vue'
+import RegularButton from '@/components/utils/RegularButton.vue'
 
 const { t } = useI18n()
 const settingsStore = useSettingsStore()
@@ -34,7 +36,7 @@ useSeoMeta({
     <h2 class="text-5xl lg:text-6xl text-center p-2 lg:p-4">{{ $t('app.settings.title') }}</h2>
     <h3 class="text-xl">Entidad</h3>
     <div>
-      <p class="mb-2">Actualmente no eres una entidad legal</p>
+      <p class="mb-4">Actualmente no eres una entidad legal</p>
       <CreateEntityDialog />
     </div>
     <hr class="h-px bg-ctp-lavender my-5" />
@@ -48,13 +50,24 @@ useSeoMeta({
     </div>
 
     <hr class="h-px bg-ctp-lavender my-5" />
-
-    <DeleteAccount>
-      <button type="button" class="flex items-center bg-ctp-mantle text-red-500 hover:text-white hover:bg-red-500 font-medium rounded-lg py-2.5 px-7 transition-all">
-        <span class="mr-2 h-4 w-4 icon-[solar--trash-bin-trash-linear]" role="img" aria-hidden="true" />
-        <span>{{ $t('app.settings.settings.deleteAccount.name') }}</span>
-      </button>
-    </DeleteAccount>
+    <h3 class="text-xl mb-4">Ajustes del perfil</h3>
+    <div class="mb-4">
+      <ProfileEdit>
+        <RegularButton>
+          <span>{{ $t('app.settings.settings.editProfile.name') }}</span>
+        </RegularButton>
+      </ProfileEdit>
+    </div>
+    <div>
+      <DeleteAccount>
+        <button type="button" class="flex items-center bg-ctp-mantle text-sm border border-red-500 text-red-500 hover:text-white hover:bg-red-500 font-medium rounded-lg py-2.5 px-7 transition-all">
+          <span class="mr-2 h-4 w-4 icon-[solar--trash-bin-trash-linear]" role="img" aria-hidden="true" />
+          <span>{{ $t('app.settings.settings.deleteAccount.name') }}</span>
+        </button>
+      </DeleteAccount>
+      <p class="text-ctp-text/80 text-sm italic mt-2">{{ $t('app.settings.settings.deleteAccount.rickReference.quote') }}</p>
+      <p class="text-ctp-text/80 text-sm italic text-end">{{ $t('app.settings.settings.deleteAccount.rickReference.attribution') }}</p>
+    </div>
   </section>
   <div v-else>
     <h2>Ajustes no disponibles</h2>

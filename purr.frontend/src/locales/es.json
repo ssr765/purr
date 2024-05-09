@@ -62,9 +62,10 @@
         "login": "Iniciar sesión",
         "register": "Registrarse",
         "user": {
-          "avatarAlt": "Mi avatar",
-          "myAccount": "Mi cuenta",
-          "profile": "Perfil",
+          "avatarAlt": "Mi avatar"
+        },
+        "dropdown": {
+          "settings": "Configuración",
           "logout": "Cerrar sesión"
         }
       },
@@ -98,6 +99,60 @@
             "passwordInput": "Introduce tu contraseña",
             "cancel": "Cancelar",
             "delete": "Eliminar cuenta"
+          },
+          "rickReference": {
+            "quote": "\"purr. nunca te abandonará, nunca te defraudará, nunca saldrá corriendo. purr. nunca te hará llorar, nunca te dirá adiós, nunca te dirá una mentira y te hará daño.\"",
+            "attribution": "- Rick Catsley (2024)"
+          }
+        },
+        "editProfile": {
+          "name": "Editar perfil",
+          "sheet": {
+            "title": "Editar perfil",
+            "avatarUpload": "Subir avatar",
+            "name": "Nombre",
+            "username": "Nombre de usuario",
+            "email": "Correo electrónico",
+            "avatar": "Avatar",
+            "password": "Contraseña",
+            "newPassword": "Nueva contraseña",
+            "button": "Guardar cambios"
+          },
+          "validators": {
+            "name": {
+              "min": "El nombre debe tener al menos 3 caracteres",
+              "max": "El nombre no puede tener más de 50 caracteres"
+            },
+            "username": {
+              "min": "El nombre de usuario debe tener al menos 3 caracteres",
+              "max": "El nombre de usuario no puede tener más de 30 caracteres",
+              "regex": "El nombre de usuario solo puede contener letras, números, puntos y guiones bajos"
+            },
+            "email": {
+              "email": "El correo electrónico no es válido"
+            },
+            "password": {
+              "required": "La contraseña es obligatoria"
+            },
+            "newPassword": {
+              "min": "La nueva contraseña debe tener al menos 8 caracteres",
+              "max": "La nueva contraseña no puede tener más de 50 caracteres",
+              "regex": "La nueva contraseña debe tener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial ({chars})"
+            }
+          },
+          "toast": {
+            "avatarUpload": {
+              "success": "Avatar actualizado correctamente",
+              "error": "Ha ocurrido un error al actualizar tu avatar"
+            },
+            "profileUpdate": {
+              "success": "Perfil actualizado correctamente",
+              "error": "Ha ocurrido un error al actualizar tu perfil"
+            },
+            "avatarDelete": {
+              "success": "Avatar eliminado correctamente",
+              "error": "Ha ocurrido un error al eliminar tu avatar"
+            }
           }
         }
       }

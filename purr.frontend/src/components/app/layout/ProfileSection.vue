@@ -9,29 +9,31 @@ const authStore = useAuthStore()
 <template>
   <div v-if="authStore.isAuthenticated">
     <DropdownMenu>
-      <DropdownMenuTrigger as-child>
-        <button>
-          <Avatar>
-            <AvatarImage :src="authStore.user!.avatar ?? ''" :alt="$t('app.layout.header.user.avatarAlt')" />
-            <AvatarFallback class="text-lg text-ctp-text">{{ authStore.user!.username[0].toUpperCase() }}</AvatarFallback>
-          </Avatar>
-        </button>
-      </DropdownMenuTrigger>
+      <div class="h-10">
+        <DropdownMenuTrigger as-child>
+          <button>
+            <Avatar>
+              <AvatarImage :src="authStore.user!.avatar ?? ''" :alt="$t('app.layout.header.user.avatarAlt')" />
+              <AvatarFallback class="text-lg text-ctp-text">{{ authStore.user!.username[0].toUpperCase() }}</AvatarFallback>
+            </Avatar>
+          </button>
+        </DropdownMenuTrigger>
+      </div>
       <DropdownMenuContent class="w-56">
-        <DropdownMenuLabel>{{ $t('app.layout.header.user.myAccount') }}</DropdownMenuLabel>
-        <DropdownMenuLabel class="font-normal pt-0 leading-[0.75] pb-2">{{ authStore.user!.username }}</DropdownMenuLabel>
+        <DropdownMenuLabel>{{ authStore.user!.name }}</DropdownMenuLabel>
+        <DropdownMenuLabel class="font-normal pt-0 leading-[0.75]">@{{ authStore.user!.username }}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <User class="mr-2 h-4 w-4" />
-            <span>{{ $t('app.layout.header.user.profile') }}</span>
+            <span class="block icon-[quill--cog-alt] size-4 mr-2" role="img" aria-hidden="true" />
+            <span>{{ $t('app.layout.header.dropdown.settings') }}</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
         <DropdownMenuItem @click="authStore.logout()">
           <LogOut class="mr-2 h-4 w-4" />
-          <span>{{ $t('app.layout.header.user.logout') }}</span>
+          <span>{{ $t('app.layout.header.dropdown.logout') }}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
