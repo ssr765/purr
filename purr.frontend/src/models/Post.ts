@@ -24,6 +24,6 @@ export interface Post {
 
 export interface PostInput {
   file: File
-  cat_id?: number
+  cat_id?: string
   caption?: string
 }

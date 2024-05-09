@@ -59,7 +59,7 @@ export const useCreatePostStore = defineStore('createPost', () => {
     }
 
     if (post.value.cat_id) {
-      fd.append('cat_id', post.value.cat_id.toString())
+      fd.append('cat_id', post.value.cat_id)
     } else {
       return
     }
