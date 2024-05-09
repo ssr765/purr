@@ -34,7 +34,7 @@ onMounted(async () => {
 
   if (cat.value) {
     const title = `${cat.value.name} (@${cat.value.catname})`
-    const description = cat.value.biography ? `${cat.value.biography} - ${cat.value.followers} followers` : `${cat.value.followers} followers`
+    const description = cat.value.biography ? `${cat.value.biography} - ${cat.value.followers_count} followers` : `${cat.value.followers_count} followers`
     useSeoMeta({
       title: `${title} | purr.`,
       ogTitle: title,
