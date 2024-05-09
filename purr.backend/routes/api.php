@@ -55,8 +55,8 @@ Route::prefix('v1')->group(function () {
 
         // Cat routes
         Route::prefix('cats')->name('cats.')->group(function () {
-            Route::post('/catname', [V1CatController::class, 'checkCatname'])->name('cats.checkCatname');
-            Route::get('/catname/{catname}', [V1CatController::class, 'showByCatname'])->name('cats.showByCatname')->where(['catname' => '[\w\d\.]{3,30}']);
+            Route::post('/catname', [V1CatController::class, 'checkCatname'])->name('checkCatname');
+            Route::get('/catname/{catname}', [V1CatController::class, 'showByCatname'])->name('showByCatname')->where(['catname' => '[\w\d\.]{3,30}']);
             Route::get('/random', [V1CatController::class, 'random'])->name('random');
             Route::get('/{cat}/avatar', [V1CatController::class, 'avatar'])->name('avatar');
 
@@ -103,7 +103,7 @@ Route::prefix('v1')->group(function () {
 
     // Cat routes
     Route::prefix('cats')->name('cats.')->group(function () {
-        Route::get('/catname/{catname}', [V1CatController::class, 'showByCatname'])->name('cats.showByCatname')->where(['catname' => '[\w\d\.]{3,30}']);
+        Route::get('/catname/{catname}', [V1CatController::class, 'showByCatname'])->name('showByCatname')->where(['catname' => '[\w\d\.]{3,30}']);
         Route::get('/random', [V1CatController::class, 'random'])->name('random');
         Route::get('/{cat}/avatar', [V1CatController::class, 'avatar'])->name('avatar');
         Route::get('/{cat}/followers', [V1CatController::class, 'followers'])->name('followers');
