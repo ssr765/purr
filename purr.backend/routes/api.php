@@ -49,7 +49,8 @@ Route::prefix('v1')->group(function () {
         // Users routes
         Route::prefix('users')->name('users.')->group(function () {
             Route::get('/{user}/avatar', [V1UserController::class, 'avatar'])->name('avatar');
-            Route::put('/{user}/avatar', [V1UserController::class, 'updateAvatar'])->name('avatar.update');
+            Route::post('/{user}/avatar', [V1UserController::class, 'updateAvatar'])->name('avatar.update');
+            Route::delete('/{user}/avatar', [V1UserController::class, 'deleteAvatar'])->name('avatar.delete');
         });
 
         // Cat routes
@@ -83,6 +84,11 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('cats', V1CatController::class)->only(['show'])->where(['cat' => '\d+']);
     Route::apiResource('posts', V1PostController::class)->only(['index', 'show'])->where(['post' => '\d+']);
     Route::apiResource('comments', V1CommentController::class)->only(['show'])->where(['comment' => '\d+']);
+
+    // Users routes
+    Route::prefix('users')->name('users.')->group(function () {
+        Route::get('/{user}/avatar', [V1UserController::class, 'avatar'])->name('avatar');
+    });
 
     // Cat routes
     Route::prefix('cats')->name('cats.')->group(function () {

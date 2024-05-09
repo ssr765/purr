@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\URL;
 
 class UserController extends Controller
 {
@@ -185,10 +186,34 @@ class UserController extends Controller
         ]);
 
         $user = $request->user();
-        $user->avatar = $request->file('avatar')->store('avatars');
+        $user->avatar = $request->file('avatar')->store('', 'avatars');
         $user->save();
 
-        return response()->json(new UserResource($user));
+        return response()->json(
+            ['avatar' => URL::to("/api/v1/users/{$user->id}/avatar")],
+        );
+    }
+
+    public function deleteAvatar(Request $request)
+    {
+        $user = $request->user();
+
+        if (!$user->avatar) {
+            abort(404);
+        }
+
+        // Delete the avatar file.
+        $path = storage_path('app/avatars/' . $user->avatar);
+        if (file_exists($path)) {
+            unlink($path);
+        }
+
+        $user->avatar = null;
+        $user->save();
+
+        return response()->json(
+            ['avatar' => null],
+        );
     }
 
     public function avatar(User $user)
