@@ -16,4 +16,5 @@ export interface Cat {
   deathdate?: string
   posts?: Post[]
   adoption?: boolean
+  followed?: boolean
 }

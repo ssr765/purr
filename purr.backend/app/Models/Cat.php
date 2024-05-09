@@ -33,6 +33,11 @@ class Cat extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function followedByUser(User $user)
+    {
+        return $this->followers->contains('id', $user->id);
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCatRequest;
 use App\Http\Requests\UpdateCatRequest;
-use App\Http\Resources\V1\CatCollection;
 use App\Http\Resources\V1\CatResource;
+use App\Http\Resources\V1\UserCollection;
 use App\Models\Cat;
 use App\Services\ImageEngineService;
 use Illuminate\Http\Request;
@@ -126,7 +126,15 @@ class CatController extends Controller
         $cat->increment('followers_count');
         $user->following()->attach($cat);
 
-        return response()->json(['message' => 'Followed'], 201);
+        return response()->json([
+            'cat' => [
+                'followers_count' => $cat->followers_count,
+                'followed' => true,
+            ],
+            'user' => [
+                'following_count' => $user->following_count
+            ]
+        ], 201);
     }
 
     public function unfollow(Cat $cat)
@@ -141,11 +149,20 @@ class CatController extends Controller
         $cat->decrement('followers_count');
         $user->following()->detach($cat);
 
-        return response()->json(['message' => 'Unfollowed'], 200);
+        return response()->json([
+            'cat' => [
+                'followers_count' => $cat->followers_count,
+                'followed' => false,
+            ],
+            'user' => [
+                'following_count' => $user->following_count
+            ]
+
+        ], 200);
     }
 
     public function followers(Cat $cat)
     {
-        return response()->json(new CatCollection($cat->followers()->paginate(10)));
+        return response()->json(new UserCollection($cat->followers()->paginate(10)));
     }
 }

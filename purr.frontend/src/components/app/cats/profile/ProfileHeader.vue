@@ -4,6 +4,7 @@ import CatPlaceholderAvatar from '@/components/utils/CatPlaceholderAvatar.vue'
 import { useFormattedDate } from '@/composables/formattedDate'
 import { Badge } from '@/components/ui/badge'
 import { computed } from 'vue'
+import FollowButton from '@/components/app/cats/profile/FollowButton.vue'
 
 const formattedDate = useFormattedDate()
 
@@ -31,9 +32,14 @@ const hasBadges = computed(() => {
           <CatPlaceholderAvatar v-else class="w-full" />
         </div>
         <div class="flex flex-col gap-1.5">
-          <div>
-            <h5 class="text-center lg:text-left text-5xl leading-10">{{ cat.name }}</h5>
-            <p class="text-center lg:text-left text-xl">@{{ cat.catname }}</p>
+          <div class="flex items-center gap-4">
+            <div>
+              <h5 class="text-center lg:text-left text-5xl leading-10">{{ cat.name }}</h5>
+              <p class="text-center lg:text-left text-xl">@{{ cat.catname }}</p>
+            </div>
+            <div>
+              <FollowButton :cat="cat" />
+            </div>
           </div>
           <div v-if="hasBadges">
             <Badge v-if="cat.adoption" type="success">Adóptame!</Badge>
@@ -58,7 +64,7 @@ const hasBadges = computed(() => {
       </div>
       <div class="flex items-center gap-2">
         <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />
-        <p>{{ cat.followers }} seguidores</p>
+        <p>{{ cat.followers_count }} seguidores</p>
       </div>
     </div>
   </section>

@@ -15,7 +15,6 @@ class CatResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -33,6 +32,8 @@ class CatResource extends JsonResource
             'updatedAt' => $this->updated_at,
             // Posts only shown if accesing to the cat detail.
             'posts' => new PostCollection($this->whenLoaded('posts')),
+            // followed when  the user is logged in
+            'followed' => $this->when($request->user(), fn () => $this->followedByUser($request->user())),
         ];
     }
 }
