@@ -4,7 +4,6 @@ namespace App\Http\Resources\V1;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\URL;
 
 class PostResource extends JsonResource
 {
@@ -17,7 +16,7 @@ class PostResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'url' => URL::to("/api/v1/posts/{$this->id}/media"),
+            'url' => env('APP_URL') . "api/v1/posts/{$this->id}/media",
             'caption' => $this->caption,
             'type' => $this->type,
             'likesData' => [

@@ -10,7 +10,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\URL;
 
 class UserController extends Controller
 {
@@ -191,7 +190,7 @@ class UserController extends Controller
         $user->save();
 
         return response()->json(
-            ['avatar' => URL::to("/api/v1/users/{$user->id}/avatar")],
+            ['avatar' => env('APP_URL') . "/api/v1/users/{$user->id}/avatar"],
         );
     }
 

@@ -3,8 +3,12 @@ import { RouterView } from 'vue-router'
 import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
 import { useAuthStore } from '@/stores/authStore'
 import { Toaster } from '@/components/ui/sonner'
+import { useDarkMode } from './composables/darkMode'
 
 const authStore = useAuthStore()
+const { darkModeListener } = useDarkMode()
+
+darkModeListener()
 </script>
 
 <template>

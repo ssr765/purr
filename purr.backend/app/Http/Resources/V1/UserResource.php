@@ -4,7 +4,6 @@ namespace App\Http\Resources\V1;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\URL;
 
 class UserResource extends JsonResource
 {
@@ -20,7 +19,7 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'username' => $this->username,
-            'avatar' => $this->avatar ? URL::to("/api/v1/users/{$this->id}/avatar") : null,
+            'avatar' => $this->avatar ? env('APP_URL') . "/api/v1/users/{$this->id}/avatar" : null,
             'biography' => $this->biography,
             'following_count' => $this->following_count,
             'createdAt' => $this->created_at,

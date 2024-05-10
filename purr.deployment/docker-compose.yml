@@ -5,7 +5,14 @@ services:
     ports:
       - "80:80"
     depends_on:
+      - frontend
       - backend
+    networks:
+      - purr_network
+
+  frontend:
+    build:
+      context: ../purr.frontend
     networks:
       - purr_network
 
