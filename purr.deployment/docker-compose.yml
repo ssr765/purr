@@ -21,6 +21,9 @@ services:
       context: ../purr.backend
     networks:
       - purr_network
+    volumes:
+      - 'backend-storage:/var/www/html/storage'
+      - 'backend-bootstrap-cache:/var/www/html/bootstrap/cache'
 
   mysql:
     image: 'mysql/mysql-server:8.0'
@@ -68,7 +71,14 @@ networks:
     driver: bridge
 
 volumes:
+  backend-storage:
+    driver: local
+
+  backend-bootstrap-cache:
+    driver: local
+
   mysql:
-      driver: local
+    driver: local
+    
   redis:
-      driver: local
+    driver: local
