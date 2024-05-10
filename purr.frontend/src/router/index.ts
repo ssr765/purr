@@ -1,4 +1,5 @@
 import { authCheckGuard } from '@/guards/authCheck'
+import { homeRedirectGuard } from '@/guards/homeRedirect'
 import { redirectIfAuthenticatedGuard } from '@/guards/redirectIfAuthenticated'
 import { redirectIfUnauthenticatedGuard } from '@/guards/redirectIfUnauthenticated'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -26,7 +27,15 @@ const router = createRouter({
         {
           path: '',
           name: 'app-home',
-          component: () => import('@/views/app/HomeView.vue'),
+          component: () => null,
+          // Dynamic redirect based on auth state
+          // If authenticated, redirect to the posts feed
+          // If unauthenticated, redirect to the explore page
+        },
+        {
+          path: 'feed',
+          name: 'app-feed',
+          component: () => import('@/views/app/feed/IndexView.vue'),
         },
         {
           path: 'explore',
@@ -106,5 +115,6 @@ const router = createRouter({
 router.beforeEach(authCheckGuard)
 router.beforeEach(redirectIfAuthenticatedGuard)
 router.beforeEach(redirectIfUnauthenticatedGuard)
+router.beforeEach(homeRedirectGuard)
 
 export default router
