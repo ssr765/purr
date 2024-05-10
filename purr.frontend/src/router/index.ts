@@ -34,9 +34,9 @@ const router = createRouter({
           component: () => import('@/views/app/explore/IndexView.vue'),
         },
         {
-          path: 'maps/vets',
-          name: 'app-maps-vets',
-          component: () => import('@/views/app/maps/VeterinariesView.vue'),
+          path: 'maps',
+          name: 'app-maps',
+          component: () => null,
         },
         {
           path: 'create',
