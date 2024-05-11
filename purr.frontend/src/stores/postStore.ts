@@ -13,13 +13,33 @@ export const usePostStore = defineStore('post', () => {
 
   const posts = ref<Post[]>([])
   const postDetail = ref<Post | null>(null)
+  const nextPageExists = ref(true)
+  const loading = ref(false)
+  const loadingMore = ref(false)
 
   const fetchPosts = async () => {
     try {
+      loading.value = true
       const response = await axios.get<Post[]>('/api/v1/posts')
       posts.value = response.data
     } catch (error) {
       console.log(error)
+    } finally {
+      loading.value = false
+    }
+  }
+
+  const fetchFeed = async (page: number = 1) => {
+    try {
+      page === 1 ? (loading.value = true) : (loadingMore.value = true)
+      const response = await postService.fetchFeed(page)
+      posts.value = [...posts.value, ...response.data]
+      nextPageExists.value = response.links.next !== null
+    } catch (error) {
+      console.log(error)
+    } finally {
+      loading.value = false
+      loadingMore.value = false
     }
   }
 
@@ -189,8 +209,12 @@ export const usePostStore = defineStore('post', () => {
     postDetail,
     liking,
     saving,
+    loading,
+    loadingMore,
+    nextPageExists,
 
     fetchPosts,
+    fetchFeed,
     fetchPostDetail,
     addComment,
     refreshCommentLike,

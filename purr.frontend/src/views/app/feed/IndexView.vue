@@ -19,10 +19,14 @@ const postStore = usePostStore()
 
 onMounted(() => {
   postStore.posts = []
-  postStore.fetchPosts()
+  postStore.fetchFeed()
 })
+
+const loadMore = (page: number) => {
+  postStore.fetchFeed(page)
+}
 </script>
 
 <template>
-  <PostsFeed :posts="postStore.posts" />
+  <PostsFeed :posts="postStore.posts" @loadMore="loadMore" />
 </template>

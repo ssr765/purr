@@ -2,7 +2,41 @@ import axios from '@/lib/axios'
 import type { Post } from '@/models/Post'
 import type { Analysis } from '@/models/Analysis'
 
+interface Links {
+  self: string
+  next: string | null
+  prev: string | null
+}
+
+interface Meta {
+  current_page: number
+  from: number
+  last_page: number
+  path: string
+  per_page: number
+  to: number
+  total: number
+}
+
+interface PostPagination {
+  data: Post[]
+  links: Links
+  meta: Meta
+}
+
 export const usePostService = () => {
+  const fetchFeed = async (page: number) => {
+    try {
+      const response = await axios.get<PostPagination>(
+        `/api/v1/user/feed?page=${page}`,
+      )
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
   const analyze = async (file: File) => {
     try {
       const formData = new FormData()
@@ -95,6 +129,7 @@ export const usePostService = () => {
   }
 
   return {
+    fetchFeed,
     like,
     unlike,
     save,
