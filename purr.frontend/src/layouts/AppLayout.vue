@@ -62,7 +62,7 @@ const applyPadding = computed(() => {
           </div>
         </form>
         <ul class="space-y-2">
-          <li>
+          <li v-if="user">
             <RouterLink :to="{ name: 'app-feed' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
               <span class="icon-[ion--paw-outline] text-xl w-6" role="img" aria-hidden="true" />
               <span class="ml-3">{{ $t('app.layout.sidebar.feed') }}</span>
