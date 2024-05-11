@@ -37,6 +37,7 @@ Route::prefix('v1')->group(function () {
             Route::post('/username', [V1UserController::class, 'checkUsername'])->name('checkUsername');
             Route::post('/email', [V1UserController::class, 'checkEmail'])->name('checkEmail');
             Route::get('/cats', [V1UserController::class, 'showCats'])->name('cats');
+            Route::get('/feed', [V1UserController::class, 'feed'])->name('feed');
         });
 
         // CRUD resources
