@@ -1,67 +1,13 @@
-import os
-from pathlib import Path
-
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from PIL import Image, ImageOps
 
-from tools import webp, cat_detection
+from tools import optimizer, cat_detection
 
 
 app = Flask(__name__)
 
 
-@app.route("/", methods=["GET"])
-def root_endpoint():
-    return jsonify({"API": "purr. Image Engine", "version": "1.0"})
-
-
-@app.route("/optimize", methods=["POST"])
-def optimize_endpoint():
-    input_path = request.json.get("input")
-
-    # Check if input path is missing.
-    if input_path is None:
-        return jsonify({"error": "Input path missing"}), 400
-
-    input_path = Path(input_path)
-    output_path = input_path.with_suffix(".webp")
-
-    # Check if the image is already in WebP format.
-    if input_path.suffix == ".webp":
-        return jsonify({"status": "Image already in WebP format", "filename": input_path.name})
-
-    # Comprobar que el path de entrada exista.
-    if not input_path.exists():
-        return jsonify({"error": "Input path does not exist"}), 404
-
-    # Convert the image to WebP format.
-    success = webp.convert_to_webp(input_path, output_path)
-
-    # Check if the image was successfully converted.
-    if not success:
-        return jsonify({"error": "Image could not be converted"}), 500
-
-    # Size comparison
-    input_size = input_path.stat().st_size
-    output_size = output_path.stat().st_size
-    size_comparison = (input_size - output_size) / input_size * 100
-    print(f"Size comparison: {size_comparison:.2f}%")
-
-    # Check if the optimized image is bigger than the original image.
-    if size_comparison < 0:
-        os.remove(output_path)
-        return jsonify(
-            {"status": "Optimized image is bigger than input image", "filename": input_path.name}
-        )
-
-    # Remove original image.
-    os.remove(input_path)
-
-    return jsonify({"status": "Optimized!", "filename": output_path.name})
-
-
-@app.route("/analyze", methods=["POST"])
-def analyze_endpoint():
+def receive_image() -> Image.Image:
     if "file" not in request.files:
         return jsonify({"message": "No file part"}), 400
 
@@ -74,6 +20,33 @@ def analyze_endpoint():
 
     # Avoid EXIF orientation issues.
     image = ImageOps.exif_transpose(image)
+
+    return image
+
+
+@app.route("/", methods=["GET"])
+def root_endpoint():
+    return jsonify({"API": "purr. Image Engine", "version": "1.0"})
+
+
+@app.route("/optimize", methods=["POST"])
+def optimize_endpoint():
+    image = receive_image()
+
+    # Resize the image to 1080px if it's bigger.
+    image = optimizer.resize_image(image)
+
+    # Optimize the image.
+    bytes = optimizer.optimize(image)
+
+    return send_file(
+        bytes, mimetype="image/webp", as_attachment=True, download_name="optimized_image.webp"
+    )
+
+
+@app.route("/analyze", methods=["POST"])
+def analyze_endpoint():
+    image = receive_image()
 
     # Detect cats in the image.
     detections = cat_detection.detect_cats(image)
