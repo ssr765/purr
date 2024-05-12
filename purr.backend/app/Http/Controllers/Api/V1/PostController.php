@@ -11,6 +11,8 @@ use App\Models\Cat;
 use App\Services\ImageEngineService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -60,14 +62,16 @@ class PostController extends Controller
         // Remove hash from the detections set.
         Redis::srem('detections', $hash);
 
-        $file = $file->store('', 'posts');
+        $optimizedFile = $imageEngineService->optimizeImage($file);
+        $filename = Str::random(40) . '.webp';
+        Storage::disk('posts')->put($filename, $optimizedFile);
 
         // Temporally disabled.
         // $file = $imageEngineService->optimizeImage(storage_path('app/posts/' . $file));
 
         $post = Post::create([
             'cat_id' => $request->cat_id,
-            'filename' => $file,
+            'filename' => $filename,
             'caption' => $request->caption,
             'type' => $request->type,
             'detected' => $detected,

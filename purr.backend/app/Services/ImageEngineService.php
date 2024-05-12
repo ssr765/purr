@@ -16,9 +16,7 @@ class ImageEngineService
     public function optimizeImage($image)
     {
         // Send the image path to the image engine API.
-        $response = Http::post($this->uri . '/optimize', [
-            'input' => $image
-        ]);
+        $response = Http::attach('file', file_get_contents($image), basename($image))->post($this->uri . '/optimize');
 
         // Throw an exception if the request failed.
         if ($response->failed()) {
@@ -26,7 +24,7 @@ class ImageEngineService
         }
 
         // Return the optimized image filename (the webp one).
-        return $response->json()['filename'];
+        return $response->body();
     }
 
     public function analyzeImage($image)
