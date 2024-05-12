@@ -73,7 +73,9 @@ class PostController extends Controller
             'detected' => $detected,
         ]);
 
-        return response()->json(new PostResource($post), 201);
+        $post->refresh();
+
+        return response()->json(new PostResource($post->load('cat')), 201);
     }
 
     /**
