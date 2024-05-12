@@ -127,7 +127,7 @@ class UserController extends Controller
 
         // Check if the password is correct.
         if (!Hash::check($request->password, $request->user()->password)) {
-            abort(403, 'Unauthorized');
+            abort(401, 'Unauthenticated');
         }
 
         // Detach the user from all of their cats.
