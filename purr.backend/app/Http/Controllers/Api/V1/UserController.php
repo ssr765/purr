@@ -7,11 +7,13 @@ use App\Http\Resources\V1\CatCollection;
 use App\Http\Resources\V1\PostCollection;
 use App\Http\Resources\V1\UserCollection;
 use App\Http\Resources\V1\UserResource;
+use App\Mail\GoodbyeMail;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 
 class UserController extends Controller
@@ -150,6 +152,9 @@ class UserController extends Controller
             $request->session()->invalidate();
             $request->session()->regenerateToken();
         }
+
+        // Send a goodbye email.
+        Mail::to($user->email)->send(new GoodbyeMail($user->name));
 
         // Goodbye :(
         return response()->json(null, 204);
