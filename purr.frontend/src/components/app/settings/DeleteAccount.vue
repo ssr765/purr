@@ -1,6 +1,35 @@
 <script setup lang="ts">
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
+import { useUserService } from '@/services/userService'
+import { useAuthStore } from '@/stores/authStore'
+import type { AxiosError } from 'axios'
+import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { toast } from 'vue-sonner'
+
+const { user } = storeToRefs(useAuthStore())
+const userService = useUserService()
+const router = useRouter()
+
+const password = ref('')
+
+const deleteAccount = async () => {
+  try {
+    await userService.deleteAccount(user.value!.id, password.value)
+    user.value = null
+    router.push({ name: 'app-explore' })
+    toast.success('Tu cuenta ha sido eliminada exitosamente. ¡Los gatos estarán esperando tu regreso!')
+  } catch (error) {
+    const axiosError = error as AxiosError
+    if (axiosError.response?.status === 401) {
+      toast.error('La contraseña ingresada es incorrecta. Por favor, intenta nuevamente.')
+    } else {
+      toast.error('No se pudo eliminar tu cuenta. Por favor, intenta nuevamente.')
+    }
+  }
+}
 </script>
 
 <template>
@@ -22,13 +51,13 @@ import { Input } from '@/components/ui/input'
         <p class="mb-2">{{ $t('app.settings.settings.deleteAccount.dialog.content.3') }}</p>
         <div class="my-4">
           <label for="delete_account_password" class="block mb-2 text-sm font-medium text-ctp-text">{{ $t('app.settings.settings.deleteAccount.dialog.passwordInput') }}</label>
-          <Input type="password" id="delete_account_password" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" required />
+          <Input v-model="password" type="password" id="delete_account_password" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" required />
         </div>
       </div>
 
       <DialogFooter>
         <div class="flex justify-center gap-4">
-          <button class="text-red-500 bg-red-500/20 py-2.5 px-7 rounded-lg hover:bg-red-500 hover:text-white transition-all">{{ $t('app.settings.settings.deleteAccount.dialog.delete') }}</button>
+          <button @click="deleteAccount" class="text-red-500 bg-red-500/20 py-2.5 px-7 rounded-lg hover:bg-red-500 hover:text-white transition-all">{{ $t('app.settings.settings.deleteAccount.dialog.delete') }}</button>
           <DialogClose as-child>
             <button class="bg-ctp-lavender/75 hover:bg-ctp-lavender text-ctp-base py-2.5 px-7 rounded-lg transition-all">{{ $t('app.settings.settings.deleteAccount.dialog.cancel') }}</button>
           </DialogClose>

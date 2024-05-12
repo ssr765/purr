@@ -20,6 +20,18 @@ export const useUserService = () => {
     }
   }
 
+  const deleteAccount = async (userId: number, password: string) => {
+    try {
+      const response = await axios.delete<User>(`/api/v1/users/${userId}`, {
+        data: { password },
+      })
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
   const uploadAvatar = async (userId: number, avatar: File) => {
     try {
       const formData = new FormData()
@@ -54,6 +66,7 @@ export const useUserService = () => {
 
   return {
     editProfile,
+    deleteAccount,
     uploadAvatar,
     deleteAvatar,
   }
