@@ -113,5 +113,6 @@ Route::prefix('v1')->group(function () {
     // Post routes
     Route::prefix('posts')->name('posts.')->group(function () {
         Route::get('/{post}/media', [V1PostController::class, 'showContent'])->name('content');
+        Route::get('/{post}/comments', [V1CommentController::class, 'index'])->name('comments');
     });
 });
