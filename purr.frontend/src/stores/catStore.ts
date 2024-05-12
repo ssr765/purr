@@ -4,6 +4,8 @@ import type { Cat } from '@/models/Cat'
 import { useRouter } from 'vue-router'
 import { useCatService } from '@/services/catService'
 import { useAuthStore } from './authStore'
+import type { AxiosError } from 'axios'
+import { toast } from 'vue-sonner'
 
 export const useCatStore = defineStore('cat', () => {
   const router = useRouter()
@@ -47,7 +49,22 @@ export const useCatStore = defineStore('cat', () => {
         params: { catname: cat.value.catname },
       })
     } catch (error) {
-      console.log(error)
+      const axiosError = error as AxiosError
+      if (axiosError.response?.status === 404) {
+        if (user) {
+          toast.error('No hemos encontrado ningún gato :(', {
+            description: '¿Quieres que el tuyo sea el primero?',
+            action: {
+              label: '¡Sí!',
+              onClick: () => router.push({ name: 'app-cats-create' }),
+            },
+          })
+        } else {
+          toast.error('No hemos encontrado ningún gato :(')
+        }
+      } else {
+        toast.error('Ha ocurrido un error al cargar el gato aleatorio.')
+      }
     } finally {
       loading.value = false
     }

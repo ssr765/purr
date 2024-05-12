@@ -111,6 +111,11 @@ class CatController extends Controller
     public function random()
     {
         $cat = Cat::inRandomOrder()->first();
+
+        if (!$cat) {
+            return response()->json(['message' => 'No cats found'], 404);
+        }
+
         return response()->json(new CatResource($cat->load('posts')));
     }
 
