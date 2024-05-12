@@ -24,10 +24,12 @@ const authStore = useAuthStore()
         <DropdownMenuLabel class="font-normal pt-0 leading-[0.75]">@{{ authStore.user!.username }}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <span class="block icon-[quill--cog-alt] size-4 mr-2" role="img" aria-hidden="true" />
-            <span>{{ $t('app.layout.header.dropdown.settings') }}</span>
-          </DropdownMenuItem>
+          <RouterLink :to="{ name: 'app-settings' }">
+            <DropdownMenuItem>
+              <span class="block icon-[quill--cog-alt] size-4 mr-2" role="img" aria-hidden="true" />
+              <span>{{ $t('app.layout.header.dropdown.settings') }}</span>
+            </DropdownMenuItem>
+          </RouterLink>
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
