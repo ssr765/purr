@@ -5,9 +5,11 @@ import { useCommentService } from '@/services/commentService'
 import { usePostService } from '@/services/postService'
 import { toast } from 'vue-sonner'
 import type { AxiosError } from 'axios'
+import { useCommentStore } from './commentStore'
 
 export const usePostStore = defineStore('post', () => {
   const postService = usePostService()
+  const commentStore = useCommentStore()
   const commentService = useCommentService()
 
   const posts = ref<Post[]>([])
@@ -47,6 +49,12 @@ export const usePostStore = defineStore('post', () => {
     console.log(postData)
     if (postData) {
       postDetail.value = postData
+
+      if (postDetail.value.commentsCount > postDetail.value.comments.length) {
+        const comments = await commentStore.fetchComments(id)
+        postDetail.value.comments = comments
+      }
+
       return
     }
 

@@ -2,6 +2,18 @@ import axios from '@/lib/axios'
 import type { Comment } from '@/models/Comment'
 
 export const useCommentService = () => {
+  const fetchComments = async (postId: number) => {
+    try {
+      const response = await axios.get<Comment[]>(
+        `/api/v1/posts/${postId}/comments`,
+      )
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
   const create = async (id: number, content: string) => {
     const data = {
       post_id: id,
@@ -47,6 +59,7 @@ export const useCommentService = () => {
   const deleteComment = async (id: number) => {}
 
   return {
+    fetchComments,
     create,
     like,
     unlike,

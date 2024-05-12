@@ -17,10 +17,13 @@ import { useHead, useSeoMeta } from 'unhead'
 import { useI18n } from 'vue-i18n'
 import NoCatWarning from '@/components/app/posts/detail/NoCatWarning.vue'
 import SaveButton from '@/components/utils/posts/SaveButton.vue'
+import { useCommentStore } from '@/stores/commentStore'
+import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
 
 const route = useRoute()
 const postStore = usePostStore()
 const authStore = useAuthStore()
+const commentStore = useCommentStore()
 const { formatNumber } = useNumberFormatter()
 const { likeAnimation } = useLikeAnimation()
 const { t } = useI18n()
@@ -120,6 +123,9 @@ const comment = ref('')
       </div>
       <div v-if="postDetail.comments" class="space-y-2 p-4 overflow-auto">
         <PostComment :comment="comment" v-for="comment in postDetail.comments" :key="comment.id" :postId="postDetail.id" />
+        <div v-if="commentStore.loading" class="py-2">
+          <LoadingSpinner class="text-4xl" />
+        </div>
       </div>
       <div class="flex flex-col gap-2 p-4 border-t border-ctp-lavender">
         <div class="flex items-center gap-4 text-3xl">
