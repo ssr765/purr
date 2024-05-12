@@ -1,7 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { Post } from '@/models/Post'
-import axios from '@/lib/axios'
 import { useCommentService } from '@/services/commentService'
 import { usePostService } from '@/services/postService'
 import { toast } from 'vue-sonner'
@@ -17,11 +16,11 @@ export const usePostStore = defineStore('post', () => {
   const loading = ref(false)
   const loadingMore = ref(false)
 
-  const fetchPosts = async () => {
+  const fetchExplore = async () => {
     try {
       loading.value = true
-      const response = await axios.get<Post[]>('/api/v1/posts')
-      posts.value = response.data
+      const exploreFeed = await postService.fetchExplore()
+      posts.value = exploreFeed
     } catch (error) {
       console.log(error)
     } finally {
@@ -52,9 +51,8 @@ export const usePostStore = defineStore('post', () => {
     }
 
     try {
-      const response = await axios.get<Post>(`/api/v1/posts/${id}`)
-      console.log(response.data)
-      postDetail.value = response.data
+      const post = await postService.fetchPostDetail(id)
+      postDetail.value = post
     } catch (error) {
       console.log(error)
     }
@@ -213,7 +211,7 @@ export const usePostStore = defineStore('post', () => {
     loadingMore,
     nextPageExists,
 
-    fetchPosts,
+    fetchExplore,
     fetchFeed,
     fetchPostDetail,
     addComment,

@@ -1,6 +1,5 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import axios from '@/lib/axios'
 import type { Cat } from '@/models/Cat'
 import { useRouter } from 'vue-router'
 import { useCatService } from '@/services/catService'
@@ -17,9 +16,8 @@ export const useCatStore = defineStore('cat', () => {
   const fetchCat = async (id: number) => {
     try {
       loading.value = true
-      const response = await axios.get<Cat>(`/api/v1/cats/${id}`)
-      console.log(response.data)
-      cat.value = response.data
+      const response = await catService.fetchCat(id)
+      cat.value = response
     } catch (error) {
       console.log(error)
     } finally {
@@ -30,9 +28,8 @@ export const useCatStore = defineStore('cat', () => {
   const fetchCatByCatname = async (catname: string) => {
     try {
       loading.value = true
-      const response = await axios.get<Cat>(`/api/v1/cats/catname/${catname}`)
-      console.log(response.data)
-      cat.value = response.data
+      const response = await catService.fetchCatByCatname(catname)
+      cat.value = response
     } catch (error) {
       console.log(error)
     } finally {
@@ -43,8 +40,8 @@ export const useCatStore = defineStore('cat', () => {
   const fetchRandomCat = async () => {
     try {
       loading.value = true
-      const response = await axios.get<Cat>('/api/v1/cats/random')
-      cat.value = response.data
+      const response = await catService.fetchRandomCat()
+      cat.value = response
       router.push({
         name: 'app-cats-profile',
         params: { catname: cat.value.catname },

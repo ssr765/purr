@@ -1,15 +1,15 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import axios from '@/lib/axios'
 import type { AxiosError } from 'axios'
 import type { User } from '@/models/User'
 import { useRouter } from 'vue-router'
 import { useResponseToaster } from '@/composables/responseToaster'
-import { toast } from 'vue-sonner'
 import { useI18n } from 'vue-i18n'
+import { useAuthService } from '@/services/authService'
 
 export const useAuthStore = defineStore('auth', () => {
   const { t } = useI18n()
+  const authService = useAuthService()
   const { toastResponse } = useResponseToaster()
   const router = useRouter()
   const loading = ref(false)
@@ -19,24 +19,11 @@ export const useAuthStore = defineStore('auth', () => {
 
   const firstLoad = ref(true)
 
-  async function csrf() {
-    try {
-      loading.value = true
-      await axios.get('/sanctum/csrf-cookie')
-    } catch (error) {
-      toast.error(t('errors.serverError'))
-    } finally {
-      loading.value = false
-    }
-  }
-
   async function login(email: string, password: string) {
-    await csrf()
-
     try {
       loading.value = true
-      const response = await axios.post<User>('/login', { email, password })
-      user.value = response.data
+      const response = await authService.login(email, password)
+      user.value = response
       router.push({ name: 'app-home' })
     } catch (error) {
       toastResponse(error as AxiosError)
@@ -46,12 +33,10 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function register(data: Object) {
-    await csrf()
-
     try {
       loading.value = true
-      const response = await axios.post<User>('/register', data)
-      user.value = response.data
+      const response = await authService.register(data)
+      user.value = response
       router.push({ name: 'app-home' })
     } catch (error) {
       toastResponse(error as AxiosError)
@@ -61,16 +46,15 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function logout() {
-    await csrf()
-    await axios.post('/logout')
+    await authService.logout()
     user.value = null
     router.push({ name: 'app-home' })
   }
 
   async function fetchUser() {
     try {
-      const response = await axios.get<User>('/api/v1/user')
-      user.value = response.data
+      const response = await authService.fetchUser()
+      user.value = response
     } catch (error) {
       const axiosError = error as AxiosError
       if (axiosError.response?.status === 401) {
@@ -86,7 +70,6 @@ export const useAuthStore = defineStore('auth', () => {
 
     firstLoad,
 
-    csrf,
     login,
     register,
     logout,

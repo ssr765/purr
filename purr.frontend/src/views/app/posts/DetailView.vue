@@ -39,7 +39,9 @@ useHead({
 })
 
 onMounted(async () => {
-  await postStore.fetchPostDetail(postId)
+  if (!postDetail.value) {
+    await postStore.fetchPostDetail(postId)
+  }
 
   if (postDetail.value) {
     const title = `${t('app.posts.detail.metadata.postBy')} ${postDetail.value.cat!.name} (@${postDetail.value.cat!.catname})`

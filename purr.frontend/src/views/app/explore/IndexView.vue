@@ -11,7 +11,7 @@ const postStore = usePostStore()
 
 onMounted(() => {
   postStore.posts = []
-  postStore.fetchPosts()
+  postStore.fetchExplore()
 })
 
 const view = ref('feed')

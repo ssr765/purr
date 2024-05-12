@@ -1,15 +1,16 @@
 import { computed, ref } from 'vue'
-import { defineStore } from 'pinia'
+import { defineStore, storeToRefs } from 'pinia'
 import type { PostInput } from '@/models/Post'
-import axios from '@/lib/axios'
 import { useRouter } from 'vue-router'
 import { usePostService } from '@/services/postService'
 import type { Analysis } from '@/models/Analysis'
 import { toast } from 'vue-sonner'
 import { useI18n } from 'vue-i18n'
+import { usePostStore } from './postStore'
 
 export const useCreatePostStore = defineStore('createPost', () => {
   const { t } = useI18n()
+  const { postDetail } = storeToRefs(usePostStore())
   const postService = usePostService()
   const router = useRouter()
 
@@ -71,10 +72,11 @@ export const useCreatePostStore = defineStore('createPost', () => {
     fd.append('type', 'normal')
 
     try {
-      const response = await axios.post('/api/v1/posts', fd)
+      const post = await postService.createPost(fd)
+      postDetail.value = post
       router.push({
         name: 'app-posts-detail',
-        params: { id: response.data.id },
+        params: { id: post.id },
       })
     } catch (error) {
       console.error(error)

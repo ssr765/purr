@@ -25,11 +25,31 @@ interface PostPagination {
 }
 
 export const usePostService = () => {
+  const fetchExplore = async () => {
+    try {
+      const response = await axios.get<Post[]>('/api/v1/posts')
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
   const fetchFeed = async (page: number) => {
     try {
       const response = await axios.get<PostPagination>(
         `/api/v1/user/feed?page=${page}`,
       )
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
+  const fetchPostDetail = async (id: number) => {
+    try {
+      const response = await axios.get<Post>(`/api/v1/posts/${id}`)
       return response.data
     } catch (error) {
       console.log(error)
@@ -45,6 +65,16 @@ export const usePostService = () => {
         '/api/v1/posts/analyze',
         formData,
       )
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
+  const createPost = async (formData: FormData) => {
+    try {
+      const response = await axios.post<Post>('/api/v1/posts', formData)
       return response.data
     } catch (error) {
       console.log(error)
@@ -129,13 +159,16 @@ export const usePostService = () => {
   }
 
   return {
+    fetchExplore,
     fetchFeed,
+    fetchPostDetail,
+    analyze,
+    createPost,
     like,
     unlike,
     save,
     unsave,
     getLikedPosts,
     getSavedPosts,
-    analyze,
   }
 }

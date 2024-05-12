@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia'
-import axios from '@/lib/axios'
 import { ref, computed } from 'vue'
 import { format } from 'date-fns'
 import { toDate } from 'radix-vue/date'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
+import { useCatService } from '@/services/catService'
 
 export const useCreateCatStore = defineStore('createCat', () => {
+  const catService = useCatService()
   const router = useRouter()
   const authStore = useAuthStore()
 
@@ -35,12 +36,8 @@ export const useCreateCatStore = defineStore('createCat', () => {
 
   const checkCatname = async () => {
     try {
-      const response = await axios.post<{ exists: boolean }>(
-        `/api/v1/cats/catname`,
-        { catname: catname.value },
-      )
-      validCatname.value = !response.data.exists
-      console.log(validCatname.value)
+      const { exists } = await catService.checkCatname(catname.value)
+      validCatname.value = !exists
     } catch (error) {
       console.log(error)
     } finally {
@@ -71,18 +68,18 @@ export const useCreateCatStore = defineStore('createCat', () => {
       formData.append('password', password.value)
       formData.append('password_confirmation', confirmPassword.value)
 
-      const response = await axios.post(`/api/v1/cats`, formData)
+      const createdCat = await catService.createCat(formData)
 
       // Update the user's cats
       if (!authStore.user!.cats) {
-        authStore.user!.cats = [response.data]
+        authStore.user!.cats = [createdCat]
       } else {
-        authStore.user!.cats.push(response.data)
+        authStore.user!.cats.push(createdCat)
       }
 
       router.push({
         name: 'app-cats-profile',
-        params: { catname: response.data.catname },
+        params: { catname: createdCat.catname },
       })
     } catch (error) {
       console.log(error)
