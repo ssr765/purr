@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { defineStore } from 'pinia'
+import { defineStore, storeToRefs } from 'pinia'
 import type { Cat } from '@/models/Cat'
 import { useRouter } from 'vue-router'
 import { useCatService } from '@/services/catService'
@@ -10,7 +10,7 @@ import { toast } from 'vue-sonner'
 export const useCatStore = defineStore('cat', () => {
   const router = useRouter()
   const catService = useCatService()
-  const { user } = useAuthStore()
+  const { user } = storeToRefs(useAuthStore())
 
   const loading = ref(false)
   const cat = ref<Cat | null>(null)
@@ -51,7 +51,7 @@ export const useCatStore = defineStore('cat', () => {
     } catch (error) {
       const axiosError = error as AxiosError
       if (axiosError.response?.status === 404) {
-        if (user) {
+        if (user.value) {
           toast.error('No hemos encontrado ningún gato :(', {
             description: '¿Quieres que el tuyo sea el primero?',
             action: {
@@ -75,14 +75,14 @@ export const useCatStore = defineStore('cat', () => {
     if (!cat.value) return
     cat.value.followed = true
     cat.value.followers_count += 1
-    user!.following_count += 1
+    user.value!.following_count += 1
     if (followLoading.value) return
     try {
       followLoading.value = true
       const response = await catService.follow(cat.value.id)
       cat.value.followers_count = response.cat.followers_count
       cat.value.followed = response.cat.followed
-      user!.following_count = response.user.following_count
+      user.value!.following_count = response.user.following_count
     } catch (error) {
       console.log(error)
     } finally {
@@ -94,14 +94,14 @@ export const useCatStore = defineStore('cat', () => {
     if (!cat.value) return
     cat.value.followed = false
     cat.value.followers_count -= 1
-    user!.following_count -= 1
+    user.value!.following_count -= 1
     if (followLoading.value) return
     try {
       followLoading.value = true
       const response = await catService.unfollow(cat.value.id)
       cat.value.followers_count = response.cat.followers_count
       cat.value.followed = response.cat.followed
-      user!.following_count = response.user.following_count
+      user.value!.following_count = response.user.following_count
     } catch (error) {
       console.log(error)
     } finally {
