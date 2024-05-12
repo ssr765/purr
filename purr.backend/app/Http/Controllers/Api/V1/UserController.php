@@ -10,11 +10,14 @@ use App\Http\Resources\V1\UserResource;
 use App\Mail\GoodbyeMail;
 use App\Models\Post;
 use App\Models\User;
+use App\Services\ImageEngineService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -187,15 +190,30 @@ class UserController extends Controller
         ]);
     }
 
-    public function updateAvatar(Request $request)
+    public function updateAvatar(Request $request, ImageEngineService $imageEngineService)
     {
         $request->validate([
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:8192']
         ]);
 
         $user = $request->user();
-        $user->avatar = $request->file('avatar')->store('', 'avatars');
+        $oldAvatar = $user->avatar;
+        $avatar = $request->file('avatar');
+
+        $optimizedFile = $imageEngineService->optimizeImage($avatar);
+        $filename = Str::random(40) . '.webp';
+        Storage::disk('avatars')->put($filename, $optimizedFile);
+
+        $user->avatar = $filename;
         $user->save();
+
+        // Delete the old avatar file.
+        if ($oldAvatar) {
+            $path = storage_path('app/avatars/' . $oldAvatar);
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
 
         return response()->json(
             ['avatar' => env('APP_URL') . "/api/v1/users/{$user->id}/avatar"],
