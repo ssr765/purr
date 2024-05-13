@@ -105,7 +105,21 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        // Check if the user owns the post before deleting it.
+        if ($post->cat->users()->where('user_id', auth()->id())->doesntExist()) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        // Delete the post.
+        $post->delete();
+
+        // Delete the file.
+        $path = storage_path('app/posts/' . $post->filename);
+        if (file_exists($path)) {
+            unlink($path);
+        }
+
+        return response()->json(null, 204);
     }
 
     /**
