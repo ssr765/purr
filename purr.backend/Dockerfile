@@ -37,9 +37,13 @@ RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' /et
 # Copy Composer binary from official Composer image
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Enable zip in php.ini
-RUN mv /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
-RUN sed -i 's/;extension=zip/extension=zip/' /usr/local/etc/php/php.ini
+# php.ini configuration
+RUN mv /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
+    && sed -i 's/;extension=zip/extension=zip/' /usr/local/etc/php/php.ini \
+    && sed -i 's/max_upload_size = 2M/max_upload_size = 20M/' /usr/local/etc/php/php.ini \
+    && sed -i 's/max_post_size = 8M/max_post_size = 20M/' /usr/local/etc/php/php.ini \
+    && sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 20M/' /usr/local/etc/php/php.ini \
+    && sed -i 's/memory_limit = 128M/memory_limit = 512M/' /usr/local/etc/php/php.ini
 
 # Install dependencies with Composer
 RUN composer install --no-interaction --optimize-autoloader --no-dev
