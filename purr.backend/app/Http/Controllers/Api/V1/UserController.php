@@ -216,7 +216,7 @@ class UserController extends Controller
         }
 
         return response()->json(
-            ['avatar' => env('APP_URL') . "/api/v1/users/{$user->id}/avatar"],
+            ['avatar' => env('APP_URL') . "api/v1/users/{$user->id}/avatar"],
         );
     }
 
