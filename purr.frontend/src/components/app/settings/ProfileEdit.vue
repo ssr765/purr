@@ -114,6 +114,7 @@ const submit = handleSubmit(async (values) => {
       email: values.email ?? user.value!.email,
       password: values.password,
       new_password: values.new_password,
+      new_password_confirmation: values.new_password_confirmation,
     })
 
     user.value = response
@@ -194,6 +195,16 @@ const submit = handleSubmit(async (values) => {
           </FormField>
 
           <FormField v-slot="{ componentField }" name="new_password">
+            <FormItem>
+              <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.settings.settings.editProfile.sheet.newPassword') }}</FormLabel>
+              <FormControl>
+                <Input @input="inputValidate" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="text" v-bind="componentField" placeholder="••••••••" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          </FormField>
+
+          <FormField v-slot="{ componentField }" name="new_password_confirmation">
             <FormItem>
               <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.settings.settings.editProfile.sheet.newPassword') }}</FormLabel>
               <FormControl>

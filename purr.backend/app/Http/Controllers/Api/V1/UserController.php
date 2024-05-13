@@ -10,6 +10,7 @@ use App\Http\Resources\V1\UserResource;
 use App\Mail\GoodbyeMail;
 use App\Models\Post;
 use App\Models\User;
+use App\Rules\EmailValidator;
 use App\Services\ImageEngineService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,9 +56,9 @@ class UserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'min:3', 'max:30', 'regex:/^[\w\d\.]{3,30}$/'],
-            'email' => ['required', 'email'],
-            'password' => ['required', 'confirmed', Rules\Password::min(8)->mixedCase()->letters()->numbers()->symbols()],
-            'new_password' => ['nullable', 'string', 'min:8'],
+            'email' => ['required', 'email', new EmailValidator, 'unique:' . User::class . ',email,' . $user->id],
+            'password' => ['required', 'string', Rules\Password::min(8)->mixedCase()->letters()->numbers()->symbols()],
+            'new_password' => ['nullable', 'string', 'confirmed', 'min:8'],
         ]);
 
         // Check if the user is authorized to update the account.
