@@ -248,6 +248,11 @@ class UserController extends Controller
             abort(404);
         }
 
+        // Support for Google avatars.
+        if (filter_var($user->avatar, FILTER_VALIDATE_URL)) {
+            return response()->redirectTo($user->avatar);
+        }
+
         $path = storage_path('app/avatars/' . $user->avatar);
         return response()->file($path);
     }

@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\GoogleWelcomeMail;
 use App\Models\User;
+use App\Services\SecurePasswordService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Str;
 
@@ -31,7 +35,7 @@ class GoogleController extends Controller
     /**
      * Obtain the user information from Google.
      */
-    public function handleGoogleCallback(): RedirectResponse
+    public function handleGoogleCallback(SecurePasswordService $securePasswordService): RedirectResponse
     {
         $user = Socialite::driver('google')->user();
 
@@ -58,9 +62,15 @@ class GoogleController extends Controller
             $newUser->name = $user->name;
             $newUser->username = $username;
             $newUser->email = $user->email;
+            $newUser->avatar = $user->avatar;
+            $password = $securePasswordService->generate();
+            $newUser->password = Hash::make($password);
             $newUser->google_id = $user->id;
             $newUser->email_verified_at = now();
             $newUser->save();
+
+            // Send a welcome email to the new user with their random password.
+            Mail::to($newUser->email)->send(new GoogleWelcomeMail($newUser->name, $password));
 
             auth()->login($newUser, true);
         }
