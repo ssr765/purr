@@ -6,8 +6,10 @@ import { usePostService } from '@/services/postService'
 import { toast } from 'vue-sonner'
 import type { AxiosError } from 'axios'
 import { useCommentStore } from './commentStore'
+import { useRouter } from 'vue-router'
 
 export const usePostStore = defineStore('post', () => {
+  const router = useRouter()
   const postService = usePostService()
   const commentStore = useCommentStore()
   const commentService = useCommentService()
@@ -61,6 +63,19 @@ export const usePostStore = defineStore('post', () => {
     try {
       const post = await postService.fetchPostDetail(id)
       postDetail.value = post
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const deletePost = async (id: number) => {
+    try {
+      await postService.deletePost(id)
+      posts.value = posts.value.filter((post) => post.id !== id)
+      if (postDetail.value?.id === id) {
+        postDetail.value = null
+        router.push({ name: 'app-feed' })
+      }
     } catch (error) {
       console.log(error)
     }
@@ -222,6 +237,7 @@ export const usePostStore = defineStore('post', () => {
     fetchExplore,
     fetchFeed,
     fetchPostDetail,
+    deletePost,
     addComment,
     refreshCommentLike,
     toggleLike,

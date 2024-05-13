@@ -82,6 +82,16 @@ export const usePostService = () => {
     }
   }
 
+  const deletePost = async (id: number) => {
+    try {
+      const response = await axios.delete(`/api/v1/posts/${id}`)
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
   const like = async (id: number) => {
     try {
       console.log('like', id)
@@ -164,6 +174,7 @@ export const usePostService = () => {
     fetchPostDetail,
     analyze,
     createPost,
+    deletePost,
     like,
     unlike,
     save,

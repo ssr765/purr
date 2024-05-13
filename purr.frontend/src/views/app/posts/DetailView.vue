@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePostStore } from '@/stores/postStore'
 import { useAuthStore } from '@/stores/authStore'
@@ -19,6 +19,7 @@ import NoCatWarning from '@/components/app/posts/detail/NoCatWarning.vue'
 import SaveButton from '@/components/utils/posts/SaveButton.vue'
 import { useCommentStore } from '@/stores/commentStore'
 import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
+import DotMenu from '@/components/app/posts/detail/DotMenu.vue'
 
 const route = useRoute()
 const postStore = usePostStore()
@@ -31,6 +32,7 @@ const { t } = useI18n()
 const postId = Number(route.params.id)
 const { postDetail } = storeToRefs(postStore)
 const { user } = storeToRefs(authStore)
+const userCatsIds = user.value ? user.value.cats!.map((cat) => cat.id) : []
 
 useHead({
   meta: [
@@ -136,9 +138,13 @@ const comment = ref('')
           <SaveButton :save="postDetail.savesData.isSaved" @save="save" />
           <NoCatWarning v-if="!postDetail.detected" />
           <div class="flex-1"></div>
-          <button>
-            <span class="block icon-[mdi--dots-vertical]" role="img" aria-hidden="true" />
-          </button>
+          <div v-if="userCatsIds.includes(postDetail.cat!.id)">
+            <DotMenu :postId="postDetail.id">
+              <button>
+                <span class="block icon-[mdi--dots-vertical]" role="img" aria-hidden="true" />
+              </button>
+            </DotMenu>
+          </div>
         </div>
         <p class="flex items-center gap-1.5">
           <span v-if="postDetail.likesData.count > 0" class="icon-[solar--heart-bold]" role="img" aria-hidden="true" />

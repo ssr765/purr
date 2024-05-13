@@ -96,13 +96,6 @@ const copyLink = () => {
           </ContextMenuItem>
         </ContextMenuSubContent>
       </ContextMenuSub>
-      <div v-if="true">
-        <ContextMenuSeparator />
-        <ContextMenuItem class="text-red-500">
-          <span class="mr-2 h-4 w-4 icon-[solar--trash-bin-trash-linear]" role="img" aria-hidden="true" />
-          Eliminar publicación
-        </ContextMenuItem>
-      </div>
     </ContextMenuContent>
   </ContextMenu>
 </template>
