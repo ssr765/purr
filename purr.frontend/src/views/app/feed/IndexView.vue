@@ -6,6 +6,8 @@ import { onMounted } from 'vue'
 
 import Logo from '@/assets/img/logo/black.webp'
 import { useSeoMeta } from 'unhead'
+import { storeToRefs } from 'pinia'
+import { useAuthStore } from '@/stores/authStore'
 
 useSeoMeta({
   title: 'purr.',
@@ -15,11 +17,18 @@ useSeoMeta({
   ogImage: Logo,
 })
 
+const { user } = storeToRefs(useAuthStore())
 const postStore = usePostStore()
 
 onMounted(() => {
   postStore.posts = []
-  postStore.fetchFeed()
+  if (user.value!.following_count > 0) {
+    console.log('fetchFeed')
+    postStore.fetchFeed()
+  } else {
+    console.log('fetchExplore')
+    postStore.fetchExplore()
+  }
 })
 
 const loadMore = (page: number) => {
@@ -28,5 +37,12 @@ const loadMore = (page: number) => {
 </script>
 
 <template>
+  <div v-if="user!.following_count == 0" class="flex items-center justify-center h-full">
+    <div class="text-center">
+      <h1 class="text-6xl p-4">Bienvenido/a a purr.</h1>
+      <p>Parece que todavía no sigues a ningún gatito. ¡Vaya catastrofe! ¿Porque no sigues a alguno de estos hermosos gatos?</p>
+      <hr class="h-px bg-ctp-lavender my-10" />
+    </div>
+  </div>
   <PostsFeed :posts="postStore.posts" @loadMore="loadMore" />
 </template>
