@@ -7,8 +7,12 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function makePostAsDetected(Post $post)
+    public function approve(Post $post)
     {
-        // TODO: Implement makePostAsDetected() method.
+        $post->update([
+            'detected' => true,
+        ]);
+
+        return response()->json(null, 204);
     }
 }

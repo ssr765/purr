@@ -67,4 +67,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Cat::class, 'followers');
     }
+
+    public function isAdmin()
+    {
+        return $this->admin ? true : false;
+    }
 }

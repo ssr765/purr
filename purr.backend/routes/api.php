@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Api\V1\CatController as V1CatController;
 use App\Http\Controllers\Api\V1\PostController as V1PostController;
 use App\Http\Controllers\Api\V1\UserController as V1UserController;
@@ -123,6 +124,13 @@ Route::prefix('v1')->group(function () {
         Route::prefix('posts')->name('posts.')->group(function () {
             Route::get('/{post}/media', [V1PostController::class, 'showContent'])->name('content');
             Route::get('/{post}/comments', [V1CommentController::class, 'index'])->name('comments');
+        });
+    });
+
+    // --- Admin routes
+    Route::middleware(['auth:sanctum', 'admin'])->name('admin.')->group(function () {
+        Route::prefix('posts')->name('posts.')->group(function () {
+            Route::post('/{post}/approve', [AdminController::class, 'approve'])->name('approve');
         });
     });
 });
