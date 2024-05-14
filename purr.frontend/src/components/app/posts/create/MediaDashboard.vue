@@ -22,6 +22,8 @@ const width = ref(0)
 const height = ref(0)
 
 onMounted(() => {
+  createPostStore.analysisData = null
+
   const observer = new ResizeObserver(async (entries) => {
     for (const entry of entries) {
       width.value = entry.contentRect.width
@@ -115,7 +117,7 @@ onUnmounted(() => {
       <PurrButton @click="createPostStore.reset()"> {{ $t('app.posts.create.mediaDashboard.back') }} </PurrButton>
     </div>
     <div class="relative flex items-center justify-center">
-      <div class="absolute" :style="{ width: width + 'px', height: height + 'px' }">
+      <div v-if="!createPostStore.analyzing" class="absolute" :style="{ width: width + 'px', height: height + 'px' }">
         <div v-for="detection in detectionBoxes" :key="detection.top" class="absolute border-4 border-ctp-lavender rounded-lg" :style="{ top: detection.top + 'px', left: detection.left + 'px', width: detection.width + 'px', height: detection.height + 'px' }">
           <div class="bg-ctp-lavender flex items-center justify-center size-12 rounded-br-lg">
             <p class="icon-[solar--cat-linear] text-4xl text-black" role="img" aria-hidden="true" />
@@ -125,6 +127,9 @@ onUnmounted(() => {
           <span class="icon-[ph--warning-bold] text-6xl text-red-500" role="img" aria-hidden="true" />
           <p class="text-lg md:text-xl text-ctp-text text-center">{{ $t('app.posts.create.mediaDashboard.noCatsDetected') }}</p>
         </div>
+      </div>
+      <div v-else class="absolute flex items-center justify-center bg-black bg-opacity-30" :style="{ width: width + 'px', height: height + 'px' }">
+        <LoadingSpinner class="text-6xl" />
       </div>
       <img ref="box" class="max-h-app" :src="createPostStore.postMediaPreview!" :alt="createPostStore.post!.file.name" />
     </div>
