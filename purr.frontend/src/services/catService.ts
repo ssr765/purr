@@ -90,6 +90,21 @@ export const useCatService = () => {
     }
   }
 
+  const addCat = async (catname: string, password: string) => {
+    try {
+      const response = await axios.post(
+        `/api/v1/cats/catname/${catname}/share`,
+        {
+          password,
+        },
+      )
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
   return {
     fetchCat,
     fetchCatByCatname,
@@ -98,5 +113,6 @@ export const useCatService = () => {
     unfollow,
     checkCatname,
     createCat,
+    addCat,
   }
 }

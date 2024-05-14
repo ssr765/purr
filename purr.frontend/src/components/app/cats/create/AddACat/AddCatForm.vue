@@ -4,6 +4,17 @@ import { useForm } from 'vee-validate'
 import * as yup from 'yup'
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { useCatService } from '@/services/catService'
+import { useRouter } from 'vue-router'
+import { ref } from 'vue'
+import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
+import type { AxiosError } from 'axios'
+import { toast } from 'vue-sonner'
+
+const catService = useCatService()
+const router = useRouter()
+
+const loading = ref(false)
 
 const formSchema = yup.object({
   catname: yup
@@ -18,12 +29,26 @@ const formSchema = yup.object({
     .required('La contraseña es obligatoria'),
 })
 
-const { handleSubmit } = useForm({
+const { handleSubmit, values } = useForm({
   validationSchema: formSchema,
 })
 
 const submit = handleSubmit(async () => {
-  console.log('Add a cat')
+  try {
+    loading.value = true
+    await catService.addCat(values.catname, values.password)
+    router.push({ name: 'app-cats-profile', params: { catname: values.catname } })
+  } catch (error) {
+    const axiosError = error as AxiosError
+    if (axiosError.response?.status === 409) {
+      toast.error('Ya tienes el gato con ese catname')
+    }
+    if (axiosError.response?.status === 403) {
+      toast.error('Contraseña incorrecta')
+    }
+  } finally {
+    loading.value = false
+  }
 })
 </script>
 
@@ -48,6 +73,7 @@ const submit = handleSubmit(async () => {
         <FormMessage />
       </FormItem>
     </FormField>
-    <PurrButton class="w-full lg:w-auto mx-auto" @click="submit">Añadir gato</PurrButton>
+    <PurrButton v-if="!loading" class="w-full lg:w-auto mx-auto" @click="submit">Añadir gato</PurrButton>
+    <LoadingSpinner v-else class="text-4xl mx-auto" />
   </div>
 </template>
