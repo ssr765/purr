@@ -1,4 +1,18 @@
+name: purr_development
+
 services:
+    frontend:
+        build:
+            context: ../purr.frontend
+            dockerfile: Dockerfile.development
+        ports:
+            - '5173:5173'
+        volumes:
+            - '../purr.frontend:/app'
+            - '/app/node_modules'
+        networks:
+            - sail
+
     laravel.test:
         build:
             context: ./vendor/laravel/sail/runtimes/8.3
@@ -28,11 +42,11 @@ services:
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
-            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ROOT_PASSWORD: 'password'
             MYSQL_ROOT_HOST: '%'
-            MYSQL_DATABASE: '${DB_DATABASE}'
-            MYSQL_USER: '${DB_USERNAME}'
-            MYSQL_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_DATABASE: 'purr'
+            MYSQL_USER: 'purr'
+            MYSQL_PASSWORD: 'password'
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
         volumes:
             - 'sail-mysql:/var/lib/mysql'
@@ -44,7 +58,7 @@ services:
                 - CMD
                 - mysqladmin
                 - ping
-                - '-p${DB_PASSWORD}'
+                - '-ppassword'
             retries: 3
             timeout: 5s
     redis:
@@ -62,10 +76,16 @@ services:
                 - ping
             retries: 3
             timeout: 5s
+
     imageengine:
         build:
             context: ../purr.imageEngine
-        
+            dockerfile: Dockerfile.development
+        volumes:
+            - '../purr.imageEngine/app:/code/app'
+            - '../purr.imageEngine/ai/models:/code/ai/models'
+        ports:
+            - '5000:5000'
         networks:
             - sail
 networks:
