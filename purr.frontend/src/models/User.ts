@@ -9,6 +9,7 @@ export interface User {
   following_count: number
   createdAt: string
   updatedAt: string
+  admin: boolean
   avatar?: string
   biography?: string
   cats?: Cat[]
