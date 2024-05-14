@@ -32,7 +32,6 @@ const { t } = useI18n()
 const postId = Number(route.params.id)
 const { postDetail } = storeToRefs(postStore)
 const { user } = storeToRefs(authStore)
-const userCatsIds = user.value ? user.value.cats!.map((cat) => cat.id) : []
 
 useHead({
   meta: [
@@ -138,8 +137,8 @@ const comment = ref('')
           <SaveButton :save="postDetail.savesData.isSaved" @save="save" />
           <NoCatWarning v-if="!postDetail.detected" />
           <div class="flex-1"></div>
-          <div v-if="userCatsIds.includes(postDetail.cat!.id)">
-            <DotMenu :postId="postDetail.id">
+          <div>
+            <DotMenu :post="postDetail">
               <button>
                 <span class="block icon-[mdi--dots-vertical]" role="img" aria-hidden="true" />
               </button>

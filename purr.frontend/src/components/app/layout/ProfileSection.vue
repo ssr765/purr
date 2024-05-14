@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/authStore'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { LogOut, User } from 'lucide-vue-next'
+import { LogOut } from 'lucide-vue-next'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { storeToRefs } from 'pinia'
 
 const authStore = useAuthStore()
+const { user } = storeToRefs(authStore)
 </script>
 <template>
-  <div v-if="authStore.isAuthenticated">
+  <div v-if="authStore.isAuthenticated" class="flex items-center gap-6">
+    <div v-if="user!.admin" class="font-semibold">ADMINISTRADOR</div>
     <DropdownMenu>
       <div class="h-10">
         <DropdownMenuTrigger as-child>

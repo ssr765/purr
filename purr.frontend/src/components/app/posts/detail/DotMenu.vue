@@ -1,19 +1,38 @@
 <script setup lang="ts">
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { usePostStore } from '@/stores/postStore'
+import { storeToRefs } from 'pinia'
+import { useAuthStore } from '@/stores/authStore'
+import type { Post } from '@/models/Post'
+import type { PropType } from 'vue'
+import { useAdminService } from '@/services/adminService'
+import { toast } from 'vue-sonner'
 
 const props = defineProps({
-  postId: {
-    type: Number,
+  post: {
+    type: Object as PropType<Post>,
     required: true,
   },
 })
 
 const postStore = usePostStore()
+const adminService = useAdminService()
+const authStore = useAuthStore()
+const { user } = storeToRefs(authStore)
+const userCatsIds = user.value ? user.value.cats!.map((cat) => cat.id) : []
 
 const deletePost = () => {
-  postStore.deletePost(props.postId)
+  postStore.deletePost(props.post.id)
+}
+
+const approvePost = async () => {
+  try {
+    await adminService.approve(props.post.id)
+    postStore.postDetail! = { ...postStore.postDetail!, detected: true }
+  } catch (error) {
+    toast.error('No se pudo aprobar la publicación')
+  }
 }
 </script>
 
@@ -24,7 +43,14 @@ const deletePost = () => {
         <slot />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuGroup>
+        <div v-if="user && user.admin && !post.detected">
+          <DropdownMenuItem class="text-green-500" @click="approvePost">
+            <span class="mr-2 h-4 w-4 icon-[solar--check-circle-linear]" role="img" aria-hidden="true" />
+            Aprobar publicación
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+        </div>
+        <DropdownMenuGroup v-if="userCatsIds.includes(post.cat!.id) || (user && user.admin)">
           <DialogTrigger>
             <DropdownMenuItem class="text-red-500">
               <span class="mr-2 h-4 w-4 icon-[solar--trash-bin-trash-linear]" role="img" aria-hidden="true" />
