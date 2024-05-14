@@ -1,3 +1,5 @@
+name: purr_production
+
 services:
   proxy:
     build:
