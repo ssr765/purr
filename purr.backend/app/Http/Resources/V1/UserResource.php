@@ -19,7 +19,7 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'username' => $this->username,
-            'avatar' => $this->avatar ? env('APP_URL') . "api/v1/users/{$this->id}/avatar" : null,
+            'avatar' => $this->avatar ? config('app.url') . "api/v1/users/{$this->id}/avatar" : null,
             'biography' => $this->biography,
             'following_count' => $this->following_count,
             'createdAt' => $this->created_at,

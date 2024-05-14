@@ -16,7 +16,7 @@ class PostResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'url' => env('APP_URL') . "api/v1/posts/{$this->id}/media",
+            'url' => config('app.url') . "api/v1/posts/{$this->id}/media",
             'caption' => $this->caption,
             'type' => $this->type,
             'likesData' => [

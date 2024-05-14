@@ -21,7 +21,7 @@ class CatResource extends JsonResource
             'sex' => $this->sex,
             'breed' => $this->breed,
             'color' => $this->color,
-            'avatar' => $this->avatar ? env('APP_URL') . "/api/v1/cats/{$this->id}/avatar" : null,
+            'avatar' => $this->avatar ? config('app.url') . "/api/v1/cats/{$this->id}/avatar" : null,
             'biography' => $this->biography,
             'birthdate' => $this->birthdate,
             'deathdate' => $this->deathdate,
