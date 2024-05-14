@@ -23,6 +23,10 @@ class Cat extends Model
         'adoption',
     ];
 
+    protected $hidden = [
+        'password',
+    ];
+
     public function setCatnameAttribute($value)
     {
         $this->attributes['catname'] = strtolower($value);
