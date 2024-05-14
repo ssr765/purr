@@ -33,12 +33,13 @@ const df = new DateFormatter('es-ES', {
     <Popover>
       <PopoverTrigger class="w-full">
         <div>
-          <label class="text-left block mb-2 text-sm font-medium text-ctp-text">Nacimiento del gato</label>
+          <label class="text-left block mb-2 text-sm font-medium text-ctp-text">Nacimiento del gato *</label>
           <div class="flex items-center gap-2 bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5">
             <span class="icon-[solar--calendar-mark-linear]" role="img" aria-hidden="true" />
             <span>{{ createCatStore.birthdateInput ? df.format(toDate(createCatStore.birthdateInput)) : 'Elige fecha' }}</span>
           </div>
         </div>
+        <p class="text-ctp-text/75 text-sm text-left mt-2">En caso que no la sepas, siempre puedes poner la fecha desde que tienes al gato.</p>
       </PopoverTrigger>
       <PopoverContent class="w-auto p-0">
         <Calendar initial-focus :min-value="new CalendarDate(1990, 1, 1)" :max-value="today(getLocalTimeZone())" @update:model-value="(v) => (createCatStore.birthdateInput = v)" v-model="createCatStore.birthdateInput" />
