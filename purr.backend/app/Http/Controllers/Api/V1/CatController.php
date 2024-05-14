@@ -10,6 +10,7 @@ use App\Http\Resources\V1\UserCollection;
 use App\Models\Cat;
 use App\Services\ImageEngineService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class CatController extends Controller
 {
@@ -68,7 +69,27 @@ class CatController extends Controller
      */
     public function update(UpdateCatRequest $request, Cat $cat)
     {
-        //
+        // Check if the user owns the cat to update it.
+        if ($request->user()->cats()->where('cat_id', $cat->id)->doesntExist()) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        // Check if the password is correct.
+        if (!Hash::check($request->password, $cat->password)) {
+            abort(403, 'Unauthorized');
+        }
+
+        $cat->update([
+            'name' => $request->name ?? $cat->name,
+            'catname' => $request->catname ?? $cat->catname,
+            'breed' => $request->breed ?? $cat->breed,
+            'color' => $request->color ?? $cat->color,
+            'biography' => $request->biography ?? $cat->biography,
+            'password' => $request->new_password ? bcrypt($request->new_password) : $cat->password,
+            'adoption' => empty($request->adoption) ? $cat->adoption : $request->adoption,
+        ]);
+
+        return response()->json(new CatResource($cat), 200);
     }
 
     /**

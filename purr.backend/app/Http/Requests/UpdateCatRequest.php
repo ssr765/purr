@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Models\Cat;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules;
 
 class UpdateCatRequest extends FormRequest
 {
@@ -23,14 +24,15 @@ class UpdateCatRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'catname' => ['required', 'string', 'unique' . Cat::class, 'not_in:create', 'regex:/^[\w\d\.]{3,30}$/', 'min:3', 'max:30'],
+            'name' => ['nullable', 'string'],
+            'catname' => ['nullable', 'string', 'unique' . Cat::class, 'not_in:create', 'regex:/^[\w\d\.]{3,30}$/', 'min:3', 'max:30'],
             'breed' => ['nullable', 'string'],
             'color' => ['nullable', 'string'],
             'avatar' => ['nullable', 'image', 'max:8192', 'mimes:jpg,jpeg,png,webp'],
             'biography' => ['nullable', 'string'],
-            'birthdate' => ['nullable', 'date'],
-            'deathdate' => ['nullable', 'date'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'adoption' => ['nullable', 'boolean'],
+            'password' => ['required', 'string',  Rules\Password::min(8)->mixedCase()->letters()->numbers()->symbols()],
+            'new_password' => ['nullable', 'string', 'confirmed',  Rules\Password::min(8)->mixedCase()->letters()->numbers()->symbols()],
         ];
     }
 }
