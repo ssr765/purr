@@ -194,6 +194,10 @@ class CatController extends Controller
             return response()->json(['message' => 'Cat not found'], 404);
         }
 
+        if ($cat->users()->where('user_id', $request->user()->id)->exists()) {
+            return response()->json(['message' => 'You already own this cat!'], 409);
+        }
+
         if (!password_verify($request->password, $cat->password)) {
             return response()->json(['message' => 'Unauthorized'], 403);
         }
