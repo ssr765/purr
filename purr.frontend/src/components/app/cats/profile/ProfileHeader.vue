@@ -41,15 +41,15 @@ const userCatsIds = user.value ? user.value.cats!.map((cat) => cat.id) : []
           <CatPlaceholderAvatar v-else class="w-full" />
         </div>
         <div class="flex flex-col gap-1.5">
-          <div class="flex items-center gap-4">
-            <div>
+          <div class="grid grid-cols-2 lg:flex items-center gap-2 lg:gap-4 py-2 lg:py-0">
+            <div class="col-span-2 lg:col-span-1">
               <h5 class="text-center lg:text-left text-5xl leading-10">{{ cat.name }}</h5>
               <p class="text-center lg:text-left text-xl">@{{ cat.catname }}</p>
             </div>
-            <div>
+            <div class="flex justify-end">
               <FollowButton :cat="cat" />
             </div>
-            <div class="flex-1 flex items-center justify-end gap-4">
+            <div class="lg:flex-1 flex items-center justify-normal lg:justify-end gap-4">
               <div v-if="userCatsIds.includes(cat.id)">
                 <CatEditSheet :cat="cat">
                   <button>
