@@ -10,9 +10,13 @@ import { ref } from 'vue'
 import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
 import type { AxiosError } from 'axios'
 import { toast } from 'vue-sonner'
+import { storeToRefs } from 'pinia'
+import { useAuthStore } from '@/stores/authStore'
 
 const catService = useCatService()
 const router = useRouter()
+const authStore = useAuthStore()
+const { user } = storeToRefs(authStore)
 
 const loading = ref(false)
 
@@ -36,7 +40,12 @@ const { handleSubmit, values } = useForm({
 const submit = handleSubmit(async () => {
   try {
     loading.value = true
-    await catService.addCat(values.catname, values.password)
+    const cat = await catService.addCat(values.catname, values.password)
+    if (!user.value!.cats) {
+      user.value!.cats = []
+    }
+
+    user.value!.cats.push(cat)
     router.push({ name: 'app-cats-profile', params: { catname: values.catname } })
   } catch (error) {
     const axiosError = error as AxiosError
@@ -68,7 +77,7 @@ const submit = handleSubmit(async () => {
       <FormItem>
         <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">Contraseña</FormLabel>
         <FormControl>
-          <Input class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="text" v-bind="componentField" />
+          <Input class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="password" v-bind="componentField" />
         </FormControl>
         <FormMessage />
       </FormItem>
