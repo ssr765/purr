@@ -3,7 +3,7 @@ import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuSeparator,
 import type { Post } from '@/models/Post'
 import type { PropType } from 'vue'
 import { useRouter } from 'vue-router'
-import { toast } from 'vue-sonner'
+import { useShareManager } from '@/composables/shareManager'
 
 const router = useRouter()
 
@@ -24,34 +24,7 @@ const descargar = () => {
 
 const postUrl = window.location.origin + router.resolve({ name: 'app-posts-detail', params: { id: props.post.id } }).href
 
-const whatsappShare = () => {
-  const a = document.createElement('a')
-  a.target = '_blank'
-  a.href = 'https://wa.me/?text=' + postUrl
-  a.click()
-  a.remove()
-}
-
-const twitterShare = () => {
-  const a = document.createElement('a')
-  a.target = '_blank'
-  a.href = 'https://twitter.com/intent/tweet?url=' + postUrl
-  a.click()
-  a.remove()
-}
-
-const telegramShare = () => {
-  const a = document.createElement('a')
-  a.target = '_blank'
-  a.href = 'https://t.me/share/url?url=' + postUrl
-  a.click()
-  a.remove()
-}
-
-const copyLink = () => {
-  navigator.clipboard.writeText(postUrl)
-  toast.success('Enlace copiado al portapapeles')
-}
+const shareManager = useShareManager(postUrl)
 </script>
 
 <template>
@@ -77,20 +50,20 @@ const copyLink = () => {
           Compartir
         </ContextMenuSubTrigger>
         <ContextMenuSubContent class="w-48">
-          <ContextMenuItem @click="whatsappShare()">
+          <ContextMenuItem @click="shareManager.whatsappShare()">
             <span class="mr-2 h-4 w-4 icon-[bi--whatsapp]" role="img" aria-hidden="true" />
             WhatsApp
           </ContextMenuItem>
-          <ContextMenuItem @click="twitterShare()">
+          <ContextMenuItem @click="shareManager.twitterShare()">
             <span class="mr-2 h-4 w-4 icon-[bi--twitter-x]" role="img" aria-hidden="true" />
             X
           </ContextMenuItem>
-          <ContextMenuItem @click="telegramShare()">
+          <ContextMenuItem @click="shareManager.telegramShare()">
             <span class="mr-2 h-4 w-4 icon-[iconoir--telegram]" role="img" aria-hidden="true" />
             Telegram
           </ContextMenuItem>
           <ContextMenuSeparator />
-          <ContextMenuItem @click="copyLink()">
+          <ContextMenuItem @click="shareManager.copyLink()">
             <span class="mr-2 h-4 w-4 icon-[solar--link-linear]" role="img" aria-hidden="true" />
             Copiar enlace
           </ContextMenuItem>
