@@ -64,6 +64,13 @@ const router = createRouter({
           component: () => import('@/views/app/cats/CreateView.vue'),
           meta: { requiresAuth: true },
         },
+
+        {
+          path: 'cats/create/add-a-cat',
+          name: 'app-cats-create-add-a-cat',
+          component: () => import('@/views/app/cats/AddACatView.vue'),
+          meta: { requiresAuth: true },
+        },
         {
           path: 'cats/:catname([\\w\\d\\.-]+)',
           name: 'app-cats-profile',

@@ -15,7 +15,7 @@ const collapsedSidebar = ref(false)
 
 const applyPadding = computed(() => {
   const pathRegex = /^\/app\/cats\/(.+)$/
-  return pathRegex.test(route.path) && route.path !== '/app/cats/create'
+  return pathRegex.test(route.path) && route.path !== '/app/cats/create' && route.path !== '/app/cats/create/add-a-cat'
 })
 </script>
 
