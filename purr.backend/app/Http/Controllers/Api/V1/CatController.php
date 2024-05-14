@@ -11,6 +11,8 @@ use App\Models\Cat;
 use App\Services\ImageEngineService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CatController extends Controller
 {
@@ -44,12 +46,17 @@ class CatController extends Controller
 
         $request->user()->cats()->attach($cat);
 
+        // Save the avatar.
         if ($request->hasFile('avatar')) {
-            $avatar = $request->file('avatar')->store('', 'avatars');
-            // $avatar = $imageEngineService->optimizeImage(storage_path('app/avatars/' . $avatar));
+            $avatar = $request->file('avatar');
 
-            $cat->update(['avatar' => $avatar]);
-            $cat->avatar = $avatar;
+            // Optimize the image.
+            $optimizedFile = $imageEngineService->optimizeImage($avatar);
+            $filename = Str::random(40) . '.webp';
+            Storage::disk('avatars')->put($filename, $optimizedFile);
+
+            $cat->avatar = $filename;
+            $cat->save();
         }
 
         return response()->json(new CatResource($cat), 201);
