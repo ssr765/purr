@@ -25,6 +25,7 @@ const catService = useCatService()
 
 const deleteCat = () => {
   catService.deleteCat(props.cat.id)
+  user.value!.cats = user.value!.cats!.filter((cat) => cat.id !== props.cat.id)
   router.push({ name: 'app-home' })
 }
 
