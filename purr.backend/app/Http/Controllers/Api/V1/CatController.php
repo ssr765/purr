@@ -26,10 +26,21 @@ class CatController extends Controller
      */
     public function store(StoreCatRequest $request, ImageEngineService $imageEngineService)
     {
+        $cat = Cat::create([
+            'name' => $request->name,
+            'catname' => $request->catname,
+            'sex' => $request->sex,
+            'breed' => $request->breed,
+            'color' => $request->color,
+            'biography' => $request->biography,
+            'birthdate' => $request->birthdate,
+            'deathdate' => $request->deathdate,
+            'password' => bcrypt($request->password),
+            'adoption' => $request->adoption === 'true',
+        ]);
 
-        $cat = Cat::create($request->validated());
-        $cat->adoption = $request->adoption === 'true';
         $cat->save();
+
         $request->user()->cats()->attach($cat);
 
         if ($request->hasFile('avatar')) {
@@ -169,5 +180,26 @@ class CatController extends Controller
     public function followers(Cat $cat)
     {
         return response()->json(new UserCollection($cat->followers()->paginate(10)));
+    }
+
+    public function share(Request $request, string $catname)
+    {
+        $request->validate([
+            'password' => 'required|string',
+        ]);
+
+        $cat = Cat::where('catname', $catname)->first();
+
+        if (!$cat) {
+            return response()->json(['message' => 'Cat not found'], 404);
+        }
+
+        if (!password_verify($request->password, $cat->password)) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $cat->users()->attach($request->user());
+
+        return response()->json(new CatResource($cat));
     }
 }

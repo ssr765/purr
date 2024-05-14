@@ -59,6 +59,7 @@ Route::prefix('v1')->group(function () {
             Route::prefix('cats')->name('cats.')->group(function () {
                 Route::post('/catname', [V1CatController::class, 'checkCatname'])->name('checkCatname');
                 Route::get('/catname/{catname}', [V1CatController::class, 'showByCatname'])->name('showByCatname')->where(['catname' => '[\w\d\.]{3,30}']);
+                Route::post('/catname/{catname}/share', [V1CatController::class, 'share'])->name('share')->where(['catname' => '[\w\d\.]{3,30}']);
                 Route::get('/random', [V1CatController::class, 'random'])->name('random');
 
                 Route::post('/{cat}/follow', [V1CatController::class, 'follow'])->name('follow');
