@@ -90,6 +90,25 @@ export const useCatService = () => {
     }
   }
 
+  const editCat = async (id: number, payload: Object) => {
+    try {
+      const response = await axios.put<Cat>(`/api/v1/cats/${id}`, payload)
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
+  const deleteCat = async (id: number) => {
+    try {
+      await axios.delete(`/api/v1/cats/${id}`)
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
   const addCat = async (catname: string, password: string) => {
     try {
       const response = await axios.post(
@@ -113,6 +132,8 @@ export const useCatService = () => {
     unfollow,
     checkCatname,
     createCat,
+    editCat,
+    deleteCat,
     addCat,
   }
 }

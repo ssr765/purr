@@ -5,6 +5,10 @@ import { useFormattedDate } from '@/composables/formattedDate'
 import { Badge } from '@/components/ui/badge'
 import { computed } from 'vue'
 import FollowButton from '@/components/app/cats/profile/FollowButton.vue'
+import DotMenu from '@/components/app/cats/profile/DotMenu.vue'
+import { useAuthStore } from '@/stores/authStore'
+import { storeToRefs } from 'pinia'
+import CatEditSheet from './CatEdit/CatEditSheet.vue'
 
 const formattedDate = useFormattedDate()
 
@@ -18,6 +22,11 @@ const props = defineProps({
 const hasBadges = computed(() => {
   return props.cat.adoption
 })
+
+const authStore = useAuthStore()
+
+const { user } = storeToRefs(authStore)
+const userCatsIds = user.value ? user.value.cats!.map((cat) => cat.id) : []
 </script>
 
 <template>
@@ -39,6 +48,20 @@ const hasBadges = computed(() => {
             </div>
             <div>
               <FollowButton :cat="cat" />
+            </div>
+            <div class="flex-1 flex items-center justify-end gap-4">
+              <div v-if="userCatsIds.includes(cat.id)">
+                <CatEditSheet :cat="cat">
+                  <button>
+                    <span class="block icon-[ph--pencil-line] text-3xl" role="img" aria-hidden="true" />
+                  </button>
+                </CatEditSheet>
+              </div>
+              <DotMenu :cat="cat">
+                <button>
+                  <span class="block icon-[mdi--dots-vertical] text-3xl" role="img" aria-hidden="true" />
+                </button>
+              </DotMenu>
             </div>
           </div>
           <div v-if="hasBadges">
