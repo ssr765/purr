@@ -1,6 +1,4 @@
 import Axios from 'axios'
-import { toast } from 'vue-sonner'
-import { useI18n } from 'vue-i18n'
 export interface errorData {
   message: string
   errors?: Record<string, string[]>
@@ -21,11 +19,8 @@ axios.interceptors.response.use(
     return response
   },
   (error) => {
-    const { t } = useI18n()
-    console.log(error)
     if (error.response && error.response.status === 429) {
       console.log('Too Many Requests')
-      toast.error(t('errors.tooManyRequests'))
     }
 
     return Promise.reject(error)
