@@ -127,6 +127,11 @@ class UserController extends Controller
             abort(403, 'Unauthorized');
         }
 
+        // Inmortal admin!!!
+        if ($user->admin) {
+            abort(403, 'Unauthorized');
+        }
+
         // Validate the request.
         $request->validate([
             'password' => 'required|string'
@@ -148,7 +153,7 @@ class UserController extends Controller
         }
 
         // Delete the user.
-        $request->user()->delete();
+        $user->delete();
 
         // Logout the user if they are deleting their own account.
         if (auth()->id() === $user->id) {
