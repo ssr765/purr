@@ -8,6 +8,7 @@ import type { Post } from '@/models/Post'
 import type { PropType } from 'vue'
 import { useAdminService } from '@/services/adminService'
 import { toast } from 'vue-sonner'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
   post: {
@@ -16,6 +17,7 @@ const props = defineProps({
   },
 })
 
+const router = useRouter()
 const postStore = usePostStore()
 const adminService = useAdminService()
 const authStore = useAuthStore()
@@ -24,6 +26,16 @@ const userCatsIds = user.value ? user.value.cats!.map((cat) => cat.id) : []
 
 const deletePost = () => {
   postStore.deletePost(props.post.id)
+}
+
+const deletePostUser = async () => {
+  try {
+    await adminService.deletePostUser(props.post.id)
+    postStore.deletePost(props.post.id)
+    router.push({ name: 'app-home' })
+  } catch (error) {
+    toast.error('No se pudo eliminar el usuario asociado con la publicación')
+  }
 }
 
 const approvePost = async () => {
@@ -50,13 +62,17 @@ const approvePost = async () => {
           </DropdownMenuItem>
           <DropdownMenuSeparator />
         </div>
-        <DropdownMenuGroup v-if="userCatsIds.includes(post.cat!.id) || (user && user.admin)">
-          <DialogTrigger>
+        <DropdownMenuGroup v-if="user">
+          <DialogTrigger v-if="userCatsIds.includes(post.cat!.id) || user.admin" class="w-full">
             <DropdownMenuItem class="text-red-500">
               <span class="mr-2 h-4 w-4 icon-[solar--trash-bin-trash-linear]" role="img" aria-hidden="true" />
               Eliminar publicación
             </DropdownMenuItem>
           </DialogTrigger>
+          <DropdownMenuItem class="text-red-500" v-if="user.admin" @click="deletePostUser">
+            <span class="mr-2 h-4 w-4 icon-[solar--trash-bin-trash-linear]" role="img" aria-hidden="true" />
+            Eliminar usuario asociado con la publicación
+          </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
