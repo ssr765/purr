@@ -3,13 +3,17 @@ import Avatar from '@/components/ui/avatar/Avatar.vue'
 import AvatarFallback from '@/components/ui/avatar/AvatarFallback.vue'
 import AvatarImage from '@/components/ui/avatar/AvatarImage.vue'
 import type { Comment } from '@/models/Comment'
-import { ref } from 'vue'
+import { ref, type PropType } from 'vue'
 import { useCommentService } from '@/services/commentService'
 import { usePostStore } from '@/stores/postStore'
+import { useAuthStore } from '@/stores/authStore'
+import { storeToRefs } from 'pinia'
+import DotMenu from './Comment/DotMenu.vue'
+import type { Post } from '@/models/Post'
 
 const props = defineProps({
-  postId: {
-    type: Number,
+  post: {
+    type: Object as PropType<Post>,
     required: true,
   },
   comment: {
@@ -18,8 +22,11 @@ const props = defineProps({
   },
 })
 
+const authStore = useAuthStore()
 const postStore = usePostStore()
 const commentService = useCommentService()
+
+const { user } = storeToRefs(authStore)
 
 const liking = ref(false)
 const addLike = async (id: number) => {
@@ -31,11 +38,11 @@ const addLike = async (id: number) => {
 
   if (!props.comment.liked) {
     await commentService.like(id)
-    postStore.refreshCommentLike(props.postId, id, true)
+    postStore.refreshCommentLike(props.post.id, id, true)
     like.value = true
   } else {
     await commentService.unlike(id)
-    postStore.refreshCommentLike(props.postId, id, false)
+    postStore.refreshCommentLike(props.post.id, id, false)
     like.value = false
   }
 
@@ -62,8 +69,10 @@ const like = ref(props.comment.liked)
       </button>
       <span class="text-xs"> {{ comment.likesCount }} </span>
     </div>
-    <button>
-      <span class="block icon-[mdi--dots-vertical]" role="img" aria-hidden="true" />
+    <button v-if="user">
+      <DotMenu :post="post" :comment="comment">
+        <span class="block icon-[mdi--dots-vertical]" role="img" aria-hidden="true" />
+      </DotMenu>
     </button>
   </div>
 </template>

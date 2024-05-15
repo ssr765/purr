@@ -56,7 +56,15 @@ export const useCommentService = () => {
   }
 
   const reply = async (id: number, content: string) => {}
-  const deleteComment = async (id: number) => {}
+  const deleteComment = async (id: number) => {
+    try {
+      const response = await axios.delete<Comment>(`/api/v1/comments/${id}`)
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
 
   return {
     fetchComments,

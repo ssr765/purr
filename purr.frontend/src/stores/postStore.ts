@@ -225,6 +225,27 @@ export const usePostStore = defineStore('post', () => {
     }
   }
 
+  const removeComment = (postId: number, commentId: number) => {
+    const post = posts.value.find((post) => post.id === postId)
+    if (post) {
+      post.comments = post.comments.filter(
+        (comment) => comment.id !== commentId,
+      )
+      post.commentsCount--
+    }
+
+    if (postDetail.value && postDetail.value.id === postId) {
+      postDetail.value.comments = postDetail.value.comments.filter(
+        (comment) => comment.id !== commentId,
+      )
+
+      // Do not double decrement comments count
+      if (!post) {
+        postDetail.value.commentsCount--
+      }
+    }
+  }
+
   return {
     posts,
     postDetail,
@@ -244,5 +265,6 @@ export const usePostStore = defineStore('post', () => {
     toggleSave,
     fetchSavedPosts,
     fetchLikedPosts,
+    removeComment,
   }
 })

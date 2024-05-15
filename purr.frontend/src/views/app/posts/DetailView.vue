@@ -123,7 +123,7 @@ const comment = ref('')
         </RouterLink>
       </div>
       <div v-if="postDetail.comments" class="space-y-2 p-4 overflow-auto">
-        <PostComment :comment="comment" v-for="comment in postDetail.comments" :key="comment.id" :postId="postDetail.id" />
+        <PostComment :comment="comment" v-for="comment in postDetail.comments" :key="comment.id" :post="postDetail" />
         <div v-if="commentStore.loading" class="py-2">
           <LoadingSpinner class="text-4xl" />
         </div>

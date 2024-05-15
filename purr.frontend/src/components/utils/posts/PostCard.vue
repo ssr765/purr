@@ -90,7 +90,7 @@ const save = (id: number) => {
         </div>
         <div v-if="post.caption" class="text-sm text-center py-4">{{ post.caption }}</div>
         <div v-if="post.comments" class="space-y-2">
-          <PostComment :comment="comment" v-for="comment in post.comments" :key="comment.id" :postId="post.id" />
+          <PostComment :comment="comment" v-for="comment in post.comments" :key="comment.id" :post="post" />
         </div>
         <RouterLink :to="{ name: 'app-posts-detail', params: { id: post.id } }" class="text-sm text-ctp-lavender pt-1" v-if="post.commentsCount > 3">Ver todos los comentarios</RouterLink>
       </div>
