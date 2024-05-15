@@ -368,6 +368,13 @@
           "title": "Registrar una entidad"
         }
       }
+    },
+    "utils": {
+      "share": {
+        "label": "Compartir",
+        "copyLink": "Copiar enlace",
+        "copiedLink": "Enlace copiado al portapapeles"
+      }
     }
   },
   "auth": {
