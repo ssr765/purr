@@ -71,6 +71,7 @@ class PostController extends Controller
 
         $post = Post::create([
             'cat_id' => $request->cat_id,
+            'user_id' => $request->user()->id,
             'filename' => $filename,
             'caption' => $request->caption,
             'type' => $request->type,
@@ -105,8 +106,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        // Check if the user owns the post before deleting it.
-        if ($post->cat->users()->where('user_id', auth()->id())->doesntExist()) {
+        // Check if the user owns the cat to delete it.
+        if (request()->user()->cannot('delete', $post)) {
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 

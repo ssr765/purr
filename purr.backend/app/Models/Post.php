@@ -11,6 +11,7 @@ class Post extends Model
 
     protected $fillable = [
         'cat_id',
+        'user_id',
         'filename',
         'caption',
         'type',
@@ -20,6 +21,11 @@ class Post extends Model
     public function cat()
     {
         return $this->belongsTo(Cat::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function likes()
