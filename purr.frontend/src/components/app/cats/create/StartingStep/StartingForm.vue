@@ -3,14 +3,19 @@ import { ref } from 'vue'
 import { useCreateCatStore } from '@/stores/createCatStore'
 import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
 import CatnameTooltip from '@/components/app/cats/create/StartingStep/CatnameTooltip.vue'
+import { useImageChecker } from '@/composables/imageChecker'
 
+const imageChecker = useImageChecker()
 const createCatStore = useCreateCatStore()
 
 const onChange = (e: Event) => {
   const target = e.target as HTMLInputElement
   const file = target.files?.[0]
   if (!file) return
-  createCatStore.avatar = file
+
+  if (imageChecker.checkFile(file)) {
+    createCatStore.avatar = file
+  }
 }
 
 const timeout = ref<any>(null)

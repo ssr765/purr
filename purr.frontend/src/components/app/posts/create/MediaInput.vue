@@ -1,28 +1,20 @@
 <script setup lang="ts">
+import { useImageChecker } from '@/composables/imageChecker'
 import { useCreatePostStore } from '@/stores/createPostStore'
-import { toast } from 'vue-sonner'
 
 const createPostStore = useCreatePostStore()
+
+const imageChecker = useImageChecker()
 
 const onChange = (e: Event) => {
   const target = e.target as HTMLInputElement
   const file = target.files?.[0]
   if (!file) return
 
-  // Check the file size.
-  if (file.size > 1024 * 1024 * 8) {
-    toast.error('La imagen no puede ser mayor a 8MB')
-    return
+  if (imageChecker.checkFile(file)) {
+    // Start creating the post.
+    createPostStore.onImageUpload(file)
   }
-
-  // Check the file type.
-  if (!['image/webp', 'image/jpeg', 'image/png'].includes(file.type)) {
-    toast.error('Formato de imagen no soportado')
-    return
-  }
-
-  // Start creating the post.
-  createPostStore.onImageUpload(file)
 }
 </script>
 
