@@ -33,7 +33,7 @@ const password = ref('')
       </div>
       <div v-if="!authStore.loading" class="flex flex-col gap-2">
         <PurrButton type="submit" class="mx-auto w-full"> {{ $t('auth.login.button') }}</PurrButton>
-        <!-- <GoogleButton /> -->
+        <GoogleButton />
       </div>
       <div v-else>
         <LoadingSpinner class="text-5xl" />
