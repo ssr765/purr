@@ -72,6 +72,12 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
+        if (request()->user()->cannot('delete', $comment)) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+
+        $comment->post->decrement('comments_count');
+
         $comment->delete();
         return response()->json(null, 204);
     }

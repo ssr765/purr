@@ -45,7 +45,13 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment): bool
     {
-        //
+        $conditions = collect([
+            $comment->user_id === $user->id,
+            $user->cats()->where('cats.id', $comment->post->cat_id)->exists(),
+            $user->isAdmin(),
+        ]);
+
+        return $conditions->contains(true);
     }
 
     /**
