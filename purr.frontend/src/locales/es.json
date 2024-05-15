@@ -228,6 +228,30 @@
       "create": {
         "metadata": {
           "title": "Crear un nuevo gato"
+        },
+        "addACat": {
+          "content": {
+            "title": "Añadir un gato de otro dueño",
+            "description": "Si ya tienes el catname y la contraseña de un gato, puedes añadirlo a tu lista de gatos.",
+            "catname": "Catname del gato",
+            "password": "Contraseña",
+            "button": "Añadir gato"
+          },
+          "validators": {
+            "catname": {
+              "required": "El catname es obligatorio",
+              "regex": "El catname no es válido"
+            },
+            "password": {
+              "required": "La contraseña es obligatoria"
+            }
+          },
+          "toast": {
+            "success": "Ahora eres dueño de {cat_name}. ¡Felicidades!",
+            "alreadyOwn": "El gato con ese catname ya te pertenece",
+            "wrongPassword": "La contraseña es incorrecta",
+            "error": "Ha ocurrido un error al añadir el gato"
+          }
         }
       },
       "profile": {
