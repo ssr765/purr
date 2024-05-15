@@ -46,7 +46,12 @@ class CatPolicy
      */
     public function delete(User $user, Cat $cat): bool
     {
-        return $cat->users()->where('user_id', $user->id)->exists();
+        $conditions = collect([
+            $cat->users()->where('user_id', $user->id)->exists(),
+            request()->user()->isAdmin(),
+        ]);
+
+        return $conditions->contains(true);
     }
 
     /**

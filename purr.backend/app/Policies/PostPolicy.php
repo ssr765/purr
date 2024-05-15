@@ -45,7 +45,12 @@ class PostPolicy
      */
     public function delete(User $user, Post $post): bool
     {
-        //
+        $conditions = collect([
+            $post->cat->users()->where('user_id', $user->id)->doesntExist(),
+            $user->isAdmin(),
+        ]);
+
+        return $conditions->contains(true);
     }
 
     /**

@@ -128,9 +128,14 @@ Route::prefix('v1')->group(function () {
     });
 
     // --- Admin routes
-    Route::middleware(['auth:sanctum', 'admin'])->name('admin.')->group(function () {
+    Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->name('admin.')->group(function () {
         Route::prefix('posts')->name('posts.')->group(function () {
             Route::post('/{post}/approve', [AdminController::class, 'approve'])->name('approve');
+            Route::delete('/{post}/user', [AdminController::class, 'deleteUserOfPost'])->name('deleteUserOfPost');
+        });
+
+        Route::prefix('cats')->name('cats.')->group(function () {
+            Route::delete('/{cat}/users', [AdminController::class, 'deleteUsersOfCat'])->name('deleteUsersOfCat');
         });
     });
 });
