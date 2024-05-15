@@ -56,12 +56,12 @@ const checkUsername = () => {
     </div>
     <div class="space-y-6">
       <div>
-        <label for="first_name" class="block mb-2 text-sm font-medium text-ctp-text">Nombre del gato *</label>
+        <label for="first_name" class="block mb-2 text-sm font-medium text-ctp-text">{{ $t('app.cats.create.createCat.steps.starting.form.name') }} *</label>
         <input v-model="createCatStore.name" type="text" id="first_name" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" required />
       </div>
       <div>
         <label for="first_name" class="flex items-center gap-2 mb-2 text-sm font-medium text-ctp-text">
-          <span>Catname *</span>
+          <span>{{ $t('app.cats.create.createCat.steps.starting.form.catname') }} *</span>
           <CatnameTooltip />
         </label>
         <div class="flex relative">
@@ -74,7 +74,7 @@ const checkUsername = () => {
       </div>
     </div>
     <div class="lg:col-span-2">
-      <label for="first_name" class="block mb-2 text-sm font-medium text-ctp-text">Biografía del gato</label>
+      <label for="first_name" class="block mb-2 text-sm font-medium text-ctp-text">{{ $t('app.cats.create.createCat.steps.starting.form.biography') }}</label>
       <textarea v-model="createCatStore.biography" id="message" rows="4" class="block p-2.5 w-full text-sm text-ctp-text bg-ctp-mantle rounded-lg border border-ctp-lavender focus:ring-ctp-lavender focus:border-ctp-lavender"></textarea>
     </div>
   </div>

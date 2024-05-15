@@ -226,8 +226,73 @@
     },
     "cats": {
       "create": {
-        "metadata": {
-          "title": "Crear un nuevo gato"
+        "createCat": {
+          "metadata": {
+            "title": "Crear un nuevo gato"
+          },
+          "steps": {
+            "starting": {
+              "title": "Le damos la bienvenida a tu gato a purr.!",
+              "description": "Para comenzar, dinos el nombre de tu gato y el catname que quieres usar.",
+              "alreadyExists": "¿Tu gato ya pertenece a otro dueño? ¡Añadelo a tu colección!",
+              "form": {
+                "name": "Nombre del gato",
+                "catname": "Catname",
+                "catnameTooltip": "El catname es un nombre único que identifica a tu gato en purr. ¡Sé original!",
+                "biography": "Biografía"
+              }
+            },
+            "traits": {
+              "title": "Cuentanos más sobre tu gato",
+              "description": "Ahora, cuéntanos más detalles sobre tu gato. Cuantos más detalles nos des, más destacará tu gato en purr.",
+              "form": {
+                "sex": {
+                  "label": "Sexo",
+                  "options": {
+                    "male": "Macho",
+                    "female": "Hembra"
+                  }
+                },
+                "breed": "Raza del gato",
+                "color": "Color del gato",
+                "birthdate": {
+                  "label": "Fecha de nacimiento",
+                  "placeholder": "Selecciona la fecha de nacimiento de tu gato",
+                  "description": "En caso que no la sepas, siempre puedes poner la fecha desde que tienes al gato."
+                },
+                "adoption": {
+                  "label": "El gato está en adopción",
+                  "description": "Activando esta casilla, los usuarios podrán ver que el dato está buscando un nuevo dueño y se podrán poner en contacto contigo."
+                }
+              }
+            },
+            "password": {
+              "title": "Protege a tu gato",
+              "description": "Por último, añade una contraseña para proteger a tu gato y poder compartirlo con otros dueños.",
+              "form": {
+                "password": "Contraseña",
+                "passwordConfirmation": "Confirma la contraseña"
+              }
+            }
+          },
+          "controls": {
+            "back": "Volver",
+            "next": "Siguiente",
+            "finalize": "Finalizar"
+          },
+          "toast": {
+            "noPassword": "La contraseña y su confirmación son obligatorias",
+            "passwordsDontMatch": "Las contraseñas no coinciden",
+            "success": "¡Tu gato ha sido creado con éxito!",
+            "error": "Ha ocurrido un error al crear tu gato",
+            "sex": "El sexo es obligatorio",
+            "birthdate": "La fecha de nacimiento es obligatoria",
+            "catnameInUse": "El catname ya está en uso, por favor elige otro",
+            "checkingCatname": "Estamos comprobando el catname, por favor espera unos segundos...",
+            "startingStepFields": "El nombre del gato y el catname son obligatorios",
+            "catnameAvailable": "El catname está disponible",
+            "catnameCheckError": "Ha ocurrido un error al comprobar el catname"
+          }
         },
         "addACat": {
           "content": {

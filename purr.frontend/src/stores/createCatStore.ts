@@ -5,8 +5,11 @@ import { toDate } from 'radix-vue/date'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
 import { useCatService } from '@/services/catService'
+import { toast } from 'vue-sonner'
+import { useI18n } from 'vue-i18n'
 
 export const useCreateCatStore = defineStore('createCat', () => {
+  const { t } = useI18n()
   const catService = useCatService()
   const router = useRouter()
   const authStore = useAuthStore()
@@ -38,8 +41,14 @@ export const useCreateCatStore = defineStore('createCat', () => {
     try {
       const { exists } = await catService.checkCatname(catname.value)
       validCatname.value = !exists
+      if (!exists) {
+        toast.success(t('app.cats.create.createCat.toast.catnameAvailable'))
+      } else {
+        toast.error(t('app.cats.create.createCat.toast.catnameInUse'))
+      }
     } catch (error) {
       console.log(error)
+      toast.error(t('app.cats.create.createCat.toast.catnameCheckError'))
     } finally {
       checking.value = false
     }
@@ -70,6 +79,8 @@ export const useCreateCatStore = defineStore('createCat', () => {
 
       const createdCat = await catService.createCat(formData)
 
+      toast.success(t('app.cats.create.createCat.toast.success'))
+
       // Update the user's cats
       if (!authStore.user!.cats) {
         authStore.user!.cats = [createdCat]
@@ -82,6 +93,7 @@ export const useCreateCatStore = defineStore('createCat', () => {
         params: { catname: createdCat.catname },
       })
     } catch (error) {
+      toast.error(t('app.cats.create.createCat.toast.error'))
       console.log(error)
     }
   }
