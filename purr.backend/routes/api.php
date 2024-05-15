@@ -91,10 +91,9 @@ Route::prefix('v1')->group(function () {
 
         // --- No authentication required
         // Show resources
-        Route::apiResource('posts', V1PostController::class)->only(['index'])->where(['post' => '\d+']);
         Route::apiResource('users', V1UserController::class)->only(['show'])->where(['user' => '\d+']);
         Route::apiResource('cats', V1CatController::class)->only(['show'])->where(['cat' => '\d+']);
-        Route::apiResource('posts', V1PostController::class)->only(['show'])->where(['post' => '\d+']);
+        Route::apiResource('posts', V1PostController::class)->only(['index', 'show'])->where(['post' => '\d+']);
         Route::apiResource('comments', V1CommentController::class)->only(['show'])->where(['comment' => '\d+']);
 
         // Users routes
@@ -111,11 +110,15 @@ Route::prefix('v1')->group(function () {
         });
     });
 
+    // --- No authentication required
+    // 200 requests per minute
     Route::middleware(['throttle:200,1'])->group(function () {
+        // Users routes
         Route::prefix('users')->name('users.')->group(function () {
             Route::get('/{user}/avatar', [V1UserController::class, 'avatar'])->name('avatar');
         });
 
+        // Cat routes
         Route::prefix('cats')->name('cats.')->group(function () {
             Route::get('/{cat}/avatar', [V1CatController::class, 'avatar'])->name('avatar');
         });
