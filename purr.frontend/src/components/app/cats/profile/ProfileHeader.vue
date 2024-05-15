@@ -65,29 +65,29 @@ const userCatsIds = user.value ? user.value.cats!.map((cat) => cat.id) : []
             </div>
           </div>
           <div v-if="hasBadges">
-            <Badge v-if="cat.adoption" type="success">Adóptame!</Badge>
+            <Badge v-if="cat.adoption" type="success">{{ $t('app.cats.profile.profilePage.badges.adoptable') }}</Badge>
           </div>
           <p v-if="cat.biography" class="text-center lg:text-left break-words-plus">{{ cat.biography }}</p>
-          <p v-else class="text-center lg:text-left text-ctp-text/75 italic">Sin biografía</p>
+          <p v-else class="text-center lg:text-left text-ctp-text/75 italic">{{ $t('app.cats.profile.profilePage.noBiography') }}</p>
         </div>
       </div>
     </div>
     <div class="flex flex-col lg:flex-row items-center lg:flex-wrap justify-center lg:space-x-8 p-4 border-y">
       <div v-if="cat.breed" class="flex items-center gap-2">
         <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />
-        <p>Raza: {{ cat.breed }}</p>
+        <p>{{ $t('app.cats.profile.profilePage.breed') }}: {{ cat.breed }}</p>
       </div>
       <div v-if="cat.color" class="flex items-center gap-2">
         <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />
-        <p>Color: {{ cat.color }}</p>
+        <p>{{ $t('app.cats.profile.profilePage.color') }}: {{ cat.color }}</p>
       </div>
       <div v-if="cat.birthdate" class="flex items-center gap-2">
         <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />
-        <p>Nacimiento: {{ formattedDate.formatDate(cat.birthdate) }}</p>
+        <p>{{ $t('app.cats.profile.profilePage.birthdate') }}: {{ formattedDate.formatDate(cat.birthdate) }}</p>
       </div>
       <div class="flex items-center gap-2">
         <span class="icon-[solar--cat-linear]" role="img" aria-hidden="true" />
-        <p>{{ cat.followers_count }} seguidores</p>
+        <p>{{ cat.followers_count }} {{ $t('app.cats.profile.profilePage.followers') }}</p>
       </div>
     </div>
   </section>

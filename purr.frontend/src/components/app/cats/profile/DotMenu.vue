@@ -54,7 +54,7 @@ const shareManager = useShareManager(postUrl)
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
               <span class="mr-2 h-4 w-4 icon-[solar--share-linear]" role="img" aria-hidden="true" />
-              <span>Compartir</span>
+              <span>{{ $t('app.utils.share.label') }}</span>
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
@@ -75,7 +75,7 @@ const shareManager = useShareManager(postUrl)
 
                 <DropdownMenuItem @click="shareManager.copyLink()">
                   <span class="mr-2 h-4 w-4 icon-[solar--link-linear]" role="img" aria-hidden="true" />
-                  Copiar enlace
+                  {{ $t('app.utils.share.copyLink') }}
                 </DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
@@ -88,12 +88,12 @@ const shareManager = useShareManager(postUrl)
             <DialogTrigger v-if="userCatsIds.includes(cat.id) || user.admin" class="w-full">
               <DropdownMenuItem class="text-red-500">
                 <span class="mr-2 h-4 w-4 icon-[solar--trash-bin-trash-linear]" role="img" aria-hidden="true" />
-                Eliminar gato
+                {{ $t('app.cats.profile.profilePage.dotMenu.deleteCat.menuItem') }}
               </DropdownMenuItem>
             </DialogTrigger>
             <DropdownMenuItem class="text-red-500" v-if="user.admin" @click="deleteCatUsers">
               <span class="mr-2 h-4 w-4 icon-[bi--radioactive]" role="img" aria-hidden="true" />
-              Eliminar usuarios asociados a este gato
+              {{ $t('app.cats.profile.profilePage.dotMenu.deleteCatAssociatedUsers') }}
             </DropdownMenuItem>
           </DropdownMenuGroup>
         </div>
@@ -101,16 +101,16 @@ const shareManager = useShareManager(postUrl)
     </DropdownMenu>
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Eliminar a {{ cat.name }}</DialogTitle>
+        <DialogTitle>{{ $t('app.cats.profile.profilePage.dotMenu.deleteCat.dialog.title', { cat_name: cat.name }) }}</DialogTitle>
       </DialogHeader>
 
-      ¿Estás seguro de que quieres borrar a {{ cat.name }}? Esta acción no se puede deshacer.
+      {{ $t('app.cats.profile.profilePage.dotMenu.deleteCat.dialog.content', { cat_name: cat.name }) }}
 
       <DialogFooter>
         <div class="flex justify-center gap-4">
-          <button @click="deleteCat" class="text-red-500 bg-red-500/20 py-2.5 px-7 rounded-lg hover:bg-red-500 hover:text-white transition-all">Eliminar</button>
+          <button @click="deleteCat" class="text-red-500 bg-red-500/20 py-2.5 px-7 rounded-lg hover:bg-red-500 hover:text-white transition-all">{{ $t('app.cats.profile.profilePage.dotMenu.deleteCat.dialog.buttons.delete') }}</button>
           <DialogClose as-child>
-            <button class="bg-ctp-lavender/75 hover:bg-ctp-lavender text-ctp-base py-2.5 px-7 rounded-lg transition-all">No</button>
+            <button class="bg-ctp-lavender/75 hover:bg-ctp-lavender text-ctp-base py-2.5 px-7 rounded-lg transition-all">{{ $t('app.cats.profile.profilePage.dotMenu.deleteCat.dialog.buttons.cancel') }}</button>
           </DialogClose>
         </div>
       </DialogFooter>

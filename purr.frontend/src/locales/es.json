@@ -323,6 +323,42 @@
       "profile": {
         "metadata": {
           "notFound": "Gato no encontrado"
+        },
+        "profilePage": {
+          "badges": {
+            "adoptable": "Adóptame!"
+          },
+          "noBiography": "Este gato aún no tiene una biografía",
+          "breed": "Raza",
+          "color": "Color",
+          "birthdate": "Nacimiento",
+          "followers": "seguidores",
+          "followState": {
+            "button": {
+              "follow": "Seguir",
+              "unfollow": "Dejar de seguir"
+            },
+            "toast": {
+              "followed": "¡Ahora sigues a {cat_name}!",
+              "unfollowed": "Ya no sigues a {cat_name}",
+              "noLoggedIn": "Debes iniciar sesión para seguir a un gato",
+              "error": "Ha ocurrido un error al seguir o dejar de seguir a {cat_name}"
+            }
+          },
+          "dotMenu": {
+            "deleteCat": {
+              "menuItem": "Eliminar gato",
+              "dialog": {
+                "title": "Eliminar a {cat_name}",
+                "content": "¿Estás seguro de que quieres borrar a {cat_name}? Esta acción no se puede deshacer.",
+                "buttons": {
+                  "cancel": "Cancelar",
+                  "delete": "Eliminar"
+                }
+              }
+            },
+            "deleteCatAssociatedUsers": "Eliminar usuarios asociados a este gato"
+          }
         }
       }
     },

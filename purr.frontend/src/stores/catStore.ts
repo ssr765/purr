@@ -6,8 +6,10 @@ import { useCatService } from '@/services/catService'
 import { useAuthStore } from './authStore'
 import type { AxiosError } from 'axios'
 import { toast } from 'vue-sonner'
+import { useI18n } from 'vue-i18n'
 
 export const useCatStore = defineStore('cat', () => {
+  const { t } = useI18n()
   const router = useRouter()
   const catService = useCatService()
   const { user } = storeToRefs(useAuthStore())
@@ -83,8 +85,18 @@ export const useCatStore = defineStore('cat', () => {
       cat.value.followers_count = response.cat.followers_count
       cat.value.followed = response.cat.followed
       user.value!.following_count = response.user.following_count
+      toast.success(
+        t('app.cats.profile.profilePage.followState.toast.followed', {
+          cat_name: cat.value.name,
+        }),
+      )
     } catch (error) {
       console.log(error)
+      toast.success(
+        t('app.cats.profile.profilePage.followState.toast.error', {
+          cat_name: cat.value.name,
+        }),
+      )
     } finally {
       followLoading.value = false
     }
@@ -102,8 +114,18 @@ export const useCatStore = defineStore('cat', () => {
       cat.value.followers_count = response.cat.followers_count
       cat.value.followed = response.cat.followed
       user.value!.following_count = response.user.following_count
+      toast.success(
+        t('app.cats.profile.profilePage.followState.toast.unfollowed', {
+          cat_name: cat.value.name,
+        }),
+      )
     } catch (error) {
       console.log(error)
+      toast.success(
+        t('app.cats.profile.profilePage.followState.toast.error', {
+          cat_name: cat.value.name,
+        }),
+      )
     } finally {
       followLoading.value = false
     }
