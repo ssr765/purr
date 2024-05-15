@@ -55,6 +55,10 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       const response = await authService.fetchUser()
       user.value = response
+
+      if (!user.value.cats) {
+        user.value.cats = []
+      }
     } catch (error) {
       const axiosError = error as AxiosError
       if (axiosError.response?.status === 401) {
