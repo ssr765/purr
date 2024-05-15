@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Helpers\EmailRateLimiter;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\CatCollection;
 use App\Http\Resources\V1\PostCollection;
@@ -163,7 +164,9 @@ class UserController extends Controller
         }
 
         // Send a goodbye email.
-        Mail::to($user->email)->send(new GoodbyeMail($user->name));
+        if (!EmailRateLimiter::isRateLimited()) {
+            Mail::to($user->email)->send(new GoodbyeMail($user->name));
+        }
 
         // Goodbye :(
         return response()->json(null, 204);

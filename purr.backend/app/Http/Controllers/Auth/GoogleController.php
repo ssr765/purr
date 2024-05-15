@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\EmailRateLimiter;
 use App\Http\Controllers\Controller;
 use App\Mail\GoogleWelcomeMail;
 use App\Models\User;
@@ -70,6 +71,7 @@ class GoogleController extends Controller
             $newUser->save();
 
             // Send a welcome email to the new user with their random password.
+            // There is no rate limiting on this email, because it has the user's password.
             Mail::to($newUser->email)->send(new GoogleWelcomeMail($newUser->name, $password));
 
             auth()->login($newUser, true);

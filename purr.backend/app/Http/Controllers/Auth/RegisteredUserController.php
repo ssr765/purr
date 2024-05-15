@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\EmailRateLimiter;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\UserResource;
 use App\Mail\WelcomeMail;
@@ -42,7 +43,9 @@ class RegisteredUserController extends Controller
             'avatar' => null,
         ]);
 
-        Mail::to($user->email)->send(new WelcomeMail($user->name));
+        if (!EmailRateLimiter::isRateLimited()) {
+            Mail::to($user->email)->send(new WelcomeMail($user->name));
+        }
 
         event(new Registered($user));
 
