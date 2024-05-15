@@ -61,6 +61,7 @@
       "header": {
         "login": "Iniciar sesión",
         "register": "Registrarse",
+        "admin": "Administrador",
         "user": {
           "avatarAlt": "Mi avatar"
         },
