@@ -10,6 +10,7 @@
       "sr": "Abrir el menu"
     },
     "footer": {
+      "privacyPolicy": "Política de privacidad",
       "content": "La red social hecha por gatos, para humanos.",
       "rights": "Todos los derechos reservados."
     },
@@ -53,6 +54,70 @@
         "content": "Regístrate ahora y comienza a disfrutar de la experiencia gatuna.",
         "cta": "Comienza ahora"
       }
+    },
+    "privacyPolicy": {
+      "metaTitle": "Política de privacidad",
+      "title": "Política de privacidad de purr.",
+      "introduction": "En purr., valoramos la privacidad de nuestros usuarios y nos comprometemos a proteger sus datos personales. Esta política de privacidad explica cómo recolectamos, usamos y compartimos información sobre nuestros usuarios y sus mascotas en el marco de nuestra aplicación. Al utilizar purr., aceptas la recopilación y uso de información de acuerdo con esta política.",
+      "informationCollected": {
+        "title": "Información recopilada",
+        "userSpecific": {
+          "title": "Información específica del usuario",
+          "name": {
+            "name": "Nombre",
+            "description": "Tu nombre es visible para otros usuarios en la plataforma y se utiliza para personalizar la experiencia de purr."
+          },
+          "email": {
+            "name": "Correo electrónico",
+            "description": "Usamos tu email para configurar y administrar tu cuenta y para comunicaciones relacionadas con la seguridad de la cuenta."
+          },
+          "googleTitle": "Información de Google",
+          "googleId": {
+            "name": "ID de Google",
+            "description": "Usamos tu ID de Google para autenticarte en purr. y para asociar tu cuenta de Google con tu cuenta de purr."
+          },
+          "googleAvatar": {
+            "name": "Avatar de Google",
+            "description": "Si decides iniciar sesión con Google, usaremos tu avatar de Google como avatar de tu cuenta de purr."
+          }
+        },
+        "catSpecific": {
+          "title": "Información específica de los gatos",
+          "traits": {
+            "name": "Nombre, raza, color, fecha de nacimiento y sexo",
+            "description": "Estos detalles se utilizan para crear un perfil único para tu gato y para ayudar a otros usuarios a conocer mejor a tu mascota."
+          },
+          "adoption": {
+            "name": "Estado de adopción",
+            "description": "Recopilamos esta información para ayudar a conectar gatos que necesitan un nuevo hogar con posibles adoptantes."
+          }
+        }
+      },
+      "informationUse": {
+        "title": "Uso de la información",
+        "content": "En purr., utilizamos la información recolectada principalmente para asegurar el funcionamiento óptimo y la mejora continua de nuestra aplicación. Esto incluye la gestión y mantenimiento de la plataforma, la personalización de la experiencia del usuario, y la comunicación directa para ofrecer actualizaciones e información relevante. Adicionalmente, empleamos estos datos para implementar medidas de seguridad que ayudan a mantener la plataforma segura."
+      },
+      "informationSharing": {
+        "title": "Compartir tu información",
+        "content": "En purr., no vendemos ni alquilamos información personal de nuestros usuarios a terceros. Podemos compartir información con terceros en las siguientes circunstancias:",
+        "list": [
+          "Proveedores de servicios que nos ayudan con servicios operativos como alojamiento web y mantenimiento de datos.",
+          "Si es necesario para cumplir con una ley o reglamento, en respuesta a una solicitud de la ley, orden judicial o un proceso legal similar, o para proteger nuestros derechos o propiedad."
+        ]
+      },
+      "privacyRights": {
+        "title": "Tus derechos de privacidad",
+        "content": "Como usuario de purr., tienes derecho a acceder, corregir, actualizar o eliminar tu información personal en cualquier momento. Si deseas ejercer estos derechos, por favor ponte en contacto con nosotros en {email}."
+      },
+      "informationSecurity": {
+        "title": "Seguridad de la información",
+        "content": "En purr., nos tomamos muy en serio la seguridad de la información de nuestros usuarios. Implementamos medidas de seguridad técnicas y organizativas para proteger la información personal de nuestros usuarios contra el acceso no autorizado, la divulgación, la alteración y la destrucción."
+      },
+      "policyUpdate": {
+        "title": "Actualizaciones de la política",
+        "content": "Podemos actualizar nuestra política de privacidad periódicamente para reflejar, por ejemplo, cambios en nuestras prácticas o por otros motivos operativos, legales o regulatorios. Te aconsejamos revisar esta política periódicamente para estar informado de cómo protegemos tu información."
+      },
+      "contact": "Si tienes preguntas sobre esta política de privacidad, por favor contáctanos en {email}."
     }
   },
   "app": {

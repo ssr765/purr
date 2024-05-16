@@ -17,6 +17,11 @@ const router = createRouter({
           name: 'landing-home',
           component: () => import('@/views/landing/HomeView.vue'),
         },
+        {
+          path: 'privacy-policy',
+          name: 'landing-privacy-policy',
+          component: () => import('@/views/landing/PrivacyPolicyView.vue'),
+        },
       ],
     },
     {
