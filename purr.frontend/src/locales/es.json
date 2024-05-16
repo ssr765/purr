@@ -163,6 +163,30 @@
         "metadata": {
           "postBy": "Publicación de",
           "notFound": "Publicación no encontrada"
+        },
+        "dotMenu": {
+          "approve": "Aprobar publicación",
+          "deleteAssociatedUser": "Eliminar usuario asociado a esta publicación",
+          "deletePost": {
+            "menuItem": "Eliminar publicación",
+            "dialog": {
+              "title": "Eliminar publicación",
+              "content": "¿Estás seguro de que quieres borrar esta publicación? Esta acción no se puede deshacer.",
+              "buttons": {
+                "cancel": "Cancelar",
+                "delete": "Eliminar"
+              }
+            }
+          }
+        },
+        "noCatsWarning": "purr. está buscando gatos en esta publicación, si no ves ningún gato, reporta esta publicación.",
+        "toast": {
+          "postDeleted": "Publicación eliminada correctamente",
+          "postApproved": "Publicación aprobada correctamente",
+          "postAssociatedUserDeleted": "El usuario asociado a esta publicación ha sido eliminado correctamente",
+          "deleteError": "Ha ocurrido un error al eliminar la publicación",
+          "approveError": "Ha ocurrido un error al aprobar la publicación",
+          "deleteAssociatedUserError": "Ha ocurrido un error al eliminar el usuario asociado a esta publicación"
         }
       },
       "create": {
@@ -179,7 +203,8 @@
         },
         "mediaInput": {
           "title": "Comparte un momento felino",
-          "content": "Arrastra o haz clic para compartir contenido de tu amigo gatuno en purr."
+          "content": "Arrastra o haz clic para compartir contenido de tu amigo gatuno en purr.",
+          "format": "Máx. {mb}MB, formatos: {formats}"
         },
         "mediaDashboard": {
           "back": "Volver",

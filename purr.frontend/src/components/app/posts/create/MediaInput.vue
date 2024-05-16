@@ -24,7 +24,7 @@ const onChange = (e: Event) => {
       <span class="icon-[tabler--photo] text-[100px] lg:text-[200px]" role="img" aria-hidden="true" />
       <div class="xl:ml-5 text-center text-4xl lg:text-6xl tracking-tight font-semibold leading-none font-heading">{{ $t('app.posts.create.mediaInput.title') }}</div>
       <div class="text-xl lg:text-3xl text-center font-heading">{{ $t('app.posts.create.mediaInput.content') }}</div>
-      <div class="text-center font-heading">Máx. 8MB, formatos: .webp, .jpg, .png.</div>
+      <div class="text-center font-heading">{{ $t('app.posts.create.mediaInput.format', { mb: 8, formats: '.webp, .jpg, .png' }) }}</div>
       <input @change="onChange" id="cat-content-input" type="file" class="hidden" />
     </label>
   </section>

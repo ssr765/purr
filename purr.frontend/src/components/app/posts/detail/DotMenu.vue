@@ -9,6 +9,7 @@ import type { PropType } from 'vue'
 import { useAdminService } from '@/services/adminService'
 import { toast } from 'vue-sonner'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps({
   post: {
@@ -17,6 +18,7 @@ const props = defineProps({
   },
 })
 
+const { t } = useI18n()
 const router = useRouter()
 const postStore = usePostStore()
 const adminService = useAdminService()
@@ -32,8 +34,9 @@ const deletePostUser = async () => {
   try {
     await adminService.deletePostUser(props.post.id)
     router.push({ name: 'app-home' })
+    toast.success(t('app.posts.detail.toast.postAssociatedUserDeleted'))
   } catch (error) {
-    toast.error('No se pudo eliminar el usuario asociado con la publicación')
+    toast.error(t('app.posts.detail.toast.deleteAssociatedUserError'))
   }
 }
 
@@ -41,8 +44,9 @@ const approvePost = async () => {
   try {
     await adminService.approve(props.post.id)
     postStore.postDetail! = { ...postStore.postDetail!, detected: true }
+    toast.success(t('app.posts.detail.toast.postApproved'))
   } catch (error) {
-    toast.error('No se pudo aprobar la publicación')
+    toast.error(t('app.posts.detail.toast.approveError'))
   }
 }
 </script>
@@ -57,7 +61,7 @@ const approvePost = async () => {
         <div v-if="user && user.admin && !post.detected">
           <DropdownMenuItem class="text-green-500" @click="approvePost">
             <span class="mr-2 h-4 w-4 icon-[solar--check-circle-linear]" role="img" aria-hidden="true" />
-            Aprobar publicación
+            {{ $t('app.posts.detail.dotMenu.approve') }}
           </DropdownMenuItem>
           <DropdownMenuSeparator />
         </div>
@@ -65,28 +69,28 @@ const approvePost = async () => {
           <DialogTrigger v-if="userCatsIds.includes(post.cat!.id) || user.admin" class="w-full">
             <DropdownMenuItem class="text-red-500">
               <span class="mr-2 h-4 w-4 icon-[solar--trash-bin-trash-linear]" role="img" aria-hidden="true" />
-              Eliminar publicación
+              {{ $t('app.posts.detail.dotMenu.deletePost.menuItem') }}
             </DropdownMenuItem>
           </DialogTrigger>
           <DropdownMenuItem class="text-red-500" v-if="user.admin" @click="deletePostUser">
             <span class="mr-2 h-4 w-4 icon-[solar--trash-bin-trash-linear]" role="img" aria-hidden="true" />
-            Eliminar usuario asociado con la publicación
+            {{ $t('app.posts.detail.dotMenu.deleteAssociatedUser') }}
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Borrar la publicación</DialogTitle>
+        <DialogTitle>{{ $t('app.posts.detail.dotMenu.deletePost.dialog.title') }}</DialogTitle>
       </DialogHeader>
 
-      ¿Estás seguro de que quieres borrar esta publicación? Esta acción no se puede deshacer.
+      {{ $t('app.posts.detail.dotMenu.deletePost.dialog.content') }}
 
       <DialogFooter>
         <div class="flex justify-center gap-4">
-          <button @click="deletePost" class="text-red-500 bg-red-500/20 py-2.5 px-7 rounded-lg hover:bg-red-500 hover:text-white transition-all">Eliminar</button>
+          <button @click="deletePost" class="text-red-500 bg-red-500/20 py-2.5 px-7 rounded-lg hover:bg-red-500 hover:text-white transition-all">{{ $t('app.posts.detail.dotMenu.deletePost.dialog.buttons.delete') }}</button>
           <DialogClose as-child>
-            <button class="bg-ctp-lavender/75 hover:bg-ctp-lavender text-ctp-base py-2.5 px-7 rounded-lg transition-all">No</button>
+            <button class="bg-ctp-lavender/75 hover:bg-ctp-lavender text-ctp-base py-2.5 px-7 rounded-lg transition-all">{{ $t('app.posts.detail.dotMenu.deletePost.dialog.buttons.cancel') }}</button>
           </DialogClose>
         </div>
       </DialogFooter>

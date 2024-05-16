@@ -7,8 +7,10 @@ import { toast } from 'vue-sonner'
 import type { AxiosError } from 'axios'
 import { useCommentStore } from './commentStore'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 export const usePostStore = defineStore('post', () => {
+  const { t } = useI18n()
   const router = useRouter()
   const postService = usePostService()
   const commentStore = useCommentStore()
@@ -76,8 +78,10 @@ export const usePostStore = defineStore('post', () => {
         postDetail.value = null
         router.push({ name: 'app-feed' })
       }
+      toast.success(t('app.posts.detail.toast.postDeleted'))
     } catch (error) {
       console.log(error)
+      toast.error(t('app.posts.detail.toast.deleteError'))
     }
   }
 
