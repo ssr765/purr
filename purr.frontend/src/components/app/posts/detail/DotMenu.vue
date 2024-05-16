@@ -31,7 +31,6 @@ const deletePost = () => {
 const deletePostUser = async () => {
   try {
     await adminService.deletePostUser(props.post.id)
-    postStore.deletePost(props.post.id)
     router.push({ name: 'app-home' })
   } catch (error) {
     toast.error('No se pudo eliminar el usuario asociado con la publicación')
