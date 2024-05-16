@@ -74,7 +74,12 @@
         "feed": "Mi feed",
         "maps": "Mapas",
         "create": "Crear",
-        "randomCat": "Gato aleatorio"
+        "randomCat": "Gato aleatorio",
+        "likes": "Mis me gusta",
+        "saves": "Mis guardados",
+        "addCat": "Añadir un gato",
+        "explore": "Explorar",
+        "toggle": "Alternar barra lateral"
       }
     },
     "settings": {
@@ -445,6 +450,10 @@
         "label": "Compartir",
         "copyLink": "Copiar enlace",
         "copiedLink": "Enlace copiado al portapapeles"
+      },
+      "imageChecker": {
+        "fileSizeError": "La imagen no puede ser mayor a {mb}MB",
+        "fileTypeError": "'Formato de imagen no soportado'. Solo se permiten los siguientes formatos: {formats}"
       }
     }
   },
