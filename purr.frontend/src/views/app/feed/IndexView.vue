@@ -39,8 +39,8 @@ const loadMore = (page: number) => {
 <template>
   <div v-if="user!.following_count == 0" class="flex items-center justify-center h-full">
     <div class="text-center">
-      <h1 class="text-6xl p-4">Bienvenido/a a purr.</h1>
-      <p>Parece que todavía no sigues a ningún gatito. ¡Vaya catastrofe! ¿Porque no sigues a alguno de estos hermosos gatos?</p>
+      <h1 class="text-6xl p-4">{{ $t('app.posts.feed.noFollows.title') }}</h1>
+      <p>{{ $t('app.posts.feed.noFollows.content') }}</p>
       <hr class="h-px bg-ctp-lavender my-10" />
     </div>
   </div>

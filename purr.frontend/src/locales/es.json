@@ -282,6 +282,12 @@
           "saves": "guardados"
         }
       },
+      "feed": {
+        "noFollows": {
+          "title": "Bienvenido/a a purr.",
+          "content": "Parece que todavía no sigues a ningún gatito. ¡Vaya catastrofe! ¿Porque no sigues a alguno de estos hermosos gatos?"
+        }
+      },
       "toast": {
         "noLoggedIn": {
           "save": "Debes iniciar sesión para guardar una publicación",
