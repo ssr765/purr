@@ -16,5 +16,6 @@ app.use(router)
 app.use(i18n)
 
 createHead()
+app.config.globalProperties.$scrollToTop = () => window.scrollTo(0, 0)
 
 app.mount('#app')
