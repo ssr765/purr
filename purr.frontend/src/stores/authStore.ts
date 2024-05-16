@@ -4,11 +4,9 @@ import type { AxiosError } from 'axios'
 import type { User } from '@/models/User'
 import { useRouter } from 'vue-router'
 import { useResponseToaster } from '@/composables/responseToaster'
-import { useI18n } from 'vue-i18n'
 import { useAuthService } from '@/services/authService'
 
 export const useAuthStore = defineStore('auth', () => {
-  const { t } = useI18n()
   const authService = useAuthService()
   const { toastResponse } = useResponseToaster()
   const router = useRouter()

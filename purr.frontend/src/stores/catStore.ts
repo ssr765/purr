@@ -23,6 +23,7 @@ export const useCatStore = defineStore('cat', () => {
       const response = await catService.fetchCat(id)
       cat.value = response
     } catch (error) {
+      toast.error(t('app.cats.profile.toast.fetchError'))
       console.log(error)
     } finally {
       loading.value = false
@@ -35,6 +36,7 @@ export const useCatStore = defineStore('cat', () => {
       const response = await catService.fetchCatByCatname(catname)
       cat.value = response
     } catch (error) {
+      toast.error(t('app.cats.profile.toast.fetchError'))
       console.log(error)
     } finally {
       loading.value = false
@@ -54,18 +56,18 @@ export const useCatStore = defineStore('cat', () => {
       const axiosError = error as AxiosError
       if (axiosError.response?.status === 404) {
         if (user.value) {
-          toast.error('No hemos encontrado ningún gato :(', {
-            description: '¿Quieres que el tuyo sea el primero?',
+          toast.error(t('app.cats.random.toast.noCats.title'), {
+            description: t('app.cats.random.toast.noCats.description'),
             action: {
-              label: '¡Sí!',
+              label: t('app.cats.random.toast.noCats.button'),
               onClick: () => router.push({ name: 'app-cats-create' }),
             },
           })
         } else {
-          toast.error('No hemos encontrado ningún gato :(')
+          toast.error(t('app.cats.random.toast.noCats.title'))
         }
       } else {
-        toast.error('Ha ocurrido un error al cargar el gato aleatorio.')
+        toast.error(t('app.cats.random.toast.fetchError'))
       }
     } finally {
       loading.value = false

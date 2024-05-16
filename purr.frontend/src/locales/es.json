@@ -192,6 +192,7 @@
         },
         "noCatsWarning": "purr. está buscando gatos en esta publicación, si no ves ningún gato, reporta esta publicación.",
         "toast": {
+          "fetchError": "Ha ocurrido un error al cargar la publicación",
           "postDeleted": "Publicación eliminada correctamente",
           "postApproved": "Publicación aprobada correctamente",
           "postAssociatedUserDeleted": "El usuario asociado a esta publicación ha sido eliminado correctamente",
@@ -257,7 +258,9 @@
           }
         },
         "errors": {
-          "noCatSelected": "Debes seleccionar un gato para crear una publicación."
+          "noCatSelected": "Debes seleccionar un gato para crear una publicación.",
+          "createError": "Ha ocurrido un error al crear la publicación",
+          "analyzeError": "Ha ocurrido un error al analizar la imagen"
         }
       },
       "components": {
@@ -284,7 +287,12 @@
           "save": "Debes iniciar sesión para guardar una publicación",
           "delete": "Debes iniciar sesión para eliminar una publicación",
           "like": "Debes iniciar sesión para dar me gusta a una publicación"
-        }
+        },
+        "likeError": "Ha ocurrido un error al dar me gusta a la publicación",
+        "unlikeError": "Ha ocurrido un error al quitar el me gusta de la publicación",
+        "saveError": "Ha ocurrido un error al guardar la publicación",
+        "unsaveError": "Ha ocurrido un error al quitar la publicación de guardados",
+        "fetchError": "Ha ocurrido un error al cargar las publicaciones"
       }
     },
     "comments": {
@@ -294,7 +302,9 @@
       },
       "toast": {
         "deleteSuccess": "Comentario eliminado correctamente",
-        "deleteError": "Ha ocurrido un error al eliminar el comentario"
+        "deleteError": "Ha ocurrido un error al eliminar el comentario",
+        "fetchError": "Ha ocurrido un error al cargar los comentarios",
+        "createError": "Ha ocurrido un error al crear el comentario"
       }
     },
     "cats": {
@@ -431,6 +441,19 @@
             },
             "deleteCatAssociatedUsers": "Eliminar usuarios asociados a este gato"
           }
+        },
+        "toast": {
+          "fetchError": "Ha ocurrido un error al cargar el perfil del gato"
+        }
+      },
+      "random": {
+        "toast": {
+          "fetchError": "Ha ocurrido un error al cargar un gato aleatorio",
+          "noCats": {
+            "title": "No hemos encontrado ningún gato :(",
+            "description": "¿Quieres que el tuyo sea el primero?",
+            "button": "¡Sí!"
+          }
         }
       }
     },
@@ -453,7 +476,7 @@
       },
       "imageChecker": {
         "fileSizeError": "La imagen no puede ser mayor a {mb}MB",
-        "fileTypeError": "'Formato de imagen no soportado'. Solo se permiten los siguientes formatos: {formats}"
+        "fileTypeError": "Formato de imagen no soportado. Solo se permiten los siguientes formatos: {formats}"
       }
     }
   },

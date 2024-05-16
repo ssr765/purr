@@ -29,6 +29,7 @@ export const usePostStore = defineStore('post', () => {
       posts.value = exploreFeed
     } catch (error) {
       console.log(error)
+      toast.error(t('app.posts.toast.fetchError'))
     } finally {
       loading.value = false
     }
@@ -42,6 +43,7 @@ export const usePostStore = defineStore('post', () => {
       nextPageExists.value = response.links.next !== null
     } catch (error) {
       console.log(error)
+      toast.error(t('app.posts.toast.fetchError'))
     } finally {
       loading.value = false
       loadingMore.value = false
@@ -54,6 +56,7 @@ export const usePostStore = defineStore('post', () => {
     if (postData) {
       postDetail.value = postData
 
+      // Fetch comments if not all comments are loaded.
       if (postDetail.value.commentsCount > postDetail.value.comments.length) {
         const comments = await commentStore.fetchComments(id)
         postDetail.value.comments = comments
@@ -67,6 +70,7 @@ export const usePostStore = defineStore('post', () => {
       postDetail.value = post
     } catch (error) {
       console.log(error)
+      toast.error(t('app.posts.detail.toast.fetchError'))
     }
   }
 
@@ -95,6 +99,7 @@ export const usePostStore = defineStore('post', () => {
       }
     } catch (error) {
       console.log(error)
+      toast.error(t('app.comments.toast.createError'))
     }
   }
 
@@ -162,8 +167,8 @@ export const usePostStore = defineStore('post', () => {
       const axiosError = error as AxiosError
       toast.error(
         !oldLikeData.isLiked
-          ? 'No se ha podido dar me gusta a la publicación'
-          : 'No se ha podido quitar el me gusta de la publicación',
+          ? t('app.posts.toast.likeError')
+          : t('app.posts.toast.unlikeError'),
       )
       // Revertir si hay error
       const likeData = axiosError.response!.data as {
@@ -197,11 +202,10 @@ export const usePostStore = defineStore('post', () => {
       postToSave.savesData.count = saveData.count
       postToSave.savesData.isSaved = saveData.isSaved
     } catch (error) {
-      const axiosError = error as AxiosError
       toast.error(
         !oldSaveData.isSaved
-          ? 'No se ha podido guardar la publicación'
-          : 'No se ha podido quitar la publicación guardada',
+          ? t('app.posts.toast.saveError')
+          : t('app.posts.toast.unsaveError'),
       )
       // Revertir si hay error
       postToSave.savesData.count = oldSaveData.count

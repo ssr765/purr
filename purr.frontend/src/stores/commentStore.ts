@@ -1,8 +1,11 @@
 import { defineStore } from 'pinia'
 import { useCommentService } from '@/services/commentService'
 import { ref } from 'vue'
+import { toast } from 'vue-sonner'
+import { useI18n } from 'vue-i18n'
 
 export const useCommentStore = defineStore('comment', () => {
+  const { t } = useI18n()
   const loading = ref(false)
   const commentService = useCommentService()
 
@@ -13,6 +16,7 @@ export const useCommentStore = defineStore('comment', () => {
       return comments
     } catch (error) {
       console.log(error)
+      toast.error(t('app.comments.toast.fetchError'))
       return []
     } finally {
       loading.value = false
