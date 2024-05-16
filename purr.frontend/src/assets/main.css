@@ -5,7 +5,11 @@
 @tailwind utilities;
 
 body {
-  @apply ctp-latte dark:ctp-mocha;
+  @apply ctp-latte dark:ctp-mocha font-light;
+}
+
+strong {
+  @apply font-semibold;
 }
 
 section {
