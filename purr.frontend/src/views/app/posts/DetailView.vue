@@ -72,7 +72,7 @@ onUnmounted(() => {
 
 const addLike = () => {
   if (!user.value) {
-    toast.warning('Debes iniciar sesión para poder dar like')
+    toast.warning(t('app.posts.toast.noLoggedIn.like'))
     return
   }
 
@@ -84,7 +84,7 @@ const addLike = () => {
 const addComment = () => {
   if (!comment.value) return
   if (comment.value.length > 255) {
-    toast('El comentario no puede tener más de 255 caracteres')
+    toast(t('app.comments.toast.maxLength', { length: '255' }))
     return
   }
   postStore.addComment(postId, comment.value)
@@ -93,7 +93,7 @@ const addComment = () => {
 
 const save = () => {
   if (!user.value) {
-    toast.warning('Debes iniciar sesión para guardar publicaciones')
+    toast.warning(t('app.posts.toast.noLoggedIn.save'))
     return
   }
 
@@ -148,10 +148,10 @@ const comment = ref('')
         <p class="flex items-center gap-1.5">
           <span v-if="postDetail.likesData.count > 0" class="icon-[solar--heart-bold]" role="img" aria-hidden="true" />
           <span v-else class="icon-[solar--heart-broken-linear]" role="img" aria-hidden="true" />
-          <span class="font-semibold">{{ formatNumber(postDetail.likesData.count) }} likes</span>
+          <span class="font-semibold">{{ formatNumber(postDetail.likesData.count) }} {{ postDetail.likesData.count === 1 ? $t('app.posts.detail.like') : $t('app.posts.detail.likes') }}</span>
           <span>·</span>
           <span class="block icon-[iconamoon--bookmark-light]" role="img" aria-hidden="true" />
-          <span class="font-semibold">{{ formatNumber(postDetail.savesData.count) }} guardados</span>
+          <span class="font-semibold">{{ formatNumber(postDetail.savesData.count) }} {{ postDetail.savesData.count === 1 ? $t('app.posts.detail.save') : $t('app.posts.detail.saves') }}</span>
         </p>
         <div v-if="postDetail.caption">{{ postDetail.caption }}</div>
         <div class="flex items-center gap-2 mt-2" v-if="user">
@@ -159,13 +159,13 @@ const comment = ref('')
             <AvatarImage :src="user!.avatar ?? ''" :alt="$t('app.layout.header.user.avatarAlt')" />
             <AvatarFallback class="text-lg text-ctp-text">{{ user.username[0].toUpperCase() }}</AvatarFallback>
           </Avatar>
-          <input v-model="comment" @keydown.enter="addComment()" type="text" class="border-none outline-none w-full p-2 rounded-md bg-transparent placeholder:text-ctp-text" placeholder="Añade un comentario..." />
+          <input v-model="comment" @keydown.enter="addComment()" type="text" class="border-none outline-none w-full p-2 rounded-md bg-transparent placeholder:text-ctp-text" :placeholder="$t('app.posts.detail.commentPlaceholder')" />
           <button @click="addComment()">
             <span class="block icon-[iconamoon--send] text-3xl" role="img" aria-hidden="true" />
           </button>
         </div>
         <div v-else class="p-2 mt-2">
-          <span class="text-ctp-text/60">Debes iniciar sesión para poder comentar</span>
+          <span class="text-ctp-text/60">{{ $t('app.posts.detail.logInToComment') }}</span>
         </div>
       </div>
     </div>

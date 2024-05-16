@@ -6,8 +6,10 @@ import { useCatService } from '@/services/catService'
 import { useAuthStore } from './authStore'
 import type { AxiosError } from 'axios'
 import { toast } from 'vue-sonner'
+import { useI18n } from 'vue-i18n'
 
 export const useCatStore = defineStore('cat', () => {
+  const { t } = useI18n()
   const router = useRouter()
   const catService = useCatService()
   const { user } = storeToRefs(useAuthStore())
@@ -21,6 +23,7 @@ export const useCatStore = defineStore('cat', () => {
       const response = await catService.fetchCat(id)
       cat.value = response
     } catch (error) {
+      toast.error(t('app.cats.profile.toast.fetchError'))
       console.log(error)
     } finally {
       loading.value = false
@@ -33,6 +36,7 @@ export const useCatStore = defineStore('cat', () => {
       const response = await catService.fetchCatByCatname(catname)
       cat.value = response
     } catch (error) {
+      toast.error(t('app.cats.profile.toast.fetchError'))
       console.log(error)
     } finally {
       loading.value = false
@@ -52,18 +56,18 @@ export const useCatStore = defineStore('cat', () => {
       const axiosError = error as AxiosError
       if (axiosError.response?.status === 404) {
         if (user.value) {
-          toast.error('No hemos encontrado ningún gato :(', {
-            description: '¿Quieres que el tuyo sea el primero?',
+          toast.error(t('app.cats.random.toast.noCats.title'), {
+            description: t('app.cats.random.toast.noCats.description'),
             action: {
-              label: '¡Sí!',
+              label: t('app.cats.random.toast.noCats.button'),
               onClick: () => router.push({ name: 'app-cats-create' }),
             },
           })
         } else {
-          toast.error('No hemos encontrado ningún gato :(')
+          toast.error(t('app.cats.random.toast.noCats.title'))
         }
       } else {
-        toast.error('Ha ocurrido un error al cargar el gato aleatorio.')
+        toast.error(t('app.cats.random.toast.fetchError'))
       }
     } finally {
       loading.value = false
@@ -83,8 +87,18 @@ export const useCatStore = defineStore('cat', () => {
       cat.value.followers_count = response.cat.followers_count
       cat.value.followed = response.cat.followed
       user.value!.following_count = response.user.following_count
+      toast.success(
+        t('app.cats.profile.profilePage.followState.toast.followed', {
+          cat_name: cat.value.name,
+        }),
+      )
     } catch (error) {
       console.log(error)
+      toast.success(
+        t('app.cats.profile.profilePage.followState.toast.error', {
+          cat_name: cat.value.name,
+        }),
+      )
     } finally {
       followLoading.value = false
     }
@@ -102,8 +116,18 @@ export const useCatStore = defineStore('cat', () => {
       cat.value.followers_count = response.cat.followers_count
       cat.value.followed = response.cat.followed
       user.value!.following_count = response.user.following_count
+      toast.success(
+        t('app.cats.profile.profilePage.followState.toast.unfollowed', {
+          cat_name: cat.value.name,
+        }),
+      )
     } catch (error) {
       console.log(error)
+      toast.success(
+        t('app.cats.profile.profilePage.followState.toast.error', {
+          cat_name: cat.value.name,
+        }),
+      )
     } finally {
       followLoading.value = false
     }

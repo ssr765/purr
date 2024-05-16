@@ -24,7 +24,7 @@ useHead({
 })
 
 useSeoMeta({
-  title: `${t('app.cats.create.metadata.title')} | purr.`,
+  title: `${t('app.cats.create.createCat.metadata.title')} | purr.`,
   ogTitle: "Create Your Cat's Profile Today!",
   description: 'Create a profile for your cat and join a community that celebrates all things feline. Share stories, photos, and connect with cat lovers.',
   ogDescription: "Start your cat's journey on purr. by creating a unique profile. Engage with a global community eager to celebrate your cat's life.",
@@ -38,13 +38,13 @@ const step = ref(0)
 const gotoStep = (newStep: number) => {
   if (step.value == 0) {
     if (createCatStore.name == '' || createCatStore.catname == '') {
-      toast('El nombre del gato y el catname son obligatorios')
+      toast.warning(t('app.cats.create.createCat.toast.startingStepFields'))
       return
     } else if (createCatStore.validCatname == false) {
       if (createCatStore.checking) {
-        toast('Estamos comprobando el catname, por favor espera unos segundos')
+        toast.warning(t('app.cats.create.createCat.toast.checkingCatname'))
       } else {
-        toast('El catname ya está en uso, por favor elige otro')
+        toast.error(t('app.cats.create.createCat.toast.catnameInUse'))
       }
       return
     }
@@ -52,7 +52,12 @@ const gotoStep = (newStep: number) => {
 
   if (step.value == 1 && newStep == 2) {
     if (createCatStore.sex == '') {
-      toast('El sexo del gato es obligatorio')
+      toast.warning(t('app.cats.create.createCat.toast.sex'))
+      return
+    }
+
+    if (!createCatStore.birthdateInput) {
+      toast.warning(t('app.cats.create.createCat.toast.birthdate'))
       return
     }
   }
@@ -62,10 +67,10 @@ const gotoStep = (newStep: number) => {
 
 const createCat = () => {
   if (createCatStore.password == '' || createCatStore.confirmPassword == '') {
-    toast('La contraseña y su confirmación son obligatorias')
+    toast.warning(t('app.cats.create.createCat.toast.noPassword'))
     return
   } else if (createCatStore.password != createCatStore.confirmPassword) {
-    toast('Las contraseñas no coinciden')
+    toast.warning(t('app.cats.create.createCat.toast.passwordsDontMatch'))
     return
   }
 
@@ -81,7 +86,7 @@ const createCat = () => {
     <FinalStep v-if="step == 3" />
     <div class="flex justify-between items-center">
       <div class="w-1/3">
-        <PurrButton v-if="step != 0" @click="gotoStep(step - 1)">Volver</PurrButton>
+        <PurrButton v-if="step != 0" @click="gotoStep(step - 1)">{{ $t('app.cats.create.createCat.controls.back') }}</PurrButton>
       </div>
       <div class="flex gap-8 *:cursor-pointer">
         <div @click="gotoStep(0)" class="p-1 hover:scale-125 transition-all" :class="step == 0 ? 'selected-step' : ''">
@@ -95,7 +100,7 @@ const createCat = () => {
         </div>
       </div>
       <div class="w-1/3 flex justify-end">
-        <PurrButton @click="step != 2 ? gotoStep(step + 1) : createCat()">{{ step != 2 ? 'Siguiente' : 'Finalizar' }}</PurrButton>
+        <PurrButton @click="step != 2 ? gotoStep(step + 1) : createCat()">{{ step != 2 ? $t('app.cats.create.createCat.controls.next') : $t('app.cats.create.createCat.controls.finalize') }}</PurrButton>
       </div>
     </div>
   </div>

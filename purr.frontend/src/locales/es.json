@@ -61,6 +61,7 @@
       "header": {
         "login": "Iniciar sesión",
         "register": "Registrarse",
+        "admin": "Administrador",
         "user": {
           "avatarAlt": "Mi avatar"
         },
@@ -73,7 +74,12 @@
         "feed": "Mi feed",
         "maps": "Mapas",
         "create": "Crear",
-        "randomCat": "Gato aleatorio"
+        "randomCat": "Gato aleatorio",
+        "likes": "Mis me gusta",
+        "saves": "Mis guardados",
+        "addCat": "Añadir un gato",
+        "explore": "Explorar",
+        "toggle": "Alternar barra lateral"
       }
     },
     "settings": {
@@ -81,6 +87,8 @@
         "title": "Configuración"
       },
       "title": "Configuración",
+      "profileSettings": "Ajustes del perfil",
+      "noSettings": "Ajustes no disponibles",
       "settings": {
         "language": {
           "name": "Idioma",
@@ -99,6 +107,12 @@
             "passwordInput": "Introduce tu contraseña",
             "cancel": "Cancelar",
             "delete": "Eliminar cuenta"
+          },
+          "toast": {
+            "success": "Tu cuenta ha sido eliminada exitosamente. ¡Los gatos estarán esperando tu regreso!",
+            "error": "Ha ocurrido un error al eliminar tu cuenta",
+            "emptyPassword": "Por favor, ingresa tu contraseña para eliminar tu cuenta.",
+            "wrongPassword": "La contraseña es incorrecta"
           },
           "rickReference": {
             "quote": "\"purr. nunca te abandonará, nunca te defraudará, nunca saldrá corriendo. purr. nunca te hará llorar, nunca te dirá adiós, nunca te dirá una mentira y te hará daño.\"",
@@ -162,6 +176,37 @@
         "metadata": {
           "postBy": "Publicación de",
           "notFound": "Publicación no encontrada"
+        },
+        "like": "me gusta",
+        "likes": "me gustas",
+        "save": "guardado",
+        "saves": "guardados",
+        "logInToComment": "Debes iniciar sesión para poder comentar",
+        "commentPlaceholder": "Escribe un comentario...",
+        "dotMenu": {
+          "approve": "Aprobar publicación",
+          "deleteAssociatedUser": "Eliminar usuario asociado a esta publicación",
+          "deletePost": {
+            "menuItem": "Eliminar publicación",
+            "dialog": {
+              "title": "Eliminar publicación",
+              "content": "¿Estás seguro de que quieres borrar esta publicación? Esta acción no se puede deshacer.",
+              "buttons": {
+                "cancel": "Cancelar",
+                "delete": "Eliminar"
+              }
+            }
+          }
+        },
+        "noCatsWarning": "purr. está buscando gatos en esta publicación, si no ves ningún gato, reporta esta publicación.",
+        "toast": {
+          "fetchError": "Ha ocurrido un error al cargar la publicación",
+          "postDeleted": "Publicación eliminada correctamente",
+          "postApproved": "Publicación aprobada correctamente",
+          "postAssociatedUserDeleted": "El usuario asociado a esta publicación ha sido eliminado correctamente",
+          "deleteError": "Ha ocurrido un error al eliminar la publicación",
+          "approveError": "Ha ocurrido un error al aprobar la publicación",
+          "deleteAssociatedUserError": "Ha ocurrido un error al eliminar el usuario asociado a esta publicación"
         }
       },
       "create": {
@@ -178,7 +223,8 @@
         },
         "mediaInput": {
           "title": "Comparte un momento felino",
-          "content": "Arrastra o haz clic para compartir contenido de tu amigo gatuno en purr."
+          "content": "Arrastra o haz clic para compartir contenido de tu amigo gatuno en purr.",
+          "format": "Máx. {mb}MB, formatos: {formats}"
         },
         "mediaDashboard": {
           "back": "Volver",
@@ -220,19 +266,209 @@
           }
         },
         "errors": {
-          "noCatSelected": "Debes seleccionar un gato para crear una publicación."
+          "noCatSelected": "Debes seleccionar un gato para crear una publicación.",
+          "createError": "Ha ocurrido un error al crear la publicación",
+          "analyzeError": "Ha ocurrido un error al analizar la imagen"
         }
+      },
+      "components": {
+        "endOfFeed": {
+          "title": "Tus gatitos favoritos ya han compartido todos sus momentos contigo y ahora están descansando. ¿Porqué no exploras más gatos ahora?",
+          "button": "Explorar más gatos"
+        },
+        "postCard": {
+          "viewAllComments": "Ver todos los comentarios"
+        },
+        "contextMenu": {
+          "detail": "Ver publicación",
+          "download": "Descargar imagen"
+        },
+        "gridCard": {
+          "noCaption": "Sin descripción",
+          "likes": "me gusta",
+          "comments": "comentarios",
+          "saves": "guardados"
+        }
+      },
+      "feed": {
+        "noFollows": {
+          "title": "Bienvenido/a a purr.",
+          "content": "Parece que todavía no sigues a ningún gatito. ¡Vaya catastrofe! ¿Porque no sigues a alguno de estos hermosos gatos?"
+        }
+      },
+      "toast": {
+        "noLoggedIn": {
+          "save": "Debes iniciar sesión para guardar una publicación",
+          "delete": "Debes iniciar sesión para eliminar una publicación",
+          "like": "Debes iniciar sesión para dar me gusta a una publicación"
+        },
+        "likeError": "Ha ocurrido un error al dar me gusta a la publicación",
+        "unlikeError": "Ha ocurrido un error al quitar el me gusta de la publicación",
+        "saveError": "Ha ocurrido un error al guardar la publicación",
+        "unsaveError": "Ha ocurrido un error al quitar la publicación de guardados",
+        "fetchError": "Ha ocurrido un error al cargar las publicaciones"
+      }
+    },
+    "comments": {
+      "dotMenu": {
+        "delete": "Eliminar comentario",
+        "noActions": "No hay acciones disponibles"
+      },
+      "toast": {
+        "maxLength": "El comentario no puede tener más de {length} caracteres",
+        "deleteSuccess": "Comentario eliminado correctamente",
+        "deleteError": "Ha ocurrido un error al eliminar el comentario",
+        "fetchError": "Ha ocurrido un error al cargar los comentarios",
+        "createError": "Ha ocurrido un error al crear el comentario"
       }
     },
     "cats": {
       "create": {
-        "metadata": {
-          "title": "Crear un nuevo gato"
+        "createCat": {
+          "metadata": {
+            "title": "Crear un nuevo gato"
+          },
+          "steps": {
+            "starting": {
+              "title": "Le damos la bienvenida a tu gato a purr.!",
+              "description": "Para comenzar, dinos el nombre de tu gato y el catname que quieres usar.",
+              "alreadyExists": "¿Tu gato ya pertenece a otro dueño? ¡Añadelo a tu colección!",
+              "form": {
+                "name": "Nombre del gato",
+                "catname": "Catname",
+                "catnameTooltip": "El catname es un nombre único que identifica a tu gato en purr. ¡Sé original!",
+                "biography": "Biografía"
+              }
+            },
+            "traits": {
+              "title": "Cuentanos más sobre tu gato",
+              "description": "Ahora, cuéntanos más detalles sobre tu gato. Cuantos más detalles nos des, más destacará tu gato en purr.",
+              "form": {
+                "sex": {
+                  "label": "Sexo",
+                  "options": {
+                    "male": "Macho",
+                    "female": "Hembra"
+                  }
+                },
+                "breed": "Raza del gato",
+                "color": "Color del gato",
+                "birthdate": {
+                  "label": "Fecha de nacimiento",
+                  "placeholder": "Selecciona la fecha de nacimiento de tu gato",
+                  "description": "En caso que no la sepas, siempre puedes poner la fecha desde que tienes al gato."
+                },
+                "adoption": {
+                  "label": "El gato está en adopción",
+                  "description": "Activando esta casilla, los usuarios podrán ver que el dato está buscando un nuevo dueño y se podrán poner en contacto contigo."
+                }
+              }
+            },
+            "password": {
+              "title": "Protege a tu gato",
+              "description": "Por último, añade una contraseña para proteger a tu gato y poder compartirlo con otros dueños.",
+              "form": {
+                "password": "Contraseña",
+                "passwordConfirmation": "Confirma la contraseña"
+              }
+            }
+          },
+          "controls": {
+            "back": "Volver",
+            "next": "Siguiente",
+            "finalize": "Finalizar"
+          },
+          "toast": {
+            "noPassword": "La contraseña y su confirmación son obligatorias",
+            "passwordsDontMatch": "Las contraseñas no coinciden",
+            "success": "¡Tu gato ha sido creado con éxito!",
+            "error": "Ha ocurrido un error al crear tu gato",
+            "sex": "El sexo es obligatorio",
+            "birthdate": "La fecha de nacimiento es obligatoria",
+            "catnameInUse": "El catname ya está en uso, por favor elige otro",
+            "checkingCatname": "Estamos comprobando el catname, por favor espera unos segundos...",
+            "startingStepFields": "El nombre del gato y el catname son obligatorios",
+            "catnameAvailable": "El catname está disponible",
+            "catnameCheckError": "Ha ocurrido un error al comprobar el catname"
+          }
+        },
+        "addACat": {
+          "content": {
+            "title": "Añadir un gato de otro dueño",
+            "description": "Si ya tienes el catname y la contraseña de un gato, puedes añadirlo a tu lista de gatos.",
+            "catname": "Catname del gato",
+            "password": "Contraseña",
+            "button": "Añadir gato"
+          },
+          "validators": {
+            "catname": {
+              "required": "El catname es obligatorio",
+              "regex": "El catname no es válido"
+            },
+            "password": {
+              "required": "La contraseña es obligatoria"
+            }
+          },
+          "toast": {
+            "success": "Ahora eres dueño de {cat_name}. ¡Felicidades!",
+            "alreadyOwn": "El gato con ese catname ya te pertenece",
+            "wrongPassword": "La contraseña es incorrecta",
+            "error": "Ha ocurrido un error al añadir el gato"
+          }
         }
       },
       "profile": {
         "metadata": {
           "notFound": "Gato no encontrado"
+        },
+        "profilePage": {
+          "badges": {
+            "adoptable": "Adóptame!"
+          },
+          "noBiography": "Este gato aún no tiene una biografía",
+          "breed": "Raza",
+          "color": "Color",
+          "birthdate": "Nacimiento",
+          "followers": "seguidores",
+          "followState": {
+            "button": {
+              "follow": "Seguir",
+              "unfollow": "Dejar de seguir"
+            },
+            "toast": {
+              "followed": "¡Ahora sigues a {cat_name}!",
+              "unfollowed": "Ya no sigues a {cat_name}",
+              "noLoggedIn": "Debes iniciar sesión para seguir a un gato",
+              "error": "Ha ocurrido un error al seguir o dejar de seguir a {cat_name}"
+            }
+          },
+          "dotMenu": {
+            "deleteCat": {
+              "menuItem": "Eliminar gato",
+              "dialog": {
+                "title": "Eliminar a {cat_name}",
+                "content": "¿Estás seguro de que quieres borrar a {cat_name}? Esta acción no se puede deshacer.",
+                "buttons": {
+                  "cancel": "Cancelar",
+                  "delete": "Eliminar"
+                }
+              }
+            },
+            "deleteCatAssociatedUsers": "Eliminar usuarios asociados a este gato"
+          }
+        },
+        "toast": {
+          "fetchError": "Ha ocurrido un error al cargar el perfil del gato"
+        }
+      },
+      "random": {
+        "toast": {
+          "fetchError": "Ha ocurrido un error al cargar un gato aleatorio",
+          "noCats": {
+            "title": "No hemos encontrado ningún gato :(",
+            "description": "¿Quieres que el tuyo sea el primero?",
+            "button": "¡Sí!"
+          }
         }
       }
     },
@@ -242,10 +478,26 @@
           "title": "Registrar una entidad"
         }
       }
+    },
+    "utils": {
+      "loading": "Cargando...",
+      "catAvatar": {
+        "alt": "Cat avatar"
+      },
+      "share": {
+        "label": "Compartir",
+        "copyLink": "Copiar enlace",
+        "copiedLink": "Enlace copiado al portapapeles"
+      },
+      "imageChecker": {
+        "fileSizeError": "La imagen no puede ser mayor a {mb}MB",
+        "fileTypeError": "Formato de imagen no soportado. Solo se permiten los siguientes formatos: {formats}"
+      }
     }
   },
   "auth": {
     "login": {
+      "metaTitle": "Iniciar sesión",
       "email": "Correo electrónico",
       "password": "Contraseña",
       "button": "Iniciar sesión",
@@ -255,6 +507,7 @@
       }
     },
     "register": {
+      "metaTitle": "Registrarse",
       "name": "Nombre",
       "username": "Nombre de usuario",
       "email": "Correo electrónico",
@@ -274,5 +527,6 @@
   "errors": {
     "serverError": "Ha ocurrido un error en el servidor. Por favor, inténtalo de nuevo más tarde.",
     "tooManyRequests": "Has hecho demasiadas peticiones, por favor intentalo de nuevo más tarde."
-  }
+  },
+  "slogan": "La red social hecha por gatos, para humanos"
 }

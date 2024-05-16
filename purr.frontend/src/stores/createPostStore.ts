@@ -37,6 +37,7 @@ export const useCreatePostStore = defineStore('createPost', () => {
       analysisData.value = await postService.analyze(file)
     } catch (error) {
       console.error(error)
+      toast.error(t('app.posts.create.errors.analyzeError'))
     } finally {
       analyzing.value = false
     }
@@ -80,6 +81,7 @@ export const useCreatePostStore = defineStore('createPost', () => {
       })
     } catch (error) {
       console.error(error)
+      toast.error(t('app.posts.create.errors.createError'))
     } finally {
       loading.value = false
     }

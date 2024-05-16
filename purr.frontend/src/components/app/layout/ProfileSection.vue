@@ -10,7 +10,7 @@ const { user } = storeToRefs(authStore)
 </script>
 <template>
   <div v-if="authStore.isAuthenticated" class="flex items-center gap-6">
-    <div v-if="user!.admin" class="font-semibold">ADMINISTRADOR</div>
+    <div v-if="user!.admin" class="font-semibold uppercase">{{ $t('app.layout.header.admin') }}</div>
     <DropdownMenu>
       <div class="h-10">
         <DropdownMenuTrigger as-child>

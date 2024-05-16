@@ -6,9 +6,11 @@ import { useAuthStore } from '@/stores/authStore'
 import type { AxiosError } from 'axios'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { toast } from 'vue-sonner'
 
+const { t } = useI18n()
 const { user } = storeToRefs(useAuthStore())
 const userService = useUserService()
 const router = useRouter()
@@ -16,17 +18,21 @@ const router = useRouter()
 const password = ref('')
 
 const deleteAccount = async () => {
+  if (!password.value) {
+    toast.warning(t('app.settings.settings.deleteAccount.toast.emptyPassword'))
+    return
+  }
   try {
     await userService.deleteAccount(user.value!.id, password.value)
     user.value = null
     router.push({ name: 'app-explore' })
-    toast.success('Tu cuenta ha sido eliminada exitosamente. ¡Los gatos estarán esperando tu regreso!')
+    toast.success(t('app.settings.settings.deleteAccount.toast.success'))
   } catch (error) {
     const axiosError = error as AxiosError
     if (axiosError.response?.status === 401) {
-      toast.error('La contraseña ingresada es incorrecta. Por favor, intenta nuevamente.')
+      toast.error(t('app.settings.settings.deleteAccount.toast.wrongPassword'))
     } else {
-      toast.error('No se pudo eliminar tu cuenta. Por favor, intenta nuevamente.')
+      toast.error(t('app.settings.settings.deleteAccount.toast.error'))
     }
   }
 }

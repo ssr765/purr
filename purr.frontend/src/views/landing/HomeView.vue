@@ -8,9 +8,12 @@ import TestimonialsSection from '@/components/landing/home/TestimonialsSection.v
 import CtaSection from '@/components/landing/home/CtaSection.vue'
 import Logo from '@/assets/img/logo/black.webp'
 import { useSeoMeta } from 'unhead'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 useSeoMeta({
-  title: 'purr. - The Social Network for Your Cats',
+  title: `purr. - ${t('slogan')}`,
   ogTitle: "Join purr. - Your Cat's Own Social Network",
   description: 'Discover purr., the exclusive social network where cats take the spotlight. Create profiles, share cat moments, and connect with cat lovers worldwide.',
   ogDescription: 'Join purr. and explore a cat-centric social platform. Create cat profiles, share unique moments, and connect globally.',

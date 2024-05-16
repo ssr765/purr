@@ -36,12 +36,12 @@ const shareManager = useShareManager(postUrl)
       <RouterLink :to="{ name: 'app-posts-detail', params: { id: post.id } }">
         <ContextMenuItem>
           <span class="mr-2 h-4 w-4 icon-[solar--eye-linear]" role="img" aria-hidden="true" />
-          Ver detalle
+          {{ $t('app.posts.components.contextMenu.detail') }}
         </ContextMenuItem>
       </RouterLink>
       <ContextMenuItem @click="descargar">
         <span class="mr-2 h-4 w-4 icon-[solar--download-minimalistic-linear]" role="img" aria-hidden="true" />
-        Descargar
+        {{ $t('app.posts.components.contextMenu.download') }}
       </ContextMenuItem>
       <ContextMenuSeparator />
       <ContextMenuSub>
@@ -65,7 +65,7 @@ const shareManager = useShareManager(postUrl)
           <ContextMenuSeparator />
           <ContextMenuItem @click="shareManager.copyLink()">
             <span class="mr-2 h-4 w-4 icon-[solar--link-linear]" role="img" aria-hidden="true" />
-            Copiar enlace
+            {{ $t('app.utils.share.copyLink') }}
           </ContextMenuItem>
         </ContextMenuSubContent>
       </ContextMenuSub>

@@ -1,6 +1,8 @@
+import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 
 export function useShareManager(url: string) {
+  const { t } = useI18n()
   const encodedUrl = encodeURIComponent(url)
 
   const whatsappShare = () => {
@@ -29,7 +31,7 @@ export function useShareManager(url: string) {
 
   const copyLink = () => {
     navigator.clipboard.writeText(url)
-    toast.success('Enlace copiado al portapapeles')
+    toast.success(t('app.utils.share.copiedLink'))
   }
 
   return {

@@ -27,7 +27,7 @@ const applyPadding = computed(() => {
           <button @click="collapsedSidebar = !collapsedSidebar" data-drawer-target="drawer-navigation" data-drawer-toggle="drawer-navigation" aria-controls="drawer-navigation" class="flex items-center justify-center p-2 mr-2 text-ctp-text rounded-lg cursor-pointer md:hidden hover:text-ctp-text hover:bg-ctp-base focus:bg-ctp-base focus:ring-2 focus:ring-ctp-base">
             <span v-if="!collapsedSidebar" class="icon-[iconamoon--menu-burger-horizontal] text-xl" role="img" aria-hidden="true" />
             <span v-else class="icon-[ph--x-bold] text-xl" role="img" aria-hidden="true" />
-            <span class="sr-only">Toggle sidebar</span>
+            <span class="sr-only">{{ $t('app.layout.sidebar.toggle') }}</span>
           </button>
           <RouterLink :to="{ name: 'app-home' }" class="flex items-center justify-between mr-4">
             <PurrLogo class="size-8 mr-3" />
@@ -71,7 +71,7 @@ const applyPadding = computed(() => {
           <li>
             <RouterLink :to="{ name: 'app-explore' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
               <span class="icon-[carbon--explore] text-xl w-6" role="img" aria-hidden="true" />
-              <span class="ml-3">Explorar</span>
+              <span class="ml-3">{{ $t('app.layout.sidebar.explore') }}</span>
             </RouterLink>
           </li>
           <li>
@@ -90,13 +90,13 @@ const applyPadding = computed(() => {
             <li>
               <RouterLink :to="{ name: 'app-posts-likes' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
                 <span class="icon-[solar--heart-linear] text-xl w-6" role="img" aria-hidden="true" />
-                <span class="ml-3">Mis likes</span>
+                <span class="ml-3">{{ $t('app.layout.sidebar.likes') }}</span>
               </RouterLink>
             </li>
             <li>
               <RouterLink :to="{ name: 'app-posts-saved' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
                 <span class="icon-[iconamoon--bookmark-light] text-xl w-6" role="img" aria-hidden="true" />
-                <span class="ml-3">Mis guardados</span>
+                <span class="ml-3">{{ $t('app.layout.sidebar.saves') }}</span>
               </RouterLink>
             </li>
           </ul>
@@ -111,7 +111,7 @@ const applyPadding = computed(() => {
             <li>
               <RouterLink :to="{ name: 'app-cats-create' }" exactActiveClass="bg-ctp-overlay2/25" class="transition-all flex items-center p-2 text-base font-medium text-ctp-text rounded-lg hover:bg-ctp-overlay2/50 group">
                 <span class="icon-[ion--plus-round] text-xl w-6" role="img" aria-hidden="true" />
-                <span class="ml-3">Crear gato</span>
+                <span class="ml-3">{{ $t('app.layout.sidebar.addCat') }}</span>
               </RouterLink>
             </li>
           </ul>

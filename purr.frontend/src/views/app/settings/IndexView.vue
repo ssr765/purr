@@ -34,23 +34,24 @@ useSeoMeta({
 <template>
   <section v-if="settingsStore.settingsLoaded" class="mx-auto max-w-screen-md w-full">
     <h2 class="text-5xl lg:text-6xl text-center p-2 lg:p-4">{{ $t('app.settings.title') }}</h2>
-    <h3 class="text-xl">Entidad</h3>
-    <div>
-      <p class="mb-4">Actualmente no eres una entidad legal</p>
-      <CreateEntityDialog />
-    </div>
-    <hr class="h-px bg-ctp-lavender my-5" />
-    <div v-for="(value, name) in settingsStore.settings" :key="name" class="flex gap-2">
-      <!--  -->
-      <Switch />
+    <div v-if="false">
+      <h3 class="text-xl">Entidad</h3>
       <div>
-        <div>{{ name }}</div>
-        <div>{{ name }}</div>
+        <p class="mb-4">Actualmente no eres una entidad legal</p>
+        <CreateEntityDialog />
       </div>
+      <hr class="h-px bg-ctp-lavender my-5" />
+      <div v-for="(value, name) in settingsStore.settings" :key="name" class="flex gap-2">
+        <!--  -->
+        <Switch />
+        <div>
+          <div>{{ name }}</div>
+          <div>{{ name }}</div>
+        </div>
+      </div>
+      <hr class="h-px bg-ctp-lavender my-5" />
     </div>
-
-    <hr class="h-px bg-ctp-lavender my-5" />
-    <h3 class="text-xl mb-4">Ajustes del perfil</h3>
+    <h3 class="text-xl mb-4">{{ $t('app.settings.profileSettings') }}</h3>
     <div class="mb-4">
       <ProfileEdit>
         <RegularButton>
@@ -70,6 +71,6 @@ useSeoMeta({
     </div>
   </section>
   <div v-else>
-    <h2>Ajustes no disponibles</h2>
+    <h2 class="text-5xl lg:text-6xl text-center p-2 lg:p-4">{{ $t('app.settings.noSettings') }}</h2>
   </div>
 </template>

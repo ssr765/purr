@@ -9,7 +9,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
         <span class="block icon-[material-symbols--help-outline-rounded] text-lg" role="img" aria-hidden="true" />
       </TooltipTrigger>
       <TooltipContent>
-        <p class="max-w-sm text-center">El catname es lo que para los humanos suele ser el username, es un apodo único para tu gato. ¡Sé original!</p>
+        <p class="max-w-sm text-center">{{ $t('app.cats.create.createCat.steps.starting.form.catnameTooltip') }}</p>
       </TooltipContent>
     </Tooltip>
   </TooltipProvider>

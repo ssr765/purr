@@ -1,28 +1,20 @@
 <script setup lang="ts">
+import { useImageChecker } from '@/composables/imageChecker'
 import { useCreatePostStore } from '@/stores/createPostStore'
-import { toast } from 'vue-sonner'
 
 const createPostStore = useCreatePostStore()
+
+const imageChecker = useImageChecker()
 
 const onChange = (e: Event) => {
   const target = e.target as HTMLInputElement
   const file = target.files?.[0]
   if (!file) return
 
-  // Check the file size.
-  if (file.size > 1024 * 1024 * 8) {
-    toast.error('La imagen no puede ser mayor a 8MB')
-    return
+  if (imageChecker.checkFile(file)) {
+    // Start creating the post.
+    createPostStore.onImageUpload(file)
   }
-
-  // Check the file type.
-  if (!['image/webp', 'image/jpeg', 'image/png'].includes(file.type)) {
-    toast.error('Formato de imagen no soportado')
-    return
-  }
-
-  // Start creating the post.
-  createPostStore.onImageUpload(file)
 }
 </script>
 
@@ -32,7 +24,7 @@ const onChange = (e: Event) => {
       <span class="icon-[tabler--photo] text-[100px] lg:text-[200px]" role="img" aria-hidden="true" />
       <div class="xl:ml-5 text-center text-4xl lg:text-6xl tracking-tight font-semibold leading-none font-heading">{{ $t('app.posts.create.mediaInput.title') }}</div>
       <div class="text-xl lg:text-3xl text-center font-heading">{{ $t('app.posts.create.mediaInput.content') }}</div>
-      <div class="text-center font-heading">Máx. 8MB, formatos: .webp, .jpg, .png.</div>
+      <div class="text-center font-heading">{{ $t('app.posts.create.mediaInput.format', { mb: 8, formats: '.webp, .jpg, .png' }) }}</div>
       <input @change="onChange" id="cat-content-input" type="file" class="hidden" />
     </label>
   </section>

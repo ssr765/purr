@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-
-//
 </script>
 
 <template>
@@ -11,7 +9,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
         <span class="block icon-[ph--warning-bold] text-3xl text-red-500" role="img" aria-hidden="true" />
       </TooltipTrigger>
       <TooltipContent>
-        <p class="max-w-sm">purr. está buscando gatos en esta publicación, si no ves ningún gato, reporta esta publicación</p>
+        <p class="max-w-sm">{{ $t('app.posts.detail.noCatsWarning') }}</p>
       </TooltipContent>
     </Tooltip>
   </TooltipProvider>
