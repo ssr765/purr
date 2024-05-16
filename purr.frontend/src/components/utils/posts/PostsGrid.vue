@@ -10,7 +10,9 @@ import { usePostStore } from '@/stores/postStore'
 import { useAuthStore } from '@/stores/authStore'
 import { useLikeAnimation } from '@/composables/likeAnimation'
 import { storeToRefs } from 'pinia'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const { user } = storeToRefs(useAuthStore())
 const postStore = usePostStore()
 const { formatNumber } = useNumberFormatter()
@@ -25,7 +27,7 @@ defineProps({
 
 const addLike = (id: number) => {
   if (!user.value) {
-    toast.warning('Debes iniciar sesión para poder dar like')
+    toast.warning(t('app.posts.toast.noLoggedIn.like'))
     return
   }
 
@@ -38,7 +40,7 @@ const addLike = (id: number) => {
 
 const save = (id: number) => {
   if (!user.value) {
-    toast.warning('Debes iniciar sesión para guardar publicaciones')
+    toast.warning(t('app.posts.toast.noLoggedIn.save'))
     return
   }
 
@@ -75,11 +77,11 @@ const save = (id: number) => {
                 <div class="hidden lg:block">
                   <p v-if="post.caption">{{ post.caption }}</p>
                   <p v-else>
-                    <span class="italic">No caption</span>
+                    <span class="italic">{{ $t('app.posts.components.gridCard.noCaption') }}</span>
                   </p>
                 </div>
                 <div class="mt-4">
-                  <p class="hidden lg:block text-center">{{ formatNumber(post.likesData.count) }} likes · {{ formatNumber(post.commentsCount) }} comentarios · {{ formatNumber(post.savesData.count) }} guardados</p>
+                  <p class="hidden lg:block text-center">{{ formatNumber(post.likesData.count) }} {{ $t('app.posts.components.gridCard.likes') }} · {{ formatNumber(post.commentsCount) }} {{ $t('app.posts.components.gridCard.comments') }} · {{ formatNumber(post.savesData.count) }} {{ $t('app.posts.components.gridCard.saves') }}</p>
                   <hr class="h-px bg-ctp-lavender my-3 hidden lg:block" />
                   <div class="flex gap-2 text-3xl justify-center lg:justify-normal">
                     <LikeButton @addLike="addLike(post.id)" :like="post.likesData.isLiked" />

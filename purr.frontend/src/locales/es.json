@@ -101,6 +101,12 @@
             "cancel": "Cancelar",
             "delete": "Eliminar cuenta"
           },
+          "toast": {
+            "success": "Tu cuenta ha sido eliminada exitosamente. ¡Los gatos estarán esperando tu regreso!",
+            "error": "Ha ocurrido un error al eliminar tu cuenta",
+            "emptyPassword": "Por favor, ingresa tu contraseña para eliminar tu cuenta.",
+            "wrongPassword": "La contraseña es incorrecta"
+          },
           "rickReference": {
             "quote": "\"purr. nunca te abandonará, nunca te defraudará, nunca saldrá corriendo. purr. nunca te hará llorar, nunca te dirá adiós, nunca te dirá una mentira y te hará daño.\"",
             "attribution": "- Rick Catsley (2024)"
@@ -248,6 +254,42 @@
         "errors": {
           "noCatSelected": "Debes seleccionar un gato para crear una publicación."
         }
+      },
+      "components": {
+        "endOfFeed": {
+          "title": "Tus gatitos favoritos ya han compartido todos sus momentos contigo y ahora están descansando. ¿Porqué no exploras más gatos ahora?",
+          "button": "Explorar más gatos"
+        },
+        "postCard": {
+          "viewAllComments": "Ver todos los comentarios"
+        },
+        "contextMenu": {
+          "detail": "Ver publicación",
+          "download": "Descargar imagen"
+        },
+        "gridCard": {
+          "noCaption": "Sin descripción",
+          "likes": "me gusta",
+          "comments": "comentarios",
+          "saves": "guardados"
+        }
+      },
+      "toast": {
+        "noLoggedIn": {
+          "save": "Debes iniciar sesión para guardar una publicación",
+          "delete": "Debes iniciar sesión para eliminar una publicación",
+          "like": "Debes iniciar sesión para dar me gusta a una publicación"
+        }
+      }
+    },
+    "comments": {
+      "dotMenu": {
+        "delete": "Eliminar comentario",
+        "noActions": "No hay acciones disponibles"
+      },
+      "toast": {
+        "deleteSuccess": "Comentario eliminado correctamente",
+        "deleteError": "Ha ocurrido un error al eliminar el comentario"
       }
     },
     "cats": {
@@ -395,6 +437,10 @@
       }
     },
     "utils": {
+      "loading": "Cargando...",
+      "catAvatar": {
+        "alt": "Cat avatar"
+      },
       "share": {
         "label": "Compartir",
         "copyLink": "Copiar enlace",

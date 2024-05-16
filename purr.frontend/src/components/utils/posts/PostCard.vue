@@ -11,6 +11,7 @@ import PostContextMenu from './PostContextMenu.vue'
 import { useAuthStore } from '@/stores/authStore'
 import { storeToRefs } from 'pinia'
 import { toast } from 'vue-sonner'
+import { useI18n } from 'vue-i18n'
 
 defineProps({
   post: {
@@ -19,6 +20,7 @@ defineProps({
   },
 })
 
+const { t } = useI18n()
 const postStore = usePostStore()
 const { user } = storeToRefs(useAuthStore())
 const { formatNumber } = useNumberFormatter()
@@ -26,7 +28,7 @@ const { likeAnimation } = useLikeAnimation()
 
 const addLike = (id: number) => {
   if (!user.value) {
-    toast.warning('Debes iniciar sesión para poder dar like')
+    toast.warning(t('app.posts.toast.noLoggedIn.like'))
     return
   }
 
@@ -39,7 +41,7 @@ const addLike = (id: number) => {
 
 const save = (id: number) => {
   if (!user.value) {
-    toast.warning('Debes iniciar sesión para guardar publicaciones')
+    toast.warning(t('app.posts.toast.noLoggedIn.save'))
     return
   }
 
@@ -92,7 +94,7 @@ const save = (id: number) => {
         <div v-if="post.comments" class="space-y-2">
           <PostComment :comment="comment" v-for="comment in post.comments" :key="comment.id" :post="post" />
         </div>
-        <RouterLink :to="{ name: 'app-posts-detail', params: { id: post.id } }" class="text-sm text-ctp-lavender pt-1" v-if="post.commentsCount > 3">Ver todos los comentarios</RouterLink>
+        <RouterLink :to="{ name: 'app-posts-detail', params: { id: post.id } }" class="text-sm text-ctp-lavender pt-1" v-if="post.commentsCount > 3">{{ $t('app.posts.components.postCard.viewAllComments') }}</RouterLink>
       </div>
     </div>
   </article>

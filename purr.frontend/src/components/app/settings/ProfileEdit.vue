@@ -35,7 +35,7 @@ const formSchema = yup.object({
   email: yup
     .string()
     .transform((curr, orig) => (orig === '' ? undefined : curr))
-    .email('El email no es válido'),
+    .email(t('app.settings.settings.editProfile.validators.email.email')),
 
   password: yup
     //
