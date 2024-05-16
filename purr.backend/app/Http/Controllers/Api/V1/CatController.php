@@ -109,6 +109,10 @@ class CatController extends Controller
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
+        foreach ($cat->followers()->get() as $follower) {
+            $follower->decrement('following_count');
+        }
+
         $cat->delete();
         return response()->json($cat, 200);
     }

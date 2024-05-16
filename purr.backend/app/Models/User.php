@@ -77,4 +77,24 @@ class User extends Authenticatable
     {
         return $this->admin ? true : false;
     }
+
+    public function likes()
+    {
+        return $this->hasMany(PostLike::class);
+    }
+
+    public function saves()
+    {
+        return $this->hasMany(Save::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function commentLikes()
+    {
+        return $this->hasMany(CommentLike::class);
+    }
 }

@@ -149,8 +149,33 @@ class UserController extends Controller
 
             // Delete the cat if they don't have any owners.
             if ($cat->users()->count() === 0) {
+                foreach ($cat->followers()->get() as $follower) {
+                    $follower->decrement('following_count');
+                }
+
                 $cat->delete();
             }
+        }
+
+        // Update the counts of the post's relations.
+        foreach ($user->likes()->get() as $like) {
+            $like->post->decrement('likes_count');
+        }
+
+        foreach ($user->saves()->get() as $save) {
+            $save->post->decrement('saves_count');
+        }
+
+        foreach ($user->comments()->get() as $comment) {
+            $comment->post->decrement('comments_count');
+        }
+
+        foreach ($user->commentLikes()->get() as $commentLike) {
+            $commentLike->comment->decrement('likes_count');
+        }
+
+        foreach ($user->following()->get() as $followed_cat) {
+            $followed_cat->decrement('followers_count');
         }
 
         // Delete the user.
