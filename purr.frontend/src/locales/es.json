@@ -87,6 +87,8 @@
         "title": "Configuración"
       },
       "title": "Configuración",
+      "profileSettings": "Ajustes del perfil",
+      "noSettings": "Ajustes no disponibles",
       "settings": {
         "language": {
           "name": "Idioma",
@@ -175,6 +177,12 @@
           "postBy": "Publicación de",
           "notFound": "Publicación no encontrada"
         },
+        "like": "me gusta",
+        "likes": "me gustas",
+        "save": "guardado",
+        "saves": "guardados",
+        "logInToComment": "Debes iniciar sesión para poder comentar",
+        "commentPlaceholder": "Escribe un comentario...",
         "dotMenu": {
           "approve": "Aprobar publicación",
           "deleteAssociatedUser": "Eliminar usuario asociado a esta publicación",
@@ -307,6 +315,7 @@
         "noActions": "No hay acciones disponibles"
       },
       "toast": {
+        "maxLength": "El comentario no puede tener más de {length} caracteres",
         "deleteSuccess": "Comentario eliminado correctamente",
         "deleteError": "Ha ocurrido un error al eliminar el comentario",
         "fetchError": "Ha ocurrido un error al cargar los comentarios",
@@ -488,6 +497,7 @@
   },
   "auth": {
     "login": {
+      "metaTitle": "Iniciar sesión",
       "email": "Correo electrónico",
       "password": "Contraseña",
       "button": "Iniciar sesión",
@@ -497,6 +507,7 @@
       }
     },
     "register": {
+      "metaTitle": "Registrarse",
       "name": "Nombre",
       "username": "Nombre de usuario",
       "email": "Correo electrónico",
@@ -516,5 +527,6 @@
   "errors": {
     "serverError": "Ha ocurrido un error en el servidor. Por favor, inténtalo de nuevo más tarde.",
     "tooManyRequests": "Has hecho demasiadas peticiones, por favor intentalo de nuevo más tarde."
-  }
+  },
+  "slogan": "La red social hecha por gatos, para humanos"
 }

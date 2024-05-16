@@ -6,22 +6,24 @@ import Logo from '@/assets/img/logo/black.webp'
 import { useSeoMeta } from 'unhead'
 import { watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const route = useRoute()
 
 const dynamicMetadata = (name: string) => {
   if (name === 'auth-login') {
     useSeoMeta({
-      title: 'Login | purr. - The Social Network for Your Cats',
-      ogTitle: 'Log In to Your purr. Account',
+      title: `${t('auth.login.metaTitle')} | purr. - ${t('slogan')}`,
+      ogTitle: 'Log In to your purr. Account',
       description: 'Log in to start sharing and enjoying exclusive cat content. Connect and interact with cat lovers on purr., your cat community.',
       ogDescription: 'Sign in to purr. to post, comment, and enjoy the ultimate cat social network. Engage with a global community of cat enthusiasts.',
       ogImage: Logo,
     })
   } else if (name === 'auth-register') {
     useSeoMeta({
-      title: 'Register | purr. - The Social Network for Your Cats',
-      ogTitle: 'Sign Up and Join purr. Today',
+      title: `${t('auth.register.metaTitle')} | purr. - ${t('slogan')}`,
+      ogTitle: 'Sign Up and join purr. Today',
       description: 'Register to join purr., the social network just for cats and their enthusiasts. Start creating cat profiles and connect globally.',
       ogDescription: 'Sign up for purr. to begin posting and sharing as your cat. Connect with cat lovers worldwide and enjoy exclusive features.',
       ogImage: Logo,

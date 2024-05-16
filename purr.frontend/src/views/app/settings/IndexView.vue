@@ -51,8 +51,7 @@ useSeoMeta({
       </div>
       <hr class="h-px bg-ctp-lavender my-5" />
     </div>
-
-    <h3 class="text-xl mb-4">Ajustes del perfil</h3>
+    <h3 class="text-xl mb-4">{{ $t('app.settings.profileSettings') }}</h3>
     <div class="mb-4">
       <ProfileEdit>
         <RegularButton>
@@ -72,6 +71,6 @@ useSeoMeta({
     </div>
   </section>
   <div v-else>
-    <h2>Ajustes no disponibles</h2>
+    <h2 class="text-5xl lg:text-6xl text-center p-2 lg:p-4">{{ $t('app.settings.noSettings') }}</h2>
   </div>
 </template>
