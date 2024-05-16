@@ -1,5 +1,7 @@
 <p align="center"><img src="assets/purr.logo.webp" alt="purr. Logo" width="200"></p>
 
+<p align="center"><img src="https://skillicons.dev/icons?i=mysql,vue,laravel,flask,docker,kubernetes" alt="Stack"></p>
+
 # purr.
 
 purr. is the social networks made by cats
