@@ -1,5 +1,6 @@
 import type { Cat } from '@/models/Cat'
 import type { Entity } from '@/models/Entity'
+import type { Settings } from '@/models/Settings'
 
 export interface User {
   id: number
@@ -13,6 +14,6 @@ export interface User {
   avatar?: string
   biography?: string
   cats?: Cat[]
-  settings?: Object
+  settings?: Settings
   entity?: Entity
 }

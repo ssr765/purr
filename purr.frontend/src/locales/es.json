@@ -153,11 +153,11 @@
       },
       "title": "Configuración",
       "profileSettings": "Ajustes del perfil",
-      "noSettings": "Ajustes no disponibles",
       "settings": {
         "language": {
           "name": "Idioma",
-          "description": "Selecciona tu idioma preferido."
+          "description": "Selecciona tu idioma preferido.",
+          "select": "Cambiar el idioma"
         },
         "deleteAccount": {
           "name": "Eliminar cuenta",
@@ -593,5 +593,13 @@
     "serverError": "Ha ocurrido un error en el servidor. Por favor, inténtalo de nuevo más tarde.",
     "tooManyRequests": "Has hecho demasiadas peticiones, por favor intentalo de nuevo más tarde."
   },
-  "slogan": "La red social hecha por gatos, para humanos"
+  "slogan": "La red social hecha por gatos, para humanos",
+  "cookieBanner": {
+    "message": "purr. solo usa cookies necesarias para el correcto funcionamiento de la página, si las aceptas, podrás disfrutar de todas las funcionalidades de purr.",
+    "accept": "Aceptar",
+    "reject": "Rechazar",
+    "toast": {
+      "saved": "Se han guardado tus preferencias de cookies"
+    }
+  }
 }

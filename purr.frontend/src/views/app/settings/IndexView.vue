@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import DeleteAccount from '@/components/app/settings/DeleteAccount.vue'
-import { Switch } from '@/components/ui/switch'
-import { useSettingsStore } from '@/stores/settingsStore'
 
 import Logo from '@/assets/img/logo/black.webp'
 import { useHead, useSeoMeta } from 'unhead'
@@ -9,9 +7,9 @@ import { useI18n } from 'vue-i18n'
 import CreateEntityDialog from '@/components/app/settings/CreateEntityDialog.vue'
 import ProfileEdit from '@/components/app/settings/ProfileEdit.vue'
 import RegularButton from '@/components/utils/RegularButton.vue'
+import LanguageSelector from '@/components/landing/layout/Header/LanguageSelector.vue'
 
 const { t } = useI18n()
-const settingsStore = useSettingsStore()
 
 useHead({
   meta: [
@@ -32,7 +30,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <section v-if="settingsStore.settingsLoaded" class="mx-auto max-w-screen-md w-full">
+  <section class="mx-auto max-w-screen-md w-full">
     <h2 class="text-5xl lg:text-6xl text-center p-2 lg:p-4">{{ $t('app.settings.title') }}</h2>
     <div v-if="false">
       <h3 class="text-xl">Entidad</h3>
@@ -41,16 +39,17 @@ useSeoMeta({
         <CreateEntityDialog />
       </div>
       <hr class="h-px bg-ctp-lavender my-5" />
-      <div v-for="(value, name) in settingsStore.settings" :key="name" class="flex gap-2">
-        <!--  -->
-        <Switch />
-        <div>
-          <div>{{ name }}</div>
-          <div>{{ name }}</div>
-        </div>
-      </div>
-      <hr class="h-px bg-ctp-lavender my-5" />
     </div>
+    <h3 class="text-xl">{{ $t('app.settings.settings.language.name') }}</h3>
+    <p class="text-ctp-text/80 text-sm italic mb-2">{{ $t('app.settings.settings.language.description') }}</p>
+
+    <LanguageSelector>
+      <RegularButton>
+        <span>{{ $t('app.settings.settings.language.select') }}</span>
+      </RegularButton>
+    </LanguageSelector>
+
+    <hr class="h-px bg-ctp-lavender my-5" />
     <h3 class="text-xl mb-4">{{ $t('app.settings.profileSettings') }}</h3>
     <div class="mb-4">
       <ProfileEdit>
@@ -70,7 +69,4 @@ useSeoMeta({
       <p class="text-ctp-text/80 text-sm italic text-end">{{ $t('app.settings.settings.deleteAccount.rickReference.attribution') }}</p>
     </div>
   </section>
-  <div v-else>
-    <h2 class="text-5xl lg:text-6xl text-center p-2 lg:p-4">{{ $t('app.settings.noSettings') }}</h2>
-  </div>
 </template>

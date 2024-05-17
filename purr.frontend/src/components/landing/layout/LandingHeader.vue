@@ -1,14 +1,9 @@
 <script lang="ts" setup>
-// import { initFlowbite } from 'flowbite'
-import Sheet from '@/components/ui/sheet/Sheet.vue'
-import SheetContent from '@/components/ui/sheet/SheetContent.vue'
-import SheetDescription from '@/components/ui/sheet/SheetDescription.vue'
-import SheetHeader from '@/components/ui/sheet/SheetHeader.vue'
-import SheetTitle from '@/components/ui/sheet/SheetTitle.vue'
-import SheetTrigger from '@/components/ui/sheet/SheetTrigger.vue'
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import PurrButton from '@/components/utils/PurrButton.vue'
 import PurrLogo from '@/components/utils/PurrLogo.vue'
 import { onMounted } from 'vue'
+import LanguageSelector from './Header/LanguageSelector.vue'
 
 const toggleHeaderBackground = () => {
   const header = document.querySelector('.landing-header')
@@ -41,8 +36,9 @@ onMounted(() => {
           <span class="purr-text self-center text-2xl font-semibold whitespace-nowrap text-black dark:text-white">purr.</span>
         </RouterLink>
         <div class="flex items-center lg:order-3">
+          <LanguageSelector />
           <RouterLink to="/app">
-            <PurrButton noMargin class="flex items-center justify-center">
+            <PurrButton noMargin class="ml-2 flex items-center justify-center">
               <span>{{ $t('landing.header.cta') }}</span>
               <span class="icon-[mingcute--right-fill] text-lg ml-2" role="img" aria-hidden="true" />
             </PurrButton>
