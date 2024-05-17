@@ -312,4 +312,16 @@ class UserController extends Controller
 
         return response()->json(new PostCollection($posts));
     }
+
+    public function updateSettings(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string|in:en,es,ca,ja',
+        ]);
+
+        $user = $request->user();
+        $user->settings->update($request->all());
+
+        return response()->json(null, 204);
+    }
 }

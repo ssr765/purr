@@ -6,6 +6,7 @@ use App\Helpers\EmailRateLimiter;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\UserResource;
 use App\Mail\WelcomeMail;
+use App\Models\Settings;
 use App\Models\User;
 use App\Rules\EmailValidator;
 use Illuminate\Auth\Events\Registered;
@@ -51,6 +52,9 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return response()->json(new UserResource($user), 201);
+        // Create settings for the user
+        Settings::create(['user_id' => $user->id]);
+
+        return response()->json(new UserResource($user->load('settings')), 201);
     }
 }

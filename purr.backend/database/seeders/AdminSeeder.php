@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,6 +21,11 @@ class AdminSeeder extends Seeder
             'email' => 'admin@admin',
             'password' => Hash::make(config('app.admin_password')),
             'admin' => true,
+        ]);
+
+        Settings::create([
+            'user_id' => 1,
+            'language' => 'en',
         ]);
     }
 }

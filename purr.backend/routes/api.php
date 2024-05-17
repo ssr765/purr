@@ -32,7 +32,7 @@ Route::prefix('v1')->group(function () {
         Route::middleware(['auth:sanctum'])->group(function () {
             // Actual user data
             Route::get('/user', function (Request $request) {
-                return response()->json(new V1UserResource($request->user()->load('cats')));
+                return response()->json(new V1UserResource($request->user()->load(['settings', 'cats'])));
             })->name('user.show');
 
             // User utilities
@@ -41,6 +41,7 @@ Route::prefix('v1')->group(function () {
                 Route::post('/email', [V1UserController::class, 'checkEmail'])->name('checkEmail');
                 Route::get('/cats', [V1UserController::class, 'showCats'])->name('cats');
                 Route::get('/feed', [V1UserController::class, 'feed'])->name('feed');
+                Route::post('/settings', [V1UserController::class, 'updateSettings'])->name('settings.update');
             });
 
             // CRUD resources
