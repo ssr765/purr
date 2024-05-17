@@ -1,10 +1,19 @@
 <script setup lang="ts">
 import Logo from '@/assets/img/logo/black.webp'
-import { useSeoMeta } from 'unhead'
+import { useHead, useSeoMeta } from 'unhead'
 import { useI18n } from 'vue-i18n'
 
 const email = import.meta.env.VITE_CONTACT_EMAIL as string
 const { t } = useI18n()
+
+useHead({
+  meta: [
+    {
+      name: 'robots',
+      content: 'noindex, nofollow',
+    },
+  ],
+})
 
 useSeoMeta({
   title: `${t('landing.privacyPolicy.metaTitle')} | purr. - ${t('slogan')}`,
