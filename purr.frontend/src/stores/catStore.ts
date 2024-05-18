@@ -13,6 +13,7 @@ export const useCatStore = defineStore('cat', () => {
   const router = useRouter()
   const catService = useCatService()
   const { user } = storeToRefs(useAuthStore())
+  const recentlyViewed = ref<Cat[]>([])
 
   const loading = ref(false)
   const cat = ref<Cat | null>(null)
@@ -141,6 +142,7 @@ export const useCatStore = defineStore('cat', () => {
     loading,
     cat,
     followLoading,
+    recentlyViewed,
 
     fetchCat,
     fetchCatByCatname,

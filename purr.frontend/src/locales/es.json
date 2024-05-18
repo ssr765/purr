@@ -177,7 +177,6 @@
   },
   "app": {
     "layout": {
-      "search": "Buscar",
       "header": {
         "login": "Iniciar sesión",
         "register": "Registrarse",
@@ -191,6 +190,7 @@
         }
       },
       "sidebar": {
+        "search": "Buscar gatos",
         "feed": "Mi feed",
         "maps": "Mapas",
         "create": "Crear",
@@ -629,6 +629,15 @@
       "webpage": "Página web",
       "noWebpage": "Sin página web",
       "error": "Ha ocurrido un error al cargar el mapa"
+    },
+    "search": {
+      "noResults": "No se han encontrado resultados",
+      "error": "Ha ocurrido un error al buscar",
+      "placeholder": "¿Dónde se habrá metido ese gato?",
+      "groupLabels": {
+        "cats": "Gato encontrados",
+        "recentlyViewed": "Vistos recientemente"
+      }
     }
   },
   "auth": {

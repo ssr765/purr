@@ -124,6 +124,16 @@ export const useCatService = () => {
     }
   }
 
+  const search = async (query: string) => {
+    try {
+      const response = await axios.get<Cat[]>(`/api/v1/cats/search?q=${query}`)
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
   return {
     fetchCat,
     fetchCatByCatname,
@@ -135,5 +145,6 @@ export const useCatService = () => {
     editCat,
     deleteCat,
     addCat,
+    search,
   }
 }

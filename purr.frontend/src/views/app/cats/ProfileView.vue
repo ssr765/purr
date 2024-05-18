@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
 import { useCatStore } from '@/stores/catStore'
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import CatNotFound from '@/components/app/cats/profile/CatNotFound.vue'
 import ProfileHeader from '@/components/app/cats/profile/ProfileHeader.vue'
@@ -27,27 +27,48 @@ const catStore = useCatStore()
 const { cat } = storeToRefs(catStore)
 const route = useRoute()
 
+watch(
+  () => route.params.catname,
+  async () => {
+    await fetchCat()
+  },
+)
+
+const fetchCat = async () => {
+  if (route.params.catname) {
+    await catStore.fetchCatByCatname(route.params.catname as string)
+
+    if (cat.value) {
+      if (catStore.recentlyViewed.filter((c) => c.id === cat.value!.id).length === 0) {
+        catStore.recentlyViewed.push(cat.value)
+
+        if (catStore.recentlyViewed.length > 3) {
+          catStore.recentlyViewed.shift()
+        }
+      }
+
+      const title = `${cat.value.name} (@${cat.value.catname})`
+      const description = cat.value.biography ? `${cat.value.biography} - ${cat.value.followers_count} followers` : `${cat.value.followers_count} followers`
+      useSeoMeta({
+        title: `${title} | purr.`,
+        ogTitle: title,
+        description: description,
+        ogDescription: description,
+        ogImage: cat.value.avatar ?? Logo,
+      })
+    } else {
+      useSeoMeta({
+        title: `${t('app.cats.profile.metadata.notFound')} | purr.`,
+        ogTitle: 'purr.',
+        ogImage: Logo,
+      })
+    }
+  }
+}
+
 onMounted(async () => {
   if (!cat.value) {
-    await catStore.fetchCatByCatname(route.params.catname as string)
-  }
-
-  if (cat.value) {
-    const title = `${cat.value.name} (@${cat.value.catname})`
-    const description = cat.value.biography ? `${cat.value.biography} - ${cat.value.followers_count} followers` : `${cat.value.followers_count} followers`
-    useSeoMeta({
-      title: `${title} | purr.`,
-      ogTitle: title,
-      description: description,
-      ogDescription: description,
-      ogImage: cat.value.avatar ?? Logo,
-    })
-  } else {
-    useSeoMeta({
-      title: `${t('app.cats.profile.metadata.notFound')} | purr.`,
-      ogTitle: 'purr.',
-      ogImage: Logo,
-    })
+    fetchCat()
   }
 })
 
