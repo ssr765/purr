@@ -31,16 +31,23 @@ class CommentLikeController extends Controller
 
         // Check if the user has already liked the post.
         if ($like) {
-            return response()->json(['message' => 'Comment already liked'], 409);
+            return response()->json([
+                "isLiked" => $comment->likedByUser($user),
+                "count" => $comment->likes_count,
+            ], 409);
         }
 
         // Create a new like.
         $comment->likes()->create([
             'user_id' => $user->id,
         ]);
+
         $comment->increment('likes_count');
 
-        return response()->json(null, 201);
+        return response()->json([
+            "isLiked" => true,
+            "count" => $comment->likes_count,
+        ], 201);
     }
 
     /**
@@ -70,11 +77,18 @@ class CommentLikeController extends Controller
             ->first();
 
         if (!$like) {
-            return response()->json(['message' => 'Comment wasn\'t liked'], 409);
+            return response()->json([
+                "isLiked" => $comment->likedByUser($user),
+                "count" => $comment->likes_count,
+            ], 409);
         }
 
         $like->delete();
         $comment->decrement('likes_count');
-        return response()->json(null, 204);
+
+        return response()->json([
+            "isLiked" => false,
+            "count" => $comment->likes_count,
+        ], 201);
     }
 }

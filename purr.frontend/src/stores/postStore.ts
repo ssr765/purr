@@ -8,6 +8,7 @@ import type { AxiosError } from 'axios'
 import { useCommentStore } from './commentStore'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import type { Comment } from '@/models/Comment'
 
 export const usePostStore = defineStore('post', () => {
   const { t } = useI18n()
@@ -136,6 +137,58 @@ export const usePostStore = defineStore('post', () => {
     }
   }
 
+  const commentLiking = ref(false)
+  const toggleCommentLike = async (id: number) => {
+    const updateLikeData = (
+      comment: Comment,
+      newLikeData: { count: number; isLiked: boolean },
+    ) => {
+      comment.likesCount = newLikeData.count
+      comment.liked = newLikeData.isLiked
+    }
+
+    const commentToLike =
+      postDetail.value?.comments.find((comment) => comment.id === id) ||
+      posts.value
+        .find((post) => post.id === id)
+        ?.comments.find((comment) => comment.id === id)
+
+    if (!commentToLike) return
+
+    const oldLikeData = {
+      count: commentToLike.likesCount,
+      isLiked: commentToLike.liked,
+    }
+
+    // Actualizar UI de forma optimista
+    commentToLike.liked = !oldLikeData.isLiked
+    commentToLike.likesCount += commentToLike.liked ? 1 : -1
+
+    try {
+      commentLiking.value = true
+      const likeData = commentToLike.liked
+        ? await commentService.like(id)
+        : await commentService.unlike(id)
+      updateLikeData(commentToLike, likeData)
+    } catch (error) {
+      const axiosError = error as AxiosError
+      toast.error(
+        !oldLikeData.isLiked
+          ? t('app.comments.toast.likeError')
+          : t('app.comments.toast.unlikeError'),
+      )
+      // Revertir si hay error
+      const likeData = axiosError.response!.data as {
+        count: number
+        isLiked: boolean
+      }
+
+      updateLikeData(commentToLike, likeData)
+    } finally {
+      commentLiking.value = false
+    }
+  }
+
   const liking = ref(false)
   const toggleLike = async (id: number) => {
     const updateLikeData = (
@@ -258,6 +311,7 @@ export const usePostStore = defineStore('post', () => {
     posts,
     postDetail,
     liking,
+    commentLiking,
     saving,
     loading,
     loadingMore,
@@ -268,7 +322,7 @@ export const usePostStore = defineStore('post', () => {
     fetchPostDetail,
     deletePost,
     addComment,
-    refreshCommentLike,
+    toggleCommentLike,
     toggleLike,
     toggleSave,
     fetchSavedPosts,

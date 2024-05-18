@@ -440,6 +440,9 @@
         "noActions": "No hay acciones disponibles"
       },
       "toast": {
+        "likeError": "Ha ocurrido un error al dar me gusta al comentario",
+        "unlikeError": "Ha ocurrido un error al quitar el me gusta del comentario",
+        "noLoggedIn": "Debes iniciar sesión para dar me gusta a un comentario",
         "maxLength": "El comentario no puede tener más de {length} caracteres",
         "deleteSuccess": "Comentario eliminado correctamente",
         "deleteError": "Ha ocurrido un error al eliminar el comentario",

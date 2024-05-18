@@ -10,6 +10,8 @@ import { useAuthStore } from '@/stores/authStore'
 import { storeToRefs } from 'pinia'
 import DotMenu from './Comment/DotMenu.vue'
 import type { Post } from '@/models/Post'
+import { toast } from 'vue-sonner'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps({
   post: {
@@ -24,32 +26,19 @@ const props = defineProps({
 
 const authStore = useAuthStore()
 const postStore = usePostStore()
-const commentService = useCommentService()
 
+const { t } = useI18n()
 const { user } = storeToRefs(authStore)
 
-const liking = ref(false)
-const addLike = async (id: number) => {
-  if (liking.value) {
-    like.value = !like.value
+const addLike = (id: number) => {
+  if (!user.value) {
+    toast.warning(t('app.comment.toast.noLoggedIn'))
     return
   }
-  liking.value = true
 
-  if (!props.comment.liked) {
-    await commentService.like(id)
-    postStore.refreshCommentLike(props.post.id, id, true)
-    like.value = true
-  } else {
-    await commentService.unlike(id)
-    postStore.refreshCommentLike(props.post.id, id, false)
-    like.value = false
-  }
-
-  liking.value = false
+  if (postStore.commentLiking) return
+  postStore.toggleCommentLike(id)
 }
-
-const like = ref(props.comment.liked)
 </script>
 
 <template>
@@ -64,7 +53,7 @@ const like = ref(props.comment.liked)
     </div>
     <div class="flex flex-col items-center">
       <button @click="addLike(comment.id)">
-        <span v-if="like" class="block icon-[solar--heart-bold] text-red-500" role="img" aria-hidden="true" />
+        <span v-if="comment.liked" class="block icon-[solar--heart-bold] text-red-500" role="img" aria-hidden="true" />
         <span v-else class="block icon-[solar--heart-linear]" role="img" aria-hidden="true" />
       </button>
       <span class="text-xs"> {{ comment.likesCount }} </span>

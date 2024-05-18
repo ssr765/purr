@@ -32,7 +32,9 @@ export const useCommentService = () => {
   const like = async (id: number) => {
     try {
       console.log('like', id)
-      const response = await axios.post<Comment>(`/api/v1/comments/${id}/likes`)
+      const response = await axios.post<{ count: number; isLiked: boolean }>(
+        `/api/v1/comments/${id}/likes`,
+      )
       console.log(response.data)
       return response.data
     } catch (error) {
@@ -44,7 +46,7 @@ export const useCommentService = () => {
   const unlike = async (id: number) => {
     try {
       console.log('unlike', id)
-      const response = await axios.delete<Comment>(
+      const response = await axios.delete<{ count: number; isLiked: boolean }>(
         `/api/v1/comments/${id}/likes`,
       )
       console.log(response.data)
