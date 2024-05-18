@@ -11,6 +11,7 @@
     },
     "footer": {
       "privacyPolicy": "Política de privacidad",
+      "cookiePolicy": "Política de cookies",
       "content": "La red social hecha por gatos, para humanos.",
       "rights": "Todos los derechos reservados."
     },
@@ -118,6 +119,60 @@
         "content": "Podemos actualizar nuestra política de privacidad periódicamente para reflejar, por ejemplo, cambios en nuestras prácticas o por otros motivos operativos, legales o regulatorios. Te aconsejamos revisar esta política periódicamente para estar informado de cómo protegemos tu información."
       },
       "contact": "Si tienes preguntas sobre esta política de privacidad, por favor contáctanos en {email}."
+    },
+    "cookiePolicy": {
+      "metaTitle": "Política de cookies",
+      "title": "Política de cookies de purr.",
+      "introduction": "En purr., valoramos tu privacidad y queremos asegurarnos de que entiendes cómo y por qué utilizamos las cookies en nuestra plataforma. Esta política de cookies explica qué son las cookies, cómo las usamos y tus opciones en relación a su uso.",
+      "whatAreCookies": {
+        "title": "¿Qué son las cookies?",
+        "content": "Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo (ordenador, tablet, smartphone) cuando visitas un sitio web. Las cookies ayudan a la web a reconocer tu dispositivo y recordar cierta información sobre tus visitas, mejorando así tu experiencia de navegación.        "
+      },
+      "cookiesExplain": {
+        "title": "¿Cómo utilizamos las cookies?",
+        "content": "En purr., utilizamos diferentes tipos de cookies para distintos propósitos. Aquí te explicamos las cookies que usamos y por qué las necesitamos:",
+        "essential": {
+          "title": "Cookies esenciales",
+          "content": "Estas cookies son necesarias para que el sitio web funcione correctamente. Sin ellas, no podrías utilizar algunas de las funciones básicas de nuestra plataforma.",
+          "cookies": {
+            "session": {
+              "name": "purr_session",
+              "description": "Esta cookie se utiliza para mantener la sesión del usuario. Es esencial para que puedas mantenerte autenticado mientras navegas por la plataforma."
+            },
+            "xsrf": {
+              "name": "XSRF-TOKEN",
+              "description": "Esta cookie se utiliza para proteger contra ataques de falsificación de solicitudes entre sitios (Cross-Site Request Forgery, CSRF). Es esencial para la seguridad de tu interacción con purr."
+            },
+            "gdpr": {
+              "name": "gdpr_cookie_consent",
+              "description": "Esta cookie almacena tu consentimiento para el uso de cookies en nuestra plataforma, asegurando que cumplimos con las regulaciones de protección de datos."
+            }
+          }
+        },
+        "necessary": {
+          "title": "Cookies necesarias",
+          "content": "Estas cookies no son estrictamente esenciales, pero nos ayudan a ofrecer una mejor experiencia de usuario.",
+          "cookies": {
+            "locale": {
+              "name": "locale",
+              "description": "Esta cookie almacena la preferencia de idioma del usuario no autenticado, permitiendo que la aplicación se muestre en el idioma correcto cuando vuelves a visitarnos."
+            }
+          }
+        }
+      },
+      "noTracking": {
+        "title": "No utilizamos cookies de rastreo",
+        "content": "En purr., no utilizamos cookies de rastreo ni otras tecnologías similares para monitorear tu comportamiento en línea. Nos comprometemos a no utilizar cookies para recopilar información sobre ti con fines de marketing o publicidad."
+      },
+      "cookieManagement": {
+        "title": "Gestión de cookies",
+        "content": "Tienes la opción de permitir o desactivar el uso de cookies en nuestra plataforma. Puedes gestionar tus preferencias de cookies a través de la configuración de tu navegador. Ten en cuenta que desactivar cookies esenciales puede afectar el funcionamiento del sitio web y tu experiencia de usuario."
+      },
+      "policyUpdate": {
+        "title": "Actualizaciones de la política",
+        "content": "Podemos actualizar esta política de cookies de vez en cuando para reflejar cambios en nuestras prácticas y servicios. Te recomendamos revisar esta política periódicamente para estar al tanto de cómo utilizamos las cookies."
+      },
+      "contact": "Si tienes alguna pregunta sobre nuestra política de cookies, no dudes en contactarnos a través de nuestro {email}."
     }
   },
   "app": {

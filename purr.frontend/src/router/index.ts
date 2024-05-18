@@ -22,6 +22,11 @@ const router = createRouter({
           name: 'landing-privacy-policy',
           component: () => import('@/views/landing/PrivacyPolicyView.vue'),
         },
+        {
+          path: 'cookie-policy',
+          name: 'landing-cookie-policy',
+          component: () => import('@/views/landing/CookiePolicyView.vue'),
+        },
       ],
     },
     {
