@@ -7,8 +7,8 @@ import { useI18n } from 'vue-i18n'
 export const useCookieStore = defineStore('cookie', () => {
   const { t } = useI18n()
 
-  const bannerShouldShow = ref(Cookies.get('gdpr') === undefined)
-  const GDPRstatus = ref(Cookies.get('gdpr') === 'true')
+  const bannerShouldShow = ref(Cookies.get('gdpr_cookie_consent') === undefined)
+  const GDPRstatus = ref(Cookies.get('gdpr_cookie_consent') === 'true')
   const pendingCookies = ref<{ name: string; value: string }[]>([])
 
   const setCookie = (name: string, value: string) => {
@@ -21,14 +21,14 @@ export const useCookieStore = defineStore('cookie', () => {
 
   const reject = () => {
     GDPRstatus.value = false
-    Cookies.set('gdpr', 'false')
+    Cookies.set('gdpr_cookie_consent', 'false')
     bannerShouldShow.value = false
     toast(t('cookieBanner.toast.saved'))
   }
 
   const consent = () => {
     GDPRstatus.value = true
-    Cookies.set('gdpr', 'true')
+    Cookies.set('gdpr_cookie_consent', 'true')
     bannerShouldShow.value = false
     toast(t('cookieBanner.toast.saved'))
 
