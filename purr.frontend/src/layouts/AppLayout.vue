@@ -22,7 +22,7 @@ const applyPadding = computed(() => {
 
 <template>
   <div class="antialiased bg-ctp-base">
-    <nav class="bg-ctp-crust border-b border-ctp-lavender px-4 py-2.5 fixed left-0 right-0 top-0 z-50">
+    <nav class="bg-ctp-crust border-b border-ctp-lavender px-4 py-2.5 fixed left-0 right-0 top-0 z-[6000]">
       <div class="flex flex-wrap justify-between items-center">
         <div class="flex justify-start items-center gap-2">
           <button @click="collapsedSidebar = !collapsedSidebar" data-drawer-target="drawer-navigation" data-drawer-toggle="drawer-navigation" aria-controls="drawer-navigation" class="flex items-center justify-center p-2 mr-2 text-ctp-text rounded-lg cursor-pointer md:hidden hover:text-ctp-text hover:bg-ctp-base focus:bg-ctp-base focus:ring-2 focus:ring-ctp-base">
@@ -42,7 +42,7 @@ const applyPadding = computed(() => {
     </nav>
 
     <!-- Sidebar -->
-    <aside class="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform bg-ctp-mantle border-r border-ctp-lavender md:translate-x-0" :class="collapsedSidebar ? '' : '-translate-x-full'" aria-label="Sidenav" id="drawer-navigation">
+    <aside class="z-[5000] fixed top-0 left-0 w-64 h-screen pt-14 transition-transform bg-ctp-mantle border-r border-ctp-lavender md:translate-x-0" :class="collapsedSidebar ? '' : '-translate-x-full'" aria-label="Sidenav" id="drawer-navigation">
       <div class="overflow-y-auto py-5 px-3 h-full">
         <ul class="space-y-2">
           <li v-if="user">

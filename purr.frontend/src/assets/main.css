@@ -174,3 +174,11 @@ html.dark *::-webkit-scrollbar-thumb:active {
 html.light *::-webkit-scrollbar-thumb:active {
   background-color: #6477de;
 }
+
+[role='dialog'] {
+  z-index: 8000;
+}
+
+[data-state='open'] {
+  z-index: 7000;
+}

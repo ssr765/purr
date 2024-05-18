@@ -7,7 +7,7 @@ const cookieStore = useCookieStore()
 </script>
 
 <template>
-  <section class="fixed p-4 md:rounded-lg md:shadow-lg bg-ctp-crust outline-ctp-lavender outline outline-1 z-[500] space-y-4 bottom-0 md:bottom-4 md:left-4 md:max-w-lg">
+  <section class="fixed p-4 md:rounded-lg md:shadow-lg bg-ctp-crust outline-ctp-lavender outline outline-1 z-[10000] space-y-4 bottom-0 md:bottom-4 md:left-4 md:max-w-lg">
     <div>{{ $t('cookieBanner.message') }}</div>
     <div class="flex gap-4 justify-end">
       <PurrButton @click="cookieStore.consent">
