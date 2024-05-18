@@ -49,9 +49,10 @@ export const useMapUtils = () => {
     address.innerHTML = data.address
     contact.innerHTML = `${data.phone} · `
     if (data.webpage) {
-      webpage.href = 'https://' + data.webpage
+      webpage.href = data.webpage
       webpage.target = '_blank'
       webpage.innerHTML = t('app.maps.webpage')
+      webpage.rel = 'noreferrer noopener'
       contact.appendChild(webpage)
     } else {
       noWebpage.innerHTML = t('app.maps.noWebpage')
