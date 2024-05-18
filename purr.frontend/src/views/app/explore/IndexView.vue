@@ -5,9 +5,21 @@ import PostsFeed from '@/components/utils/posts/PostsFeed.vue'
 import PostsGrid from '@/components/utils/posts/PostsGrid.vue'
 
 import { usePostStore } from '@/stores/postStore'
+import { useSeoMeta } from 'unhead'
 import { onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import Logo from '@/assets/img/logo/black.webp'
 
+const { t } = useI18n()
 const postStore = usePostStore()
+
+useSeoMeta({
+  title: t('app.posts.explore.metadata.title') + ' | purr.',
+  ogTitle: 'Explore Cat Posts on purr. - Discover Feline Fun',
+  description: 'Explore the latest cat posts on purr. Discover cute photos, funny videos, and heartwarming stories from cats around the world. Dive into the feline fun now!',
+  ogDescription: 'Discover the latest cat posts on purr. From adorable photos to hilarious videos, explore the best cat content from around the globe. Join the feline fun today!',
+  ogImage: Logo,
+})
 
 onMounted(() => {
   postStore.posts = []

@@ -416,6 +416,11 @@
           "content": "Parece que todavía no sigues a ningún gatito. ¡Vaya catastrofe! ¿Porque no sigues a alguno de estos hermosos gatos?"
         }
       },
+      "explore": {
+        "metadata": {
+          "title": "Explorar"
+        }
+      },
       "toast": {
         "noLoggedIn": {
           "save": "Debes iniciar sesión para guardar una publicación",
