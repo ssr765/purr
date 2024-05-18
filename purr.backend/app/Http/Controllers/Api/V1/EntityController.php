@@ -15,7 +15,8 @@ class EntityController extends Controller
      */
     public function index()
     {
-        //
+        $entities = Entity::all();
+        return response()->json(EntityResource::collection($entities));
     }
 
     /**
@@ -23,30 +24,30 @@ class EntityController extends Controller
      */
     public function store(StoreEntityRequest $request)
     {
-        $user = $request->user();
+        // $user = $request->user();
 
-        if ($user->entity) {
-            return response()->json(['message' => 'User already has an entity'], 409);
-        }
+        // if ($user->entity) {
+        //     return response()->json(['message' => 'User already has an entity'], 409);
+        // }
 
-        $entity = Entity::create([
-            'name' => $request->name,
-            'dni' => $request->dni,
-            'slug' => $request->slug,
-            'description' => $request->description,
-            'type' => $request->type,
-            'webpage' => $request->webpage,
-            'location' => $request->location,
-            'phone' => $request->phone,
-            'user_id' => $user->id,
-        ]);
+        // $entity = Entity::create([
+        //     'name' => $request->name,
+        //     'dni' => $request->dni,
+        //     'slug' => $request->slug,
+        //     'description' => $request->description,
+        //     'type' => $request->type,
+        //     'webpage' => $request->webpage,
+        //     'location' => $request->location,
+        //     'phone' => $request->phone,
+        //     'user_id' => $user->id,
+        // ]);
 
-        $user->update([
-            'entity_id' => $entity->id,
-        ]);
+        // $user->update([
+        //     'entity_id' => $entity->id,
+        // ]);
 
-        $entity->refresh();
-        return response()->json(new EntityResource($entity), 201);
+        // $entity->refresh();
+        // return response()->json(new EntityResource($entity), 201);
     }
 
     /**

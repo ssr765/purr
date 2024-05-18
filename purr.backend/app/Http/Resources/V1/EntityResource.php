@@ -17,14 +17,16 @@ class EntityResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'dni' => $this->dni,
-            'slug' => $this->slug,
-            'description' => $this->description,
+            'logo' => $this->logo,
             'type' => $this->type,
-            'status' => $this->status,
             'webpage' => $this->webpage,
-            'location' => $this->location,
+            'address' => $this->address,
             'phone' => $this->phone,
+            'email' => $this->email,
+            'coords' => [
+                'lat' => $this->lat,
+                'lng' => $this->lng,
+            ],
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
         ];
