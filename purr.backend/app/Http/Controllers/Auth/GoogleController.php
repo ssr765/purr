@@ -45,7 +45,7 @@ class GoogleController extends Controller
 
         if ($existingUser) {
             // If the user exists, log them in.
-            auth()->login($existingUser, true);
+            auth()->login($existingUser);
         } else {
             // If the user does not exist, create a new user and log them in.
             // Generate a username based on the email address.
@@ -72,13 +72,13 @@ class GoogleController extends Controller
             $newUser->save();
 
             // Create settings for the user
-            Settings::create(['user_id' => $user->id]);
+            Settings::create(['user_id' => $newUser->id]);
 
             // Send a welcome email to the new user with their random password.
             // There is no rate limiting on this email, because it has the user's password.
             Mail::to($newUser->email)->send(new GoogleWelcomeMail($newUser->name, $password));
 
-            auth()->login($newUser, true);
+            auth()->login($newUser);
         }
 
         return response()->redirectTo($this->frontendUrl . $this->redirectTo);
