@@ -55,7 +55,7 @@ const router = createRouter({
         {
           path: 'maps',
           name: 'app-maps',
-          component: () => null,
+          component: () => import('@/views/app/maps/IndexView.vue'),
         },
         {
           path: 'create',

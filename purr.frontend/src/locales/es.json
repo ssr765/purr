@@ -618,6 +618,14 @@
         "fileSizeError": "La imagen no puede ser mayor a {mb}MB",
         "fileTypeError": "Formato de imagen no soportado. Solo se permiten los siguientes formatos: {formats}"
       }
+    },
+    "maps": {
+      "metadata": {
+        "title": "Mapa"
+      },
+      "webpage": "Página web",
+      "noWebpage": "Sin página web",
+      "error": "Ha ocurrido un error al cargar el mapa"
     }
   },
   "auth": {

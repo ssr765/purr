@@ -1,14 +1,13 @@
 export interface Entity {
   id: number
+  logo: string
   name: string
-  dni: string
-  slug: string
-  description?: string
-  type: string
-  status: string
-  webpage?: string
-  location: string
+  address: string
+  coords: {
+    lat: number
+    lng: number
+  }
+  type: 'cafe' | 'heal' | 'shop' | 'protec'
+  webpage: string
   phone: string
-  createdAt: string
-  updatedAt: string
 }
