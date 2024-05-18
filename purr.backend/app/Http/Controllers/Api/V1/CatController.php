@@ -238,4 +238,19 @@ class CatController extends Controller
 
         return response()->json(new CatResource($cat));
     }
+
+    public function search(Request $request)
+    {
+        $request->validate([
+            'q' => 'required|string|min:1|max:50',
+        ]);
+
+        $cats = Cat::where('name', 'like', '%' . $request->query('q') . '%')
+            ->orWhere('catname', 'like', '%' . $request->query('q') . '%')
+            ->latest()
+            ->take(50)
+            ->get();
+
+        return response()->json(CatResource::collection($cats));
+    }
 }

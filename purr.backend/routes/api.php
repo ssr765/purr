@@ -122,6 +122,7 @@ Route::prefix('v1')->group(function () {
         // Cat routes
         Route::prefix('cats')->name('cats.')->group(function () {
             Route::get('/{cat}/avatar', [V1CatController::class, 'avatar'])->name('avatar');
+            Route::get('/search', [V1CatController::class, 'search'])->name('search');
         });
 
         // Post routes
