@@ -6,8 +6,6 @@ import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger 
 import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
 import PurrButton from '@/components/utils/PurrButton.vue'
 import type { Cat } from '@/models/Cat'
-import { useAuthStore } from '@/stores/authStore'
-import { storeToRefs } from 'pinia'
 import { useForm } from 'vee-validate'
 import { computed, ref, type PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -17,11 +15,12 @@ import { toast } from 'vue-sonner'
 import { useCatStore } from '@/stores/catStore'
 import { Checkbox } from '@/components/ui/checkbox'
 import type { AxiosError } from 'axios'
+import { useImageChecker } from '@/composables/imageChecker'
 
 const catStore = useCatStore()
 const catService = useCatService()
-const { user } = storeToRefs(useAuthStore())
 const { t } = useI18n()
+const imageChecker = useImageChecker()
 
 const loading = ref(false)
 const file = ref<File | null>(null)
@@ -79,8 +78,11 @@ const onChange = (e: Event) => {
   const target = e.target as HTMLInputElement
   const fileInput = target.files?.[0]
   if (!fileInput) return
-  file.value = fileInput
-  submitAvatar()
+
+  if (imageChecker.checkFile(fileInput)) {
+    file.value = fileInput
+    submitAvatar()
+  }
 }
 
 const submitAvatar = async () => {

@@ -5,7 +5,6 @@ import { useUserService } from '@/services/userService'
 import { useAuthStore } from '@/stores/authStore'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
-
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -14,10 +13,12 @@ import { toast } from 'vue-sonner'
 import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
 import { useI18n } from 'vue-i18n'
 import type { AxiosError } from 'axios'
+import { useImageChecker } from '@/composables/imageChecker'
 
 const userService = useUserService()
 const { user } = storeToRefs(useAuthStore())
 const { t } = useI18n()
+const imageChecker = useImageChecker()
 
 const formSchema = yup.object({
   name: yup
@@ -71,8 +72,11 @@ const onChange = (e: Event) => {
   const target = e.target as HTMLInputElement
   const fileInput = target.files?.[0]
   if (!fileInput) return
-  file.value = fileInput
-  submitAvatar()
+
+  if (imageChecker.checkFile(fileInput)) {
+    file.value = fileInput
+    submitAvatar()
+  }
 }
 
 const submitAvatar = async () => {
