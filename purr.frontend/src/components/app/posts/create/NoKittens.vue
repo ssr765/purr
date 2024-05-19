@@ -36,7 +36,7 @@ const triggerEasterEgg = () => {
 </script>
 
 <template>
-  <div id="no-kittens-wrapper" class="select-none hidden *:pointer-events-none absolute top-0 left-0 min-h-dvh w-full overflow-hidden z-50">
+  <div id="no-kittens-wrapper" class="select-none hidden *:pointer-events-none absolute top-0 left-0 min-h-dvh w-full overflow-hidden z-[20000]">
     <div id="no-kittens" class="opacity-0 absolute-center">
       <img class="w-full" :src="imgNoKittens" alt="" />
     </div>
