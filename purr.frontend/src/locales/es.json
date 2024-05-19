@@ -32,7 +32,17 @@
           "purr. es una red social única diseñada especialmente para los amantes de los gatos. Aquí, son los gatos quienes se convierten en los verdaderos protagonistas teniendo su propio perfil.",
           "Es un lugar divertido y seguro donde la comunidad gatuna puede reunirse, explorar y conectarse."
         ],
+        "screenshot": {
+          "alt": "Página de exploración de purr."
+        },
         "button": "¡Regístrate ahora!"
+      },
+      "features": {
+        "analysis": "Detección de gatos por IA",
+        "maps": "Mapas interactivos",
+        "catContent": "100% gatuno",
+        "meetLovers": "Conoce amantes de los gatos",
+        "adoption": "Facilita la adopción"
       },
       "unique": {
         "title": "¿Qué hace a purr. tan especial?",
@@ -45,7 +55,7 @@
       "ai": {
         "title": "Contenido exclusivamente felino en purr.",
         "content": [
-          "Empleamos tecnología de inteligencia artificial avanzada para asegurar que todas las imágenes y videos subidos realmente celebren el mundo de los gatos. Utilizamos un modelo de IA, basado en TensorFlow, que ha sido especialmente entrenado con más de 30,000 imágenes de gatos para reconocer con precisión solo contenido felino.",
+          "Empleamos tecnología de inteligencia artificial avanzada para asegurar que todas las imágenes y videos subidos realmente celebren el mundo de los gatos. Utilizamos un modelo de IA, basado en PyTorch, que ha sido especialmente entrenado con más de 10,000 imágenes de gatos para reconocer con precisión solo contenido felino.",
           "Esto garantiza que cada pieza de contenido que ves ha sido validada por nuestra tecnología de vanguardia, manteniendo purr. auténtico y fiel a su espíritu gatuno."
         ],
         "button": "Descubre más"

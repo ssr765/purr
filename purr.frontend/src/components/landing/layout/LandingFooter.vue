@@ -10,13 +10,13 @@ import PurrLogo from '@/components/utils/PurrLogo.vue'
         <span class="self-center whitespace-nowrap">purr.</span>
       </a>
       <p class="my-4">{{ $t('landing.footer.content') }}</p>
-      <hr class="opacity-30 h-px bg-ctp-lavender my-2 w-[400px] mx-auto" />
+      <hr class="dark:opacity-30 h-px border border-black dark:border-ctp-lavender my-2 w-[400px] mx-auto" />
       <p class="my-4 font-light space-x-4">
         <RouterLink @click="$scrollToTop" :to="{ name: 'landing-privacy-policy' }" class="hover:underline">{{ $t('landing.footer.privacyPolicy') }}</RouterLink>
         <span>·</span>
         <RouterLink @click="$scrollToTop" :to="{ name: 'landing-cookie-policy' }" class="hover:underline">{{ $t('landing.footer.cookiePolicy') }}</RouterLink>
       </p>
-      <hr class="opacity-30 h-px bg-ctp-lavender my-2 w-[400px] mx-auto" />
+      <hr class="dark:opacity-30 h-px border border-black dark:border-ctp-lavender my-2 w-[400px] mx-auto" />
       <span class="text-sm text-ctp-subtext0 sm:text-center">© 2024 <a href="#" class="hover:underline">The purr. team</a>. {{ $t('landing.footer.rights') }}</span>
     </div>
   </footer>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PurrButton from '@/components/utils/PurrButton.vue'
+import Screenshot from '@/assets/img/landing/home/screenshot.webp'
 </script>
 
 <template>
@@ -13,8 +14,7 @@ import PurrButton from '@/components/utils/PurrButton.vue'
           <PurrButton>{{ $t('landing.home.concept.button') }}</PurrButton>
         </RouterLink>
       </div>
-      <img class="mt-6 md:m-0 w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image" />
-      <img class="mt-6 md:m-0 w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image" />
+      <img class="mt-6 md:m-0 w-full border border-ctp-lavender shadow-lg rounded-lg hover:scale-110 transition-all duration-500" :src="Screenshot" :alt="$t('landing.home.screenshot.concept.alt')" />
     </div>
   </section>
 </template>
