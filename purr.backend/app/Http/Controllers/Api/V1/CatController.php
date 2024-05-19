@@ -311,6 +311,6 @@ class CatController extends Controller
 
     public function posts(Cat $cat)
     {
-        return response()->json(new PostCollection($cat->posts()->orderBy('created_at', 'desc')->paginate(10)));
+        return response()->json(new PostCollection($cat->posts()->with('cat')->orderBy('created_at', 'desc')->paginate(10)));
     }
 }
