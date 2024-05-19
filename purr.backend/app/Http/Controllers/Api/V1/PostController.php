@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Http\Resources\V1\PostCollection;
 use App\Http\Resources\V1\PostResource;
 use App\Models\Cat;
 use App\Services\ImageEngineService;
@@ -21,11 +22,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        // Get all posts with their cats.
+        // Get recent posts with their cats.
         $posts = Post::with(['comments' => function ($query) {
             $query->latest()->take(3);
-        }])->where('detected', true)->latest()->get();
-        return response()->json(PostResource::collection($posts->load('cat')));
+        }, 'cat'])
+            ->where('detected', true)
+            ->latest()
+            ->paginate(10);
+
+        return response()->json(new PostCollection($posts));
     }
 
     /**

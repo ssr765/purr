@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import PurrButton from '@/components/utils/PurrButton.vue'
-import RegularButton from '@/components/utils/RegularButton.vue'
 import PostsFeed from '@/components/utils/posts/PostsFeed.vue'
 import PostsGrid from '@/components/utils/posts/PostsGrid.vue'
 
@@ -26,12 +25,16 @@ onMounted(() => {
   postStore.fetchExplore()
 })
 
+const loadMore = (page: number) => {
+  postStore.fetchExplore(page)
+}
+
 const view = ref('feed')
 </script>
 
 <template>
-  <PostsFeed v-if="view === 'feed'" :posts="postStore.posts" />
-  <PostsGrid v-if="view === 'grid'" :posts="postStore.posts" />
+  <PostsFeed v-if="view === 'feed'" :posts="postStore.posts" @loadMore="loadMore" />
+  <PostsGrid v-if="view === 'grid'" :posts="postStore.posts" @loadMore="loadMore" />
 
   <div class="flex flex-col fixed right-8 bottom-4 *:text-3xl">
     <PurrButton noPaddingX @click="view = 'feed'" class="p-2.5" :active="view === 'feed'">

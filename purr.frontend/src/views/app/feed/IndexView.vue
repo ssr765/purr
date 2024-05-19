@@ -2,12 +2,13 @@
 import PostsFeed from '@/components/utils/posts/PostsFeed.vue'
 
 import { usePostStore } from '@/stores/postStore'
-import { onMounted } from 'vue'
+import { onBeforeMount, onMounted } from 'vue'
 
 import Logo from '@/assets/img/logo/black.webp'
 import { useSeoMeta } from 'unhead'
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '@/stores/authStore'
+import { useRouter } from 'vue-router'
 
 useSeoMeta({
   title: 'purr.',
@@ -19,8 +20,17 @@ useSeoMeta({
 
 const { user } = storeToRefs(useAuthStore())
 const postStore = usePostStore()
+const router = useRouter()
+
+onBeforeMount(() => {
+  // Redirect to explore if user is not logged in
+  if (!user.value) {
+    return router.push({ name: 'app-explore' })
+  }
+})
 
 onMounted(() => {
+  if (!user.value) return
   postStore.posts = []
   if (user.value!.following_count > 0) {
     console.log('fetchFeed')
@@ -32,17 +42,25 @@ onMounted(() => {
 })
 
 const loadMore = (page: number) => {
-  postStore.fetchFeed(page)
+  if (user.value!.following_count > 0) {
+    console.log('fetchFeed')
+    postStore.fetchFeed(page)
+  } else {
+    console.log('fetchExplore')
+    postStore.fetchExplore(page)
+  }
 }
 </script>
 
 <template>
-  <div v-if="user!.following_count == 0" class="flex items-center justify-center h-full">
-    <div class="text-center">
-      <h1 class="text-6xl p-4">{{ $t('app.posts.feed.noFollows.title') }}</h1>
-      <p>{{ $t('app.posts.feed.noFollows.content') }}</p>
-      <hr class="h-px bg-ctp-lavender my-10" />
+  <div v-if="user">
+    <div v-if="user!.following_count == 0" class="flex items-center justify-center h-full">
+      <div class="text-center">
+        <h1 class="text-6xl p-4">{{ $t('app.posts.feed.noFollows.title') }}</h1>
+        <p>{{ $t('app.posts.feed.noFollows.content') }}</p>
+        <hr class="h-px bg-ctp-lavender my-10" />
+      </div>
     </div>
+    <PostsFeed :posts="postStore.posts" @loadMore="loadMore" />
   </div>
-  <PostsFeed :posts="postStore.posts" @loadMore="loadMore" />
 </template>

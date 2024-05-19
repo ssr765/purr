@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import PostCard from '@/components/utils/posts/PostCard.vue'
 import type { Post } from '@/models/Post'
-import { onUnmounted, ref, watch } from 'vue'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 import LoadingSpinner from '../LoadingSpinner.vue'
 import { usePostStore } from '@/stores/postStore'
 import { storeToRefs } from 'pinia'
@@ -20,26 +20,34 @@ const props = defineProps({
 const page = ref(1)
 let observer: IntersectionObserver
 
+const createObserver = () => {
+  if (observer) observer.disconnect()
+  observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      console.log('loading more!!!!!')
+      page.value++
+      emit('loadMore', page.value)
+    }
+  })
+
+  setTimeout(() => {
+    const lastPost = document.querySelector('.intersect-trigger')
+    if (!lastPost) {
+      if (observer) observer.disconnect()
+    } else {
+      observer.observe(lastPost)
+    }
+  }, 1000)
+}
+
+onMounted(() => {
+  createObserver()
+})
+
 watch(
   () => props.posts,
   () => {
-    if (observer) observer.disconnect()
-    observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        console.log('loading more!!!!!')
-        page.value++
-        emit('loadMore', page.value)
-      }
-    })
-
-    setTimeout(() => {
-      const lastPost = document.querySelector('.intersect-trigger')
-      if (!lastPost) {
-        if (observer) observer.disconnect()
-      } else {
-        observer.observe(lastPost)
-      }
-    }, 1000)
+    createObserver()
   },
 )
 

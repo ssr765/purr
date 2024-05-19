@@ -23,16 +23,19 @@ export const usePostStore = defineStore('post', () => {
   const loading = ref(false)
   const loadingMore = ref(false)
 
-  const fetchExplore = async () => {
+  const fetchExplore = async (page: number = 1) => {
     try {
-      loading.value = true
-      const exploreFeed = await postService.fetchExplore()
-      posts.value = exploreFeed
+      page === 1 ? (loading.value = true) : (loadingMore.value = true)
+      const response = await postService.fetchExplore(page)
+      console.log(response)
+      posts.value = [...posts.value, ...response.data]
+      nextPageExists.value = response.links.next !== null
     } catch (error) {
       console.log(error)
       toast.error(t('app.posts.toast.fetchError'))
     } finally {
       loading.value = false
+      loadingMore.value = false
     }
   }
 
@@ -40,6 +43,7 @@ export const usePostStore = defineStore('post', () => {
     try {
       page === 1 ? (loading.value = true) : (loadingMore.value = true)
       const response = await postService.fetchFeed(page)
+      console.log(response)
       posts.value = [...posts.value, ...response.data]
       nextPageExists.value = response.links.next !== null
     } catch (error) {

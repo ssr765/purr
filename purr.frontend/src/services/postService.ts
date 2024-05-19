@@ -25,9 +25,11 @@ interface PostPagination {
 }
 
 export const usePostService = () => {
-  const fetchExplore = async () => {
+  const fetchExplore = async (page: number) => {
     try {
-      const response = await axios.get<Post[]>('/api/v1/posts')
+      const response = await axios.get<PostPagination>(
+        `/api/v1/posts?page=${page}`,
+      )
       return response.data
     } catch (error) {
       console.log(error)
