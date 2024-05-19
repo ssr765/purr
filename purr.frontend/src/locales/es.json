@@ -733,6 +733,7 @@
       "metaTitle": "Registrarse",
       "name": "Nombre",
       "username": "Nombre de usuario",
+      "usernameHelp": "El nombre de usuario es único y solo puede contener letras, números, puntos y guiones bajos",
       "email": "Correo electrónico",
       "password": "Contraseña",
       "passwordConfirmation": "Confirmar contraseña",
