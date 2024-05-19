@@ -608,6 +608,13 @@
             "max": "La nueva contraseña no puede tener más de 50 caracteres",
             "regex": "La nueva contraseña debe tener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial ({chars})"
           }
+        },
+        "toast": {
+          "avatarUpload": {
+            "success": "Avatar actualizado correctamente",
+            "error": "Ha ocurrido un error al actualizar el avatar",
+            "noCats": "No se han encontrado gatos en el avatar"
+          }
         }
       },
       "profile": {

@@ -89,13 +89,24 @@ const submitAvatar = async () => {
   try {
     loading.value = true
     const response = await catService.uploadAvatar(props.cat.id, file.value)
-    toast.success(t('app.settings.settings.editProfile.toast.avatarUpload.success'))
+    toast.success(t('app.cats.edit.toast.avatarUpload.success'))
     // Force image reload
-    catStore.cat.avatar = response.avatar + '?' + Date.now()
+    catStore.cat!.avatar = response.avatar + '?' + Date.now()
     file.value = null
   } catch (error) {
     console.log(error)
-    toast.error(t('app.settings.settings.editProfile.toast.avatarUpload.error'))
+    const axiosError = error as AxiosError
+    // Last minute hard-coded error handling lol
+    if (axiosError.response?.status === 422) {
+      const data = axiosError.response.data as { message: string | undefined }
+      if (data.message === 'no cats') {
+        toast.error(t('app.cats.edit.toast.avatarUpload.noCats'))
+      } else {
+        toast.error(t('app.cats.edit.toast.avatarUpload.error'))
+      }
+    } else {
+      toast.error(t('app.cats.edit.toast.avatarUpload.error'))
+    }
   } finally {
     loading.value = false
   }
