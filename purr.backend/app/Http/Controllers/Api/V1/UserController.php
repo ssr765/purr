@@ -58,8 +58,8 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'min:3', 'max:30', 'regex:/^[\w\d\.]{3,30}$/'],
             'email' => ['required', 'email', new EmailValidator, 'unique:' . User::class . ',email,' . $user->id],
-            'password' => ['required', 'string', Rules\Password::min(8)->mixedCase()->letters()->numbers()->symbols()],
-            'new_password' => ['nullable', 'string', 'confirmed', 'min:8'],
+            'password' => ['required', 'string'],
+            'new_password' => ['nullable', 'string', 'confirmed', Rules\Password::min(8)->mixedCase()->letters()->numbers()->symbols()],
         ]);
 
         // Check if the user is authorized to update the account.

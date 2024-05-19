@@ -30,7 +30,7 @@ class UpdateCatRequest extends FormRequest
             'color' => ['nullable', 'string'],
             'biography' => ['nullable', 'string'],
             'adoption' => ['nullable', 'boolean'],
-            'password' => ['required', 'string',  Rules\Password::min(8)->mixedCase()->letters()->numbers()->symbols()],
+            'password' => ['required', 'string'],
             'new_password' => ['nullable', 'string', 'confirmed',  Rules\Password::min(8)->mixedCase()->letters()->numbers()->symbols()],
         ];
     }
