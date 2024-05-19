@@ -5,6 +5,7 @@ import { CalendarDate, DateFormatter, getLocalTimeZone, today } from '@internati
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { useCreateCatStore } from '@/stores/createCatStore'
 import { Checkbox } from '@/components/ui/checkbox'
+import BirthdateCalendar from './BirthdateCalendar.vue'
 
 const createCatStore = useCreateCatStore()
 
@@ -42,7 +43,7 @@ const df = new DateFormatter('es-ES', {
         <p class="text-ctp-text/75 text-sm text-left mt-2">{{ $t('app.cats.create.createCat.steps.traits.form.birthdate.description') }}</p>
       </PopoverTrigger>
       <PopoverContent class="w-auto p-0">
-        <Calendar initial-focus :min-value="new CalendarDate(1990, 1, 1)" :max-value="today(getLocalTimeZone())" @update:model-value="(v) => (createCatStore.birthdateInput = v)" v-model="createCatStore.birthdateInput" />
+        <BirthdateCalendar :min-value="new CalendarDate(1990, 1, 1)" :max-value="today(getLocalTimeZone())" v-model="createCatStore.birthdateInput" />
       </PopoverContent>
     </Popover>
 
