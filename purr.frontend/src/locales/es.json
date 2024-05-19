@@ -549,6 +549,54 @@
           }
         }
       },
+      "edit": {
+        "sheet": {
+          "title": "Editar gato",
+          "avatarUpload": "Subir avatar",
+          "name": "Nombre",
+          "catname": "Catname",
+          "biography": "Biografía",
+          "breed": "Raza",
+          "color": "Color",
+          "password": "Contraseña",
+          "newPassword": "Nueva contraseña",
+          "newPasswordConfirmation": "Confirmar nueva la contraseña",
+          "button": "Guardar cambios"
+        },
+        "validators": {
+          "name": {
+            "min": "El nombre debe tener al menos 3 caracteres",
+            "max": "El nombre no puede tener más de 50 caracteres"
+          },
+          "catname": {
+            "min": "El catname debe tener al menos 3 caracteres",
+            "max": "El catname no puede tener más de 30 caracteres",
+            "regex": "El catname solo puede contener letras, números, puntos y guiones bajos"
+          },
+          "biography": {
+            "max": "La biografía no puede tener más de 255 caracteres"
+          },
+          "breed": {
+            "min": "La raza debe tener al menos 3 caracteres",
+            "max": "La raza no puede tener más de 50 caracteres"
+          },
+          "color": {
+            "min": "El color debe tener al menos 3 caracteres",
+            "max": "El color no puede tener más de 50 caracteres"
+          },
+          "birthdate": {
+            "required": "La fecha de nacimiento es obligatoria"
+          },
+          "password": {
+            "required": "La contraseña es obligatoria"
+          },
+          "newPassword": {
+            "min": "La nueva contraseña debe tener al menos 8 caracteres",
+            "max": "La nueva contraseña no puede tener más de 50 caracteres",
+            "regex": "La nueva contraseña debe tener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial ({chars})"
+          }
+        }
+      },
       "profile": {
         "metadata": {
           "notFound": "Gato no encontrado"

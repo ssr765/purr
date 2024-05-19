@@ -134,6 +134,43 @@ export const useCatService = () => {
     }
   }
 
+  const deleteAvatar = async (id: number) => {
+    try {
+      const response = await axios.delete<{ avatar: null }>(
+        `/api/v1/cats/${id}/avatar`,
+      )
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
+  const uploadAvatar = async (id: number, avatar: File) => {
+    try {
+      const formData = new FormData()
+      formData.append('avatar', avatar)
+      const response = await axios.post<{ avatar: string }>(
+        `/api/v1/cats/${id}/avatar`,
+        formData,
+      )
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
+  const editProfile = async (id: number, payload: Object) => {
+    try {
+      const response = await axios.put<Cat>(`/api/v1/cats/${id}`, payload)
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
   return {
     fetchCat,
     fetchCatByCatname,
@@ -146,5 +183,8 @@ export const useCatService = () => {
     deleteCat,
     addCat,
     search,
+    deleteAvatar,
+    uploadAvatar,
+    editProfile,
   }
 }
