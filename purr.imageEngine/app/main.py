@@ -33,8 +33,9 @@ def root_endpoint():
 def optimize_endpoint():
     image = receive_image()
 
-    # Resize the image to 1080px if it's bigger.
-    image = optimizer.resize_image(image)
+    # Resize the image.
+    is_avatar = request.form.get("avatar") == "true"
+    image = optimizer.resize_image(image, is_avatar=is_avatar)
 
     # Optimize the image.
     bytes = optimizer.optimize(image)
