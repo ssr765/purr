@@ -12,6 +12,7 @@ use App\Models\Cat;
 use App\Services\ImageEngineService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -47,17 +48,30 @@ class CatController extends Controller
 
         $request->user()->cats()->attach($cat);
 
+        $detected = false;
+
         // Save the avatar.
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
+            $hash = hash_file('sha256', $avatar);
 
-            // Optimize the image.
-            $optimizedFile = $imageEngineService->optimizeImage($avatar);
-            $filename = Str::random(40) . '.webp';
-            Storage::disk('avatars')->put($filename, $optimizedFile);
+            if (!Redis::sismember('detections', $hash)) {
+                // Re-analyze the image.
+                $analysis = $imageEngineService->analyzeImage($avatar);
+                $detected = $analysis['detected'];
+            } else {
+                $detected = true;
+            }
 
-            $cat->avatar = $filename;
-            $cat->save();
+            if ($detected) {
+                // Optimize the image.
+                $optimizedFile = $imageEngineService->optimizeImage($avatar, true);
+                $filename = Str::random(40) . '.webp';
+                Storage::disk('avatars')->put($filename, $optimizedFile);
+
+                $cat->avatar = $filename;
+                $cat->save();
+            }
         }
 
         return response()->json(new CatResource($cat), 201);
