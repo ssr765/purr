@@ -13,6 +13,7 @@ import { Input } from '@/components/ui/input'
 import { toast } from 'vue-sonner'
 import LoadingSpinner from '@/components/utils/LoadingSpinner.vue'
 import { useI18n } from 'vue-i18n'
+import type { AxiosError } from 'axios'
 
 const userService = useUserService()
 const { user } = storeToRefs(useAuthStore())
@@ -121,7 +122,10 @@ const submit = handleSubmit(async (values) => {
     toast.success(t('app.settings.settings.editProfile.toast.profileUpdate.success'))
   } catch (error) {
     console.log(error)
-    toast.error(t('app.settings.settings.editProfile.toast.profileUpdate.error'))
+    const axiosError = error as AxiosError
+    if (axiosError.response?.status === 403) {
+      toast.error(t('app.settings.settings.editProfile.toast.profileUpdate.wrongPassword'))
+    } else toast.error(t('app.settings.settings.editProfile.toast.profileUpdate.error'))
   } finally {
     loading.value = false
   }

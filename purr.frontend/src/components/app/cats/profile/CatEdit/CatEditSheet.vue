@@ -16,6 +16,7 @@ import { useCatService } from '@/services/catService'
 import { toast } from 'vue-sonner'
 import { useCatStore } from '@/stores/catStore'
 import { Checkbox } from '@/components/ui/checkbox'
+import type { AxiosError } from 'axios'
 
 const catStore = useCatStore()
 const catService = useCatService()
@@ -133,7 +134,10 @@ const submit = handleSubmit(async (values) => {
     toast.success(t('app.settings.settings.editProfile.toast.profileUpdate.success'))
   } catch (error) {
     console.log(error)
-    toast.error(t('app.settings.settings.editProfile.toast.profileUpdate.error'))
+    const axiosError = error as AxiosError
+    if (axiosError.response?.status === 403) {
+      toast.error(t('app.settings.settings.editProfile.toast.profileUpdate.wrongPassword'))
+    } else toast.error(t('app.settings.settings.editProfile.toast.profileUpdate.error'))
   } finally {
     loading.value = false
   }
@@ -228,7 +232,7 @@ const props = defineProps({
               <FormItem>
                 <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.cats.edit.sheet.password') }} *</FormLabel>
                 <FormControl>
-                  <Input class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="text" v-bind="componentField" placeholder="••••••••" />
+                  <Input class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="password" v-bind="componentField" placeholder="••••••••" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -238,7 +242,7 @@ const props = defineProps({
               <FormItem>
                 <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.cats.edit.sheet.newPassword') }}</FormLabel>
                 <FormControl>
-                  <Input class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="text" v-bind="componentField" placeholder="••••••••" />
+                  <Input class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="password" v-bind="componentField" placeholder="••••••••" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -248,7 +252,7 @@ const props = defineProps({
               <FormItem>
                 <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.cats.edit.sheet.newPasswordConfirmation') }}</FormLabel>
                 <FormControl>
-                  <Input class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="text" v-bind="componentField" placeholder="••••••••" />
+                  <Input class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="password" v-bind="componentField" placeholder="••••••••" />
                 </FormControl>
                 <FormMessage />
               </FormItem>

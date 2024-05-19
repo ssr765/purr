@@ -285,7 +285,8 @@
             },
             "profileUpdate": {
               "success": "Perfil actualizado correctamente",
-              "error": "Ha ocurrido un error al actualizar tu perfil"
+              "error": "Ha ocurrido un error al actualizar tu perfil",
+              "wrongPassword": "La contraseña es incorrecta"
             },
             "avatarDelete": {
               "success": "Avatar eliminado correctamente",
