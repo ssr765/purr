@@ -227,7 +227,7 @@ class UserController extends Controller
     public function updateAvatar(Request $request, ImageEngineService $imageEngineService)
     {
         $request->validate([
-            'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:8192']
+            'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:20480']
         ]);
 
         $user = $request->user();

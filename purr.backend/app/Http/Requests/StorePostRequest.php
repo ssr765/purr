@@ -22,7 +22,7 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => ['required', 'image', 'max:8192', 'mimes:jpg,jpeg,png,webp'],
+            'file' => ['required', 'image', 'max:20480', 'mimes:jpg,jpeg,png,webp'],
             'caption' => ['nullable', 'string', 'max:255'],
             'cat_id' => ['required', 'exists:cats,id'],
             'type' => ['required', 'string', 'in:normal'],
