@@ -257,21 +257,33 @@ export const usePostStore = defineStore('post', () => {
     }
   }
 
-  const fetchSavedPosts = async () => {
+  const fetchSavedPosts = async (page: number = 1) => {
     try {
-      const response = await postService.getSavedPosts()
-      posts.value = response
+      page === 1 ? (loading.value = true) : (loadingMore.value = true)
+      const response = await postService.getSavedPosts(page)
+      posts.value = [...posts.value, ...response.data]
+      nextPageExists.value = response.links.next !== null
     } catch (error) {
       console.log(error)
+      toast.error(t('app.posts.toast.fetchError'))
+    } finally {
+      loading.value = false
+      loadingMore.value = false
     }
   }
 
-  const fetchLikedPosts = async () => {
+  const fetchLikedPosts = async (page: number = 1) => {
     try {
-      const response = await postService.getLikedPosts()
-      posts.value = response
+      page === 1 ? (loading.value = true) : (loadingMore.value = true)
+      const response = await postService.getLikedPosts(page)
+      posts.value = [...posts.value, ...response.data]
+      nextPageExists.value = response.links.next !== null
     } catch (error) {
       console.log(error)
+      toast.error(t('app.posts.toast.fetchError'))
+    } finally {
+      loading.value = false
+      loadingMore.value = false
     }
   }
 

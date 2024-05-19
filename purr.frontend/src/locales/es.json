@@ -426,6 +426,18 @@
           "title": "Explorar"
         }
       },
+      "saves": {
+        "metadata": {
+          "title": "Guardados"
+        },
+        "noPosts": "No has guardado ninguna publicación"
+      },
+      "likes": {
+        "metadata": {
+          "title": "Me gusta"
+        },
+        "noPosts": "No has marcado ninguna publicación como me gusta"
+      },
       "toast": {
         "noLoggedIn": {
           "save": "Debes iniciar sesión para guardar una publicación",

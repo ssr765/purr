@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Save;
 use App\Http\Requests\StoreSaveRequest;
 use App\Http\Requests\UpdateSaveRequest;
-use App\Http\Resources\V1\PostResource;
+use App\Http\Resources\V1\PostCollection;
 use App\Models\Post;
 
 class SaveController extends Controller
@@ -23,9 +23,11 @@ class SaveController extends Controller
             $query->where('user_id', $user->id);
         })->with(['comments' => function ($query) {
             $query->latest()->take(3);
-        }])->get();
+        }, 'cat'])
+            ->latest()
+            ->paginate(10);
 
-        return response()->json(PostResource::collection($posts->load('cat')));
+        return response()->json(new PostCollection($posts));
     }
 
     /**

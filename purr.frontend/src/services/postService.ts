@@ -150,9 +150,11 @@ export const usePostService = () => {
     }
   }
 
-  const getLikedPosts = async () => {
+  const getLikedPosts = async (page: number) => {
     try {
-      const response = await axios.get<Post[]>('/api/v1/posts/likes')
+      const response = await axios.get<PostPagination>(
+        `/api/v1/posts/likes?page=${page}`,
+      )
       return response.data
     } catch (error) {
       console.log(error)
@@ -160,9 +162,11 @@ export const usePostService = () => {
     }
   }
 
-  const getSavedPosts = async () => {
+  const getSavedPosts = async (page: number) => {
     try {
-      const response = await axios.get<Post[]>('/api/v1/posts/saves')
+      const response = await axios.get<PostPagination>(
+        `/api/v1/posts/saves?page=${page}`,
+      )
       return response.data
     } catch (error) {
       console.log(error)
