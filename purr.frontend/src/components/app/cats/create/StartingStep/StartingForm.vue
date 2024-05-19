@@ -35,7 +35,6 @@ const checkUsername = async () => {
   await validate()
   await validate() // Vee-validate for painfull form validation!!
   if (!meta.value.valid) {
-    console.log('Not valid')
     createCatStore.checking = false
     return
   }
