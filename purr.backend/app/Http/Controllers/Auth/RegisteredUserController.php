@@ -55,6 +55,8 @@ class RegisteredUserController extends Controller
         // Create settings for the user
         Settings::create(['user_id' => $user->id]);
 
+        $user->refresh();
+
         return response()->json(new UserResource($user->load('settings')), 201);
     }
 }
