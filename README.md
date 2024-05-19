@@ -87,3 +87,8 @@ To begin training the model, navigate to the Jupyter Notebook provided:
 2. Navigate to the notebooks directory.
 3. Open the train.ipynb notebook.
 4. Follow the instructions within the notebook to start the training process.
+
+---
+
+*purr. never gonna give you up, never gonna let you down, never gonna run around and desert you. purr. never gonna make you cry, never gonna say goodbye, never gonna tell a lie and hurt you.*
+<p align="right">- Rick Catsley (2024)</p>
