@@ -133,7 +133,7 @@ const submit = handleSubmit(async (values) => {
     <SheetTrigger>
       <slot />
     </SheetTrigger>
-    <SheetContent>
+    <SheetContent class="h-dvh">
       <SheetHeader>
         <SheetTitle class="mb-4">{{ $t('app.settings.settings.editProfile.sheet.title') }}</SheetTitle>
 
@@ -153,74 +153,76 @@ const submit = handleSubmit(async (values) => {
           <LoadingSpinner class="absolute top-0 right-0 text-4xl" v-else />
         </div>
 
-        <div class="space-y-2.5 mb-4">
-          <FormField v-slot="{ componentField }" name="name">
-            <FormItem>
-              <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.settings.settings.editProfile.sheet.name') }}</FormLabel>
-              <FormControl>
-                <Input @input="inputValidate" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="text" v-bind="componentField" :placeholder="user!.name" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          </FormField>
+        <div class="h-[calc(100dvh-256px)] overflow-y-auto">
+          <div class="space-y-2.5 mb-4">
+            <FormField v-slot="{ componentField }" name="name">
+              <FormItem>
+                <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.settings.settings.editProfile.sheet.name') }}</FormLabel>
+                <FormControl>
+                  <Input @input="inputValidate" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="text" v-bind="componentField" :placeholder="user!.name" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            </FormField>
 
-          <FormField v-slot="{ componentField }" name="username">
-            <FormItem>
-              <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.settings.settings.editProfile.sheet.username') }}</FormLabel>
-              <FormControl>
-                <Input @input="inputValidate" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="text" v-bind="componentField" :placeholder="user!.username" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          </FormField>
+            <FormField v-slot="{ componentField }" name="username">
+              <FormItem>
+                <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.settings.settings.editProfile.sheet.username') }}</FormLabel>
+                <FormControl>
+                  <Input @input="inputValidate" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="text" v-bind="componentField" :placeholder="user!.username" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            </FormField>
 
-          <FormField v-slot="{ componentField }" name="email">
-            <FormItem>
-              <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.settings.settings.editProfile.sheet.email') }}</FormLabel>
-              <FormControl>
-                <Input @input="inputValidate" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="text" v-bind="componentField" :placeholder="user!.email" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          </FormField>
+            <FormField v-slot="{ componentField }" name="email">
+              <FormItem>
+                <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.settings.settings.editProfile.sheet.email') }}</FormLabel>
+                <FormControl>
+                  <Input @input="inputValidate" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="text" v-bind="componentField" :placeholder="user!.email" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            </FormField>
 
-          <FormField v-slot="{ componentField }" name="password">
-            <FormItem>
-              <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.settings.settings.editProfile.sheet.password') }} *</FormLabel>
-              <FormControl>
-                <Input @input="inputValidate" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="text" v-bind="componentField" placeholder="••••••••" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          </FormField>
+            <FormField v-slot="{ componentField }" name="password">
+              <FormItem>
+                <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.settings.settings.editProfile.sheet.password') }} *</FormLabel>
+                <FormControl>
+                  <Input @input="inputValidate" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="password" v-bind="componentField" placeholder="••••••••" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            </FormField>
 
-          <FormField v-slot="{ componentField }" name="new_password">
-            <FormItem>
-              <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.settings.settings.editProfile.sheet.newPassword') }}</FormLabel>
-              <FormControl>
-                <Input @input="inputValidate" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="text" v-bind="componentField" placeholder="••••••••" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          </FormField>
+            <FormField v-slot="{ componentField }" name="new_password">
+              <FormItem>
+                <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.settings.settings.editProfile.sheet.newPassword') }}</FormLabel>
+                <FormControl>
+                  <Input @input="inputValidate" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="password" v-bind="componentField" placeholder="••••••••" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            </FormField>
 
-          <FormField v-slot="{ componentField }" name="new_password_confirmation">
-            <FormItem>
-              <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.settings.settings.editProfile.sheet.newPassword') }}</FormLabel>
-              <FormControl>
-                <Input @input="inputValidate" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="text" v-bind="componentField" placeholder="••••••••" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          </FormField>
-        </div>
+            <FormField v-slot="{ componentField }" name="new_password_confirmation">
+              <FormItem>
+                <FormLabel class="font-bold block mb-2 text-sm text-ctp-text">{{ $t('app.settings.settings.editProfile.sheet.newPassword') }}</FormLabel>
+                <FormControl>
+                  <Input @input="inputValidate" class="block bg-ctp-mantle border border-ctp-lavender text-ctp-text text-sm rounded-lg focus:ring-ctp-lavender focus:border-ctp-lavender w-full p-2.5" type="password" v-bind="componentField" placeholder="••••••••" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            </FormField>
+          </div>
 
-        <div>
-          <SheetClose as-child>
-            <PurrButton :disabled="!meta.valid" class="w-full" @click="submit">
-              <span>{{ $t('app.settings.settings.editProfile.sheet.button') }}</span>
-            </PurrButton>
-          </SheetClose>
+          <div>
+            <SheetClose as-child>
+              <PurrButton :disabled="!meta.valid" class="w-full" @click="submit">
+                <span>{{ $t('app.settings.settings.editProfile.sheet.button') }}</span>
+              </PurrButton>
+            </SheetClose>
+          </div>
         </div>
       </SheetHeader>
     </SheetContent>
