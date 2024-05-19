@@ -1,5 +1,3 @@
-import type { Post } from '@/models/Post'
-
 export interface Cat {
   id: number
   name: string
@@ -14,7 +12,6 @@ export interface Cat {
   biography?: string
   birthdate?: string
   deathdate?: string
-  posts?: Post[]
   adoption?: boolean
   followed?: boolean
 }

@@ -55,10 +55,10 @@ export const usePostStore = defineStore('post', () => {
     }
   }
 
-  const fetchPostDetail = async (id: number) => {
+  const fetchPostDetail = async (id: number, force: Boolean = false) => {
     const postData = posts.value.find((post) => post.id === id)
     console.log(postData)
-    if (postData) {
+    if (postData && !force) {
       postDetail.value = postData
 
       // Fetch comments if not all comments are loaded.
@@ -71,11 +71,29 @@ export const usePostStore = defineStore('post', () => {
     }
 
     try {
+      loading.value = true
       const post = await postService.fetchPostDetail(id)
       postDetail.value = post
     } catch (error) {
       console.log(error)
       toast.error(t('app.posts.detail.toast.fetchError'))
+    } finally {
+      loading.value = false
+    }
+  }
+
+  const fetchCatPosts = async (catId: number, page: number = 1) => {
+    try {
+      page === 1 ? (loading.value = true) : (loadingMore.value = true)
+      const response = await postService.fetchCatPosts(catId, page)
+      posts.value = [...posts.value, ...response.data]
+      nextPageExists.value = response.links.next !== null
+    } catch (error) {
+      console.log(error)
+      toast.error(t('app.posts.toast.fetchError'))
+    } finally {
+      loading.value = false
+      loadingMore.value = false
     }
   }
 
@@ -299,5 +317,6 @@ export const usePostStore = defineStore('post', () => {
     fetchSavedPosts,
     fetchLikedPosts,
     removeComment,
+    fetchCatPosts,
   }
 })

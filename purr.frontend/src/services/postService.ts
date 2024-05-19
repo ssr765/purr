@@ -170,6 +170,18 @@ export const usePostService = () => {
     }
   }
 
+  const fetchCatPosts = async (id: number, page: number = 1) => {
+    try {
+      const response = await axios.get<PostPagination>(
+        `/api/v1/cats/${id}/posts?page=${page}`,
+      )
+      return response.data
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }
+
   return {
     fetchExplore,
     fetchFeed,
@@ -183,5 +195,6 @@ export const usePostService = () => {
     unsave,
     getLikedPosts,
     getSavedPosts,
+    fetchCatPosts,
   }
 }

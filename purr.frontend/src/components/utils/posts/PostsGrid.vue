@@ -13,12 +13,14 @@ import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 import LoadingSpinner from '../LoadingSpinner.vue'
+import { useCatStore } from '@/stores/catStore'
 
 const { t } = useI18n()
 const { user } = storeToRefs(useAuthStore())
 const postStore = usePostStore()
 const { formatNumber } = useNumberFormatter()
 const { likeAnimation } = useLikeAnimation()
+const catStore = useCatStore()
 
 const emit = defineEmits(['loadMore'])
 const props = defineProps({
@@ -92,7 +94,7 @@ onUnmounted(() => {
 
 <template>
   <div class="flex flex-wrap gap-2 justify-center">
-    <div v-for="(post, i) in posts" :key="post.id" :class="{ 'intersect-trigger': i == posts.length - 1 && postStore.nextPageExists }">
+    <div class="max-h-48" v-for="(post, i) in posts" :key="post.id" :class="{ 'intersect-trigger': i == posts.length - 1 && postStore.nextPageExists }">
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger>
@@ -110,8 +112,8 @@ onUnmounted(() => {
                 <div>
                   <div class="flex flex-col items-center justify-center">
                     <CatPlaceholderAvatar class="size-20" />
-                    <span class="text-lg lg:text-xl leading-5">{{ post.cat!.name }}</span>
-                    <span class="text-sm lg:text-base">@{{ post.cat!.catname }}</span>
+                    <span class="text-lg lg:text-xl leading-5">{{ post.cat?.name ?? catStore.cat!.name }}</span>
+                    <span class="text-sm lg:text-base">@{{ post.cat?.catname ?? catStore.cat!.catname }}</span>
                   </div>
                   <hr class="hidden lg:block h-px bg-ctp-lavender my-3" />
                 </div>
