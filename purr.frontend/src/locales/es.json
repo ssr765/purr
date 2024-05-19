@@ -530,11 +530,19 @@
             "error": "Ha ocurrido un error al crear tu gato",
             "sex": "El sexo es obligatorio",
             "birthdate": "La fecha de nacimiento es obligatoria",
-            "catnameInUse": "El catname ya está en uso, por favor elige otro",
+            "catnameInUse": "El catname ya está en uso o no es válido, por favor elige otro",
             "checkingCatname": "Estamos comprobando el catname, por favor espera unos segundos...",
             "startingStepFields": "El nombre del gato y el catname son obligatorios",
             "catnameAvailable": "El catname está disponible",
             "catnameCheckError": "Ha ocurrido un error al comprobar el catname"
+          },
+          "validators": {
+            "catname": {
+              "required": "El catname es obligatorio",
+              "regex": "El catname solo puede contener letras, números, puntos y guiones bajos",
+              "min": "El catname debe tener al menos 3 caracteres",
+              "max": "El catname no puede tener más de 30 caracteres"
+            }
           }
         },
         "addACat": {

@@ -7,6 +7,7 @@ import { useAuthStore } from '@/stores/authStore'
 import { useCatService } from '@/services/catService'
 import { toast } from 'vue-sonner'
 import { useI18n } from 'vue-i18n'
+import type { AxiosError } from 'axios'
 
 export const useCreateCatStore = defineStore('createCat', () => {
   const { t } = useI18n()
@@ -37,18 +38,24 @@ export const useCreateCatStore = defineStore('createCat', () => {
     avatar.value ? URL.createObjectURL(avatar.value) : null,
   )
 
-  const checkCatname = async () => {
+  const checkCatname = async (): Promise<boolean> => {
     try {
+      const value = catname.value
       const { exists } = await catService.checkCatname(catname.value)
-      validCatname.value = !exists
-      if (!exists) {
-        toast.success(t('app.cats.create.createCat.toast.catnameAvailable'))
-      } else {
-        toast.error(t('app.cats.create.createCat.toast.catnameInUse'))
+
+      // Recursively check if the value has changed
+      if (value !== catname.value) {
+        return await checkCatname()
       }
+
+      return exists
     } catch (error) {
       console.log(error)
-      toast.error(t('app.cats.create.createCat.toast.catnameCheckError'))
+      const axiosError = error as AxiosError
+      if (axiosError.response?.status !== 422) {
+        toast.error(t('app.cats.create.createCat.toast.catnameCheckError'))
+      }
+      return false
     } finally {
       checking.value = false
     }
