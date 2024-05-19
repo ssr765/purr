@@ -57,11 +57,7 @@ const { validate, handleSubmit, meta } = useForm({
 })
 
 const inputValidate = async () => {
-  try {
-    await validate()
-  } catch (error) {
-    console.log(error)
-  }
+  await validate()
 }
 
 const loading = ref(false)
@@ -89,7 +85,6 @@ const submitAvatar = async () => {
     user.value!.avatar = response.avatar
     file.value = null
   } catch (error) {
-    console.log(error)
     toast.error(t('app.settings.settings.editProfile.toast.avatarUpload.error'))
   } finally {
     loading.value = false
@@ -103,7 +98,6 @@ const deleteAvatar = async () => {
     user.value!.avatar = undefined
     toast.success(t('app.settings.settings.editProfile.toast.avatarDelete.success'))
   } catch (error) {
-    console.log(error)
     toast.error(t('app.settings.settings.editProfile.toast.avatarDelete.error'))
   } finally {
     loading.value = false
@@ -125,7 +119,6 @@ const submit = handleSubmit(async (values) => {
     user.value = response
     toast.success(t('app.settings.settings.editProfile.toast.profileUpdate.success'))
   } catch (error) {
-    console.log(error)
     const axiosError = error as AxiosError
     if (axiosError.response?.status === 403) {
       toast.error(t('app.settings.settings.editProfile.toast.profileUpdate.wrongPassword'))

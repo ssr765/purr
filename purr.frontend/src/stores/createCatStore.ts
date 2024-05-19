@@ -52,7 +52,6 @@ export const useCreateCatStore = defineStore('createCat', () => {
 
       return exists
     } catch (error) {
-      console.log(error)
       const axiosError = error as AxiosError
       if (axiosError.response?.status !== 422) {
         toast.error(t('app.cats.create.createCat.toast.catnameCheckError'))
@@ -103,7 +102,6 @@ export const useCreateCatStore = defineStore('createCat', () => {
       })
     } catch (error) {
       toast.error(t('app.cats.create.createCat.toast.error'))
-      console.log(error)
     }
   }
 
@@ -123,7 +121,6 @@ export const useCreateCatStore = defineStore('createCat', () => {
         )
       }
     } catch (error) {
-      console.error(error)
       toast.error(t('app.posts.create.errors.analyzeError'))
     } finally {
       analyzing.value = false

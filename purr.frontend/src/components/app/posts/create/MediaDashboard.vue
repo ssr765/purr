@@ -67,7 +67,6 @@ function loadImage(src: string) {
 watch(
   () => createPostStore.analysisData,
   async (data) => {
-    console.warn(data)
     if (data) {
       await drawBoxes(data)
     }
@@ -92,15 +91,6 @@ const drawBoxes = async (data: Analysis) => {
       width: ((x2 - x1) * width.value) / originalWidth,
       height: ((y2 - y1) * height.value) / originalHeight,
     }
-
-    console.log((y1 * height.value) / originalHeight)
-    console.log('width.value', 'height.value')
-    console.log(width.value, height.value)
-    console.log('originalWidth, originalHeight')
-    console.log(originalWidth, originalHeight)
-    console.log('x1, y1, x2, y2')
-    console.log(x1, y1, x2, y2)
-    console.log(box)
 
     detectionBoxes.value.push(box)
   }

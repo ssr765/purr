@@ -33,20 +33,16 @@ onMounted(() => {
   if (!user.value) return
   postStore.posts = []
   if (user.value!.following_count > 0) {
-    console.log('fetchFeed')
     postStore.fetchFeed()
   } else {
-    console.log('fetchExplore')
     postStore.fetchExplore()
   }
 })
 
 const loadMore = (page: number) => {
   if (user.value!.following_count > 0) {
-    console.log('fetchFeed')
     postStore.fetchFeed(page)
   } else {
-    console.log('fetchExplore')
     postStore.fetchExplore(page)
   }
 }

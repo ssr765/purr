@@ -96,7 +96,6 @@ const submitAvatar = async () => {
     catStore.cat!.avatar = response.avatar + '?' + Date.now()
     file.value = null
   } catch (error) {
-    console.log(error)
     const axiosError = error as AxiosError
     // Last minute hard-coded error handling lol
     if (axiosError.response?.status === 422) {
@@ -121,7 +120,6 @@ const deleteAvatar = async () => {
     catStore.cat!.avatar = undefined
     toast.success(t('app.settings.settings.editProfile.toast.avatarDelete.success'))
   } catch (error) {
-    console.log(error)
     toast.error(t('app.settings.settings.editProfile.toast.avatarDelete.error'))
   } finally {
     loading.value = false
@@ -146,7 +144,6 @@ const submit = handleSubmit(async (values) => {
     catStore.cat! = response
     toast.success(t('app.settings.settings.editProfile.toast.profileUpdate.success'))
   } catch (error) {
-    console.log(error)
     const axiosError = error as AxiosError
     if (axiosError.response?.status === 403) {
       toast.error(t('app.settings.settings.editProfile.toast.profileUpdate.wrongPassword'))

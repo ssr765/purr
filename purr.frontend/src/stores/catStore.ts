@@ -25,7 +25,6 @@ export const useCatStore = defineStore('cat', () => {
       cat.value = response
     } catch (error) {
       toast.error(t('app.cats.profile.toast.fetchError'))
-      console.log(error)
     } finally {
       loading.value = false
     }
@@ -38,7 +37,6 @@ export const useCatStore = defineStore('cat', () => {
       cat.value = response
     } catch (error) {
       toast.error(t('app.cats.profile.toast.fetchError'))
-      console.log(error)
     } finally {
       loading.value = false
     }
@@ -94,7 +92,6 @@ export const useCatStore = defineStore('cat', () => {
         }),
       )
     } catch (error) {
-      console.log(error)
       toast.success(
         t('app.cats.profile.profilePage.followState.toast.error', {
           cat_name: cat.value.name,
@@ -123,7 +120,6 @@ export const useCatStore = defineStore('cat', () => {
         }),
       )
     } catch (error) {
-      console.log(error)
       toast.success(
         t('app.cats.profile.profilePage.followState.toast.error', {
           cat_name: cat.value.name,

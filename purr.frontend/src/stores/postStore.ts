@@ -27,11 +27,9 @@ export const usePostStore = defineStore('post', () => {
     try {
       page === 1 ? (loading.value = true) : (loadingMore.value = true)
       const response = await postService.fetchExplore(page)
-      console.log(response)
       posts.value = [...posts.value, ...response.data]
       nextPageExists.value = response.links.next !== null
     } catch (error) {
-      console.log(error)
       toast.error(t('app.posts.toast.fetchError'))
     } finally {
       loading.value = false
@@ -43,11 +41,9 @@ export const usePostStore = defineStore('post', () => {
     try {
       page === 1 ? (loading.value = true) : (loadingMore.value = true)
       const response = await postService.fetchFeed(page)
-      console.log(response)
       posts.value = [...posts.value, ...response.data]
       nextPageExists.value = response.links.next !== null
     } catch (error) {
-      console.log(error)
       toast.error(t('app.posts.toast.fetchError'))
     } finally {
       loading.value = false
@@ -57,7 +53,6 @@ export const usePostStore = defineStore('post', () => {
 
   const fetchPostDetail = async (id: number, force: Boolean = false) => {
     const postData = posts.value.find((post) => post.id === id)
-    console.log(postData)
     if (postData && !force) {
       postDetail.value = postData
 
@@ -75,7 +70,6 @@ export const usePostStore = defineStore('post', () => {
       const post = await postService.fetchPostDetail(id)
       postDetail.value = post
     } catch (error) {
-      console.log(error)
       toast.error(t('app.posts.detail.toast.fetchError'))
     } finally {
       loading.value = false
@@ -89,7 +83,6 @@ export const usePostStore = defineStore('post', () => {
       posts.value = [...posts.value, ...response.data]
       nextPageExists.value = response.links.next !== null
     } catch (error) {
-      console.log(error)
       toast.error(t('app.posts.toast.fetchError'))
     } finally {
       loading.value = false
@@ -107,7 +100,6 @@ export const usePostStore = defineStore('post', () => {
       }
       toast.success(t('app.posts.detail.toast.postDeleted'))
     } catch (error) {
-      console.log(error)
       toast.error(t('app.posts.detail.toast.deleteError'))
     }
   }
@@ -121,7 +113,6 @@ export const usePostStore = defineStore('post', () => {
         postDetail.value.commentsCount++
       }
     } catch (error) {
-      console.log(error)
       toast.error(t('app.comments.toast.createError'))
     }
   }
@@ -264,7 +255,6 @@ export const usePostStore = defineStore('post', () => {
       posts.value = [...posts.value, ...response.data]
       nextPageExists.value = response.links.next !== null
     } catch (error) {
-      console.log(error)
       toast.error(t('app.posts.toast.fetchError'))
     } finally {
       loading.value = false
@@ -279,7 +269,6 @@ export const usePostStore = defineStore('post', () => {
       posts.value = [...posts.value, ...response.data]
       nextPageExists.value = response.links.next !== null
     } catch (error) {
-      console.log(error)
       toast.error(t('app.posts.toast.fetchError'))
     } finally {
       loading.value = false

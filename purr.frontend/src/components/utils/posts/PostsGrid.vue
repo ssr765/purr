@@ -60,7 +60,6 @@ const createObserver = () => {
   if (observer) observer.disconnect()
   observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
-      console.log('loading more!!!!!')
       page.value++
       emit('loadMore', page.value)
     }

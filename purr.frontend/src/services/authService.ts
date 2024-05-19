@@ -10,32 +10,21 @@ export const useAuthService = () => {
       await axios.get('/sanctum/csrf-cookie')
     } catch (error) {
       toast.error(t('errors.serverError'))
-      console.log(error)
     }
   }
 
   const login = async (email: string, password: string) => {
     await csrf()
 
-    try {
-      const response = await axios.post<User>('/login', { email, password })
-      return response.data
-    } catch (error) {
-      console.log(error)
-      throw error
-    }
+    const response = await axios.post<User>('/login', { email, password })
+    return response.data
   }
 
   const register = async (data: Object) => {
     await csrf()
 
-    try {
-      const response = await axios.post<User>('/register', data)
-      return response.data
-    } catch (error) {
-      console.log(error)
-      throw error
-    }
+    const response = await axios.post<User>('/register', data)
+    return response.data
   }
 
   const logout = async () => {
@@ -44,13 +33,8 @@ export const useAuthService = () => {
   }
 
   const fetchUser = async () => {
-    try {
-      const response = await axios.get<User>('/api/v1/user')
-      return response.data
-    } catch (error) {
-      console.log(error)
-      throw error
-    }
+    const response = await axios.get<User>('/api/v1/user')
+    return response.data
   }
 
   return {

@@ -15,7 +15,6 @@ export const useCommentStore = defineStore('comment', () => {
       const comments = await commentService.fetchComments(postId)
       return comments
     } catch (error) {
-      console.log(error)
       toast.error(t('app.comments.toast.fetchError'))
       return []
     } finally {

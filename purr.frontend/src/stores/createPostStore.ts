@@ -36,7 +36,6 @@ export const useCreatePostStore = defineStore('createPost', () => {
       analyzing.value = true
       analysisData.value = await postService.analyze(file)
     } catch (error) {
-      console.error(error)
       toast.error(t('app.posts.create.errors.analyzeError'))
     } finally {
       analyzing.value = false
@@ -80,7 +79,6 @@ export const useCreatePostStore = defineStore('createPost', () => {
         params: { id: post.id },
       })
     } catch (error) {
-      console.error(error)
       toast.error(t('app.posts.create.errors.createError'))
     } finally {
       loading.value = false

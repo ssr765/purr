@@ -57,7 +57,6 @@ const search = async () => {
     const result = await catService.search(value.value)
     cats.value = result
   } catch (error) {
-    console.error(error)
     toast.error(t('app.search.error'))
   } finally {
     loading.value = false

@@ -63,7 +63,6 @@ onMounted(async () => {
       L.marker([data.coords.lat, data.coords.lng], { icon }).addTo(map).bindPopup(popupBuilder(data))
     })
   } catch (error) {
-    console.error(error)
     toast.error(t('app.maps.error'))
   } finally {
     loading.value = false
