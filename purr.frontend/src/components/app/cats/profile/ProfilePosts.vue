@@ -50,7 +50,9 @@ const loadMore = (page: number) => {
 
 <template>
   <PostsGrid :posts="postStore.posts" @loadMore="loadMore" />
-  <div v-if="postStore.posts.length === 0 && !postStore.loading" class="text-center text-lg font-semibold text-ctp-crust">No hay publicaciones aún</div>
+  <div v-if="postStore.posts.length === 0 && !postStore.loading" class="text-center text-lg italic text-ctp-text mt-10">
+    {{ $t('app.cats.profile.noPosts') }}
+  </div>
   <div v-if="postStore.loading">
     <LoadingSpinner class="text-6xl" />
   </div>

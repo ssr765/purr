@@ -607,6 +607,7 @@
           "content": "Parece que este gato no está en purr. o ha sido eliminado. ¡Vaya! ¿Por qué no exploras otros gatos?",
           "button": "Explorar"
         },
+        "noPosts": "Este gato aún no ha compartido ningún momento en purr.",
         "profilePage": {
           "badges": {
             "adoptable": "Adóptame!"
