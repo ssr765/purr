@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onUnmounted, ref } from 'vue'
 import StartingStep from '@/components/app/cats/create/StartingStep.vue'
 import TraitsStep from '@/components/app/cats/create/TraitsStep.vue'
 import PasswordStep from '@/components/app/cats/create/PasswordStep.vue'
@@ -76,6 +76,10 @@ const createCat = () => {
 
   createCatStore.createCat()
 }
+
+onUnmounted(() => {
+  createCatStore.reset()
+})
 </script>
 
 <template>

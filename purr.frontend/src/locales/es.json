@@ -534,7 +534,9 @@
             "checkingCatname": "Estamos comprobando el catname, por favor espera unos segundos...",
             "startingStepFields": "El nombre del gato y el catname son obligatorios",
             "catnameAvailable": "El catname está disponible",
-            "catnameCheckError": "Ha ocurrido un error al comprobar el catname"
+            "catnameCheckError": "Ha ocurrido un error al comprobar el catname",
+            "avatarAnalysisSuccess": "¡Gato detectado! ¡Sale estupendo/a!",
+            "avatarAnalysisError": "No se ha detectado ningún gato en el avatar."
           },
           "validators": {
             "catname": {

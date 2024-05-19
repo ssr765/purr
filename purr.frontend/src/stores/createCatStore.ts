@@ -8,8 +8,10 @@ import { useCatService } from '@/services/catService'
 import { toast } from 'vue-sonner'
 import { useI18n } from 'vue-i18n'
 import type { AxiosError } from 'axios'
+import { usePostService } from '@/services/postService'
 
 export const useCreateCatStore = defineStore('createCat', () => {
+  const postService = usePostService()
   const { t } = useI18n()
   const catService = useCatService()
   const router = useRouter()
@@ -105,6 +107,44 @@ export const useCreateCatStore = defineStore('createCat', () => {
     }
   }
 
+  const analyzing = ref(false)
+  const analyzeAvatar = async () => {
+    if (!avatar.value) return
+
+    try {
+      analyzing.value = true
+      const { detected } = await postService.analyze(avatar.value)
+      if (!detected) {
+        toast.error(t('app.cats.create.createCat.toast.avatarAnalysisError'))
+        avatar.value = null
+      } else {
+        toast.success(
+          t('app.cats.create.createCat.toast.avatarAnalysisSuccess'),
+        )
+      }
+    } catch (error) {
+      console.error(error)
+      toast.error(t('app.posts.create.errors.analyzeError'))
+    } finally {
+      analyzing.value = false
+    }
+  }
+
+  const reset = () => {
+    avatar.value = null
+    name.value = ''
+    catname.value = ''
+    validCatname.value = false
+    biography.value = ''
+    sex.value = ''
+    breed.value = ''
+    color.value = ''
+    adoption.value = false
+    birthdateInput.value = undefined
+    password.value = ''
+    confirmPassword.value = ''
+  }
+
   return {
     avatar,
     name,
@@ -122,8 +162,11 @@ export const useCreateCatStore = defineStore('createCat', () => {
 
     checking,
     avatarUrl,
+    analyzing,
 
     checkCatname,
     createCat,
+    analyzeAvatar,
+    reset,
   }
 })
