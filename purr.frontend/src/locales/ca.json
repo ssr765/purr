@@ -1,40 +1,385 @@
 {
+  "landing": {
+    "header": {
+      "home": "Inici",
+      "features": "Característiques",
+      "ai": "IA",
+      "faqs": "FAQs",
+      "techs": "Tecnologies",
+      "cta": "Accedir a purr.",
+      "sr": "Obrir el menú"
+    },
+    "footer": {
+      "privacyPolicy": "Política de privacitat",
+      "cookiePolicy": "Política de galetes",
+      "content": "La xarxa social feta per gats, per a humans.",
+      "rights": "Tots els drets reservats."
+    },
+    "home": {
+      "hero": "Explora l'univers felí",
+      "testimonials": {
+        "title": "El que diuen els usuaris",
+        "content": "Els gats de la plataforma estan molt satisfets usant la nostra aplicació.",
+        "quote": "\"Miau, miau miau miau miau. Miau miau, miau miau miau miau miau miau. Miau miau miau, miau miau miau. *ronroneja* Miau miau miau, miau miau MIAU MIAU.\"",
+        "author": {
+          "name": "Bitxo",
+          "especie": "Gat"
+        }
+      },
+      "concept": {
+        "title": "La xarxa social dels gats",
+        "content": [
+          "purr. és una xarxa social única dissenyada especialment per als amants dels gats. Aquí, són els gats qui es converteixen en els veritables protagonistes tenint el seu propi perfil.",
+          "És un lloc divertit i segur on la comunitat felina pot reunir-se, explorar i connectar-se."
+        ],
+        "screenshot": {
+          "alt": "Pàgina d'exploració de purr."
+        },
+        "button": "Registra't ara!"
+      },
+      "features": {
+        "analysis": "Detecció de gats per IA",
+        "maps": "Mapes interactius",
+        "catContent": "100% felí",
+        "meetLovers": "Coneix amants dels gats",
+        "adoption": "Facilita l'adopció"
+      },
+      "unique": {
+        "title": "Què fa purr. tan especial?",
+        "content": [
+          "A més de ser un espai per a l'entreteniment i l'expressió felina, purr. facilita l'adopció de gats proporcionant perfils detallats de gats que necessiten una llar. Aquesta funció no només permet als possibles adoptants conèixer millor els seus futurs companys, sinó que també simplifica el procés de trobar una llar amorosa per a cada gat. Fer de l'adopció una experiència accessible i personal és una de les nostres prioritats.",
+          "Un altre servei distintiu de purr. són els nostres mapes interactius, que permeten als usuaris localitzar fàcilment veterinaris, cafeteries per a gats, botigues de productes per a mascotes i refugis d'animals a la seva àrea. Aquesta eina és invaluable per als propietaris de gats, ja que proporciona accés ràpid a recursos essencials, fomentant un estil de vida més integrat i conscient per al benestar de les seves mascotes."
+        ],
+        "button": "Descobreix més"
+      },
+      "ai": {
+        "title": "Contingut exclusivament felí a purr.",
+        "content": [
+          "Emprem tecnologia d'intel·ligència artificial avançada per assegurar que totes les imatges i vídeos pujats realment celebrin el món dels gats. Utilitzem un model d'IA, basat en PyTorch, que ha estat especialment entrenat amb més de 10,000 imatges de gats per reconèixer amb precisió només contingut felí.",
+          "Això garanteix que cada peça de contingut que veus ha estat validada per la nostra tecnologia de punta, mantenint purr. autèntic i fidel al seu esperit felí."
+        ],
+        "button": "Descobreix més"
+      },
+      "cta": {
+        "title": "Vols unir-te a la comunitat de purr.?",
+        "content": "Registra't ara i comença a gaudir de l'experiència felina.",
+        "cta": "Comença ara"
+      }
+    },
+    "underConstruction": {
+      "title": "Els gatets estan treballant en això!",
+      "content": "Aquesta pàgina està actualment en construcció. Torna aviat per veure les últimes actualitzacions!"
+    },
+    "privacyPolicy": {
+      "metaTitle": "Política de privacitat",
+      "title": "Política de privacitat de purr.",
+      "introduction": "A purr., valorem la privacitat dels nostres usuaris i ens comprometem a protegir les seves dades personals. Aquesta política de privacitat explica com recollim, usem i compartim informació sobre els nostres usuaris i les seves mascotes en el marc de la nostra aplicació. En utilitzar purr., acceptes la recopilació i ús d'informació d'acord amb aquesta política.",
+      "informationCollected": {
+        "title": "Informació recopilada",
+        "userSpecific": {
+          "title": "Informació específica de l'usuari",
+          "name": {
+            "name": "Nom",
+            "description": "El teu nom és visible per a altres usuaris a la plataforma i s'utilitza per personalitzar l'experiència de purr."
+          },
+          "email": {
+            "name": "Correu electrònic",
+            "description": "Usem el teu email per configurar i administrar el teu compte i per comunicacions relacionades amb la seguretat del compte."
+          },
+          "googleTitle": "Informació de Google",
+          "googleId": {
+            "name": "ID de Google",
+            "description": "Usem el teu ID de Google per autenticar-te a purr. i per associar el teu compte de Google amb el teu compte de purr."
+          },
+          "googleAvatar": {
+            "name": "Avatar de Google",
+            "description": "Si decideixes iniciar sessió amb Google, usarem el teu avatar de Google com a avatar del teu compte de purr."
+          }
+        },
+        "catSpecific": {
+          "title": "Informació específica dels gats",
+          "traits": {
+            "name": "Nom, raça, color, data de naixement i sexe",
+            "description": "Aquests detalls s'utilitzen per crear un perfil únic per al teu gat i per ajudar altres usuaris a conèixer millor la teva mascota."
+          },
+          "adoption": {
+            "name": "Estat d'adopció",
+            "description": "Recopilem aquesta informació per ajudar a connectar gats que necessiten una nova llar amb possibles adoptants."
+          }
+        }
+      },
+      "informationUse": {
+        "title": "Ús de la informació",
+        "content": "A purr., utilitzem la informació recopilada principalment per assegurar el funcionament òptim i la millora contínua de la nostra aplicació. Això inclou la gestió i manteniment de la plataforma, la personalització de l'experiència de l'usuari, i la comunicació directa per oferir actualitzacions i informació rellevant. Addicionalment, emprem aquestes dades per implementar mesures de seguretat que ajuden a mantenir la plataforma segura."
+      },
+      "informationSharing": {
+        "title": "Compartir la teva informació",
+        "content": "A purr., no venem ni lloguem informació personal dels nostres usuaris a tercers. Podem compartir informació amb tercers en les següents circumstàncies:",
+        "list": [
+          "Proveïdors de serveis que ens ajuden amb serveis operatius com allotjament web i manteniment de dades.",
+          "Si és necessari per complir amb una llei o reglament, en resposta a una sol·licitud de la llei, ordre judicial o un procés legal similar, o per protegir els nostres drets o propietat."
+        ]
+      },
+      "privacyRights": {
+        "title": "Els teus drets de privacitat",
+        "content": "Com a usuari de purr., tens dret a accedir, corregir, actualitzar o eliminar la teva informació personal en qualsevol moment. Si desitges exercir aquests drets, si us plau posa't en contacte amb nosaltres a {email}."
+      },
+      "informationSecurity": {
+        "title": "Seguretat de la informació",
+        "content": "A purr., ens prenem molt seriosament la seguretat de la informació dels nostres usuaris. Implementem mesures de seguretat tècniques i organitzatives per protegir la informació personal dels nostres usuaris contra l'accés no autoritzat, la divulgació, l'alteració i la destrucció."
+      },
+      "policyUpdate": {
+        "title": "Actualitzacions de la política",
+        "content": "Podem actualitzar la nostra política de privacitat periòdicament per reflectir, per exemple, canvis en les nostres pràctiques o per altres motius operatius, legals o regulatoris. T'aconsellem revisar aquesta política periòdicament per estar informat de com protegim la teva informació."
+      },
+      "contact": "Si tens preguntes sobre aquesta política de privacitat, si us plau contacta'ns a {email}."
+    },
+    "cookiePolicy": {
+      "metaTitle": "Política de galetes",
+      "title": "Política de galetes de purr.",
+      "introduction": "A purr., valorem la teva privacitat i volem assegurar-nos que entens com i per què utilitzem les galetes a la nostra plataforma. Aquesta política de galetes explica què són les galetes, com les usem i les teves opcions en relació al seu ús.",
+      "whatAreCookies": {
+        "title": "Què són les galetes?",
+        "content": "Les galetes són petits arxius de text que s'emmagatzemen al teu dispositiu (ordinador, tauleta, smartphone) quan visites un lloc web. Les galetes ajuden a la web a reconèixer el teu dispositiu i recordar certa informació sobre les teves visites, millorant així la teva experiència de navegació."
+      },
+      "cookiesExplain": {
+        "title": "Com utilitzem les galetes?",
+        "content": "A purr., utilitzem diferents tipus de galetes per a diferents propòsits. Aquí t'expliquem les galetes que usem i per què les necessitem:",
+        "essential": {
+          "title": "Galetes essencials",
+          "content": "Aquestes galetes són necessàries perquè el lloc web funcioni correctament. Sense elles, no podries utilitzar algunes de les funcions bàsiques de la nostra plataforma.",
+          "cookies": {
+            "session": {
+              "name": "purr_session",
+              "description": "Aquesta galeta s'utilitza per mantenir la sessió de l'usuari. És essencial perquè puguis mantenir-te autenticat mentre navegues per la plataforma."
+            },
+            "xsrf": {
+              "name": "XSRF-TOKEN",
+              "description": "Aquesta galeta s'utilitza per protegir contra atacs de falsificació de sol·licituds entre llocs (Cross-Site Request Forgery, CSRF). És essencial per a la seguretat de la teva interacció amb purr."
+            },
+            "gdpr": {
+              "name": "gdpr_cookie_consent",
+              "description": "Aquesta galeta emmagatzema el teu consentiment per a l'ús de galetes a la nostra plataforma, assegurant que complim amb les regulacions de protecció de dades."
+            }
+          }
+        },
+        "necessary": {
+          "title": "Galetes necessàries",
+          "content": "Aquestes galetes no són estrictament essencials, però ens ajuden a oferir una millor experiència d'usuari.",
+          "cookies": {
+            "locale": {
+              "name": "locale",
+              "description": "Aquesta galeta emmagatzema la preferència d'idioma de l'usuari no autenticat, permetent que l'aplicació es mostri en l'idioma correcte quan tornes a visitar-nos."
+            }
+          }
+        }
+      },
+      "noTracking": {
+        "title": "No utilitzem galetes de seguiment",
+        "content": "A purr., no utilitzem galetes de seguiment ni altres tecnologies similars per monitoritzar el teu comportament en línia. Ens comprometem a no utilitzar galetes per recollir informació sobre tu amb finalitats de màrqueting o publicitat."
+      },
+      "cookieManagement": {
+        "title": "Gestió de galetes",
+        "content": "Tens l'opció de permetre o desactivar l'ús de galetes a la nostra plataforma. Pots gestionar les teves preferències de galetes a través de la configuració del teu navegador. Tingues en compte que desactivar galetes essencials pot afectar el funcionament del lloc web i la teva experiència d'usuari."
+      },
+      "policyUpdate": {
+        "title": "Actualitzacions de la política",
+        "content": "Podem actualitzar aquesta política de galetes de tant en tant per reflectir canvis en les nostres pràctiques i serveis. Et recomanem revisar aquesta política periòdicament per estar al corrent de com utilitzem les galetes."
+      },
+      "contact": "Si tens alguna pregunta sobre la nostra política de galetes, no dubtis a contactar-nos a través del nostre {email}."
+    }
+  },
   "app": {
+    "layout": {
+      "header": {
+        "login": "Iniciar sessió",
+        "register": "Registrar-se",
+        "admin": "Administrador",
+        "user": {
+          "avatarAlt": "El meu avatar"
+        },
+        "dropdown": {
+          "settings": "Configuració",
+          "logout": "Tancar sessió"
+        }
+      },
+      "sidebar": {
+        "search": "Cercar gats",
+        "feed": "El meu feed",
+        "maps": "Mapes",
+        "create": "Crear",
+        "randomCat": "Gat aleatori",
+        "likes": "Els meus m'agrada",
+        "saves": "Els meus guardats",
+        "addCat": "Afegir un gat",
+        "explore": "Explorar",
+        "toggle": "Alternar barra lateral"
+      }
+    },
+    "settings": {
+      "metadata": {
+        "title": "Configuració"
+      },
+      "title": "Configuració",
+      "profileSettings": "Ajustaments del perfil",
+      "settings": {
+        "language": {
+          "name": "Idioma",
+          "description": "Selecciona el teu idioma preferit.",
+          "select": "Canviar l'idioma"
+        },
+        "deleteAccount": {
+          "name": "Eliminar compte",
+          "dialog": {
+            "title": "ATENCIÓ! Estàs intentant esborrar el teu compte!",
+            "content": [
+              "Aquesta acció resultarà en la pèrdua permanent i irreversible de l'accés al teu compte.",
+              "Els gats registrats amb més d'un propietari no es veuran afectats. No obstant això, els gats del qual siguis l'únic propietari",
+              "seran eliminats permanentment de purr.",
+              "Si estàs segur(a) de voler procedir i desitges abandonar la comunitat de purr., introdueix la teva contrasenya a continuació. En prémer el botó, el teu compte serà eliminat definitivament."
+            ],
+            "passwordInput": "Introdueix la teva contrasenya",
+            "cancel": "Cancel·lar",
+            "delete": "Eliminar compte"
+          },
+          "toast": {
+            "success": "El teu compte ha estat eliminat amb èxit. Els gats estaran esperant el teu retorn!",
+            "error": "Hi ha hagut un error en eliminar el teu compte",
+            "emptyPassword": "Si us plau, introdueix la teva contrasenya per eliminar el teu compte.",
+            "wrongPassword": "La contrasenya és incorrecta"
+          },
+          "rickReference": {
+            "quote": "\"purr. mai t'abandonarà, mai et defraudarà, mai sortirà corrent. purr. mai et farà plorar, mai et dirà adéu, mai et dirà una mentida i et farà mal.\"",
+            "attribution": "- Rick Catsley (2024)"
+          }
+        },
+        "editProfile": {
+          "name": "Editar perfil",
+          "sheet": {
+            "title": "Editar perfil",
+            "avatarUpload": "Pujar avatar",
+            "name": "Nom",
+            "username": "Nom d'usuari",
+            "email": "Correu electrònic",
+            "avatar": "Avatar",
+            "password": "Contrasenya",
+            "newPassword": "Nova contrasenya",
+            "button": "Desar canvis"
+          },
+          "validators": {
+            "name": {
+              "min": "El nom ha de tenir almenys 3 caràcters",
+              "max": "El nom no pot tenir més de 50 caràcters"
+            },
+            "username": {
+              "min": "El nom d'usuari ha de tenir almenys 3 caràcters",
+              "max": "El nom d'usuari no pot tenir més de 30 caràcters",
+              "regex": "El nom d'usuari només pot contenir lletres, números, punts i guions baixos"
+            },
+            "email": {
+              "email": "El correu electrònic no és vàlid"
+            },
+            "password": {
+              "required": "La contrasenya és obligatòria"
+            },
+            "newPassword": {
+              "min": "La nova contrasenya ha de tenir almenys 8 caràcters",
+              "max": "La nova contrasenya no pot tenir més de 50 caràcters",
+              "regex": "La nova contrasenya ha de tenir almenys una lletra majúscula, una lletra minúscula, un número i un caràcter especial ({chars})"
+            }
+          },
+          "toast": {
+            "avatarUpload": {
+              "success": "Avatar actualitzat correctament",
+              "error": "Hi ha hagut un error en actualitzar el teu avatar"
+            },
+            "profileUpdate": {
+              "success": "Perfil actualitzat correctament",
+              "error": "Hi ha hagut un error en actualitzar el teu perfil",
+              "wrongPassword": "La contrasenya és incorrecta"
+            },
+            "avatarDelete": {
+              "success": "Avatar eliminat correctament",
+              "error": "Hi ha hagut un error en eliminar el teu avatar"
+            }
+          }
+        }
+      }
+    },
     "posts": {
+      "detail": {
+        "metadata": {
+          "postBy": "Publicació de",
+          "notFound": "Publicació no trobada"
+        },
+        "like": "m'agrada",
+        "likes": "m'agrades",
+        "save": "guardat",
+        "saves": "guardats",
+        "logInToComment": "Has d'iniciar sessió per poder comentar",
+        "commentPlaceholder": "Escriu un comentari...",
+        "dotMenu": {
+          "approve": "Aprovar publicació",
+          "deleteAssociatedUser": "Eliminar usuari associat a aquesta publicació",
+          "deletePost": {
+            "menuItem": "Eliminar publicació",
+            "dialog": {
+              "title": "Eliminar publicació",
+              "content": "Estàs segur que vols esborrar aquesta publicació? Aquesta acció no es pot desfer.",
+              "buttons": {
+                "cancel": "Cancel·lar",
+                "delete": "Eliminar"
+              }
+            }
+          }
+        },
+        "noCatsWarning": "purr. està cercant gats en aquesta publicació, si no veus cap gat, reporta aquesta publicació.",
+        "toast": {
+          "fetchError": "Hi ha hagut un error en carregar la publicació",
+          "postDeleted": "Publicació eliminada correctament",
+          "postApproved": "Publicació aprovada correctament",
+          "postAssociatedUserDeleted": "L'usuari associat a aquesta publicació ha estat eliminat correctament",
+          "deleteError": "Hi ha hagut un error en eliminar la publicació",
+          "approveError": "Hi ha hagut un error en aprovar la publicació",
+          "deleteAssociatedUserError": "Hi ha hagut un error en eliminar l'usuari associat a aquesta publicació"
+        }
+      },
       "create": {
         "metadata": {
-          "title": "Crea una publicació"
+          "title": "Crear una publicació"
         },
         "noKittens": {
           "title": "Encara no has creat un perfil per al teu gat",
           "content": [
-            "Hola! Sembla que encara no has registrat cap gat en purr. Aquí, cada gat té el seu propi perfil perquè puguis compartir les seves aventures i fotos.",
+            "Hola! Sembla que encara no has registrat cap gat a purr. Aquí, cada gat té el seu propi perfil perquè puguis compartir les seves aventures i fotos.",
             "Què et sembla si creem un perfil per al teu gat ara? És ràpid i fàcil!"
           ],
-          "button": "Crea el perfil ara"
+          "button": "Crear el perfil ara"
         },
         "mediaInput": {
           "title": "Comparteix un moment felí",
-          "content": "Arrossega o fes clic per compartir contingut del teu amic felí en purr."
+          "content": "Arrossega o fes clic per compartir contingut del teu amic felí a purr.",
+          "format": "Màx. {mb}MB, formats: {formats}"
         },
         "mediaDashboard": {
+          "back": "Tornar",
           "noCatsDetected": "No s'han detectat gats a la imatge",
-          "catSelectionLabel": "Quin gat farà la publicació?",
+          "catSelectionLabel": "Quin gat realitzarà la publicació?",
           "captionLabel": "Afegeix una descripció",
           "captionPlaceholder": "Escriu una descripció per a la publicació",
-          "button": "Publica",
-          "catlessButton": "Publica",
+          "button": "Publicar",
+          "catlessButton": "Publicar",
           "quotes": {
             "none": [
-              "Pspspsps... On son els gats?",
+              "Pspspsps... On són els gats?",
               "No hi ha gats per aquí!",
               "Radar felí: sense gats a la vista!",
               "He revisat dues vegades, però no he trobat cap gat."
             ],
             "single": [
               "Sembla que hi ha un gat per aquí",
-              "Un gat perfecte!",
-              "Aquí s'asoma un minino solitari",
+              "Un gat perrrrfecte!",
+              "Aquí s'asoma un solitari minino",
               "Tenim un visitant felí aquí"
             ],
             "multiple": [
@@ -48,17 +393,396 @@
             "title": "No s'han detectat gats a la imatge",
             "content": [
               "La IA no ha pogut identificar cap gat a la publicació, si realment hi ha un gat a la foto, no et preocupis!, pots pujar igualment la imatge del teu gat.",
-              "La publicació serà revisada manualment, i serà aprovada un cop s'identifiqui un gat.",
-              "Tingues en compte que pujar contingut no gatú a purr. va en contra dels termes i condicions de purr. i pot comportar el baneig permanent de la plataforma."
+              "La publicació serà revisada manualment, i serà aprovada una vegada s'identifiqui un gat.",
+              "Tingues en compte que pujar contingut no felí a purr. va en contra dels termes i condicions de purr. i pot comportar el baneo permanent de la plataforma."
             ],
-            "publish": "Publica",
+            "publish": "Publicar",
             "noPublish": "No publicar"
           }
         },
         "errors": {
-          "noCatSelected": "Has de seleccionar un gat per crear una publicació."
+          "noCatSelected": "Has de seleccionar un gat per crear una publicació.",
+          "createError": "Hi ha hagut un error en crear la publicació",
+          "analyzeError": "Hi ha hagut un error en analitzar la imatge"
+        }
+      },
+      "components": {
+        "endOfFeed": {
+          "title": "Els teus gatets favorits ja han compartit tots els seus moments amb tu i ara estan descansant. Per què no explores més gats ara?",
+          "button": "Explorar més gats"
+        },
+        "postCard": {
+          "viewAllComments": "Veure tots els comentaris"
+        },
+        "contextMenu": {
+          "detail": "Veure publicació",
+          "download": "Descarregar imatge"
+        },
+        "gridCard": {
+          "noCaption": "Sense descripció",
+          "likes": "m'agrada",
+          "comments": "comentaris",
+          "saves": "guardats"
+        }
+      },
+      "feed": {
+        "noFollows": {
+          "title": "Benvingut/da a purr.",
+          "content": "Sembla que encara no segueixes cap gatet. Quina catàstrofe! Per què no segueixes algun d'aquests bonics gats?"
+        }
+      },
+      "explore": {
+        "metadata": {
+          "title": "Explorar"
+        }
+      },
+      "saves": {
+        "metadata": {
+          "title": "Guardats"
+        },
+        "noPosts": "No has guardat cap publicació"
+      },
+      "likes": {
+        "metadata": {
+          "title": "M'agrada"
+        },
+        "noPosts": "No has marcat cap publicació com m'agrada"
+      },
+      "toast": {
+        "noLoggedIn": {
+          "save": "Has d'iniciar sessió per guardar una publicació",
+          "delete": "Has d'iniciar sessió per eliminar una publicació",
+          "like": "Has d'iniciar sessió per donar m'agrada a una publicació"
+        },
+        "likeError": "Hi ha hagut un error en donar m'agrada a la publicació",
+        "unlikeError": "Hi ha hagut un error en treure el m'agrada de la publicació",
+        "saveError": "Hi ha hagut un error en guardar la publicació",
+        "unsaveError": "Hi ha hagut un error en treure la publicació de guardats",
+        "fetchError": "Hi ha hagut un error en carregar les publicacions"
+      }
+    },
+    "comments": {
+      "dotMenu": {
+        "delete": "Eliminar comentari",
+        "noActions": "No hi ha accions disponibles"
+      },
+      "toast": {
+        "likeError": "Hi ha hagut un error en donar m'agrada al comentari",
+        "unlikeError": "Hi ha hagut un error en treure el m'agrada del comentari",
+        "noLoggedIn": "Has d'iniciar sessió per donar m'agrada a un comentari",
+        "maxLength": "El comentari no pot tenir més de {length} caràcters",
+        "deleteSuccess": "Comentari eliminat correctament",
+        "deleteError": "Hi ha hagut un error en eliminar el comentari",
+        "fetchError": "Hi ha hagut un error en carregar els comentaris",
+        "createError": "Hi ha hagut un error en crear el comentari"
+      }
+    },
+    "cats": {
+      "create": {
+        "createCat": {
+          "metadata": {
+            "title": "Crear un nou gat"
+          },
+          "steps": {
+            "starting": {
+              "title": "Donem la benvinguda al teu gat a purr.!",
+              "description": "Per començar, digue'ns el nom del teu gat i el catname que vols usar.",
+              "alreadyExists": "El teu gat ja pertany a un altre propietari? Afegeix-lo a la teva col·lecció!",
+              "form": {
+                "name": "Nom del gat",
+                "catname": "Catname",
+                "catnameTooltip": "El catname és un nom únic que identifica el teu gat a purr. Sigues original!",
+                "biography": "Biografia"
+              }
+            },
+            "traits": {
+              "title": "Explica'ns més sobre el teu gat",
+              "description": "Ara, explica'ns més detalls sobre el teu gat. Com més detalls ens donis, més destacarà el teu gat a purr.",
+              "form": {
+                "sex": {
+                  "label": "Sexe",
+                  "options": {
+                    "male": "Mascle",
+                    "female": "Femella"
+                  }
+                },
+                "breed": "Raça del gat",
+                "color": "Color del gat",
+                "birthdate": {
+                  "label": "Data de naixement",
+                  "placeholder": "Selecciona la data de naixement del teu gat",
+                  "description": "En cas que no la sàpigues, sempre pots posar la data des que tens el gat."
+                },
+                "adoption": {
+                  "label": "El gat està en adopció",
+                  "description": "Activant aquesta casella, els usuaris podran veure que el gat està buscant un nou propietari i es podran posar en contacte amb tu."
+                }
+              }
+            },
+            "password": {
+              "title": "Protegeix el teu gat",
+              "description": "Per últim, afegeix una contrasenya per protegir el teu gat i poder compartir-lo amb altres propietaris.",
+              "form": {
+                "password": "Contrasenya",
+                "passwordConfirmation": "Confirma la contrasenya"
+              }
+            }
+          },
+          "controls": {
+            "back": "Tornar",
+            "next": "Següent",
+            "finalize": "Finalitzar"
+          },
+          "toast": {
+            "noPassword": "La contrasenya i la seva confirmació són obligatòries",
+            "passwordsDontMatch": "Les contrasenyes no coincideixen",
+            "success": "El teu gat ha estat creat amb èxit!",
+            "error": "Hi ha hagut un error en crear el teu gat",
+            "sex": "El sexe és obligatori",
+            "birthdate": "La data de naixement és obligatòria",
+            "catnameInUse": "El catname ja està en ús o no és vàlid, si us plau tria'n un altre",
+            "checkingCatname": "Estem comprovant el catname, si us plau espera uns segons...",
+            "startingStepFields": "El nom del gat i el catname són obligatoris",
+            "catnameAvailable": "El catname està disponible",
+            "catnameCheckError": "Hi ha hagut un error en comprovar el catname",
+            "avatarAnalysisSuccess": "Gat detectat! Queda estupend/a!",
+            "avatarAnalysisError": "No s'ha detectat cap gat a l'avatar."
+          },
+          "validators": {
+            "catname": {
+              "required": "El catname és obligatori",
+              "regex": "El catname només pot contenir lletres, números, punts i guions baixos",
+              "min": "El catname ha de tenir almenys 3 caràcters",
+              "max": "El catname no pot tenir més de 30 caràcters"
+            }
+          }
+        },
+        "addACat": {
+          "content": {
+            "title": "Afegir un gat d'un altre propietari",
+            "description": "Si ja tens el catname i la contrasenya d'un gat, pots afegir-lo a la teva llista de gats.",
+            "catname": "Catname del gat",
+            "password": "Contrasenya",
+            "button": "Afegir gat"
+          },
+          "validators": {
+            "catname": {
+              "required": "El catname és obligatori",
+              "regex": "El catname no és vàlid"
+            },
+            "password": {
+              "required": "La contrasenya és obligatòria"
+            }
+          },
+          "toast": {
+            "success": "Ara ets propietari de {cat_name}. Felicitats!",
+            "alreadyOwn": "El gat amb aquest catname ja et pertany",
+            "wrongPassword": "La contrasenya és incorrecta",
+            "error": "Hi ha hagut un error en afegir el gat"
+          }
+        }
+      },
+      "edit": {
+        "sheet": {
+          "title": "Editar gat",
+          "avatarUpload": "Pujar avatar",
+          "name": "Nom",
+          "catname": "Catname",
+          "biography": "Biografia",
+          "breed": "Raça",
+          "color": "Color",
+          "password": "Contrasenya",
+          "newPassword": "Nova contrasenya",
+          "newPasswordConfirmation": "Confirma la nova contrasenya",
+          "button": "Desar canvis"
+        },
+        "validators": {
+          "name": {
+            "min": "El nom ha de tenir almenys 3 caràcters",
+            "max": "El nom no pot tenir més de 50 caràcters"
+          },
+          "catname": {
+            "min": "El catname ha de tenir almenys 3 caràcters",
+            "max": "El catname no pot tenir més de 30 caràcters",
+            "regex": "El catname només pot contenir lletres, números, punts i guions baixos"
+          },
+          "biography": {
+            "max": "La biografia no pot tenir més de 255 caràcters"
+          },
+          "breed": {
+            "min": "La raça ha de tenir almenys 3 caràcters",
+            "max": "La raça no pot tenir més de 50 caràcters"
+          },
+          "color": {
+            "min": "El color ha de tenir almenys 3 caràcters",
+            "max": "El color no pot tenir més de 50 caràcters"
+          },
+          "birthdate": {
+            "required": "La data de naixement és obligatòria"
+          },
+          "password": {
+            "required": "La contrasenya és obligatòria"
+          },
+          "newPassword": {
+            "min": "La nova contrasenya ha de tenir almenys 8 caràcters",
+            "max": "La nova contrasenya no pot tenir més de 50 caràcters",
+            "regex": "La nova contrasenya ha de tenir almenys una lletra majúscula, una lletra minúscula, un número i un caràcter especial ({chars})"
+          }
+        },
+        "toast": {
+          "avatarUpload": {
+            "success": "Avatar actualitzat correctament",
+            "error": "Hi ha hagut un error en actualitzar l'avatar",
+            "noCats": "No s'han trobat gats a l'avatar"
+          }
+        }
+      },
+      "profile": {
+        "metadata": {
+          "notFound": "Gat no trobat"
+        },
+        "notFound": {
+          "title": "Oh no! Aquest gat s'ha escapat!",
+          "content": "Sembla que aquest gat no està a purr. o ha estat eliminat. Vaja! Per què no explores altres gats?",
+          "button": "Explorar"
+        },
+        "noPosts": "Aquest gat encara no ha compartit cap moment a purr.",
+        "profilePage": {
+          "badges": {
+            "adoptable": "Adopta'm!"
+          },
+          "noBiography": "Aquest gat encara no té una biografia",
+          "breed": "Raça",
+          "color": "Color",
+          "birthdate": "Naixement",
+          "followers": "seguidors",
+          "followState": {
+            "button": {
+              "follow": "Seguir",
+              "unfollow": "Deixar de seguir"
+            },
+            "toast": {
+              "followed": "Ara segueixes a {cat_name}!",
+              "unfollowed": "Ja no segueixes a {cat_name}",
+              "noLoggedIn": "Has d'iniciar sessió per seguir un gat",
+              "error": "Hi ha hagut un error en seguir o deixar de seguir a {cat_name}"
+            }
+          },
+          "dotMenu": {
+            "deleteCat": {
+              "menuItem": "Eliminar gat",
+              "dialog": {
+                "title": "Eliminar a {cat_name}",
+                "content": "Estàs segur que vols esborrar a {cat_name}? Aquesta acció no es pot desfer.",
+                "buttons": {
+                  "cancel": "Cancel·lar",
+                  "delete": "Eliminar"
+                }
+              }
+            },
+            "deleteCatAssociatedUsers": "Eliminar usuaris associats a aquest gat"
+          }
+        },
+        "toast": {
+          "fetchError": "Hi ha hagut un error en carregar el perfil del gat"
+        }
+      },
+      "random": {
+        "toast": {
+          "fetchError": "Hi ha hagut un error en carregar un gat aleatori",
+          "noCats": {
+            "title": "No hem trobat cap gat :(",
+            "description": "Vols que el teu sigui el primer?",
+            "button": "Sí!"
+          }
         }
       }
+    },
+    "entity": {
+      "create": {
+        "metadata": {
+          "title": "Registrar una entitat"
+        }
+      }
+    },
+    "utils": {
+      "loading": "Carregant...",
+      "catAvatar": {
+        "alt": "Avatar de gat"
+      },
+      "share": {
+        "label": "Compartir",
+        "copyLink": "Copiar enllaç",
+        "copiedLink": "Enllaç copiat al porta-retalls"
+      },
+      "imageChecker": {
+        "fileSizeError": "La imatge no pot ser més gran que {mb}MB",
+        "fileTypeError": "Format de imatge no suportat. Només es permeten els següents formats: {formats}"
+      }
+    },
+    "maps": {
+      "metadata": {
+        "title": "Mapa"
+      },
+      "webpage": "Pàgina web",
+      "noWebpage": "Sense pàgina web",
+      "error": "Hi ha hagut un error en carregar el mapa"
+    },
+    "search": {
+      "noResults": "No s'han trobat resultats",
+      "error": "Hi ha hagut un error en cercar",
+      "placeholder": "On s'ha ficat aquest gat?",
+      "groupLabels": {
+        "cats": "Gat trobats",
+        "recentlyViewed": "Vistos recentment"
+      }
     }
+  },
+  "auth": {
+    "login": {
+      "metaTitle": "Iniciar sessió",
+      "email": "Correu electrònic",
+      "password": "Contrasenya",
+      "button": "Iniciar sessió",
+      "noAccount": {
+        "content": "No tens un compte?",
+        "link": "Registra't!"
+      }
+    },
+    "register": {
+      "metaTitle": "Registrar-se",
+      "name": "Nom",
+      "username": "Nom d'usuari",
+      "usernameHelp": "El nom d'usuari és únic i només pot contenir lletres, números, punts i guions baixos",
+      "email": "Correu electrònic",
+      "password": "Contrasenya",
+      "passwordConfirmation": "Confirma contrasenya",
+      "button": "Registrar-se",
+      "haveAccount": {
+        "content": "Ja tens un compte?",
+        "link": "Inicia sessió!"
+      }
+    },
+    "google": "Continuar amb Google"
+  },
+  "response": {
+    "These credentials do not match our records": "Credencials incorrectes"
+  },
+  "errors": {
+    "serverError": "Hi ha hagut un error al servidor. Si us plau, intenta-ho de nou més tard.",
+    "tooManyRequests": "Has fet massa peticions, si us plau intenta-ho de nou més tard."
+  },
+  "slogan": "La xarxa social feta per gats, per a humans",
+  "cookieBanner": {
+    "message": "purr. només usa galetes necessàries per al correcte funcionament de la pàgina, si les acceptes, podràs gaudir de totes les funcionalitats de purr.",
+    "accept": "Acceptar",
+    "reject": "Rebutjar",
+    "toast": {
+      "saved": "S'han desat les teves preferències de galetes"
+    }
+  },
+  "pageNotFound": {
+    "title": "Oh no! Aquest lloc està buit!",
+    "content": "Sembla que la pàgina que busques no existeix. Per què no tornes a la pàgina d'inici?"
   }
 }

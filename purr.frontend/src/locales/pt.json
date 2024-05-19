@@ -1,0 +1,788 @@
+{
+  "landing": {
+    "header": {
+      "home": "Início",
+      "features": "Características",
+      "ai": "IA",
+      "faqs": "FAQs",
+      "techs": "Tecnologias",
+      "cta": "Acessar purr.",
+      "sr": "Abrir menu"
+    },
+    "footer": {
+      "privacyPolicy": "Política de Privacidade",
+      "cookiePolicy": "Política de Cookies",
+      "content": "A rede social feita por gatos, para humanos.",
+      "rights": "Todos os direitos reservados."
+    },
+    "home": {
+      "hero": "Explore o universo felino",
+      "testimonials": {
+        "title": "O que os usuários dizem",
+        "content": "Os gatos da plataforma estão muito satisfeitos usando nosso aplicativo.",
+        "quote": "\"Miau, miau miau miau miau. Miau miau, miau miau miau miau miau miau. Miau miau miau, miau miau miau. *ronrona* Miau miau miau, miau miau MIAU MIAU.\"",
+        "author": {
+          "name": "Bicho",
+          "species": "Gato"
+        }
+      },
+      "concept": {
+        "title": "A rede social dos gatos",
+        "content": [
+          "purr. é uma rede social única especialmente projetada para amantes de gatos. Aqui, os gatos se tornam os verdadeiros protagonistas tendo seu próprio perfil.",
+          "É um lugar divertido e seguro onde a comunidade felina pode se reunir, explorar e se conectar."
+        ],
+        "screenshot": {
+          "alt": "Página de exploração do purr."
+        },
+        "button": "Cadastre-se agora!"
+      },
+      "features": {
+        "analysis": "Detecção de gatos por IA",
+        "maps": "Mapas interativos",
+        "catContent": "100% felino",
+        "meetLovers": "Conheça amantes de gatos",
+        "adoption": "Facilita a adoção"
+      },
+      "unique": {
+        "title": "O que torna o purr. tão especial?",
+        "content": [
+          "Além de ser um espaço para entretenimento e expressão felina, o purr. facilita a adoção de gatos fornecendo perfis detalhados de gatos que precisam de um lar. Esta função não apenas permite que os potenciais adotantes conheçam melhor seus futuros companheiros, mas também simplifica o processo de encontrar um lar amoroso para cada gato. Tornar a adoção uma experiência acessível e pessoal é uma de nossas prioridades.",
+          "Outro serviço distinto do purr. são nossos mapas interativos, que permitem aos usuários localizar facilmente veterinários, cafés para gatos, lojas de produtos para animais de estimação e abrigos de animais na sua área. Esta ferramenta é inestimável para os donos de gatos, pois fornece acesso rápido a recursos essenciais, promovendo um estilo de vida mais integrado e consciente para o bem-estar de seus animais de estimação."
+        ],
+        "button": "Descubra mais"
+      },
+      "ai": {
+        "title": "Conteúdo exclusivamente felino no purr.",
+        "content": [
+          "Utilizamos tecnologia avançada de inteligência artificial para garantir que todas as imagens e vídeos carregados realmente celebrem o mundo dos gatos. Utilizamos um modelo de IA, baseado em PyTorch, que foi especialmente treinado com mais de 10.000 imagens de gatos para reconhecer com precisão apenas conteúdo felino.",
+          "Isso garante que cada peça de conteúdo que você vê foi validada por nossa tecnologia de ponta, mantendo o purr. autêntico e fiel ao seu espírito felino."
+        ],
+        "button": "Descubra mais"
+      },
+      "cta": {
+        "title": "Quer se juntar à comunidade do purr.?",
+        "content": "Cadastre-se agora e comece a desfrutar da experiência felina.",
+        "cta": "Comece agora"
+      }
+    },
+    "underConstruction": {
+      "title": "Os gatinhos estão trabalhando nisso!",
+      "content": "Esta página está atualmente em construção. Volte em breve para ver as últimas atualizações!"
+    },
+    "privacyPolicy": {
+      "metaTitle": "Política de Privacidade",
+      "title": "Política de Privacidade do purr.",
+      "introduction": "No purr., valorizamos a privacidade de nossos usuários e nos comprometemos a proteger seus dados pessoais. Esta política de privacidade explica como coletamos, usamos e compartilhamos informações sobre nossos usuários e seus animais de estimação no âmbito do nosso aplicativo. Ao usar o purr., você aceita a coleta e o uso de informações de acordo com esta política.",
+      "informationCollected": {
+        "title": "Informações Coletadas",
+        "userSpecific": {
+          "title": "Informações específicas do usuário",
+          "name": {
+            "name": "Nome",
+            "description": "Seu nome é visível para outros usuários na plataforma e é usado para personalizar a experiência do purr."
+          },
+          "email": {
+            "name": "E-mail",
+            "description": "Usamos seu e-mail para configurar e gerenciar sua conta e para comunicações relacionadas à segurança da conta."
+          },
+          "googleTitle": "Informações do Google",
+          "googleId": {
+            "name": "ID do Google",
+            "description": "Usamos seu ID do Google para autenticá-lo no purr. e para associar sua conta do Google à sua conta do purr."
+          },
+          "googleAvatar": {
+            "name": "Avatar do Google",
+            "description": "Se você decidir fazer login com o Google, usaremos seu avatar do Google como avatar da sua conta do purr."
+          }
+        },
+        "catSpecific": {
+          "title": "Informações específicas dos gatos",
+          "traits": {
+            "name": "Nome, raça, cor, data de nascimento e sexo",
+            "description": "Esses detalhes são usados para criar um perfil único para o seu gato e ajudar outros usuários a conhecer melhor seu animal de estimação."
+          },
+          "adoption": {
+            "name": "Status de adoção",
+            "description": "Coletamos essas informações para ajudar a conectar gatos que precisam de um novo lar com possíveis adotantes."
+          }
+        }
+      },
+      "informationUse": {
+        "title": "Uso das Informações",
+        "content": "No purr., usamos as informações coletadas principalmente para garantir o funcionamento ideal e a melhoria contínua do nosso aplicativo. Isso inclui a gestão e manutenção da plataforma, a personalização da experiência do usuário e a comunicação direta para fornecer atualizações e informações relevantes. Além disso, usamos esses dados para implementar medidas de segurança que ajudam a manter a plataforma segura."
+      },
+      "informationSharing": {
+        "title": "Compartilhando Suas Informações",
+        "content": "No purr., não vendemos nem alugamos informações pessoais de nossos usuários a terceiros. Podemos compartilhar informações com terceiros nas seguintes circunstâncias:",
+        "list": [
+          "Provedores de serviços que nos ajudam com serviços operacionais, como hospedagem na web e manutenção de dados.",
+          "Se necessário para cumprir uma lei ou regulamento, em resposta a uma solicitação legal, ordem judicial ou processo legal semelhante, ou para proteger nossos direitos ou propriedade."
+        ]
+      },
+      "privacyRights": {
+        "title": "Seus Direitos de Privacidade",
+        "content": "Como usuário do purr., você tem o direito de acessar, corrigir, atualizar ou excluir suas informações pessoais a qualquer momento. Se desejar exercer esses direitos, entre em contato conosco em {email}."
+      },
+      "informationSecurity": {
+        "title": "Segurança da Informação",
+        "content": "No purr., levamos a segurança das informações de nossos usuários muito a sério. Implementamos medidas de segurança técnicas e organizacionais para proteger as informações pessoais de nossos usuários contra acesso não autorizado, divulgação, alteração e destruição."
+      },
+      "policyUpdate": {
+        "title": "Atualizações da Política",
+        "content": "Podemos atualizar nossa política de privacidade periodicamente para refletir, por exemplo, mudanças em nossas práticas ou por outros motivos operacionais, legais ou regulatórios. Aconselhamos que você revise esta política periodicamente para se manter informado sobre como protegemos suas informações."
+      },
+      "contact": "Se você tiver dúvidas sobre esta política de privacidade, entre em contato conosco em {email}."
+    },
+    "cookiePolicy": {
+      "metaTitle": "Política de Cookies",
+      "title": "Política de Cookies do purr.",
+      "introduction": "No purr., valorizamos sua privacidade e queremos garantir que você entenda como e por que usamos cookies em nossa plataforma. Esta política de cookies explica o que são cookies, como os usamos e suas opções em relação ao seu uso.",
+      "whatAreCookies": {
+        "title": "O que são cookies?",
+        "content": "Cookies são pequenos arquivos de texto que são armazenados no seu dispositivo (computador, tablet, smartphone) quando você visita um site. Os cookies ajudam o site a reconhecer seu dispositivo e lembrar certas informações sobre suas visitas, melhorando sua experiência de navegação."
+      },
+      "cookiesExplain": {
+        "title": "Como usamos cookies?",
+        "content": "No purr., usamos diferentes tipos de cookies para diferentes finalidades. Aqui explicamos os cookies que usamos e por que precisamos deles:",
+        "essential": {
+          "title": "Cookies essenciais",
+          "content": "Esses cookies são necessários para o site funcionar corretamente. Sem eles, você não poderia usar algumas das funções básicas da nossa plataforma.",
+          "cookies": {
+            "session": {
+              "name": "purr_session",
+              "description": "Este cookie é usado para manter a sessão do usuário. É essencial para que você possa permanecer autenticado enquanto navega na plataforma."
+            },
+            "xsrf": {
+              "name": "XSRF-TOKEN",
+              "description": "Este cookie é usado para proteger contra ataques de falsificação de solicitação entre sites (CSRF). É essencial para a segurança da sua interação com o purr."
+            },
+            "gdpr": {
+              "name": "gdpr_cookie_consent",
+              "description": "Este cookie armazena seu consentimento para o uso de cookies em nossa plataforma, garantindo que cumprimos as regulamentações de proteção de dados."
+            }
+          }
+        },
+        "necessary": {
+          "title": "Cookies necessários",
+          "content": "Esses cookies não são estritamente essenciais, mas nos ajudam a oferecer uma melhor experiência de usuário.",
+          "cookies": {
+            "locale": {
+              "name": "locale",
+              "description": "Este cookie armazena a preferência de idioma do usuário não autenticado, permitindo que o aplicativo seja exibido no idioma correto quando você nos visita novamente."
+            }
+          }
+        }
+      },
+      "noTracking": {
+        "title": "Não usamos cookies de rastreamento",
+        "content": "No purr., não usamos cookies de rastreamento ou tecnologias semelhantes para monitorar seu comportamento online. Comprometemo-nos a não usar cookies para coletar informações sobre você para fins de marketing ou publicidade."
+      },
+      "cookieManagement": {
+        "title": "Gerenciamento de Cookies",
+        "content": "Você tem a opção de permitir ou desativar o uso de cookies em nossa plataforma. Você pode gerenciar suas preferências de cookies através das configurações do seu navegador. Observe que desativar cookies essenciais pode afetar a funcionalidade do site e sua experiência de usuário."
+      },
+      "policyUpdate": {
+        "title": "Atualizações da Política",
+        "content": "Podemos atualizar esta política de cookies de tempos em tempos para refletir mudanças em nossas práticas e serviços. Recomendamos revisar esta política periodicamente para se manter informado sobre como usamos cookies."
+      },
+      "contact": "Se você tiver alguma dúvida sobre nossa política de cookies, entre em contato conosco através do nosso {email}."
+    }
+  },
+  "app": {
+    "layout": {
+      "header": {
+        "login": "Entrar",
+        "register": "Cadastrar-se",
+        "admin": "Administrador",
+        "user": {
+          "avatarAlt": "Meu avatar"
+        },
+        "dropdown": {
+          "settings": "Configurações",
+          "logout": "Sair"
+        }
+      },
+      "sidebar": {
+        "search": "Procurar gatos",
+        "feed": "Meu feed",
+        "maps": "Mapas",
+        "create": "Criar",
+        "randomCat": "Gato aleatório",
+        "likes": "Meus curtidas",
+        "saves": "Meus salvos",
+        "addCat": "Adicionar um gato",
+        "explore": "Explorar",
+        "toggle": "Alternar barra lateral"
+      }
+    },
+    "settings": {
+      "metadata": {
+        "title": "Configurações"
+      },
+      "title": "Configurações",
+      "profileSettings": "Configurações do perfil",
+      "settings": {
+        "language": {
+          "name": "Idioma",
+          "description": "Selecione seu idioma preferido.",
+          "select": "Alterar idioma"
+        },
+        "deleteAccount": {
+          "name": "Excluir conta",
+          "dialog": {
+            "title": "ATENÇÃO! Você está prestes a excluir sua conta!",
+            "content": [
+              "Esta ação resultará na perda permanente e irreversível de acesso à sua conta.",
+              "Gatos registrados com mais de um proprietário não serão afetados. No entanto, gatos dos quais você é o único proprietário",
+              "serão excluídos permanentemente do purr.",
+              "Se você tiver certeza de que deseja continuar e sair da comunidade do purr., insira sua senha abaixo. Pressionar o botão excluirá permanentemente sua conta."
+            ],
+            "passwordInput": "Digite sua senha",
+            "cancel": "Cancelar",
+            "delete": "Excluir conta"
+          },
+          "toast": {
+            "success": "Sua conta foi excluída com sucesso. Os gatos estarão esperando seu retorno!",
+            "error": "Ocorreu um erro ao excluir sua conta",
+            "emptyPassword": "Por favor, insira sua senha para excluir sua conta.",
+            "wrongPassword": "A senha está incorreta"
+          },
+          "rickReference": {
+            "quote": "\"purr. nunca vai desistir de você, nunca vai decepcioná-lo, nunca vai fugir. purr. nunca vai fazer você chorar, nunca vai dizer adeus, nunca vai mentir e te machucar.\"",
+            "attribution": "- Rick Catsley (2024)"
+          }
+        },
+        "editProfile": {
+          "name": "Editar perfil",
+          "sheet": {
+            "title": "Editar perfil",
+            "avatarUpload": "Carregar avatar",
+            "name": "Nome",
+            "username": "Nome de usuário",
+            "email": "E-mail",
+            "avatar": "Avatar",
+            "password": "Senha",
+            "newPassword": "Nova senha",
+            "button": "Salvar alterações"
+          },
+          "validators": {
+            "name": {
+              "min": "O nome deve ter pelo menos 3 caracteres",
+              "max": "O nome não pode ter mais de 50 caracteres"
+            },
+            "username": {
+              "min": "O nome de usuário deve ter pelo menos 3 caracteres",
+              "max": "O nome de usuário não pode ter mais de 30 caracteres",
+              "regex": "O nome de usuário só pode conter letras, números, pontos e sublinhados"
+            },
+            "email": {
+              "email": "O e-mail não é válido"
+            },
+            "password": {
+              "required": "A senha é obrigatória"
+            },
+            "newPassword": {
+              "min": "A nova senha deve ter pelo menos 8 caracteres",
+              "max": "A nova senha não pode ter mais de 50 caracteres",
+              "regex": "A nova senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial ({chars})"
+            }
+          },
+          "toast": {
+            "avatarUpload": {
+              "success": "Avatar atualizado com sucesso",
+              "error": "Ocorreu um erro ao atualizar seu avatar"
+            },
+            "profileUpdate": {
+              "success": "Perfil atualizado com sucesso",
+              "error": "Ocorreu um erro ao atualizar seu perfil",
+              "wrongPassword": "A senha está incorreta"
+            },
+            "avatarDelete": {
+              "success": "Avatar excluído com sucesso",
+              "error": "Ocorreu um erro ao excluir seu avatar"
+            }
+          }
+        }
+      }
+    },
+    "posts": {
+      "detail": {
+        "metadata": {
+          "postBy": "Publicação de",
+          "notFound": "Publicação não encontrada"
+        },
+        "like": "curtir",
+        "likes": "curtidas",
+        "save": "salvo",
+        "saves": "salvos",
+        "logInToComment": "Você deve entrar para comentar",
+        "commentPlaceholder": "Escreva um comentário...",
+        "dotMenu": {
+          "approve": "Aprovar publicação",
+          "deleteAssociatedUser": "Excluir usuário associado a esta publicação",
+          "deletePost": {
+            "menuItem": "Excluir publicação",
+            "dialog": {
+              "title": "Excluir publicação",
+              "content": "Tem certeza de que deseja excluir esta publicação? Esta ação não pode ser desfeita.",
+              "buttons": {
+                "cancel": "Cancelar",
+                "delete": "Excluir"
+              }
+            }
+          }
+        },
+        "noCatsWarning": "purr. está procurando gatos nesta publicação, se você não ver nenhum gato, denuncie esta publicação.",
+        "toast": {
+          "fetchError": "Ocorreu um erro ao carregar a publicação",
+          "postDeleted": "Publicação excluída com sucesso",
+          "postApproved": "Publicação aprovada com sucesso",
+          "postAssociatedUserDeleted": "Usuário associado a esta publicação excluído com sucesso",
+          "deleteError": "Ocorreu um erro ao excluir a publicação",
+          "approveError": "Ocorreu um erro ao aprovar a publicação",
+          "deleteAssociatedUserError": "Ocorreu um erro ao excluir o usuário associado a esta publicação"
+        }
+      },
+      "create": {
+        "metadata": {
+          "title": "Criar uma publicação"
+        },
+        "noKittens": {
+          "title": "Você ainda não criou um perfil para seu gato",
+          "content": [
+            "Olá! Parece que você ainda não registrou nenhum gato no purr. Aqui, cada gato tem seu próprio perfil para que você possa compartilhar suas aventuras e fotos.",
+            "Que tal criarmos um perfil para seu gato agora? É rápido e fácil!"
+          ],
+          "button": "Criar perfil agora"
+        },
+        "mediaInput": {
+          "title": "Compartilhe um momento felino",
+          "content": "Arraste ou clique para compartilhar conteúdo de seu amigo felino no purr.",
+          "format": "Máx. {mb}MB, formatos: {formats}"
+        },
+        "mediaDashboard": {
+          "back": "Voltar",
+          "noCatsDetected": "Nenhum gato detectado na imagem",
+          "catSelectionLabel": "Qual gato fará a publicação?",
+          "captionLabel": "Adicionar uma descrição",
+          "captionPlaceholder": "Escreva uma descrição para a publicação",
+          "button": "Publicar",
+          "catlessButton": "Publicar",
+          "quotes": {
+            "none": [
+              "Pspspsps... Onde estão os gatos?",
+              "Não há gatos por aqui!",
+              "Radar felino: nenhum gato à vista!",
+              "Verifiquei duas vezes, mas não encontrei nenhum gato."
+            ],
+            "single": [
+              "Parece que há um gato por aqui",
+              "Um gato purrfeito!",
+              "Um gatinho solitário está espiando",
+              "Temos um visitante felino aqui"
+            ],
+            "multiple": [
+              "Olhe todos esses gatos!",
+              "Gatos por toda parte!",
+              "É um mar de orelhas pontudas e rabos fofos!",
+              "Gatos, gatos e mais gatos!"
+            ]
+          },
+          "noCatDialog": {
+            "title": "Nenhum gato detectado na imagem",
+            "content": [
+              "A IA não conseguiu identificar nenhum gato na publicação, se realmente houver um gato na foto, não se preocupe! Você ainda pode carregar a imagem do seu gato.",
+              "A publicação será revisada manualmente e aprovada assim que um gato for identificado.",
+              "Observe que carregar conteúdo não felino no purr. vai contra os termos e condições do purr. e pode resultar em um banimento permanente da plataforma."
+            ],
+            "publish": "Publicar",
+            "noPublish": "Não publicar"
+          }
+        },
+        "errors": {
+          "noCatSelected": "Você deve selecionar um gato para criar uma publicação.",
+          "createError": "Ocorreu um erro ao criar a publicação",
+          "analyzeError": "Ocorreu um erro ao analisar a imagem"
+        }
+      },
+      "components": {
+        "endOfFeed": {
+          "title": "Seus gatinhos favoritos já compartilharam todos os seus momentos com você e agora estão descansando. Por que não explora mais gatos agora?",
+          "button": "Explorar mais gatos"
+        },
+        "postCard": {
+          "viewAllComments": "Ver todos os comentários"
+        },
+        "contextMenu": {
+          "detail": "Ver publicação",
+          "download": "Baixar imagem"
+        },
+        "gridCard": {
+          "noCaption": "Sem descrição",
+          "likes": "curtidas",
+          "comments": "comentários",
+          "saves": "salvos"
+        }
+      },
+      "feed": {
+        "noFollows": {
+          "title": "Bem-vindo(a) ao purr.",
+          "content": "Parece que você ainda não segue nenhum gatinho. Que catástrofe! Por que não segue alguns desses lindos gatos?"
+        }
+      },
+      "explore": {
+        "metadata": {
+          "title": "Explorar"
+        }
+      },
+      "saves": {
+        "metadata": {
+          "title": "Salvos"
+        },
+        "noPosts": "Você não salvou nenhuma publicação"
+      },
+      "likes": {
+        "metadata": {
+          "title": "Curtidas"
+        },
+        "noPosts": "Você não marcou nenhuma publicação como curtida"
+      },
+      "toast": {
+        "noLoggedIn": {
+          "save": "Você deve entrar para salvar uma publicação",
+          "delete": "Você deve entrar para excluir uma publicação",
+          "like": "Você deve entrar para curtir uma publicação"
+        },
+        "likeError": "Ocorreu um erro ao curtir a publicação",
+        "unlikeError": "Ocorreu um erro ao remover a curtida da publicação",
+        "saveError": "Ocorreu um erro ao salvar a publicação",
+        "unsaveError": "Ocorreu um erro ao remover a publicação dos salvos",
+        "fetchError": "Ocorreu um erro ao carregar as publicações"
+      }
+    },
+    "comments": {
+      "dotMenu": {
+        "delete": "Excluir comentário",
+        "noActions": "Nenhuma ação disponível"
+      },
+      "toast": {
+        "likeError": "Ocorreu um erro ao curtir o comentário",
+        "unlikeError": "Ocorreu um erro ao remover a curtida do comentário",
+        "noLoggedIn": "Você deve entrar para curtir um comentário",
+        "maxLength": "O comentário não pode ter mais de {length} caracteres",
+        "deleteSuccess": "Comentário excluído com sucesso",
+        "deleteError": "Ocorreu um erro ao excluir o comentário",
+        "fetchError": "Ocorreu um erro ao carregar os comentários",
+        "createError": "Ocorreu um erro ao criar o comentário"
+      }
+    },
+    "cats": {
+      "create": {
+        "createCat": {
+          "metadata": {
+            "title": "Criar um novo gato"
+          },
+          "steps": {
+            "starting": {
+              "title": "Bem-vindo seu gato ao purr.!",
+              "description": "Para começar, diga-nos o nome do seu gato e o catname que você quer usar.",
+              "alreadyExists": "Seu gato já pertence a outro dono? Adicione-o à sua coleção!",
+              "form": {
+                "name": "Nome do gato",
+                "catname": "Catname",
+                "catnameTooltip": "O catname é um nome único que identifica seu gato no purr. Seja original!",
+                "biography": "Biografia"
+              }
+            },
+            "traits": {
+              "title": "Conte-nos mais sobre seu gato",
+              "description": "Agora, conte-nos mais detalhes sobre seu gato. Quanto mais detalhes você nos der, mais seu gato se destacará no purr.",
+              "form": {
+                "sex": {
+                  "label": "Sexo",
+                  "options": {
+                    "male": "Macho",
+                    "female": "Fêmea"
+                  }
+                },
+                "breed": "Raça do gato",
+                "color": "Cor do gato",
+                "birthdate": {
+                  "label": "Data de nascimento",
+                  "placeholder": "Selecione a data de nascimento do seu gato",
+                  "description": "Se você não souber, pode sempre colocar a data em que pegou o gato."
+                },
+                "adoption": {
+                  "label": "O gato está para adoção",
+                  "description": "Ao marcar esta caixa, os usuários poderão ver que o gato está procurando um novo dono e poderão entrar em contato com você."
+                }
+              }
+            },
+            "password": {
+              "title": "Proteja seu gato",
+              "description": "Finalmente, adicione uma senha para proteger seu gato e poder compartilhá-lo com outros donos.",
+              "form": {
+                "password": "Senha",
+                "passwordConfirmation": "Confirme a senha"
+              }
+            }
+          },
+          "controls": {
+            "back": "Voltar",
+            "next": "Próximo",
+            "finalize": "Finalizar"
+          },
+          "toast": {
+            "noPassword": "A senha e sua confirmação são obrigatórias",
+            "passwordsDontMatch": "As senhas não coincidem",
+            "success": "Seu gato foi criado com sucesso!",
+            "error": "Ocorreu um erro ao criar seu gato",
+            "sex": "O sexo é obrigatório",
+            "birthdate": "A data de nascimento é obrigatória",
+            "catnameInUse": "O catname já está em uso ou não é válido, por favor, escolha outro",
+            "checkingCatname": "Estamos verificando o catname, por favor, aguarde alguns segundos...",
+            "startingStepFields": "O nome do gato e o catname são obrigatórios",
+            "catnameAvailable": "O catname está disponível",
+            "catnameCheckError": "Ocorreu um erro ao verificar o catname",
+            "avatarAnalysisSuccess": "Gato detectado! Parece ótimo!",
+            "avatarAnalysisError": "Nenhum gato detectado no avatar."
+          },
+          "validators": {
+            "catname": {
+              "required": "O catname é obrigatório",
+              "regex": "O catname só pode conter letras, números, pontos e sublinhados",
+              "min": "O catname deve ter pelo menos 3 caracteres",
+              "max": "O catname não pode ter mais de 30 caracteres"
+            }
+          }
+        },
+        "addACat": {
+          "content": {
+            "title": "Adicionar um gato de outro dono",
+            "description": "Se você já tem o catname e a senha de um gato, pode adicioná-lo à sua lista de gatos.",
+            "catname": "Catname do gato",
+            "password": "Senha",
+            "button": "Adicionar gato"
+          },
+          "validators": {
+            "catname": {
+              "required": "O catname é obrigatório",
+              "regex": "O catname não é válido"
+            },
+            "password": {
+              "required": "A senha é obrigatória"
+            }
+          },
+          "toast": {
+            "success": "Agora você é dono de {cat_name}. Parabéns!",
+            "alreadyOwn": "O gato com esse catname já pertence a você",
+            "wrongPassword": "A senha está incorreta",
+            "error": "Ocorreu um erro ao adicionar o gato"
+          }
+        }
+      },
+      "edit": {
+        "sheet": {
+          "title": "Editar gato",
+          "avatarUpload": "Carregar avatar",
+          "name": "Nome",
+          "catname": "Catname",
+          "biography": "Biografia",
+          "breed": "Raça",
+          "color": "Cor",
+          "password": "Senha",
+          "newPassword": "Nova senha",
+          "newPasswordConfirmation": "Confirmar nova senha",
+          "button": "Salvar alterações"
+        },
+        "validators": {
+          "name": {
+            "min": "O nome deve ter pelo menos 3 caracteres",
+            "max": "O nome não pode ter mais de 50 caracteres"
+          },
+          "catname": {
+            "min": "O catname deve ter pelo menos 3 caracteres",
+            "max": "O catname não pode ter mais de 30 caracteres",
+            "regex": "O catname só pode conter letras, números, pontos e sublinhados"
+          },
+          "biography": {
+            "max": "A biografia não pode ter mais de 255 caracteres"
+          },
+          "breed": {
+            "min": "A raça deve ter pelo menos 3 caracteres",
+            "max": "A raça não pode ter mais de 50 caracteres"
+          },
+          "color": {
+            "min": "A cor deve ter pelo menos 3 caracteres",
+            "max": "A cor não pode ter mais de 50 caracteres"
+          },
+          "birthdate": {
+            "required": "A data de nascimento é obrigatória"
+          },
+          "password": {
+            "required": "A senha é obrigatória"
+          },
+          "newPassword": {
+            "min": "A nova senha deve ter pelo menos 8 caracteres",
+            "max": "A nova senha não pode ter mais de 50 caracteres",
+            "regex": "A nova senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial ({chars})"
+          }
+        },
+        "toast": {
+          "avatarUpload": {
+            "success": "Avatar atualizado com sucesso",
+            "error": "Ocorreu um erro ao atualizar o avatar",
+            "noCats": "Nenhum gato encontrado no avatar"
+          }
+        }
+      },
+      "profile": {
+        "metadata": {
+          "notFound": "Gato não encontrado"
+        },
+        "notFound": {
+          "title": "Oh não! Este gato escapou!",
+          "content": "Parece que este gato não está no purr. ou foi excluído. Oh não! Por que não explora outros gatos?",
+          "button": "Explorar"
+        },
+        "noPosts": "Este gato ainda não compartilhou nenhum momento no purr.",
+        "profilePage": {
+          "badges": {
+            "adoptable": "Adote-me!"
+          },
+          "noBiography": "Este gato ainda não tem uma biografia",
+          "breed": "Raça",
+          "color": "Cor",
+          "birthdate": "Nascimento",
+          "followers": "seguidores",
+          "followState": {
+            "button": {
+              "follow": "Seguir",
+              "unfollow": "Deixar de seguir"
+            },
+            "toast": {
+              "followed": "Agora você segue {cat_name}!",
+              "unfollowed": "Você deixou de seguir {cat_name}",
+              "noLoggedIn": "Você deve entrar para seguir um gato",
+              "error": "Ocorreu um erro ao seguir ou deixar de seguir {cat_name}"
+            }
+          },
+          "dotMenu": {
+            "deleteCat": {
+              "menuItem": "Excluir gato",
+              "dialog": {
+                "title": "Excluir {cat_name}",
+                "content": "Tem certeza de que deseja excluir {cat_name}? Esta ação não pode ser desfeita.",
+                "buttons": {
+                  "cancel": "Cancelar",
+                  "delete": "Excluir"
+                }
+              }
+            },
+            "deleteCatAssociatedUsers": "Excluir usuários associados a este gato"
+          }
+        },
+        "toast": {
+          "fetchError": "Ocorreu um erro ao carregar o perfil do gato"
+        }
+      },
+      "random": {
+        "toast": {
+          "fetchError": "Ocorreu um erro ao carregar um gato aleatório",
+          "noCats": {
+            "title": "Não encontramos nenhum gato :(",
+            "description": "Quer que o seu seja o primeiro?",
+            "button": "Sim!"
+          }
+        }
+      }
+    },
+    "entity": {
+      "create": {
+        "metadata": {
+          "title": "Registrar uma entidade"
+        }
+      }
+    },
+    "utils": {
+      "loading": "Carregando...",
+      "catAvatar": {
+        "alt": "Avatar do gato"
+      },
+      "share": {
+        "label": "Compartilhar",
+        "copyLink": "Copiar link",
+        "copiedLink": "Link copiado para a área de transferência"
+      },
+      "imageChecker": {
+        "fileSizeError": "A imagem não pode ser maior que {mb}MB",
+        "fileTypeError": "Formato de imagem não suportado. Apenas os seguintes formatos são permitidos: {formats}"
+      }
+    },
+    "maps": {
+      "metadata": {
+        "title": "Mapa"
+      },
+      "webpage": "Página web",
+      "noWebpage": "Sem página web",
+      "error": "Ocorreu um erro ao carregar o mapa"
+    },
+    "search": {
+      "noResults": "Nenhum resultado encontrado",
+      "error": "Ocorreu um erro ao procurar",
+      "placeholder": "Onde será que está aquele gato?",
+      "groupLabels": {
+        "cats": "Gatos encontrados",
+        "recentlyViewed": "Vistos recentemente"
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "metaTitle": "Entrar",
+      "email": "E-mail",
+      "password": "Senha",
+      "button": "Entrar",
+      "noAccount": {
+        "content": "Não tem uma conta?",
+        "link": "Cadastre-se!"
+      }
+    },
+    "register": {
+      "metaTitle": "Cadastrar-se",
+      "name": "Nome",
+      "username": "Nome de usuário",
+      "usernameHelp": "O nome de usuário é único e só pode conter letras, números, pontos e sublinhados",
+      "email": "E-mail",
+      "password": "Senha",
+      "passwordConfirmation": "Confirmar senha",
+      "button": "Cadastrar-se",
+      "haveAccount": {
+        "content": "Já tem uma conta?",
+        "link": "Entrar!"
+      }
+    },
+    "google": "Continuar com o Google"
+  },
+  "response": {
+    "These credentials do not match our records": "Credenciais incorretas"
+  },
+  "errors": {
+    "serverError": "Ocorreu um erro no servidor. Por favor, tente novamente mais tarde.",
+    "tooManyRequests": "Você fez muitas solicitações, por favor, tente novamente mais tarde."
+  },
+  "slogan": "A rede social feita por gatos, para humanos",
+  "cookieBanner": {
+    "message": "purr. usa apenas cookies necessários para o funcionamento correto do site. Se você aceitá-los, poderá desfrutar de todas as funcionalidades do purr.",
+    "accept": "Aceitar",
+    "reject": "Rejeitar",
+    "toast": {
+      "saved": "Suas preferências de cookies foram salvas"
+    }
+  },
+  "pageNotFound": {
+    "title": "Oh não! Este lugar está vazio!",
+    "content": "Parece que a página que você está procurando não existe. Por que não volta para a página inicial?"
+  }
+}

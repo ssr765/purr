@@ -6,39 +6,783 @@
       "ai": "AI",
       "faqs": "FAQs",
       "techs": "Technologies",
-      "cta": "Access to purr.",
-      "sr": "Open main menu"
+      "cta": "Access purr.",
+      "sr": "Open menu"
+    },
+    "footer": {
+      "privacyPolicy": "Privacy Policy",
+      "cookiePolicy": "Cookie Policy",
+      "content": "The social network made by cats, for humans.",
+      "rights": "All rights reserved."
     },
     "home": {
-      "hero": "Explore the cat universe"
+      "hero": "Explore the feline universe",
+      "testimonials": {
+        "title": "What users say",
+        "content": "The cats on the platform are very satisfied using our application.",
+        "quote": "\"Meow, meow meow meow meow. Meow meow, meow meow meow meow meow meow. Meow meow meow, meow meow meow. *purrs* Meow meow meow, meow meow MEOW MEOW.\"",
+        "author": {
+          "name": "Bicho",
+          "species": "Cat"
+        }
+      },
+      "concept": {
+        "title": "The social network for cats",
+        "content": [
+          "purr. is a unique social network specially designed for cat lovers. Here, cats become the true protagonists with their own profile.",
+          "It is a fun and safe place where the feline community can gather, explore, and connect."
+        ],
+        "screenshot": {
+          "alt": "purr. exploration page"
+        },
+        "button": "Sign up now!"
+      },
+      "features": {
+        "analysis": "AI cat detection",
+        "maps": "Interactive maps",
+        "catContent": "100% feline",
+        "meetLovers": "Meet cat lovers",
+        "adoption": "Facilitates adoption"
+      },
+      "unique": {
+        "title": "What makes purr. so special?",
+        "content": [
+          "In addition to being a space for feline entertainment and expression, purr. facilitates the adoption of cats by providing detailed profiles of cats that need a home. This feature not only allows potential adopters to better know their future companions but also simplifies the process of finding a loving home for each cat. Making adoption an accessible and personal experience is one of our priorities.",
+          "Another distinctive service of purr. is our interactive maps, which allow users to easily locate veterinarians, cat cafes, pet product stores, and animal shelters in their area. This tool is invaluable for cat owners as it provides quick access to essential resources, promoting a more integrated and conscious lifestyle for the well-being of their pets."
+        ],
+        "button": "Discover more"
+      },
+      "ai": {
+        "title": "Exclusively feline content on purr.",
+        "content": [
+          "We employ advanced artificial intelligence technology to ensure that all uploaded images and videos truly celebrate the world of cats. We use an AI model, based on PyTorch, that has been specially trained with over 10,000 cat images to accurately recognize only feline content.",
+          "This ensures that every piece of content you see has been validated by our cutting-edge technology, keeping purr. authentic and true to its feline spirit."
+        ],
+        "button": "Discover more"
+      },
+      "cta": {
+        "title": "Do you want to join the purr. community?",
+        "content": "Sign up now and start enjoying the feline experience.",
+        "cta": "Start now"
+      }
+    },
+    "underConstruction": {
+      "title": "The kittens are working on it!",
+      "content": "This page is currently under construction. Come back soon to see the latest updates!"
+    },
+    "privacyPolicy": {
+      "metaTitle": "Privacy Policy",
+      "title": "purr. Privacy Policy",
+      "introduction": "At purr., we value the privacy of our users and are committed to protecting their personal data. This privacy policy explains how we collect, use, and share information about our users and their pets within our application. By using purr., you agree to the collection and use of information in accordance with this policy.",
+      "informationCollected": {
+        "title": "Information Collected",
+        "userSpecific": {
+          "title": "User-specific information",
+          "name": {
+            "name": "Name",
+            "description": "Your name is visible to other users on the platform and is used to personalize the purr. experience."
+          },
+          "email": {
+            "name": "Email",
+            "description": "We use your email to set up and manage your account and for account security communications."
+          },
+          "googleTitle": "Google Information",
+          "googleId": {
+            "name": "Google ID",
+            "description": "We use your Google ID to authenticate you on purr. and to associate your Google account with your purr. account."
+          },
+          "googleAvatar": {
+            "name": "Google Avatar",
+            "description": "If you choose to sign in with Google, we will use your Google avatar as your purr. account avatar."
+          }
+        },
+        "catSpecific": {
+          "title": "Cat-specific information",
+          "traits": {
+            "name": "Name, breed, color, date of birth, and sex",
+            "description": "These details are used to create a unique profile for your cat and to help other users get to know your pet better."
+          },
+          "adoption": {
+            "name": "Adoption status",
+            "description": "We collect this information to help connect cats in need of a new home with potential adopters."
+          }
+        }
+      },
+      "informationUse": {
+        "title": "Use of Information",
+        "content": "At purr., we primarily use the collected information to ensure the optimal functioning and continuous improvement of our application. This includes managing and maintaining the platform, personalizing the user experience, and direct communication to provide updates and relevant information. Additionally, we use this data to implement security measures that help keep the platform safe."
+      },
+      "informationSharing": {
+        "title": "Sharing Your Information",
+        "content": "At purr., we do not sell or rent our users' personal information to third parties. We may share information with third parties under the following circumstances:",
+        "list": [
+          "Service providers who assist us with operational services such as web hosting and data maintenance.",
+          "If necessary to comply with a law or regulation, in response to a legal request, court order, or similar legal process, or to protect our rights or property."
+        ]
+      },
+      "privacyRights": {
+        "title": "Your Privacy Rights",
+        "content": "As a purr. user, you have the right to access, correct, update, or delete your personal information at any time. If you wish to exercise these rights, please contact us at {email}."
+      },
+      "informationSecurity": {
+        "title": "Information Security",
+        "content": "At purr., we take our users' information security very seriously. We implement technical and organizational security measures to protect our users' personal information from unauthorized access, disclosure, alteration, and destruction."
+      },
+      "policyUpdate": {
+        "title": "Policy Updates",
+        "content": "We may update our privacy policy periodically to reflect, for example, changes in our practices or for other operational, legal, or regulatory reasons. We advise you to review this policy periodically to stay informed about how we protect your information."
+      },
+      "contact": "If you have questions about this privacy policy, please contact us at {email}."
+    },
+    "cookiePolicy": {
+      "metaTitle": "Cookie Policy",
+      "title": "purr. Cookie Policy",
+      "introduction": "At purr., we value your privacy and want to ensure you understand how and why we use cookies on our platform. This cookie policy explains what cookies are, how we use them, and your options regarding their use.",
+      "whatAreCookies": {
+        "title": "What are cookies?",
+        "content": "Cookies are small text files that are stored on your device (computer, tablet, smartphone) when you visit a website. Cookies help the website recognize your device and remember certain information about your visits, thus improving your browsing experience."
+      },
+      "cookiesExplain": {
+        "title": "How do we use cookies?",
+        "content": "At purr., we use different types of cookies for different purposes. Here we explain the cookies we use and why we need them:",
+        "essential": {
+          "title": "Essential cookies",
+          "content": "These cookies are necessary for the website to function properly. Without them, you would not be able to use some of the basic functions of our platform.",
+          "cookies": {
+            "session": {
+              "name": "purr_session",
+              "description": "This cookie is used to maintain the user's session. It is essential for you to stay authenticated while navigating the platform."
+            },
+            "xsrf": {
+              "name": "XSRF-TOKEN",
+              "description": "This cookie is used to protect against Cross-Site Request Forgery (CSRF) attacks. It is essential for the security of your interaction with purr."
+            },
+            "gdpr": {
+              "name": "gdpr_cookie_consent",
+              "description": "This cookie stores your consent for the use of cookies on our platform, ensuring we comply with data protection regulations."
+            }
+          }
+        },
+        "necessary": {
+          "title": "Necessary cookies",
+          "content": "These cookies are not strictly essential, but they help us provide a better user experience.",
+          "cookies": {
+            "locale": {
+              "name": "locale",
+              "description": "This cookie stores the language preference of the unauthenticated user, allowing the application to display in the correct language when you revisit us."
+            }
+          }
+        }
+      },
+      "noTracking": {
+        "title": "We do not use tracking cookies",
+        "content": "At purr., we do not use tracking cookies or similar technologies to monitor your online behavior. We commit to not using cookies to collect information about you for marketing or advertising purposes."
+      },
+      "cookieManagement": {
+        "title": "Cookie management",
+        "content": "You have the option to allow or disable the use of cookies on our platform. You can manage your cookie preferences through your browser settings. Note that disabling essential cookies may affect the functionality of the website and your user experience."
+      },
+      "policyUpdate": {
+        "title": "Policy updates",
+        "content": "We may update this cookie policy from time to time to reflect changes in our practices and services. We recommend reviewing this policy periodically to stay informed about how we use cookies."
+      },
+      "contact": "If you have any questions about our cookie policy, please contact us via our {email}."
     }
   },
   "app": {
+    "layout": {
+      "header": {
+        "login": "Log in",
+        "register": "Sign up",
+        "admin": "Admin",
+        "user": {
+          "avatarAlt": "My avatar"
+        },
+        "dropdown": {
+          "settings": "Settings",
+          "logout": "Log out"
+        }
+      },
+      "sidebar": {
+        "search": "Search cats",
+        "feed": "My feed",
+        "maps": "Maps",
+        "create": "Create",
+        "randomCat": "Random cat",
+        "likes": "My likes",
+        "saves": "My saves",
+        "addCat": "Add a cat",
+        "explore": "Explore",
+        "toggle": "Toggle sidebar"
+      }
+    },
+    "settings": {
+      "metadata": {
+        "title": "Settings"
+      },
+      "title": "Settings",
+      "profileSettings": "Profile settings",
+      "settings": {
+        "language": {
+          "name": "Language",
+          "description": "Select your preferred language.",
+          "select": "Change language"
+        },
+        "deleteAccount": {
+          "name": "Delete account",
+          "dialog": {
+            "title": "WARNING! You are about to delete your account!",
+            "content": [
+              "This action will result in the permanent and irreversible loss of access to your account.",
+              "Cats registered with more than one owner will not be affected. However, cats of which you are the only owner",
+              "will be permanently deleted from purr.",
+              "If you are sure you want to proceed and leave the purr. community, enter your password below. Pressing the button will permanently delete your account."
+            ],
+            "passwordInput": "Enter your password",
+            "cancel": "Cancel",
+            "delete": "Delete account"
+          },
+          "toast": {
+            "success": "Your account has been successfully deleted. The cats will be waiting for your return!",
+            "error": "There was an error deleting your account",
+            "emptyPassword": "Please enter your password to delete your account.",
+            "wrongPassword": "The password is incorrect"
+          },
+          "rickReference": {
+            "quote": "\"purr. will never give you up, never let you down, never run around. purr. will never make you cry, never say goodbye, never tell a lie and hurt you.\"",
+            "attribution": "- Rick Catsley (2024)"
+          }
+        },
+        "editProfile": {
+          "name": "Edit profile",
+          "sheet": {
+            "title": "Edit profile",
+            "avatarUpload": "Upload avatar",
+            "name": "Name",
+            "username": "Username",
+            "email": "Email",
+            "avatar": "Avatar",
+            "password": "Password",
+            "newPassword": "New password",
+            "button": "Save changes"
+          },
+          "validators": {
+            "name": {
+              "min": "The name must be at least 3 characters long",
+              "max": "The name cannot be longer than 50 characters"
+            },
+            "username": {
+              "min": "The username must be at least 3 characters long",
+              "max": "The username cannot be longer than 30 characters",
+              "regex": "The username can only contain letters, numbers, dots, and underscores"
+            },
+            "email": {
+              "email": "The email is not valid"
+            },
+            "password": {
+              "required": "The password is required"
+            },
+            "newPassword": {
+              "min": "The new password must be at least 8 characters long",
+              "max": "The new password cannot be longer than 50 characters",
+              "regex": "The new password must contain at least one uppercase letter, one lowercase letter, one number, and one special character ({chars})"
+            }
+          },
+          "toast": {
+            "avatarUpload": {
+              "success": "Avatar updated successfully",
+              "error": "There was an error updating your avatar"
+            },
+            "profileUpdate": {
+              "success": "Profile updated successfully",
+              "error": "There was an error updating your profile",
+              "wrongPassword": "The password is incorrect"
+            },
+            "avatarDelete": {
+              "success": "Avatar deleted successfully",
+              "error": "There was an error deleting your avatar"
+            }
+          }
+        }
+      }
+    },
     "posts": {
+      "detail": {
+        "metadata": {
+          "postBy": "Post by",
+          "notFound": "Post not found"
+        },
+        "like": "like",
+        "likes": "likes",
+        "save": "saved",
+        "saves": "saves",
+        "logInToComment": "You must log in to comment",
+        "commentPlaceholder": "Write a comment...",
+        "dotMenu": {
+          "approve": "Approve post",
+          "deleteAssociatedUser": "Delete user associated with this post",
+          "deletePost": {
+            "menuItem": "Delete post",
+            "dialog": {
+              "title": "Delete post",
+              "content": "Are you sure you want to delete this post? This action cannot be undone.",
+              "buttons": {
+                "cancel": "Cancel",
+                "delete": "Delete"
+              }
+            }
+          }
+        },
+        "noCatsWarning": "purr. is looking for cats in this post, if you don't see any cats, report this post.",
+        "toast": {
+          "fetchError": "There was an error loading the post",
+          "postDeleted": "Post deleted successfully",
+          "postApproved": "Post approved successfully",
+          "postAssociatedUserDeleted": "The user associated with this post has been deleted successfully",
+          "deleteError": "There was an error deleting the post",
+          "approveError": "There was an error approving the post",
+          "deleteAssociatedUserError": "There was an error deleting the user associated with this post"
+        }
+      },
       "create": {
+        "metadata": {
+          "title": "Create a post"
+        },
+        "noKittens": {
+          "title": "You haven't created a profile for your cat yet",
+          "content": [
+            "Hello! It seems you haven't registered any cats on purr. yet. Here, each cat has its own profile so you can share their adventures and photos.",
+            "Why don't we create a profile for your cat now? It's quick and easy!"
+          ],
+          "button": "Create the profile now"
+        },
+        "mediaInput": {
+          "title": "Share a feline moment",
+          "content": "Drag or click to share content of your feline friend on purr.",
+          "format": "Max. {mb}MB, formats: {formats}"
+        },
         "mediaDashboard": {
+          "back": "Back",
+          "noCatsDetected": "No cats detected in the image",
+          "catSelectionLabel": "Which cat will make the post?",
+          "captionLabel": "Add a description",
+          "captionPlaceholder": "Write a description for the post",
+          "button": "Post",
+          "catlessButton": "Post",
           "quotes": {
             "none": [
               "Pspspsps... Where are the cats?",
               "No cats around here!",
               "Feline radar: no cats in sight!",
-              "Checked twice, but no cats found."
+              "I checked twice, but didn't find any cats."
             ],
             "single": [
-              "Seems there's a cat around here",
-              "A perrrrfect cat!",
-              "There peeks a solitary kitty",
+              "Looks like there's a cat around here",
+              "A purrfect cat!",
+              "A lonely kitty is peeking out",
               "We have a feline visitor here"
             ],
             "multiple": [
               "Look at all these cats!",
               "Cats everywhere!",
-              "It's a sea of pointy ears and fluffy tails!",
+              "It's a sea of pointed ears and fluffy tails!",
               "Cats, cats, and more cats!"
             ]
+          },
+          "noCatDialog": {
+            "title": "No cats detected in the image",
+            "content": [
+              "The AI couldn't identify any cats in the post, if there is indeed a cat in the photo, don't worry! You can still upload your cat's image.",
+              "The post will be reviewed manually and approved once a cat is identified.",
+              "Please note that uploading non-feline content to purr. is against the terms and conditions of purr. and may result in a permanent ban from the platform."
+            ],
+            "publish": "Post",
+            "noPublish": "Don't post"
+          }
+        },
+        "errors": {
+          "noCatSelected": "You must select a cat to create a post.",
+          "createError": "There was an error creating the post",
+          "analyzeError": "There was an error analyzing the image"
+        }
+      },
+      "components": {
+        "endOfFeed": {
+          "title": "Your favorite kitties have already shared all their moments with you and are now resting. Why don't you explore more cats now?",
+          "button": "Explore more cats"
+        },
+        "postCard": {
+          "viewAllComments": "View all comments"
+        },
+        "contextMenu": {
+          "detail": "View post",
+          "download": "Download image"
+        },
+        "gridCard": {
+          "noCaption": "No description",
+          "likes": "likes",
+          "comments": "comments",
+          "saves": "saves"
+        }
+      },
+      "feed": {
+        "noFollows": {
+          "title": "Welcome to purr.",
+          "content": "It seems you haven't followed any kitties yet. What a catastrophe! Why don't you follow some of these beautiful cats?"
+        }
+      },
+      "explore": {
+        "metadata": {
+          "title": "Explore"
+        }
+      },
+      "saves": {
+        "metadata": {
+          "title": "Saves"
+        },
+        "noPosts": "You haven't saved any posts"
+      },
+      "likes": {
+        "metadata": {
+          "title": "Likes"
+        },
+        "noPosts": "You haven't liked any posts"
+      },
+      "toast": {
+        "noLoggedIn": {
+          "save": "You must log in to save a post",
+          "delete": "You must log in to delete a post",
+          "like": "You must log in to like a post"
+        },
+        "likeError": "There was an error liking the post",
+        "unlikeError": "There was an error unliking the post",
+        "saveError": "There was an error saving the post",
+        "unsaveError": "There was an error unsaving the post",
+        "fetchError": "There was an error loading the posts"
+      }
+    },
+    "comments": {
+      "dotMenu": {
+        "delete": "Delete comment",
+        "noActions": "No actions available"
+      },
+      "toast": {
+        "likeError": "There was an error liking the comment",
+        "unlikeError": "There was an error unliking the comment",
+        "noLoggedIn": "You must log in to like a comment",
+        "maxLength": "The comment cannot be longer than {length} characters",
+        "deleteSuccess": "Comment deleted successfully",
+        "deleteError": "There was an error deleting the comment",
+        "fetchError": "There was an error loading the comments",
+        "createError": "There was an error creating the comment"
+      }
+    },
+    "cats": {
+      "create": {
+        "createCat": {
+          "metadata": {
+            "title": "Create a new cat"
+          },
+          "steps": {
+            "starting": {
+              "title": "Welcome your cat to purr.!",
+              "description": "To start, tell us your cat's name and the catname you want to use.",
+              "alreadyExists": "Does your cat already belong to another owner? Add it to your collection!",
+              "form": {
+                "name": "Cat's name",
+                "catname": "Catname",
+                "catnameTooltip": "The catname is a unique name that identifies your cat on purr. Be original!",
+                "biography": "Biography"
+              }
+            },
+            "traits": {
+              "title": "Tell us more about your cat",
+              "description": "Now, tell us more details about your cat. The more details you give us, the more your cat will stand out on purr.",
+              "form": {
+                "sex": {
+                  "label": "Sex",
+                  "options": {
+                    "male": "Male",
+                    "female": "Female"
+                  }
+                },
+                "breed": "Cat's breed",
+                "color": "Cat's color",
+                "birthdate": {
+                  "label": "Date of birth",
+                  "placeholder": "Select your cat's birth date",
+                  "description": "If you don't know it, you can always put the date you got the cat."
+                },
+                "adoption": {
+                  "label": "The cat is up for adoption",
+                  "description": "By checking this box, users will be able to see that the cat is looking for a new owner and can contact you."
+                }
+              }
+            },
+            "password": {
+              "title": "Protect your cat",
+              "description": "Finally, add a password to protect your cat and be able to share it with other owners.",
+              "form": {
+                "password": "Password",
+                "passwordConfirmation": "Confirm password"
+              }
+            }
+          },
+          "controls": {
+            "back": "Back",
+            "next": "Next",
+            "finalize": "Finish"
+          },
+          "toast": {
+            "noPassword": "The password and its confirmation are required",
+            "passwordsDontMatch": "The passwords do not match",
+            "success": "Your cat has been successfully created!",
+            "error": "There was an error creating your cat",
+            "sex": "The sex is required",
+            "birthdate": "The date of birth is required",
+            "catnameInUse": "The catname is already in use or not valid, please choose another",
+            "checkingCatname": "We are checking the catname, please wait a few seconds...",
+            "startingStepFields": "The cat's name and catname are required",
+            "catnameAvailable": "The catname is available",
+            "catnameCheckError": "There was an error checking the catname",
+            "avatarAnalysisSuccess": "Cat detected! Looks great!",
+            "avatarAnalysisError": "No cat detected in the avatar."
+          },
+          "validators": {
+            "catname": {
+              "required": "The catname is required",
+              "regex": "The catname can only contain letters, numbers, dots, and underscores",
+              "min": "The catname must be at least 3 characters long",
+              "max": "The catname cannot be longer than 30 characters"
+            }
+          }
+        },
+        "addACat": {
+          "content": {
+            "title": "Add a cat from another owner",
+            "description": "If you already have the catname and password of a cat, you can add it to your list of cats.",
+            "catname": "Cat's catname",
+            "password": "Password",
+            "button": "Add cat"
+          },
+          "validators": {
+            "catname": {
+              "required": "The catname is required",
+              "regex": "The catname is not valid"
+            },
+            "password": {
+              "required": "The password is required"
+            }
+          },
+          "toast": {
+            "success": "You are now the owner of {cat_name}. Congratulations!",
+            "alreadyOwn": "The cat with that catname already belongs to you",
+            "wrongPassword": "The password is incorrect",
+            "error": "There was an error adding the cat"
+          }
+        }
+      },
+      "edit": {
+        "sheet": {
+          "title": "Edit cat",
+          "avatarUpload": "Upload avatar",
+          "name": "Name",
+          "catname": "Catname",
+          "biography": "Biography",
+          "breed": "Breed",
+          "color": "Color",
+          "password": "Password",
+          "newPassword": "New password",
+          "newPasswordConfirmation": "Confirm new password",
+          "button": "Save changes"
+        },
+        "validators": {
+          "name": {
+            "min": "The name must be at least 3 characters long",
+            "max": "The name cannot be longer than 50 characters"
+          },
+          "catname": {
+            "min": "The catname must be at least 3 characters long",
+            "max": "The catname cannot be longer than 30 characters",
+            "regex": "The catname can only contain letters, numbers, dots, and underscores"
+          },
+          "biography": {
+            "max": "The biography cannot be longer than 255 characters"
+          },
+          "breed": {
+            "min": "The breed must be at least 3 characters long",
+            "max": "The breed cannot be longer than 50 characters"
+          },
+          "color": {
+            "min": "The color must be at least 3 characters long",
+            "max": "The color cannot be longer than 50 characters"
+          },
+          "birthdate": {
+            "required": "The date of birth is required"
+          },
+          "password": {
+            "required": "The password is required"
+          },
+          "newPassword": {
+            "min": "The new password must be at least 8 characters long",
+            "max": "The new password cannot be longer than 50 characters",
+            "regex": "The new password must contain at least one uppercase letter, one lowercase letter, one number, and one special character ({chars})"
+          }
+        },
+        "toast": {
+          "avatarUpload": {
+            "success": "Avatar updated successfully",
+            "error": "There was an error updating the avatar",
+            "noCats": "No cats found in the avatar"
+          }
+        }
+      },
+      "profile": {
+        "metadata": {
+          "notFound": "Cat not found"
+        },
+        "notFound": {
+          "title": "Oh no! This cat has escaped!",
+          "content": "It seems this cat is not on purr. or has been deleted. Oh no! Why not explore other cats?",
+          "button": "Explore"
+        },
+        "noPosts": "This cat has not shared any moments on purr. yet.",
+        "profilePage": {
+          "badges": {
+            "adoptable": "Adopt me!"
+          },
+          "noBiography": "This cat does not have a biography yet",
+          "breed": "Breed",
+          "color": "Color",
+          "birthdate": "Birthdate",
+          "followers": "followers",
+          "followState": {
+            "button": {
+              "follow": "Follow",
+              "unfollow": "Unfollow"
+            },
+            "toast": {
+              "followed": "You are now following {cat_name}!",
+              "unfollowed": "You are no longer following {cat_name}",
+              "noLoggedIn": "You must log in to follow a cat",
+              "error": "There was an error following or unfollowing {cat_name}"
+            }
+          },
+          "dotMenu": {
+            "deleteCat": {
+              "menuItem": "Delete cat",
+              "dialog": {
+                "title": "Delete {cat_name}",
+                "content": "Are you sure you want to delete {cat_name}? This action cannot be undone.",
+                "buttons": {
+                  "cancel": "Cancel",
+                  "delete": "Delete"
+                }
+              }
+            },
+            "deleteCatAssociatedUsers": "Delete users associated with this cat"
+          }
+        },
+        "toast": {
+          "fetchError": "There was an error loading the cat profile"
+        }
+      },
+      "random": {
+        "toast": {
+          "fetchError": "There was an error loading a random cat",
+          "noCats": {
+            "title": "We couldn't find any cats :(",
+            "description": "Do you want yours to be the first?",
+            "button": "Yes!"
           }
         }
       }
+    },
+    "entity": {
+      "create": {
+        "metadata": {
+          "title": "Register an entity"
+        }
+      }
+    },
+    "utils": {
+      "loading": "Loading...",
+      "catAvatar": {
+        "alt": "Cat avatar"
+      },
+      "share": {
+        "label": "Share",
+        "copyLink": "Copy link",
+        "copiedLink": "Link copied to clipboard"
+      },
+      "imageChecker": {
+        "fileSizeError": "The image cannot be larger than {mb}MB",
+        "fileTypeError": "Unsupported image format. Only the following formats are allowed: {formats}"
+      }
+    },
+    "maps": {
+      "metadata": {
+        "title": "Map"
+      },
+      "webpage": "Web page",
+      "noWebpage": "No web page",
+      "error": "There was an error loading the map"
+    },
+    "search": {
+      "noResults": "No results found",
+      "error": "There was an error searching",
+      "placeholder": "Where did that cat go?",
+      "groupLabels": {
+        "cats": "Found cats",
+        "recentlyViewed": "Recently viewed"
+      }
     }
+  },
+  "auth": {
+    "login": {
+      "metaTitle": "Log in",
+      "email": "Email",
+      "password": "Password",
+      "button": "Log in",
+      "noAccount": {
+        "content": "Don't have an account?",
+        "link": "Sign up!"
+      }
+    },
+    "register": {
+      "metaTitle": "Sign up",
+      "name": "Name",
+      "username": "Username",
+      "usernameHelp": "The username is unique and can only contain letters, numbers, dots, and underscores",
+      "email": "Email",
+      "password": "Password",
+      "passwordConfirmation": "Confirm password",
+      "button": "Sign up",
+      "haveAccount": {
+        "content": "Already have an account?",
+        "link": "Log in!"
+      }
+    },
+    "google": "Continue with Google"
+  },
+  "response": {
+    "These credentials do not match our records": "Incorrect credentials"
+  },
+  "errors": {
+    "serverError": "There was an error on the server. Please try again later.",
+    "tooManyRequests": "You have made too many requests, please try again later."
+  },
+  "slogan": "The social network made by cats, for humans",
+  "cookieBanner": {
+    "message": "purr. only uses cookies necessary for the proper functioning of the site, if you accept them, you will be able to enjoy all the functionalities of purr.",
+    "accept": "Accept",
+    "reject": "Reject",
+    "toast": {
+      "saved": "Your cookie preferences have been saved"
+    }
+  },
+  "pageNotFound": {
+    "title": "Oh no! This place is empty!",
+    "content": "It looks like the page you're looking for doesn't exist. Why not return to the home page?"
   }
 }

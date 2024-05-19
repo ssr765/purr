@@ -15,7 +15,7 @@ onMounted(() => {
   <section id="landing-hero" class="bg-[url('/img/grid.webp')] h-[50dvh] min-h-[300px] lg:h-[calc(100dvh-60px)] lg:min-h-[750px]">
     <div class="w-full h-full bg-gradient-to-b from-ctp-base/50 via-ctp-base via-95% to-ctp-base flex items-center justify-center">
       <div class="max-w-screen-xl m-auto">
-        <h1 class="text-black/80 dark:text-ctp-text text-6xl font-hero uppercase tracking-tighter font-extrabold text-center">{{ $t('landing.home.hero') }}</h1>
+        <h1 class="text-black/80 dark:text-ctp-text text-6xl font-hero uppercase tracking-tighter font-extrabold text-center break-words-plus">{{ $t('landing.home.hero') }}</h1>
       </div>
     </div>
   </section>

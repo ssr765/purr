@@ -316,7 +316,7 @@ class UserController extends Controller
     public function updateSettings(Request $request)
     {
         $request->validate([
-            'language' => 'required|string|in:en,es,ca,ja',
+            'language' => 'required|string|in:en,es,ca,ja,it,pt,de',
         ]);
 
         $user = $request->user();
