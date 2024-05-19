@@ -73,9 +73,6 @@ onMounted(() => {
                   <li>
                     <RouterLink to="/faqs" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 lg:hover:bg-transparent lg:border-0 lg:p-0">{{ $t('landing.header.faqs') }}</RouterLink>
                   </li>
-                  <li>
-                    <RouterLink to="/tecnologies" exactActiveClass="text-black dark:text-white" class="block py-2 pr-4 pl-3 lg:hover:bg-transparent lg:border-0 lg:p-0">{{ $t('landing.header.techs') }}</RouterLink>
-                  </li>
                 </ul>
               </div>
             </SheetContent>
@@ -109,12 +106,6 @@ onMounted(() => {
               <RouterLink to="/faqs" exactActiveClass="text-black dark:text-white" class="flex items-center justify-center py-2 pr-4 pl-3 lg:hover:bg-transparent lg:border-0 lg:p-0">
                 <span class="hidden xl:block">{{ $t('landing.header.faqs') }}</span>
                 <span class="icon-[mingcute--question-fill] text-xl xl:hidden hover:scale-125 transition-all" role="img" aria-hidden="true" />
-              </RouterLink>
-            </li>
-            <li>
-              <RouterLink to="/tecnologies" exactActiveClass="text-black dark:text-white" class="flex items-center justify-center py-2 pr-4 pl-3 lg:hover:bg-transparent lg:border-0 lg:p-0">
-                <span class="hidden xl:block">{{ $t('landing.header.techs') }}</span>
-                <span class="icon-[ph--wrench-fill] text-xl xl:hidden hover:scale-125 transition-all" role="img" aria-hidden="true" />
               </RouterLink>
             </li>
           </ul>

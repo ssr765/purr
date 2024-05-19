@@ -56,6 +56,10 @@
         "cta": "Comienza ahora"
       }
     },
+    "underConstruction": {
+      "title": "¡Los gatitos están trabajando en ello!",
+      "content": "Esta página está actualmente en construcción. ¡Vuelve pronto para ver las últimas actualizaciones!"
+    },
     "privacyPolicy": {
       "metaTitle": "Política de privacidad",
       "title": "Política de privacidad de purr.",
@@ -549,6 +553,11 @@
         "metadata": {
           "notFound": "Gato no encontrado"
         },
+        "notFound": {
+          "title": "¡Oh no! ¡Este gato se ha escapado!",
+          "content": "Parece que este gato no está en purr. o ha sido eliminado. ¡Vaya! ¿Por qué no exploras otros gatos?",
+          "button": "Explorar"
+        },
         "profilePage": {
           "badges": {
             "adoptable": "Adóptame!"
@@ -681,5 +690,9 @@
     "toast": {
       "saved": "Se han guardado tus preferencias de cookies"
     }
+  },
+  "pageNotFound": {
+    "title": "¡Oh no! ¡Este lugar está vacío!",
+    "content": "Parece que la página que buscas no existe. ¿Por qué no vuelves a la página de inicio?"
   }
 }

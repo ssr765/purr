@@ -27,6 +27,26 @@ const router = createRouter({
           name: 'landing-cookie-policy',
           component: () => import('@/views/landing/CookiePolicyView.vue'),
         },
+        {
+          path: 'features',
+          name: 'landing-features',
+          component: () => import('@/views/landing/ConstructionView.vue'),
+        },
+        {
+          path: 'faqs',
+          name: 'landing-faqs',
+          component: () => import('@/views/landing/ConstructionView.vue'),
+        },
+        {
+          path: 'ai',
+          name: 'landing-ai',
+          component: () => import('@/views/landing/ConstructionView.vue'),
+        },
+        {
+          path: ':pathMatch(.*)*',
+          name: 'not-found',
+          component: () => import('@/views/landing/NotFoundView.vue'),
+        },
       ],
     },
     {
@@ -109,6 +129,11 @@ const router = createRouter({
           name: 'app-posts-saved',
           component: () => import('@/views/app/posts/SavedView.vue'),
           meta: { requiresAuth: true },
+        },
+        {
+          path: ':pathMatch(.*)*',
+          name: 'app-not-found',
+          component: () => import('@/views/app/NotFoundView.vue'),
         },
       ],
     },
