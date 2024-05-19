@@ -13,10 +13,12 @@ class ImageEngineService
         $this->uri = config('services.imageEngineApi.uri');
     }
 
-    public function optimizeImage($image)
+    public function optimizeImage($image, bool $isAvatar = false)
     {
         // Send the image path to the image engine API.
-        $response = Http::attach('file', file_get_contents($image), basename($image))->post($this->uri . '/optimize');
+        $response = Http::attach('file', file_get_contents($image), basename($image))->post($this->uri . '/optimize', [
+            'avatar' => $isAvatar ? 'true' : 'false',
+        ]);
 
         // Throw an exception if the request failed.
         if ($response->failed()) {

@@ -263,13 +263,23 @@ class CatController extends Controller
     public function updateAvatar(Cat $cat, Request $request, ImageEngineService $imageEngineService)
     {
         $request->validate([
-            'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:8192']
+            'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:8192']
         ]);
 
         $oldAvatar = $cat->avatar;
         $avatar = $request->file('avatar');
 
-        $optimizedFile = $imageEngineService->optimizeImage($avatar);
+        // Optimize the image and then analyze it to check if it contains cats in the resultant
+        // square image.
+        $optimizedFile = $imageEngineService->optimizeImage($avatar, true);
+        $tempFilePath = tempnam(sys_get_temp_dir(), 'optimized_');
+        file_put_contents($tempFilePath, $optimizedFile);
+        $analysis = $imageEngineService->analyzeImage($tempFilePath);
+
+        if (!$analysis['detected']) {
+            return response()->json(['message' => 'no cats'], 422);
+        }
+
         $filename = Str::random(40) . '.webp';
         Storage::disk('avatars')->put($filename, $optimizedFile);
 

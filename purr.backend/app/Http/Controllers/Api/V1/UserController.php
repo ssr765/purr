@@ -227,14 +227,14 @@ class UserController extends Controller
     public function updateAvatar(Request $request, ImageEngineService $imageEngineService)
     {
         $request->validate([
-            'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:8192']
+            'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:8192']
         ]);
 
         $user = $request->user();
         $oldAvatar = $user->avatar;
         $avatar = $request->file('avatar');
 
-        $optimizedFile = $imageEngineService->optimizeImage($avatar);
+        $optimizedFile = $imageEngineService->optimizeImage($avatar, true);
         $filename = Str::random(40) . '.webp';
         Storage::disk('avatars')->put($filename, $optimizedFile);
 
