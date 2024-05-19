@@ -29,8 +29,6 @@ class CatResource extends JsonResource
             'followers_count' => $this->followers_count,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
-            // Posts only shown if accesing to the cat detail.
-            'posts' => new PostCollection($this->whenLoaded('posts')),
             // followed when  the user is logged in
             'followed' => $this->when($request->user(), fn () => $this->followedByUser($request->user())),
         ];

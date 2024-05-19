@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCatRequest;
 use App\Http\Requests\UpdateCatRequest;
 use App\Http\Resources\V1\CatResource;
+use App\Http\Resources\V1\PostCollection;
 use App\Http\Resources\V1\UserCollection;
 use App\Models\Cat;
 use App\Services\ImageEngineService;
@@ -68,7 +69,7 @@ class CatController extends Controller
     public function show(Cat $cat)
     {
         // Get the cat with its posts.
-        return response()->json(new CatResource($cat->load('posts')));
+        return response()->json(new CatResource($cat));
     }
 
     /**
@@ -133,7 +134,7 @@ class CatController extends Controller
             return response()->json(['message' => 'Cat not found'], 404);
         }
 
-        return response()->json(new CatResource($cat->load('posts')));
+        return response()->json(new CatResource($cat));
     }
 
     public function checkCatname(Request $request)
@@ -164,7 +165,7 @@ class CatController extends Controller
             return response()->json(['message' => 'No cats found'], 404);
         }
 
-        return response()->json(new CatResource($cat->load('posts')));
+        return response()->json(new CatResource($cat));
     }
 
     public function follow(Cat $cat)
@@ -306,5 +307,10 @@ class CatController extends Controller
         return response()->json(
             ['avatar' => null],
         );
+    }
+
+    public function posts(Cat $cat)
+    {
+        return response()->json(new PostCollection($cat->posts()->orderBy('created_at', 'desc')->paginate(10)));
     }
 }
