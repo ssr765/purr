@@ -111,7 +111,8 @@ onUnmounted(() => {
               <div class="size-48 lg:size-96 grid grid-rows-[auto,1fr,auto]">
                 <div>
                   <div class="flex flex-col items-center justify-center">
-                    <CatPlaceholderAvatar class="size-20" />
+                    <img v-if="post.cat?.avatar" class="size-20 object-cover rounded-full" :src="post.cat?.avatar" alt="" />
+                    <CatPlaceholderAvatar v-else class="size-20" />
                     <span class="text-lg lg:text-xl leading-5">{{ post.cat?.name ?? catStore.cat!.name }}</span>
                     <span class="text-sm lg:text-base">@{{ post.cat?.catname ?? catStore.cat!.catname }}</span>
                   </div>

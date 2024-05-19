@@ -86,7 +86,7 @@ const loading = ref(true)
             <RouterLink @click="open = false" v-for="cat in catStore.recentlyViewed" :key="cat.id" :to="{ name: 'app-cats-profile', params: { catname: cat.catname } }">
               <CommandItem :value="cat.id" class="cursor-pointer">
                 <div class="flex items-center gap-2">
-                  <img v-if="cat.avatar" :src="cat.avatar" alt="" class="size-8 rounded-full" />
+                  <img v-if="cat.avatar" :src="cat.avatar" alt="" class="size-8 rounded-full object-cover" />
                   <CatPlaceholderAvatar v-else class="size-8" />
                   <div>
                     <p class="text-lg leading-4">{{ cat.name }}</p>

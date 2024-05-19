@@ -63,7 +63,8 @@ const save = (id: number) => {
         <div class="flex items-center justify-between">
           <RouterLink :to="{ name: 'app-cats-profile', params: { catname: post.cat!.catname } }">
             <div class="flex items-center gap-2">
-              <CatPlaceholderAvatar class="w-12 h-12" />
+              <img v-if="post.cat?.avatar" class="size-12 object-cover rounded-full" :src="post.cat?.avatar" alt="" />
+              <CatPlaceholderAvatar v-else class="w-12 h-12" />
               <div>
                 <div class="text-lg font-bold leading-4">{{ post.cat!.name }}</div>
                 <div class="text-sm">@{{ post.cat!.catname }}</div>

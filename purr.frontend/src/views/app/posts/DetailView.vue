@@ -122,7 +122,8 @@ const comment = ref('')
         <div class="p-4 border-b border-ctp-lavender">
           <RouterLink :to="{ name: 'app-cats-profile', params: { catname: postDetail.cat!.catname } }">
             <div class="flex items-center gap-2">
-              <CatPlaceholderAvatar class="w-12 h-12" />
+              <img v-if="postDetail.cat?.avatar" class="size-12 object-cover rounded-full" :src="postDetail.cat?.avatar" alt="" />
+              <CatPlaceholderAvatar v-else class="w-12 h-12" />
               <div>
                 <div class="text-lg font-bold leading-4">{{ postDetail.cat!.name }}</div>
                 <div class="text-sm">@{{ postDetail.cat!.catname }}</div>
