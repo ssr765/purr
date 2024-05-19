@@ -108,39 +108,6 @@ export const usePostStore = defineStore('post', () => {
     }
   }
 
-  const refreshCommentLike = async (
-    postId: Number,
-    commentId: Number,
-    like: boolean,
-  ) => {
-    const post = posts.value.find((post) => post.id === postId)
-    if (post) {
-      const comment = post.comments.find((comment) => comment.id === commentId)
-      if (comment) {
-        comment.liked = like
-        if (like) {
-          comment.likesCount++
-        } else {
-          comment.likesCount--
-        }
-      }
-    }
-
-    if (postDetail.value && postDetail.value.id) {
-      const comment = postDetail.value.comments.find(
-        (comment) => comment.id === commentId,
-      )
-      if (comment) {
-        comment.liked = like
-        if (like) {
-          comment.likesCount++
-        } else {
-          comment.likesCount--
-        }
-      }
-    }
-  }
-
   const commentLiking = ref(false)
   const toggleCommentLike = async (id: number) => {
     const updateLikeData = (
