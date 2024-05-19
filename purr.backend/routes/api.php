@@ -26,8 +26,6 @@ use Illuminate\Support\Facades\Route;
 
 // ----- V1 API
 Route::prefix('v1')->group(function () {
-    // 100 requests per minute
-    Route::middleware(['throttle:100,1'])->group(function () {
         // --- Requires authentication
         Route::middleware(['auth:sanctum'])->group(function () {
             // Actual user data
@@ -108,12 +106,9 @@ Route::prefix('v1')->group(function () {
             Route::get('/catname/{catname}', [V1CatController::class, 'showByCatname'])->name('showByCatname')->where(['catname' => '[\w\d\.]{3,30}']);
             Route::get('/random', [V1CatController::class, 'random'])->name('random');
             Route::get('/{cat}/followers', [V1CatController::class, 'followers'])->name('followers');
-        });
     });
 
     // --- No authentication required
-    // 200 requests per minute
-    Route::middleware(['throttle:200,1'])->group(function () {
         // Users routes
         Route::prefix('users')->name('users.')->group(function () {
             Route::get('/{user}/avatar', [V1UserController::class, 'avatar'])->name('avatar');
@@ -133,7 +128,6 @@ Route::prefix('v1')->group(function () {
 
         // Map entities
         Route::apiResource('entities', V1EntityController::class)->only(['index']);
-    });
 
     // --- Admin routes
     Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->name('admin.')->group(function () {
