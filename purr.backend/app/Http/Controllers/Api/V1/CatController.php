@@ -81,6 +81,11 @@ class CatController extends Controller
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
+        // Check if catname is unique.
+        if ($request->catname && Cat::where('catname', $request->catname)->where('id', '!=', $cat->id)->exists()) {
+            return response()->json(['message' => 'Catname already exists'], 409);
+        }
+
         // Check if the password is correct.
         if (!Hash::check($request->password, $cat->password)) {
             abort(403, 'Unauthorized');
@@ -252,5 +257,54 @@ class CatController extends Controller
             ->get();
 
         return response()->json(CatResource::collection($cats));
+    }
+
+    public function updateAvatar(Cat $cat, Request $request, ImageEngineService $imageEngineService)
+    {
+        $request->validate([
+            'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:8192']
+        ]);
+
+        $oldAvatar = $cat->avatar;
+        $avatar = $request->file('avatar');
+
+        $optimizedFile = $imageEngineService->optimizeImage($avatar);
+        $filename = Str::random(40) . '.webp';
+        Storage::disk('avatars')->put($filename, $optimizedFile);
+
+        $cat->avatar = $filename;
+        $cat->save();
+
+        // Delete the old avatar file.
+        if ($oldAvatar) {
+            $path = storage_path('app/avatars/' . $oldAvatar);
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
+
+        return response()->json(
+            ['avatar' => config('app.url') . "api/v1/cats/{$cat->id}/avatar"],
+        );
+    }
+
+    public function deleteAvatar(Cat $cat)
+    {
+        if (!$cat->avatar) {
+            abort(404);
+        }
+
+        // Delete the avatar file.
+        $path = storage_path('app/avatars/' . $cat->avatar);
+        if (file_exists($path)) {
+            unlink($path);
+        }
+
+        $cat->avatar = null;
+        $cat->save();
+
+        return response()->json(
+            ['avatar' => null],
+        );
     }
 }

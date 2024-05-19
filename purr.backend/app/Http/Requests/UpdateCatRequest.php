@@ -25,10 +25,9 @@ class UpdateCatRequest extends FormRequest
     {
         return [
             'name' => ['nullable', 'string'],
-            'catname' => ['nullable', 'string', 'unique' . Cat::class, 'not_in:create', 'regex:/^[\w\d\.]{3,30}$/', 'min:3', 'max:30'],
+            'catname' => ['nullable', 'string', 'not_in:create', 'regex:/^[\w\d\.]{3,30}$/', 'min:3', 'max:30'],
             'breed' => ['nullable', 'string'],
             'color' => ['nullable', 'string'],
-            'avatar' => ['nullable', 'image', 'max:8192', 'mimes:jpg,jpeg,png,webp'],
             'biography' => ['nullable', 'string'],
             'adoption' => ['nullable', 'boolean'],
             'password' => ['required', 'string',  Rules\Password::min(8)->mixedCase()->letters()->numbers()->symbols()],
