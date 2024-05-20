@@ -38,9 +38,9 @@ onMounted(() => {
         <div class="flex items-center lg:order-3">
           <LanguageSelector />
           <RouterLink to="/app">
-            <PurrButton noMargin class="ml-2 flex items-center justify-center">
-              <span>{{ $t('landing.header.cta') }}</span>
-              <span class="icon-[mingcute--right-fill] text-lg ml-2" role="img" aria-hidden="true" />
+            <PurrButton noMargin noPaddingX class="min-h-[42px] px-4 md:px-6 ml-2 flex items-center justify-center">
+              <span class="hidden md:inline">{{ $t('landing.header.cta') }}</span>
+              <span class="icon-[mingcute--right-fill] text-lg md:ml-2" role="img" aria-hidden="true" />
             </PurrButton>
           </RouterLink>
 

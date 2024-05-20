@@ -44,7 +44,10 @@ const { user } = storeToRefs(authStore)
     </DropdownMenu>
   </div>
   <div v-else class="inline-flex rounded-md">
-    <RouterLink :to="{ name: 'auth-login' }" class="bg-ctp-mantle block overflow-hidden relative focus:outline-none border border-ctp-lavender hover:text-white hover:dark:text-black dark:text-white text-black hover:bg-gradient-to-br from-ctp-lavender via-ctp-lavender to-ctp-mauve hover:bg-ctp-lavender/75 font-medium rounded-l-lg text-sm px-7 py-2.5 active:translate-y-1 transition-all"> {{ $t('app.layout.header.login') }} </RouterLink>
-    <RouterLink :to="{ name: 'auth-register' }" class="bg-ctp-crust block overflow-hidden relative focus:outline-none border border-ctp-lavender hover:text-white hover:dark:text-black dark:text-white text-black hover:bg-gradient-to-br from-ctp-lavender via-ctp-lavender to-ctp-mauve hover:bg-ctp-lavender/75 font-medium rounded-r-lg text-sm px-7 py-2.5 active:translate-y-1 transition-all border-l-0"> {{ $t('app.layout.header.register') }} </RouterLink>
+    <RouterLink :to="{ name: 'auth-login' }" class="bg-ctp-mantle block overflow-hidden relative focus:outline-none border border-ctp-lavender hover:text-white hover:dark:text-black dark:text-white text-black hover:bg-gradient-to-br from-ctp-lavender via-ctp-lavender to-ctp-mauve hover:bg-ctp-lavender/75 font-medium rounded-lg md:rounded-l-lg md:rounded-r-none text-sm px-7 py-2.5 active:translate-y-1 transition-all">
+      <span class="hidden md:inline">{{ $t('app.layout.header.login') }}</span>
+      <span class="text-xl block md:hidden icon-[lets-icons--sign-in-squre]" role="img" aria-hidden="true" />
+    </RouterLink>
+    <RouterLink :to="{ name: 'auth-register' }" class="bg-ctp-crust hidden md:block overflow-hidden relative focus:outline-none border border-ctp-lavender hover:text-white hover:dark:text-black dark:text-white text-black hover:bg-gradient-to-br from-ctp-lavender via-ctp-lavender to-ctp-mauve hover:bg-ctp-lavender/75 font-medium rounded-r-lg text-sm px-7 py-2.5 active:translate-y-1 transition-all border-l-0"> {{ $t('app.layout.header.register') }} </RouterLink>
   </div>
 </template>
