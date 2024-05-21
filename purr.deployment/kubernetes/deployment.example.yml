@@ -75,6 +75,10 @@ metadata:
     type: frontend
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: vue
+      type: frontend
   template:
     metadata:
       labels:
@@ -83,7 +87,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image:
+          image: # purr_frontend
           resources:
             requests:
               memory: "150Mi"
@@ -108,6 +112,10 @@ metadata:
     type: backend
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: laravel
+      type: backend
   template:
     metadata:
       labels:
@@ -116,7 +124,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image:
+          image: # purr_backend
           resources:
             requests:
               memory: "150Mi"
@@ -132,7 +140,7 @@ spec:
 
 ---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: redis
   namespace: grup4
@@ -140,7 +148,6 @@ metadata:
     app: redis
     type: backend
 spec:
-  serviceName: redis
   replicas: 1
   selector:
     matchLabels:
@@ -166,12 +173,16 @@ spec:
             - containerPort: 6379
               name: redis-port
           volumeMounts:
-            - name: redis-pvc
+            - name: redis-storage
               mountPath: /data
+      volumes:
+        - name: redis-storage
+          persistentVolumeClaim:
+            claimName: redis-pvc
 
 ---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: mysql
   namespace: grup4
@@ -179,7 +190,6 @@ metadata:
     app: mysql
     type: backend
 spec:
-  serviceName: mysql
   replicas: 1
   selector:
     matchLabels:
@@ -196,16 +206,16 @@ spec:
           image: mysql:8.0
           resources:
             requests:
-              memory: "150Mi"
+              memory: "350Mi"
               cpu: "100m"
             limits:
-              memory: "250Mi"
+              memory: "500Mi"
               cpu: "200m"
           ports:
             - containerPort: 3306
               name: mysql-port
           volumeMounts:
-            - name: mysql-pvc
+            - name: mysql-storage
               mountPath: /var/lib/mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
@@ -216,6 +226,47 @@ spec:
               value: ""
             - name: MYSQL_PASSWORD
               value: ""
+      volumes:
+        - name: mysql-storage
+          persistentVolumeClaim:
+            claimName: mysql-pvc
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ie
+  namespace: grup4
+  labels:
+    app: ie
+    type: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ie
+      type: backend
+  template:
+    metadata:
+      labels:
+        app: ie
+        type: backend
+    spec:
+      containers:
+        - name: ie
+          image: # purr_imageengine
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "2"
+            limits:
+              memory: "2Gi"
+              cpu: "3"
+          ports:
+            - containerPort: 80
+              name: ie-port
+      imagePullSecrets:
+        - name: credencials-kube0
 
 ---
 apiVersion: apps/v1
@@ -228,6 +279,10 @@ metadata:
     type: proxy
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: apache
+      type: proxy
   template:
     metadata:
       labels:
@@ -236,7 +291,7 @@ spec:
     spec:
       containers:
         - name: proxy
-          image:
+          image: # purr_proxy
           resources:
             requests:
               memory: "150Mi"
@@ -247,39 +302,6 @@ spec:
           ports:
             - containerPort: 80
               name: proxy-port
-      imagePullSecrets:
-        - name: credencials-kube0
-
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: imageengine
-  namespace: grup4
-  labels:
-    app: imageengine
-    type: backend
-spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: imageengine
-        type: backend
-    spec:
-      containers:
-        - name: imageengine
-          image:
-          resources:
-            requests:
-              memory: "150Mi"
-              cpu: "100m"
-            limits:
-              memory: "250Mi"
-              cpu: "200m"
-          ports:
-            - containerPort: 5000
-              name: imageengine-port
       imagePullSecrets:
         - name: credencials-kube0
 
@@ -351,12 +373,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: imageengine
+  name: ie
   namespace: grup4
 spec:
   type: ClusterIP
   selector:
-    app: imageengine
+    app: ie
     type: backend
   ports:
     - port: 5000
