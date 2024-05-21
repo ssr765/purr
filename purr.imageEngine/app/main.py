@@ -7,7 +7,27 @@ from tools import optimizer, cat_detection
 app = Flask(__name__)
 
 
+def remove_metadata(image: Image.Image) -> Image.Image:
+    """Remove metadata from an image.
+
+    Args:
+    - image (Image): Image to remove metadata from.
+
+    Returns:
+    - Image: Image without metadata.
+    """
+    data = list(image.getdata())
+    image_no_metadata = Image.new(image.mode, image.size)
+    image_no_metadata.putdata(data)
+
+    return image_no_metadata
+
+
 def receive_image() -> Image.Image:
+    """Receive an image from a POST request.
+
+    Returns:
+    - Image: Image received from the POST request."""
     if "file" not in request.files:
         return jsonify({"message": "No file part"}), 400
 
@@ -20,6 +40,9 @@ def receive_image() -> Image.Image:
 
     # Avoid EXIF orientation issues.
     image = ImageOps.exif_transpose(image)
+
+    # Remove metadata.
+    image = remove_metadata(image)
 
     return image
 
