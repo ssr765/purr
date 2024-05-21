@@ -46,7 +46,7 @@ Route::prefix('v1')->group(function () {
         Route::apiResource('users', V1UserController::class)->only(['update', 'destroy'])->where(['user' => '\d+']);
         Route::apiResource('cats', V1CatController::class)->only(['update', 'store', 'destroy'])->where(['cat' => '\d+']);
         Route::apiResource('posts', V1PostController::class)->only(['store', 'destroy'])->where(['post' => '\d+']);
-        Route::apiResource('entities', V1EntityController::class)->only(['store'])->where(['entity' => '\d+']);
+        // Route::apiResource('entities', V1EntityController::class)->only(['store'])->where(['entity' => '\d+']);
         Route::apiResource('comments', V1CommentController::class)->only(['store', 'destroy'])->where(['comment' => '\d+']);
 
         // Users routes
