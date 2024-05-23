@@ -41,7 +41,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN mv /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
     && sed -i 's/;extension=zip/extension=zip/' /usr/local/etc/php/php.ini \
     && sed -i 's/max_upload_size = 2M/max_upload_size = 20M/' /usr/local/etc/php/php.ini \
-    && sed -i 's/max_post_size = 8M/max_post_size = 20M/' /usr/local/etc/php/php.ini \
+    && sed -i 's/post_max_size = 8M/post_max_size = 20M/' /usr/local/etc/php/php.ini \
     && sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 20M/' /usr/local/etc/php/php.ini \
     && sed -i 's/memory_limit = 128M/memory_limit = 512M/' /usr/local/etc/php/php.ini
 
