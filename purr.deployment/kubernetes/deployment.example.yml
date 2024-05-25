@@ -87,14 +87,14 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: # purr_frontend
+          image: # purr_frontend:latest
           resources:
             requests:
-              memory: "150Mi"
-              cpu: "100m"
-            limits:
-              memory: "250Mi"
+              memory: "350Mi"
               cpu: "200m"
+            limits:
+              memory: "500Mi"
+              cpu: "300m"
           ports:
             - containerPort: 80
               name: frontend-port
@@ -124,19 +124,31 @@ spec:
     spec:
       containers:
         - name: backend
-          image: # purr_backend
+          image: # purr_backend:latest
           resources:
             requests:
-              memory: "150Mi"
-              cpu: "100m"
-            limits:
-              memory: "250Mi"
+              memory: "350Mi"
               cpu: "200m"
+            limits:
+              memory: "500Mi"
+              cpu: "300m"
           ports:
             - containerPort: 80
-              name: frontend-port
+              name: backend-port
+          volumeMounts:
+            - name: laravel-storage
+              mountPath: /var/www/html/storage
+            - name: laravel-cache
+              mountPath: /var/www/html/bootstrap/cache
       imagePullSecrets:
         - name: credencials-kube0
+      volumes:
+        - name: laravel-storage
+          persistentVolumeClaim:
+            claimName: laravel-storage-pvc
+        - name: laravel-cache
+          persistentVolumeClaim:
+            claimName: laravel-cache-pvc
 
 ---
 apiVersion: apps/v1
@@ -164,11 +176,11 @@ spec:
           image: redis:6.0.9
           resources:
             requests:
-              memory: "150Mi"
-              cpu: "100m"
-            limits:
-              memory: "250Mi"
+              memory: "350Mi"
               cpu: "200m"
+            limits:
+              memory: "500Mi"
+              cpu: "300m"
           ports:
             - containerPort: 6379
               name: redis-port
@@ -207,10 +219,10 @@ spec:
           resources:
             requests:
               memory: "350Mi"
-              cpu: "100m"
+              cpu: "200m"
             limits:
               memory: "500Mi"
-              cpu: "200m"
+              cpu: "300m"
           ports:
             - containerPort: 3306
               name: mysql-port
@@ -219,13 +231,13 @@ spec:
               mountPath: /var/lib/mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: ""
+              value: "1qazZAQ!"
             - name: MYSQL_DATABASE
-              value: ""
+              value: "purr"
             - name: MYSQL_USER
-              value: ""
+              value: "purr"
             - name: MYSQL_PASSWORD
-              value: ""
+              value: "1qazZAQ!"
       volumes:
         - name: mysql-storage
           persistentVolumeClaim:
@@ -254,14 +266,14 @@ spec:
     spec:
       containers:
         - name: ie
-          image: # purr_imageengine
+          image: # purr_imageengine:latest
           resources:
             requests:
-              memory: "1Gi"
-              cpu: "2"
+              memory: "8Gi"
+              cpu: "5"
             limits:
-              memory: "2Gi"
-              cpu: "3"
+              memory: "10Gi"
+              cpu: "5"
           ports:
             - containerPort: 80
               name: ie-port
@@ -291,14 +303,14 @@ spec:
     spec:
       containers:
         - name: proxy
-          image: # purr_proxy
+          image: # purr_proxy:latest
           resources:
             requests:
-              memory: "150Mi"
-              cpu: "100m"
-            limits:
-              memory: "250Mi"
+              memory: "350Mi"
               cpu: "200m"
+            limits:
+              memory: "500Mi"
+              cpu: "300m"
           ports:
             - containerPort: 80
               name: proxy-port
