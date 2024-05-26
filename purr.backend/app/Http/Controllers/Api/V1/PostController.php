@@ -40,6 +40,10 @@ class PostController extends Controller
     {
         $cat = Cat::find($request->cat_id);
 
+        if (!$cat) {
+            return response()->json(['message' => 'Cat not found'], 404);
+        }
+
         // Check if the user owns the cat before uploading a post with the cat.
         if ($cat->users()->where('user_id', auth()->id())->doesntExist()) {
             return response()->json(['message' => 'Unauthorized'], 403);
