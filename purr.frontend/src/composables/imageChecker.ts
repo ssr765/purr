@@ -5,8 +5,8 @@ export function useImageChecker() {
   const { t } = useI18n()
   const checkFile = (file: File) => {
     // Check the file size.
-    if (file.size > 1024 * 1024 * 8) {
-      toast.error(t('app.utils.imageChecker.fileSizeError', { mb: 8 }))
+    if (file.size > 1024 * 1024 * 20) {
+      toast.error(t('app.utils.imageChecker.fileSizeError', { mb: 20 }))
       return false
     }
 
