@@ -280,6 +280,10 @@ class CatController extends Controller
             'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:20480']
         ]);
 
+        if ($cat->users()->where('user_id', $request->user()->id)->doesntExist()) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
         $oldAvatar = $cat->avatar;
         $avatar = $request->file('avatar');
 
@@ -313,8 +317,12 @@ class CatController extends Controller
         );
     }
 
-    public function deleteAvatar(Cat $cat)
+    public function deleteAvatar(Request $request, Cat $cat)
     {
+        if ($cat->users()->where('user_id', $request->user()->id)->doesntExist()) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
         if (!$cat->avatar) {
             return response()->json(['message' => 'Cat has no avatar'], 404);
         }
