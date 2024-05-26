@@ -288,7 +288,7 @@ class UserController extends Controller
 
     public function following(User $user)
     {
-        return response()->json(new UserCollection($user->following()->paginate(10)));
+        return response()->json(new CatCollection($user->following()->paginate(10)));
     }
 
     public function feed(Request $request)
