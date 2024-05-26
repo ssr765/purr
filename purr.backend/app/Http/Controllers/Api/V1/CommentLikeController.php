@@ -89,6 +89,6 @@ class CommentLikeController extends Controller
         return response()->json([
             "isLiked" => false,
             "count" => $comment->likes_count,
-        ], 201);
+        ], 200);
     }
 }

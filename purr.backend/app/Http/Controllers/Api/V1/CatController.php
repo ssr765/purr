@@ -164,7 +164,7 @@ class CatController extends Controller
     public function avatar(Cat $cat)
     {
         if (!$cat->avatar) {
-            abort(404);
+            return response()->json(['message' => 'Cat has no avatar'], 404);
         }
 
         $path = storage_path('app/avatars/' . $cat->avatar);
@@ -291,7 +291,7 @@ class CatController extends Controller
         $analysis = $imageEngineService->analyzeImage($tempFilePath);
 
         if (!$analysis['detected']) {
-            return response()->json(['message' => 'no cats'], 422);
+            return response()->json(['message' => 'No cats detected in the avatar'], 422);
         }
 
         $filename = Str::random(40) . '.webp';
@@ -316,7 +316,7 @@ class CatController extends Controller
     public function deleteAvatar(Cat $cat)
     {
         if (!$cat->avatar) {
-            abort(404);
+            return response()->json(['message' => 'Cat has no avatar'], 404);
         }
 
         // Delete the avatar file.

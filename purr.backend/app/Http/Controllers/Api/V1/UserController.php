@@ -79,7 +79,7 @@ class UserController extends Controller
                 'errors' => [
                     'email' => ['The email has already been taken.']
                 ]
-            ], 422);
+            ], 409);
         }
 
         // Check if the username is already taken.
@@ -88,7 +88,7 @@ class UserController extends Controller
                 'errors' => [
                     'username' => ['The username has already been taken.']
                 ]
-            ], 422);
+            ], 409);
         }
 
         // Update the user.
@@ -141,7 +141,7 @@ class UserController extends Controller
 
         // Check if the password is correct.
         if (!Hash::check($request->password, $request->user()->password)) {
-            abort(401, 'Unauthenticated');
+            abort(403, 'Unauthorized');
         }
 
         // Detach the user from all of their cats.
@@ -260,7 +260,7 @@ class UserController extends Controller
         $user = $request->user();
 
         if (!$user->avatar) {
-            abort(404);
+            return response()->json(['message' => 'The user does not have an avatar.'], 404);
         }
 
         // Delete the avatar file.
@@ -280,7 +280,7 @@ class UserController extends Controller
     public function avatar(User $user)
     {
         if (!$user->avatar) {
-            abort(404);
+            return response()->json(['message' => 'The user does not have an avatar.'], 404);
         }
 
         // Support for Google avatars.
