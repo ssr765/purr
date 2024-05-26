@@ -54,11 +54,10 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         // Validate the request.
-        // 'username' => ['required', 'string', 'max:255', 'unique:' . User::class, 'regex:/^[\w\d\.]{3,30}$/', 'min:3', 'max:30', 'not_in:email,username'],
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'min:3', 'max:30', 'regex:/^[\w\d\.]{3,30}$/'],
-            'email' => ['required', 'email', new EmailValidator, 'unique:' . User::class . ',email,' . $user->id],
+            'name' => ['nullable', 'string', 'max:255'],
+            'username' => ['nullable', 'string', 'min:3', 'max:30', 'regex:/^[\w\d\.]{3,30}$/'],
+            'email' => ['nullable', 'email', new EmailValidator],
             'password' => ['required', 'string'],
             'new_password' => ['nullable', 'string', 'confirmed', Rules\Password::min(8)->mixedCase()->letters()->numbers()->symbols()],
         ]);
@@ -93,25 +92,20 @@ class UserController extends Controller
 
         // Update the user.
         $user = User::find($user->id);
-        if ($request->name !== $user->name) {
+        if ($request->name && $request->name !== $user->name) {
             $user->name = $request->name;
         }
 
-        if ($request->username !== $user->username) {
+        if ($request->username && $request->username !== $user->username) {
             $user->username = $request->username;
         }
 
-        if ($request->email !== $user->email) {
+        if ($request->email && $request->email !== $user->email) {
             $user->email = $request->email;
         }
 
         if ($request->new_password) {
             $user->password = Hash::make($request->new_password);
-        }
-
-        // Update the avatar if it was provided.
-        if ($request->hasFile('avatar')) {
-            $user->avatar = $request->file('avatar')->store('avatars');
         }
 
         $user->save();
