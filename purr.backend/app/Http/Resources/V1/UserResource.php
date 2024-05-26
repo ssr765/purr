@@ -24,8 +24,6 @@ class UserResource extends JsonResource
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
             'cats' => CatResource::collection($this->whenLoaded('cats')),
-            'settings' => $this->whenLoaded('settings', new SettingsResource($this->settings)),
-            'admin' => $this->admin ? true : false,
         ];
     }
 }
