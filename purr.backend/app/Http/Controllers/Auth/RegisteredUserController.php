@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Helpers\EmailRateLimiter;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\V1\UserResource;
+use App\Http\Resources\V1\UserEmailResource;
 use App\Mail\WelcomeMail;
 use App\Models\Settings;
 use App\Models\User;
@@ -57,6 +57,6 @@ class RegisteredUserController extends Controller
 
         $user->refresh();
 
-        return response()->json(new UserResource($user->load('settings')), 201);
+        return response()->json(new UserEmailResource($user->load('settings')), 201);
     }
 }

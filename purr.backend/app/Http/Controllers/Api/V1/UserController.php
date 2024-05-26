@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\CatCollection;
 use App\Http\Resources\V1\PostCollection;
 use App\Http\Resources\V1\UserCollection;
+use App\Http\Resources\V1\UserEmailResource;
 use App\Http\Resources\V1\UserResource;
 use App\Mail\GoodbyeMail;
 use App\Models\Post;
@@ -115,7 +116,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return response()->json(new UserResource($user));
+        return response()->json(new UserEmailResource($user));
     }
 
     /**
