@@ -17,6 +17,7 @@ class CommentResource extends JsonResource
         return [
             'id' => $this->id,
             'content' => $this->content,
+            'parent' => $this->parent_id,
             // 'post' => $this->whenLoaded('post', new PostResource($this->post)),
             'user' => new UserResource($this->user),
             'liked' => $this->when($request->user(), fn () => $this->likedByUser($request->user())),

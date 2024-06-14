@@ -88,6 +88,16 @@ services:
             - '5000:5000'
         networks:
             - sail
+
+    jupyter:
+        build:
+            context: ../purr.imageEngine/ai
+            dockerfile: Dockerfile.jupyter
+        volumes:
+            - '../purr.imageEngine/ai:/workspace'
+        ports:
+            - '8888:8888'
+        
 networks:
     sail:
         driver: bridge

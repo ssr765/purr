@@ -40,6 +40,10 @@ class PostController extends Controller
     {
         $cat = Cat::find($request->cat_id);
 
+        if (!$cat) {
+            return response()->json(['message' => 'Cat not found'], 404);
+        }
+
         // Check if the user owns the cat before uploading a post with the cat.
         if ($cat->users()->where('user_id', auth()->id())->doesntExist()) {
             return response()->json(['message' => 'Unauthorized'], 403);
@@ -51,8 +55,8 @@ class PostController extends Controller
 
         $detected = false;
 
-        // Check if the image has been analyzed and got detections.
-        if (!Redis::sismember('detections', $hash)) {
+        // Check if the image has been analyzed.
+        if (!Redis::sismember('detections', $hash) && !Redis::sismember('no_detections', $hash)) {
             // Re-analyze the image.
             $analysis = $imageEngineService->analyzeImage($file);
 
@@ -61,11 +65,12 @@ class PostController extends Controller
             //     return response()->json(['message' => 'The image don\'t contains cats.'], 403);
             // }
         } else {
-            $detected = true;
+            $detected = Redis::sismember('detections', $hash) ? true : false;
         }
 
         // Remove hash from the detections set.
         Redis::srem('detections', $hash);
+        Redis::srem('no_detections', $hash);
 
         $optimizedFile = $imageEngineService->optimizeImage($file);
         $filename = Str::random(40) . '.webp';
@@ -159,6 +164,8 @@ class PostController extends Controller
         // Save the hash if the image has detections, so we don't have to analyze it again at upload time.
         if ($analysis['detected']) {
             Redis::sadd('detections', $hash);
+        } else {
+            Redis::sadd('no_detections', $hash);
         }
 
         return response()->json($analysis);

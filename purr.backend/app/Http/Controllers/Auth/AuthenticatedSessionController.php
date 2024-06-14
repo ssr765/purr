@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
-use App\Http\Resources\V1\UserResource;
+use App\Http\Resources\V1\UserEmailResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -21,7 +21,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return response()->json(new UserResource($request->user()->load(['settings', 'cats'])));
+        return response()->json(new UserEmailResource($request->user()->load(['settings', 'cats'])));
     }
 
     /**

@@ -164,7 +164,7 @@ class CatController extends Controller
     public function avatar(Cat $cat)
     {
         if (!$cat->avatar) {
-            abort(404);
+            return response()->json(['message' => 'Cat has no avatar'], 404);
         }
 
         $path = storage_path('app/avatars/' . $cat->avatar);
@@ -280,6 +280,10 @@ class CatController extends Controller
             'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:20480']
         ]);
 
+        if ($cat->users()->where('user_id', $request->user()->id)->doesntExist()) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
         $oldAvatar = $cat->avatar;
         $avatar = $request->file('avatar');
 
@@ -291,7 +295,7 @@ class CatController extends Controller
         $analysis = $imageEngineService->analyzeImage($tempFilePath);
 
         if (!$analysis['detected']) {
-            return response()->json(['message' => 'no cats'], 422);
+            return response()->json(['message' => 'No cats detected in the avatar'], 422);
         }
 
         $filename = Str::random(40) . '.webp';
@@ -313,10 +317,14 @@ class CatController extends Controller
         );
     }
 
-    public function deleteAvatar(Cat $cat)
+    public function deleteAvatar(Request $request, Cat $cat)
     {
+        if ($cat->users()->where('user_id', $request->user()->id)->doesntExist()) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
         if (!$cat->avatar) {
-            abort(404);
+            return response()->json(['message' => 'Cat has no avatar'], 404);
         }
 
         // Delete the avatar file.

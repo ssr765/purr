@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\CatCollection;
 use App\Http\Resources\V1\PostCollection;
 use App\Http\Resources\V1\UserCollection;
+use App\Http\Resources\V1\UserEmailResource;
 use App\Http\Resources\V1\UserResource;
 use App\Mail\GoodbyeMail;
 use App\Models\Post;
@@ -53,11 +54,10 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         // Validate the request.
-        // 'username' => ['required', 'string', 'max:255', 'unique:' . User::class, 'regex:/^[\w\d\.]{3,30}$/', 'min:3', 'max:30', 'not_in:email,username'],
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'min:3', 'max:30', 'regex:/^[\w\d\.]{3,30}$/'],
-            'email' => ['required', 'email', new EmailValidator, 'unique:' . User::class . ',email,' . $user->id],
+            'name' => ['nullable', 'string', 'max:255'],
+            'username' => ['nullable', 'string', 'min:3', 'max:30', 'regex:/^[\w\d\.]{3,30}$/'],
+            'email' => ['nullable', 'email', new EmailValidator],
             'password' => ['required', 'string'],
             'new_password' => ['nullable', 'string', 'confirmed', Rules\Password::min(8)->mixedCase()->letters()->numbers()->symbols()],
         ]);
@@ -78,7 +78,7 @@ class UserController extends Controller
                 'errors' => [
                     'email' => ['The email has already been taken.']
                 ]
-            ], 422);
+            ], 409);
         }
 
         // Check if the username is already taken.
@@ -87,20 +87,20 @@ class UserController extends Controller
                 'errors' => [
                     'username' => ['The username has already been taken.']
                 ]
-            ], 422);
+            ], 409);
         }
 
         // Update the user.
         $user = User::find($user->id);
-        if ($request->name !== $user->name) {
+        if ($request->name && $request->name !== $user->name) {
             $user->name = $request->name;
         }
 
-        if ($request->username !== $user->username) {
+        if ($request->username && $request->username !== $user->username) {
             $user->username = $request->username;
         }
 
-        if ($request->email !== $user->email) {
+        if ($request->email && $request->email !== $user->email) {
             $user->email = $request->email;
         }
 
@@ -108,14 +108,9 @@ class UserController extends Controller
             $user->password = Hash::make($request->new_password);
         }
 
-        // Update the avatar if it was provided.
-        if ($request->hasFile('avatar')) {
-            $user->avatar = $request->file('avatar')->store('avatars');
-        }
-
         $user->save();
 
-        return response()->json(new UserResource($user));
+        return response()->json(new UserEmailResource($user));
     }
 
     /**
@@ -140,7 +135,7 @@ class UserController extends Controller
 
         // Check if the password is correct.
         if (!Hash::check($request->password, $request->user()->password)) {
-            abort(401, 'Unauthenticated');
+            abort(403, 'Unauthorized');
         }
 
         // Detach the user from all of their cats.
@@ -259,7 +254,7 @@ class UserController extends Controller
         $user = $request->user();
 
         if (!$user->avatar) {
-            abort(404);
+            return response()->json(['message' => 'The user does not have an avatar.'], 404);
         }
 
         // Delete the avatar file.
@@ -279,7 +274,7 @@ class UserController extends Controller
     public function avatar(User $user)
     {
         if (!$user->avatar) {
-            abort(404);
+            return response()->json(['message' => 'The user does not have an avatar.'], 404);
         }
 
         // Support for Google avatars.
@@ -293,7 +288,7 @@ class UserController extends Controller
 
     public function following(User $user)
     {
-        return response()->json(new UserCollection($user->following()->paginate(10)));
+        return response()->json(new CatCollection($user->following()->paginate(10)));
     }
 
     public function feed(Request $request)

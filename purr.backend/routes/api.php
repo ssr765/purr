@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\V1\CommentController as V1CommentController;
 use App\Http\Controllers\Api\V1\CommentLikeController as V1CommentLikeController;
 use App\Http\Controllers\Api\V1\SaveController as V1SaveController;
 use App\Http\Controllers\Api\V1\EntityController as V1EntityController;
-use App\Http\Resources\V1\UserResource as V1UserResource;
+use App\Http\Resources\V1\UserEmailResource as V1UserEmailResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,14 +30,14 @@ Route::prefix('v1')->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
         // Actual user data
         Route::get('/user', function (Request $request) {
-            return response()->json(new V1UserResource($request->user()->load(['settings', 'cats'])));
+            return response()->json(new V1UserEmailResource($request->user()->load(['settings', 'cats'])));
         })->name('user.show');
 
         // User utilities
         Route::prefix('user')->name('user.')->group(function () {
-            Route::post('/username', [V1UserController::class, 'checkUsername'])->name('checkUsername');
-            Route::post('/email', [V1UserController::class, 'checkEmail'])->name('checkEmail');
-            Route::get('/cats', [V1UserController::class, 'showCats'])->name('cats');
+            // Route::post('/username', [V1UserController::class, 'checkUsername'])->name('checkUsername');
+            // Route::post('/email', [V1UserController::class, 'checkEmail'])->name('checkEmail');
+            // Route::get('/cats', [V1UserController::class, 'showCats'])->name('cats');
             Route::get('/feed', [V1UserController::class, 'feed'])->name('feed');
             Route::post('/settings', [V1UserController::class, 'updateSettings'])->name('settings.update');
         });
